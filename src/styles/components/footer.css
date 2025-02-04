@@ -1,0 +1,46 @@
+.Footer {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.8vw;
+}
+
+.Footer-icp {
+  font-size: 0.8em;
+}
+
+.Footer-icp-license {
+  font-size: 0.8em;
+  color: white;
+}
+
+.Footer-icp-license:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.Footer-ccp-police {
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-decoration: none;
+}
+
+.Footer-ccp-police a {
+  font-size: 0.8em;
+  color: white;
+  margin-right: 20px;
+}
+
+.Footer-ccp-police a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.Footer-ccp-police-license-icon {
+  margin-right: 0.3em;
+  width: 1em;
+  height: 1em;
+}

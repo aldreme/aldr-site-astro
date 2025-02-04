@@ -2,6 +2,7 @@
   "name": "aldr-site-astro",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,6 +10,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.3"
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/tailwind": "^6.0.0",
+    "@radix-ui/react-dialog": "^1.1.5",
+    "@radix-ui/react-navigation-menu": "^1.2.4",
+    "@radix-ui/react-slot": "^1.1.1",
+    "astro": "^5.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.474.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "3",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^22.13.0",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1",
+    "sharp": "^0.33.5"
   }
 }

@@ -1,0 +1,23 @@
+---
+import "@/styles/components/partners.css";
+
+import db from '@/assets/data/db.json';
+
+import { Image } from 'astro:assets';
+
+const partnerLogosDir = '/src/assets/images/partners-logo/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/partners-logo/*.{jpeg,jpg,png,svg}');
+
+---
+
+<div class='partners-layout'>
+  {
+    db.partners.map((item) => (
+      <div class='partners-item'>
+        <a href={"https://" + item.website}>
+          <Image alt={item.name} src={images[partnerLogosDir + item.logo_file_name]()} />
+        </a>
+      </div>
+    ))
+  }
+</div>

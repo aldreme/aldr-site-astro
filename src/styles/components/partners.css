@@ -1,0 +1,33 @@
+.partners-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.partners-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 30vmin;
+  height: 30vmin;
+}
+
+.partners-item img {
+  padding: 2vmin;
+  background-color: white;
+  border-radius: 10%;
+
+  width: 22vmin;
+  height: 22vmin;
+
+  transition-duration: 100ms;
+  transition-timing-function: ease-out;
+}
+
+.partners-item img:hover {
+  transform: scale(1.1);
+}
