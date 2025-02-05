@@ -1,13 +1,20 @@
 ---
 import '@/styles/globals.css';
 import '@/styles/pages/home.css';
+import '@/styles/pages/page.css';
 
-import PageLayout from '@/layouts/page-layout.astro';
 import Partners from '@/components/partners.astro';
+import PageLayout from '@/layouts/page-layout.astro';
+
+import { Image } from 'astro:assets';
+
+import homeBannerImg from '@/assets/images/home/home-banner-min.jpg';
 
 ---
 
 <PageLayout>
+	<Image src={homeBannerImg} alt="Home Banner" class="page-banner-img" />
+
 	<div class="home-layout">
 		<div class="home-banner-caption">
 			<p class="home-banner-caption-h0">{'Fortune Global 500 Supplier'}</p>

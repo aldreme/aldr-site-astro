@@ -1,4 +1,6 @@
 ---
+import '@/styles/pages/page.css';
+
 import Navbar from '@/components/navbar.tsx';
 ---
 <!doctype html>
@@ -10,9 +12,10 @@ import Navbar from '@/components/navbar.tsx';
 		<meta name="generator" content={Astro.generator} />
 		<title>ALDR EME</title>
 	</head>
-	<body class='page'>
+
+	<body style="background-color: black;">
 		<Navbar client:visible/>
-		<slot />
+		<slot class='page'/>
 	</body>
 </html>
 
