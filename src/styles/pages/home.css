@@ -20,7 +20,7 @@
   align-items: center;
 
   flex: 2;
-  font-size: 4.5vmax;
+  font-size: 4.5vw;
   font-weight: bolder;
   text-shadow: #FFFFFF 0px 0px 10px;
 
@@ -43,7 +43,7 @@
   align-items: center;
 
   flex: 1;
-  font-size: 3.5vmax;
+  font-size: 3.5vw;
 
   opacity: 0;
   position: relative;
@@ -58,7 +58,7 @@
   align-items: center;
 
   flex: 1;
-  font-size: 2.5vmax;
+  font-size: 2.5vw;
 
   opacity: 0;
   position: relative;
@@ -69,7 +69,7 @@
 }
 
 .home-partners {
-  margin-top: 10vmin;
+  margin-top: 10vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,9 +86,9 @@
 }
 
 .home-partners-caption {
-  font-size: 3.5vmax;
+  font-size: 4.5vw;
   font-weight: bold;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 
   transition-duration: 150ms;
   transition-timing-function: ease-out;

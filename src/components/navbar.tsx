@@ -1,15 +1,14 @@
 'use client';
 
-import { X as CloseIcon, Menu as MenuIcon } from 'lucide-react';
+import { Menu as MenuIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from '@/components/ui/sheet';
 
 import logo from '@/assets/images/logo/logo-light.png';
@@ -29,7 +28,7 @@ function NavbarBrand() {
 
 function NavLinksDesktop() {
   return (
-    <nav className='hidden flex-1 items-center space-x-6 text-sm font-medium text-zinc-100 md:flex'>
+    <nav className='hidden items-center space-x-6 text-sm font-medium text-zinc-100 md:flex'>
       {
         ROUTES_DATA.map((route, index) => (
           <a key={index} href={route.href} className='transition-colors hover:text-white'>
@@ -43,26 +42,26 @@ function NavLinksDesktop() {
 
 function NavLinksMobile() {
   return (
-    <div className='flex flex-1 justify-end md:hidden'>
+    <div className='flex flex-row border-none md:hidden'>
       <Sheet>
-        /* Menu Trigger button */
+        {/* Menu Trigger button */}
         <SheetTrigger asChild>
           <Button variant='ghost' className='p-2 text-zinc-100 hover:bg-zinc-800'>
             <MenuIcon className='h-5 w-5' />
           </Button>
         </SheetTrigger>
 
-        /* Menu content */
+        {/* Menu content */}
         <SheetContent
-          side='left'
-          className='w-[250px] bg-zinc-900 p-4 text-zinc-100'
+          side='right'
+          className='w-36 bg-zinc-900 p-4 text-zinc-100 border-none'
         >
-          /* Menu header */
+          {/* Menu header */}
           <SheetHeader>
             <SheetTitle className='text-white'>Menu</SheetTitle>
           </SheetHeader>
 
-          /* Navigation links */
+          {/* Navigation links */}
           <div className='mt-4 flex flex-col space-y-2 text-sm font-medium'>
             {
               ROUTES_DATA.map((route, index) => (
@@ -71,19 +70,6 @@ function NavLinksMobile() {
                 </a>
               ))
             }
-          </div>
-
-          /* Close button */
-          <div className='mt-4'>
-            <SheetClose asChild>
-              <Button
-                variant='outline'
-                className='flex w-full items-center justify-center'
-              >
-                <CloseIcon className='mr-2 h-4 w-4' />
-                Close
-              </Button>
-            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>
@@ -97,6 +83,7 @@ export default function Navbar() {
       <div className='container mx-auto flex h-16 items-center px-4'>
         <NavbarBrand />
         <NavLinksDesktop />
+        <div className='grow' />
         <NavLinksMobile />
       </div>
     </header>
