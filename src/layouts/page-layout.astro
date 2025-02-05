@@ -1,7 +1,9 @@
 ---
+import '@/styles/globals.css';
 import '@/styles/pages/page.css';
 
 import Navbar from '@/components/navbar.tsx';
+import Footer from '@/components/footer.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -13,9 +15,10 @@ import Navbar from '@/components/navbar.tsx';
 		<title>ALDR EME</title>
 	</head>
 
-	<body style="background-color: black;">
+	<body class="bg-black">
 		<Navbar client:visible/>
 		<slot class='page'/>
+		<Footer />
 	</body>
 </html>
 
