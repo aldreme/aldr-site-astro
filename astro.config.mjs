@@ -5,8 +5,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aldreme.github.io',
-  base: 'aldr-site-astro',
+  site: 'https://astro.aldreme.com',
   integrations: [
     react(),
     tailwind({
