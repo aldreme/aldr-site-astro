@@ -1,9 +1,5 @@
 @import '../common.css';
 
-.home-layout {
-  width: 100%;
-}
-
 .home-banner-caption {
   padding-top: 10vh;
   display: flex;

@@ -1,0 +1,21 @@
+---
+import '@/styles/components/products/product-item-card.css';
+import '@/styles/globals.css';
+
+interface Props {
+  id: number,
+  name: string,
+  img: string
+};
+
+const { name, img } = Astro.props;
+
+---
+
+<div class='product-item-card'>
+  <div class='product-item-card-img-container'>
+    <img alt='product-item' src={img} />
+  </div>
+  <p>{name}</p>
+</div>
+

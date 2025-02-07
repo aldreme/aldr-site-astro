@@ -1,6 +1,6 @@
-@import '../common/common.css';
+@import '../../common.css';
 
-.ProductItemCard {
+.product-item-card {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -21,11 +21,11 @@
   transition-timing-function: ease-out;
 }
 
-.ProductItemCard:hover {
+.product-item-card:hover {
   transform: scale(1.05);
 }
 
-.ProductItemCard-img-container {
+.product-item-card-img-container {
   width: 30vmin;
   height: 35vmin;
   display: flex;
@@ -34,12 +34,12 @@
   align-items: center;
 }
 
-.ProductItemCard img {
+.product-item-card img {
   max-width: 25vmin;
   max-height: 25vmin;
   border-radius: 1vmin;
 }
 
-.ProductItemCard p {
+.product-item-card p {
   font-size: 3vmin;
 }

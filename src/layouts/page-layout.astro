@@ -2,8 +2,8 @@
 import '@/styles/globals.css';
 import '@/styles/pages/page.css';
 
-import Navbar from '@/components/navbar.tsx';
 import Footer from '@/components/footer.astro';
+import Navbar from '@/components/navbar.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -17,7 +17,11 @@ import Footer from '@/components/footer.astro';
 
 	<body class="bg-black">
 		<Navbar client:visible/>
-		<slot class='page'/>
+
+		<main class="flex flex-col">
+			<slot class='page'/>
+		</main>
+		
 		<Footer />
 	</body>
 </html>
