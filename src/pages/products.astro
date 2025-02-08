@@ -2,6 +2,7 @@
 import '@/styles/globals.css';
 import '@/styles/pages/products.css';
 
+import ProductsGrid from '@/components/products/products-grid.astro';
 import PageLayout from '@/layouts/page-layout.astro';
 ---
 
@@ -13,9 +14,6 @@ import PageLayout from '@/layouts/page-layout.astro';
       </p>
     </div>
   </div>
-  
 
-  <!-- {
-    <ProductCardsGrid products={products} />
-  } -->
+  <ProductsGrid />
 </PageLayout>

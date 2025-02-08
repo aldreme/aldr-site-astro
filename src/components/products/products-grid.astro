@@ -2,20 +2,15 @@
 import '@/styles/components/products/product-item-card.css';
 import '@/styles/globals.css';
 
-interface Props {
-  id: number,
-  name: string,
-  img: string
-};
+import db from '@/assets/data/db.json';
 
-const { name, img } = Astro.props;
+import ProductItemCard from './product-item-card.astro';
 
 ---
-
-<div class='product-item-card'>
-  <div class='product-item-card-img-container'>
-    <img alt='product-item' src={img} />
-  </div>
-  <p>{name}</p>
+<div class='grid grid-cols-3 gap-2'>
+  {
+    db.products.stainless_steel.map((item) => (
+      <ProductItemCard productData={item} />
+    ))
+  }
 </div>
-
