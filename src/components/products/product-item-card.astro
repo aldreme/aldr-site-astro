@@ -2,10 +2,11 @@
 import '@/styles/components/products/product-item-card.css';
 import '@/styles/globals.css';
 
+import ProductCarousel from '@/components/products/product-carousel';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import ProductCarousel from '@/components/products/product-carousel';
 
+import { getImage } from 'astro:assets';
 import { type ProductData } from './types';
 
 interface Props {
@@ -17,16 +18,26 @@ const { productData } = Astro.props;
 const productImagesDir = '/src/assets/images/products/stainless_steel/';
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/stainless_steel/*.{jpeg,jpg,png,svg}');
 
+const productImageUri = await Promise.all(
+  productData.images.map(async (imageFileName) => {
+    return (await getImage({src: images[productImagesDir + imageFileName]()})).src;
+  })
+);
+
 ---
 
-<Card className='flex flex-col w-[30vmin] h-[35vmin] p-[2vmin] m-[2vmin] justify-evenly align-middle'>
+<Card className='flex flex-col w-[40vmin] h-[50vmin] p-[2vmin] m-[2vmin] items-center justify-between'>
 
-  <ProductCarousel productData={productData}/>
+  <ProductCarousel client:visible
+    productImageUri={productImageUri}
+  />
   
-  <h1>{productData.name}</h1>
-  <p>{productData.description}</p>
+  <h1 class='w-full text-start text-[2.5vmin] font-semibold'>{productData.name}</h1>
+  <p class='w-full text-start'>{productData.description}</p>
 
-  <Button className='w-[100px]'>More details</Button>
+  <div class='flex flex-row justify-between w-full'>
+    <Button className='w-[12vmin] h-[4.5vmin] text-[1.5vmin]'>More details</Button>
+  </div>
 
 </Card>
 

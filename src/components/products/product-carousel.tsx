@@ -1,29 +1,26 @@
-import { Card, CardContent } from "../ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "../ui/carousel";
-import { type ProductData } from "./types";
+'use client';
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 interface ProductCarouselProps {
-  productData: ProductData;
+  productImageUri: string[];
 };
 
-export default function ProductCarousel({ productData }: ProductCarouselProps) {
+export default function ProductCarousel({ productImageUri }: ProductCarouselProps) {
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel className="w-full" opts={{ loop: true }}>
       <CarouselContent>
-        {productData.images.map((imgFileName, ind) => (
+        {productImageUri.map((imgUri, ind) => (
           <CarouselItem key={ind}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  
-                </CardContent>
-              </Card>
-            </div>
+            <Card>
+              <CardContent className="flex aspect-square items-center justify-center p-[2vmin]">
+                <img src={imgUri} className='object-scale-down max-h-full' alt={`img-${ind}`} />
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   )
 }

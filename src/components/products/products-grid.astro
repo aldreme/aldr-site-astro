@@ -5,9 +5,8 @@ import '@/styles/globals.css';
 import db from '@/assets/data/db.json';
 
 import ProductItemCard from './product-item-card.astro';
-
 ---
-<div class='grid grid-cols-3 gap-2'>
+<div class='flex flex-row flex-wrap justify-center items-center'>
   {
     db.products.stainless_steel.map((item) => (
       <ProductItemCard productData={item} />
