@@ -9,6 +9,7 @@
     "node_modules"
   ],
   "compilerOptions": {
+    "strictNullChecks": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",

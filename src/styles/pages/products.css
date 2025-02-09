@@ -49,17 +49,9 @@
 
   flex: 2;
   font-size: 4.5vmax;
-  position: relative;
+  z-index: 1;
   font-weight: bolder;
   text-shadow: #FFFFFF 0px 0px 10px;
-
-  opacity: 0;
-  animation-duration: 0.5s;
-  animation-name: fadein, slideup;
-  animation-fill-mode: forwards;
-
-  transition-duration: 150ms;
-  transition-timing-function: ease-out;
 }
 
 .products-banner-caption-h0:hover {

@@ -1,15 +1,17 @@
 ---
+import '@/styles/common.css';
 import '@/styles/components/products/product-item-card.css';
 import '@/styles/globals.css';
 
 import db from '@/assets/data/db.json';
 
 import ProductItemCard from './product-item-card.astro';
+
 ---
-<div class='flex flex-row flex-wrap justify-center items-center'>
+<div class='flex flex-row flex-wrap justify-center items-center mt-[10vmin]'>
   {
-    db.products.stainless_steel.map((item) => (
-      <ProductItemCard productData={item} />
+    db.products.stainless_steel.map((item, index) => (
+      <ProductItemCard index={index} productData={item} />
     ))
   }
 </div>

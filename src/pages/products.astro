@@ -1,19 +1,27 @@
 ---
 import '@/styles/globals.css';
+import '@/styles/pages/page.css';
 import '@/styles/pages/products.css';
 
-import ProductsGrid from '@/components/products/products-grid.astro';
 import PageLayout from '@/layouts/page-layout.astro';
+
+import { Image } from 'astro:assets';
+
+import productsBannerImg from '@/assets/images/products/products-banner.jpg';
+import ProductsGrid from '@/components/products/products-grid.astro';
+
 ---
 
-<PageLayout>
-  <div class="w-full h-full min-h-full">
-    <div class='products-banner-caption'>
+<PageLayout pageTitle="Products">
+  <Image src={productsBannerImg} alt="Products Banner" class="page-banner-img" />
+
+  <div class="w-full min-h-full">
+    <div class='products-banner-caption mt-[5vmin]'>
       <p class='products-banner-caption-h0'>
         {'PRODUCTS'}
       </p>
     </div>
-  </div>
 
-  <ProductsGrid />
+    <ProductsGrid />
+  </div>
 </PageLayout>

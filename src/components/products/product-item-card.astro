@@ -1,4 +1,5 @@
 ---
+import '@/styles/common.css';
 import '@/styles/components/products/product-item-card.css';
 import '@/styles/globals.css';
 
@@ -6,14 +7,17 @@ import ProductCarousel from '@/components/products/product-carousel';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
+import { productSlug } from '@/lib/utils';
+import { Link } from "@heroui/link";
 import { getImage } from 'astro:assets';
 import { type ProductData } from './types';
 
 interface Props {
+  index: number
   productData: ProductData;
 };
 
-const { productData } = Astro.props;
+const { index, productData } = Astro.props;
 
 const productImagesDir = '/src/assets/images/products/stainless_steel/';
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/stainless_steel/*.{jpeg,jpg,png,svg}');
@@ -24,19 +28,24 @@ const productImageUri = await Promise.all(
   })
 );
 
+const itemAnimationDelay = (index: number) => {
+  return index == 0 ? 300 : 300 + index * 100;
+}
 ---
 
-<Card className='flex flex-col w-[40vmin] h-[50vmin] p-[2vmin] m-[2vmin] items-center justify-between'>
+<Card className=`flex flex-col w-[30vmin] h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-300` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
 
   <ProductCarousel client:visible
     productImageUri={productImageUri}
   />
   
-  <h1 class='w-full text-start text-[2.5vmin] font-semibold'>{productData.name}</h1>
+  <h1 class='w-full text-start text-[2vmin] font-semibold'>{productData.name}</h1>
   <p class='w-full text-start'>{productData.description}</p>
 
-  <div class='flex flex-row justify-between w-full'>
-    <Button className='w-[12vmin] h-[4.5vmin] text-[1.5vmin]'>More details</Button>
+  <div class='flex flex-row justify-between w-full mt-[2vmin]'>
+    <Button className='w-[8vmin] h-[3vmin] text-[1vmin]'>
+      <Link href=`/products/${productSlug(productData.name)}` className='text-white'>More details</Link>
+    </Button>
   </div>
 
 </Card>
