@@ -1,7 +1,7 @@
 @import '../common.css';
 
 .home-banner-caption {
-  padding-top: 10vh;
+  padding-top: 10vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -2,8 +2,11 @@
 import '@/styles/globals.css';
 
 import db from '@/assets/data/db.json';
+import ProductCarousel from '@/components/products/product-carousel';
+import { ProductDescriptionTab } from '@/components/products/product-description-tab';
 import PageLayout from '@/layouts/page-layout.astro';
 import { productSlug } from '@/lib/utils';
+import { getImage } from 'astro:assets';
 
 export function getStaticPaths() {
   return db.products.stainless_steel.map((product) => ({
@@ -15,8 +18,31 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
+const productImagesDir = '/src/assets/images/products/stainless_steel/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/stainless_steel/*.{jpeg,jpg,png,svg}');
+const productImageUri = await Promise.all(
+  product.images.map(async (imageFileName) => {
+    return (await getImage({src: images[productImagesDir + imageFileName]()})).src;
+  })
+);
+
 ---
 
 <PageLayout pageTitle={product.name}>
-  <h1 class='text-white'>Product {product.name}</h1>
+  <div class='min-h-[100vh] bg-white px-[5vmin] py-[5vmin]'>
+
+    <div class='flex flex-row justify-between items-start'>
+      <ProductCarousel client:visible
+        productImageUri={productImageUri}
+        className='w-[80vmin] h-[80vmin]'
+      />
+    
+      <div class='flex flex-col w-full ml-[5vmin]'>
+        <h1 class='text-[6vmin] font-semibold align-top'>{product.name}</h1>
+
+        <ProductDescriptionTab className='w-auto mt-[2vmin]' client:visible />
+      </div>
+    </div>
+  </div>
 </PageLayout>
