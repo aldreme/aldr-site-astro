@@ -10,12 +10,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/
 
 ---
 
-<div class='partners-layout'>
+<div class='flex flex-row flex-wrap justify-center items-center mb-[1vmin]'>
   {
     db.partners.map((item) => (
-      <div class='partners-item'>
+      <div class='flex justify-center items-center w-[24vmin] h-[24vmin] m-[1vmin] bg-white rounded-[10%] hover:scale-105 transition-transform duration-200'>
         <a href={"https://" + item.website}>
-          <Image alt={item.name} src={images[partnerLogosDir + item.logo_file_name]()} />
+          <Image alt={item.name} src={images[partnerLogosDir + item.logo_file_name]()}
+            class='p-[2vmin] w-full h-full'
+          />
         </a>
       </div>
     ))
