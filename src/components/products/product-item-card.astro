@@ -29,11 +29,11 @@ const productImageUri = await Promise.all(
 );
 
 const itemAnimationDelay = (index: number) => {
-  return index == 0 ? 300 : 300 + index * 100;
+  return 500 + index * 100;
 }
 ---
 
-<Card className=`flex flex-col w-[30vmin] h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-300` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
+<Card className=`flex flex-col w-[30vmin] h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-500` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
 
   <ProductCarousel client:visible
     productImageUri={productImageUri}
