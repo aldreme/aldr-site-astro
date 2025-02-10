@@ -6,9 +6,8 @@ import '@/styles/pages/page.css';
 import Partners from '@/components/partners.astro';
 import PageLayout from '@/layouts/page-layout.astro';
 
-import { Image } from 'astro:assets';
-
 import homeBannerImg from '@/assets/images/home/home-banner-min.jpg';
+import { Image } from 'astro:assets';
 
 ---
 
@@ -16,23 +15,24 @@ import homeBannerImg from '@/assets/images/home/home-banner-min.jpg';
 	<Image src={homeBannerImg} alt="Home Banner" class="page-banner-img" />
 
 	<div class="home-banner-caption">
-		<p class="home-banner-caption-h0">{'Fortune Global 500 Supplier'}</p>
+		<h1 class="home-banner-caption-h0">{'Fortune Global 500 Supplier'}</h1>
 		
 		<!-- "Advanced Laboratory Durable Reliable" with the first letter BOLD weight -->
-		<p class="home-banner-caption-h1">
+		<h2 class="home-banner-caption-h1">
 			<span class='font-bold'>A</span>{'dvanced'}&nbsp;
 			<span class='font-bold'>L</span>{'aboratory'}&nbsp;
 			<span class='font-bold'>D</span>{'urable'}&nbsp;
 			<span class='font-bold'>R</span>{'eliable'}
-		</p>
+		</h2>
 
-		<p class="home-banner-caption-h2">
+		<h3 class="home-banner-caption-h2">
 			{'High Quality Stainless Steel Products'}
-		</p>
+		</h3>
 	</div>
 
-	<div class="home-partners">
-		<p class="home-partners-caption">{'Our Partners'}</p>
+	<div class='mt-[5vw] flex flex-col justify-center items-center text-white animate-fadein-up duration-500 delay-300 z-10'>
+		<h1 class="text-[4.5vw] font-bold my-[3vmin]">{'Our Partners'}</h1>
+
 		<Partners />
 	</div>
 </PageLayout>
