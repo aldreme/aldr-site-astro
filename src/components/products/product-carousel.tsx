@@ -5,15 +5,15 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { cn } from "@/lib/utils";
 
 interface ProductCarouselProps {
-  productImageUri: string[];
+  productImageUris: string[];
   className?: string;
 };
 
-export default function ProductCarousel({ productImageUri, className }: ProductCarouselProps) {
+export default function ProductCarousel({ productImageUris, className }: ProductCarouselProps) {
   return (
     <Carousel className={cn(className)} opts={{ loop: true }}>
       <CarouselContent>
-        {productImageUri.map((imgUri, ind) => (
+        {productImageUris.map((imgUri, ind) => (
           <CarouselItem key={ind}>
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-[2vmin]">
