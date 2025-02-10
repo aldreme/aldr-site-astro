@@ -3,7 +3,8 @@ import '@/styles/globals.css';
 
 import db from '@/assets/data/db.json';
 import ProductCarousel from '@/components/products/product-carousel';
-import { ProductDescriptionTab } from '@/components/products/product-description-tab';
+import { ProductDescriptionCard } from '@/components/products/product-description-card';
+import { ProductTechSpecs } from '@/components/products/product-tech-specs';
 import PageLayout from '@/layouts/page-layout.astro';
 import { productSlug } from '@/lib/utils';
 import { getImage } from 'astro:assets';
@@ -30,19 +31,53 @@ const productImageUri = await Promise.all(
 ---
 
 <PageLayout pageTitle={product.name}>
-  <div class='min-h-[100vh] bg-white px-[5vmin] py-[5vmin]'>
+  <div class='bg-white px-[5vmin] py-[5vmin] min-h-[100vh] md:px-[15vw]'>
 
-    <div class='flex flex-row justify-between items-start'>
+    <div class='flex flex-col justify-center items-center md:flex-row md:justify-between md:items-stretch'>
       <ProductCarousel client:visible
         productImageUris={productImageUri}
-        className='w-[80vmin] h-[80vmin]'
+        className='w-full rounded-lg shadow-lg md:w-[60rem]'
       />
     
-      <div class='flex flex-col w-full ml-[5vmin]'>
-        <h1 class='text-[6vmin] font-semibold align-top'>{product.name}</h1>
-
-        <ProductDescriptionTab className='w-auto mt-[2vmin]' client:visible />
-      </div>
+      <ProductDescriptionCard client:visible
+        productName={product.name}
+      />
     </div>
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Introduction</h1>
+    <p>
+      Suspendisse potenti. Donec nec leo ut tortor malesuada placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus quam enim, molestie a tempor sed, facilisis ac est. Integer sit amet maximus mi, in vehicula sem. Vestibulum ut tellus eleifend augue consectetur rutrum ut in risus. In aliquet quam nunc, non imperdiet orci finibus id. Fusce placerat dui enim, eu rutrum nisl ornare sed. Nullam suscipit est vel neque porttitor, id sagittis neque commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer tristique tellus eget ligula aliquam vestibulum. In dignissim facilisis nisi, at maximus nulla dictum nec. Etiam vitae semper leo, et sollicitudin eros. Aenean eu pharetra purus. Vivamus posuere, ex venenatis imperdiet placerat, nisl nibh maximus diam, eu accumsan lacus felis a mauris. Quisque hendrerit, arcu posuere ornare scelerisque, lacus sem aliquet ex, hendrerit maximus magna sem a dolor.
+    </p>
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Applicable Scenarios</h1>
+    <p>
+      Integer tincidunt, quam eget placerat lacinia, nisi risus porta ex, eget euismod neque orci nec metus. Nam vehicula dignissim semper. Suspendisse aliquam ultricies pretium. Nunc consectetur at neque vitae ullamcorper. Mauris id ex sem. Sed eleifend, nisl ut sollicitudin vestibulum, quam purus facilisis magna, id gravida neque dolor non lacus. Duis pretium sem quam. Praesent lobortis auctor sem, eu porta metus consequat at. Vivamus suscipit imperdiet eleifend. Ut tincidunt posuere accumsan. Nunc quis ex a mi dictum tempus. Praesent laoreet mattis risus, vitae varius mauris euismod ac. Nam volutpat mi id dui finibus fringilla.
+    </p>
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Technical Specifications</h1>
+    <ProductTechSpecs client:visible />
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Customization</h1>
+    <p>
+      Aliquam sit amet sagittis orci. Ut a pretium mauris, a molestie orci. In vel massa sit amet augue tristique lobortis et ut urna. Vivamus rutrum dolor ut odio posuere, id mollis nibh varius. Ut in nisi et tellus placerat bibendum. Praesent et dui auctor, semper elit vel, dignissim metus. Fusce porttitor semper rutrum. Mauris laoreet urna nec sapien aliquam, sed volutpat augue fringilla. Nulla maximus odio et massa blandit, eu malesuada mauris fermentum. Mauris ut est elementum, pharetra dui a, suscipit massa. Aenean suscipit viverra erat eu luctus. Nunc quis odio vitae odio consectetur facilisis. Donec malesuada leo quis libero faucibus vehicula. Nullam malesuada ullamcorper fermentum. Nunc ex odio, pellentesque vitae porta eget, laoreet eu lorem. Aliquam laoreet eget orci sed ultricies.
+    </p>
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Engineering Drawings</h1>
+
+    <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>2D Drawings</h2>
+    // TBD
+
+    <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>3D Models</h2>
+    // TBD
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Shipping</h1>
+    <p>
+      Vestibulum eget dapibus urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas molestie hendrerit nisi, sit amet congue tellus maximus vitae. Vestibulum vulputate nisl vitae egestas convallis. Ut ultrices mattis nunc, a vehicula sapien dapibus id. Praesent fermentum, purus scelerisque aliquam tristique, ante felis hendrerit risus, in suscipit est enim nec massa. Cras consectetur, massa nec consectetur rutrum, nibh tortor dapibus magna, in tincidunt dui metus in arcu. Ut nec malesuada libero. Donec luctus dui massa, at consequat felis ullamcorper a. Vestibulum laoreet mauris magna, at ornare odio volutpat vitae. Suspendisse ante nisl, iaculis eget sollicitudin eu, sagittis a diam. Vivamus posuere et metus vel gravida. Vivamus rutrum eget mauris ut hendrerit. Mauris eget urna vel dolor tincidunt ultrices et vel quam. Quisque quis urna urna. Aenean non eros mi.
+    </p>
+
+    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Warranty</h1>
+    <p>
+      Mauris tempus molestie elit. Suspendisse turpis arcu, vestibulum in dolor ac, mattis malesuada ipsum. Cras non turpis tempus, lacinia massa nec, varius ante. Morbi orci sapien, dapibus gravida fermentum eget, fringilla et mi. Nullam bibendum vitae ex sed consectetur. Quisque varius, leo in ornare dignissim, nisi urna auctor dolor, eget imperdiet turpis velit ut ipsum. Cras ultrices ante nulla, a facilisis enim ornare eu. Phasellus orci libero, scelerisque eget dignissim ac, aliquet vel augue. Quisque consectetur enim sed ante consectetur, sit amet tincidunt leo tincidunt. Vestibulum tincidunt urna dolor, eget fringilla velit vestibulum at. Aliquam in mi vel erat pharetra consectetur. Etiam at consequat nunc. Quisque non tortor egestas, pretium purus vel, sollicitudin nibh. Aenean faucibus ex sapien, ut ultrices massa ornare sagittis. Aenean malesuada nulla ac sapien euismod, eu aliquet orci tempor. Aliquam egestas auctor leo, in euismod mi eleifend et.
+    </p>
   </div>
 </PageLayout>

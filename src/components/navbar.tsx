@@ -54,7 +54,7 @@ function NavLinksMobile() {
         {/* Menu content */}
         <SheetContent
           side='right'
-          className='w-36 bg-zinc-900 p-4 text-zinc-100 border-none'
+          className='w-56 bg-zinc-900 p-4 text-zinc-100 border-none'
         >
           {/* Menu header */}
           <SheetHeader>
