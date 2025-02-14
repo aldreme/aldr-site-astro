@@ -211,7 +211,7 @@ function GetQuoteDialogInputs() {
         <Input
           id="phone"
           defaultValue=""
-          placeholder="Your phone number to contact"
+          placeholder="Your phone number"
           className="col-span-3"
         />
 
