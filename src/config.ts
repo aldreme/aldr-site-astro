@@ -1,13 +1,14 @@
 interface RouteData {
   name: string,
   href?: string,
+  children?: RouteData[]
 }
 
 interface RoutesConfig {
   home: RouteData,
   products: RouteData,
   services: RouteData,
-  blog: RouteData
+  news: RouteData
   about: RouteData,
   contact: RouteData,
 }
@@ -15,8 +16,14 @@ interface RoutesConfig {
 export const ROUTES: RoutesConfig = {
   home: { name: 'Home', href: '/' },
   products: { name: 'Products', href: '/products' },
-  services: { name: 'Services' },
-  blog: { name: 'Blog', href: '/blog' },
+  services: {
+    name: 'Services',
+    children: [
+      { name: 'Design', href: '/services/design' },
+      { name: 'Manufacturing', href: '/services/manufacturing' },
+    ]
+  },
+  news: { name: 'News', href: '/blog' },
   about: { name: 'About', href: '/about' },
   contact: { name: 'Contact', href: '/contact' },
 }
