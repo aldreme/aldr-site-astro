@@ -17,7 +17,7 @@ export default function ProductCarousel({ productImageUris, className }: Product
           <CarouselItem key={ind}>
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-[2vmin]">
-                <img src={imgUri} className='object-scale-down max-h-full' alt={`img-${ind}`} />
+                <img src={imgUri} className='object-scale-down h-[80%]' alt={`img-${ind}`} />
               </CardContent>
             </Card>
           </CarouselItem>
