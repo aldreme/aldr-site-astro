@@ -1,7 +1,7 @@
 export interface ProductData {
   name: string;
   category: string;
-  tag: string;
+  tags: string[];
   price: number;
   images: string[];
   description: string;

@@ -10,7 +10,7 @@ import { productSlug } from '@/lib/utils';
 import { getImage } from 'astro:assets';
 
 export function getStaticPaths() {
-  return db.products.stainless_steel.map((product) => ({
+  return db.products.map((product) => ({
     params: {
       slug: productSlug(product.name)
     },
@@ -20,8 +20,8 @@ export function getStaticPaths() {
 
 const { product } = Astro.props;
 
-const productImagesDir = '/src/assets/images/products/stainless_steel/';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/stainless_steel/*.{jpeg,jpg,png,svg}');
+const productImagesDir = '/src/assets/images/products/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{jpeg,jpg,png,svg}');
 const productImageUri = await Promise.all(
   product.images.map(async (imageFileName) => {
     return (await getImage({src: images[productImagesDir + imageFileName]()})).src;

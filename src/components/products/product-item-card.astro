@@ -19,8 +19,8 @@ interface Props {
 
 const { index, productData } = Astro.props;
 
-const productImagesDir = '/src/assets/images/products/stainless_steel/';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/stainless_steel/*.{jpeg,jpg,png,svg}');
+const productImagesDir = '/src/assets/images/products/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{jpeg,jpg,png,svg}');
 
 const productImageUri = (await getImage({src: images[productImagesDir + productData.images[0]]()})).src;
 

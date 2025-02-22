@@ -10,7 +10,7 @@ import ProductItemCard from './product-item-card.astro';
 ---
 <div class='flex flex-row flex-wrap justify-center items-center mt-[10vmin]'>
   {
-    db.products.stainless_steel.map((item, index) => (
+    db.products.map((item, index) => (
       <ProductItemCard index={index} productData={item} />
     ))
   }
