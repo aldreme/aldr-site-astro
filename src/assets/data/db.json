@@ -4,7 +4,7 @@
             {
                 "name":"Bench",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["bench-01.jpg", "bench-02.jpg", "bench-03.jpg"],
                 "description": "",
@@ -22,7 +22,7 @@
             {
                 "name":"Cabinet",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["cabinet-01.jpg", "cabinet-02.jpg"],
                 "description": "",
@@ -40,7 +40,7 @@
             {
                 "name":"Cart",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["cart-01.jpg", "cart-02.jpg"],
                 "description": "",
@@ -58,7 +58,7 @@
             {
                 "name":"Cleaner Cart",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["cleaner_cart-01.jpg", "cleaner_cart-02.jpg"],
                 "description": "",
@@ -76,7 +76,7 @@
             {
                 "name":"Convey Window",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["convey_window-01.jpg", "convey_window-02.jpg", "convey_window-03.jpg", "convey_window-04.jpg"],
                 "description": "",
@@ -94,7 +94,7 @@
             {
                 "name":"Display Frame",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["display_frame-01.jpg", "display_frame-02.jpg", "display_frame-03.jpg", "display_frame-04.jpg"],
                 "description": "",
@@ -112,7 +112,7 @@
             {
                 "name":"Dolly",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["dolly-01.jpg", "dolly-02.jpg", "dolly-03.jpg"],
                 "description": "",
@@ -130,7 +130,7 @@
             {
                 "name":"Electric Workbench",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["electric_workbench-01.jpg", "electric_workbench-02.jpg", "electric_workbench-03.jpg", "electric_workbench-04.jpg"],
                 "description": "",
@@ -148,7 +148,7 @@
             {
                 "name":"Fridge Cart",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["fridge_cart-01.jpg", "fridge_cart-02.jpg", "fridge_cart-03.jpg", "fridge_cart-04.jpg", "fridge_cart-05.jpg"],
                 "description": "",
@@ -166,7 +166,7 @@
             {
                 "name":"Grid Cart",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["grid_cart-01.jpg"],
                 "description": "",
@@ -184,7 +184,7 @@
             {
                 "name":"Grid Dolly",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["grid_dolly-01.jpg", "grid_dolly-02.jpg"],
                 "description": "",
@@ -202,7 +202,7 @@
             {
                 "name":"Locker",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["locker-01.jpg", "locker-02.jpg", "locker-03.jpg"],
                 "description": "",
@@ -220,7 +220,7 @@
             {
                 "name":"Mixer",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["mixer-01.jpg", "mixer-02.jpg", "mixer-03.jpg", "mixer-04.jpg"],
                 "description": "",
@@ -238,7 +238,7 @@
             {
                 "name":"Nitrogen Cabinet",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["nitrogen_cabinet-01.jpg", "nitrogen_cabinet-02.jpg"],
                 "description": "",
@@ -256,7 +256,7 @@
             {
                 "name":"Scaffold",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["scaffold-01.jpg", "scaffold-02.jpg", "scaffold-03.jpg", "scaffold-04.jpg"],
                 "description": "",
@@ -274,7 +274,7 @@
             {
                 "name":"Sink",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["sink-01.jpg", "sink-02.jpg", "sink-03.jpg", "sink-04.jpg", "sink-05.jpg"],
                 "description": "",
@@ -292,7 +292,7 @@
             {
                 "name":"Small Pillar",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["small_pillar-01.jpg"],
                 "description": "",
@@ -310,7 +310,7 @@
             {
                 "name":"Storage Rack",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["storage_rack-01.jpg", "storage_rack-02.jpg", "storage_rack-03.jpg", "storage_rack-04.jpg"],
                 "description": "",
@@ -328,7 +328,7 @@
             {
                 "name":"Table",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["table-01.jpg", "table-02.jpg", "table-03.jpg"],
                 "description": "",
@@ -346,7 +346,7 @@
             {
                 "name":"Trolley",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["trolley-01.jpg", "trolley-02.jpg", "trolley-03.jpg"],
                 "description": "",
@@ -364,7 +364,7 @@
             {
                 "name":"Work Platform",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["work_platform-01.jpg", "work_platform-02.jpg"],
                 "description": "",
@@ -382,7 +382,7 @@
             {
                 "name":"Workbench",
                 "category":"",
-                "tag":"",
+                "tags":[],
                 "price": 0,
                 "images": ["workbench-01.jpg", "workbench-02.jpg", "workbench-03.jpg", "workbench-04.jpg", "workbench-05.jpg", "workbench-06.jpg", "workbench-07.jpg", "workbench-08.jpg"],
                 "description": "",
@@ -404,7 +404,7 @@
         {
             "name": "Johnson & Johnson",
             "logo_file_name": "JnJ-logo.jpg",
-            "tag":"",
+            "tags":[],
             "website": "www.jnj.com",
             "description": ""
 
@@ -412,77 +412,77 @@
         {
             "name": "Eli Lilly and Company",
             "logo_file_name": "lilly-logo.png",
-            "tag":"",
+            "tags":[],
             "website": "www.lilly.com",
             "description": ""
         },
         {
             "name": "Weyth Nutrition",
             "logo_file_name": "wn-logo.svg",
-            "tag":"",
+            "tags":[],
             "website": "www.wyethnutrition.com",
             "description": ""
         },
         {
             "name": "Merck & Co., Inc.",
             "logo_file_name": "merck-logo.svg",
-            "tag":"",
+            "tags":[],
             "website": "www.merck.com",
             "description": ""
         },
         {
             "name": "Roche Diagnostics",
             "logo_file_name": "roche-logo.png",
-            "tag":"",
+            "tags":[],
             "website": "www.roche.com",
             "description": ""
         },
         {
             "name": "Novartis",
             "logo_file_name": "novartis-logo.svg",
-            "tag":"",
+            "tags":[],
             "website": "www.novartis.com",
             "description": ""
         },
         {
             "name": "Corning",
             "logo_file_name": "corning-logo.jpg",
-            "tag":"",
+            "tags":[],
             "website": "www.corning.com",
             "description": ""
         },
         {
             "name": "Nestle",
             "logo_file_name": "nestle-logo.png",
-            "tag":"",
+            "tags":[],
             "website": "www.nestle.com",
             "description": ""
         },
         {
             "name": "AstraZeneca",
             "logo_file_name": "astrazeneca-logo.jpg",
-            "tag":"",
+            "tags":[],
             "website": "www.astrazeneca.com",
             "description": ""
         },
         {
             "name": "Servier Laboratories",
             "logo_file_name": "servier-logo.svg",
-            "tag":"",
+            "tags":[],
             "website": "www.servier.com",
             "description": ""
         },
         {
             "name": "Pfizer",
             "logo_file_name": "pfizer-logo.png",
-            "tag":"",
+            "tags":[],
             "website": "www.pfizer.com",
             "description": ""
         },
         {
             "name": "ThermoFisher",
             "logo_file_name": "thermofisher-logo.png",
-            "tag":"",
+            "tags":[],
             "website": "www.thermofisher.com",
             "description": ""
         }
