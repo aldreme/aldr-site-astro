@@ -29,7 +29,7 @@ interface Props {
 
 function QuantityInput() {
   return (
-    <Input type='number' min={1} placeholder='Enter quantity' className='w-32' />
+    <Input type='number' min={1} placeholder='Enter quantity' className='w-48' />
   );
 }
 
