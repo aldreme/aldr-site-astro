@@ -2,6 +2,7 @@
 import '@/styles/globals.css';
 
 import db from '@/assets/data/db.json';
+import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
 import ProductCarousel from '@/components/products/product-carousel';
 import { ProductDescriptionCard } from '@/components/products/product-description-card';
 import { ProductTechSpecs } from '@/components/products/product-tech-specs';
@@ -33,10 +34,20 @@ const productImageUri = await Promise.all(
   })
 );
 
+const breadcrumbData: BreadcrumbData = {
+  items: [
+    { href: "/", label: "Home" },
+    { href: "/products", label: "Products" },
+    { label: productData.name },
+  ]
+}
+
 ---
 
 <PageLayout pageTitle={productData.name}>
-  <div class='bg-white px-[5vmin] py-[5vmin] min-h-[100vh] md:px-[15vw]'>
+  <div class='bg-white px-[5vmin] py-[3vmin] min-h-[100vh] md:px-[15vw]'>
+
+    <BreadcrumbResponsive data={breadcrumbData} client:visible />
 
     <div class='flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start'>
       <ProductCarousel client:visible
