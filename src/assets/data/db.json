@@ -6,23 +6,27 @@
       "tags":[],
       "price": 0,
       "images": ["bench-01.jpg", "bench-02.jpg", "bench-03.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat orci id nibh suscipit molestie. Quisque imperdiet tortor vel arcu condimentum convallis. Pellentesque semper turpis quis velit pulvinar pharetra. Sed libero quam, auctor eu viverra imperdiet, porttitor nec nunc. Curabitur commodo ante quis ex tincidunt, in pulvinar erat luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas vestibulum tellus enim, sed porttitor dolor finibus non. Aenean sodales lobortis ipsum gravida venenatis. Donec at scelerisque ligula.",
+      "introduction": "Suspendisse potenti. Donec nec leo ut tortor malesuada placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus quam enim, molestie a tempor sed, facilisis ac est. Integer sit amet maximus mi, in vehicula sem. Vestibulum ut tellus eleifend augue consectetur rutrum ut in risus. In aliquet quam nunc, non imperdiet orci finibus id. Fusce placerat dui enim, eu rutrum nisl ornare sed. Nullam suscipit est vel neque porttitor, id sagittis neque commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer tristique tellus eget ligula aliquam vestibulum. In dignissim facilisis nisi, at maximus nulla dictum nec. Etiam vitae semper leo, et sollicitudin eros. Aenean eu pharetra purus. Vivamus posuere, ex venenatis imperdiet placerat, nisl nibh maximus diam, eu accumsan lacus felis a mauris. Quisque hendrerit, arcu posuere ornare scelerisque, lacus sem aliquet ex, hendrerit maximus magna sem a dolor.",
+      "features": [
+        "Feature 1",
+        "Feature 2",
+        "Feature 3"
+      ],
       "specs": {
-        "weight": 0,
+        "weight": 30,
         "volume": 0,
         "material": "304 Stainless Steel",
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           }
         },
         "electrical": {
@@ -31,30 +35,32 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
+            "min": 3.0,
+            "max": 3.6
           }
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
-        }
+          "min": -50,
+          "max": 200
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Integer tincidunt, quam eget placerat lacinia, nisi risus porta ex, eget euismod neque orci nec metus. Nam vehicula dignissim semper. Suspendisse aliquam ultricies pretium. Nunc consectetur at neque vitae ullamcorper. Mauris id ex sem. Sed eleifend, nisl ut sollicitudin vestibulum, quam purus facilisis magna, id gravida neque dolor non lacus. Duis pretium sem quam. Praesent lobortis auctor sem, eu porta metus consequat at. Vivamus suscipit imperdiet eleifend. Ut tincidunt posuere accumsan. Nunc quis ex a mi dictum tempus. Praesent laoreet mattis risus, vitae varius mauris euismod ac. Nam volutpat mi id dui finibus fringilla."
+      ],
+      "customization": "Aliquam sit amet sagittis orci. Ut a pretium mauris, a molestie orci. In vel massa sit amet augue tristique lobortis et ut urna. Vivamus rutrum dolor ut odio posuere, id mollis nibh varius. Ut in nisi et tellus placerat bibendum. Praesent et dui auctor, semper elit vel, dignissim metus. Fusce porttitor semper rutrum. Mauris laoreet urna nec sapien aliquam, sed volutpat augue fringilla. Nulla maximus odio et massa blandit, eu malesuada mauris fermentum. Mauris ut est elementum, pharetra dui a, suscipit massa. Aenean suscipit viverra erat eu luctus. Nunc quis odio vitae odio consectetur facilisis. Donec malesuada leo quis libero faucibus vehicula. Nullam malesuada ullamcorper fermentum. Nunc ex odio, pellentesque vitae porta eget, laoreet eu lorem. Aliquam laoreet eget orci sed ultricies.",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "1 year warranty",
+        "return": "TBD",
+        "shipping": "TBD"
       }
     },
     {
@@ -99,14 +105,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -155,14 +161,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -212,14 +218,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -269,14 +275,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -326,14 +332,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -383,14 +389,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -440,14 +446,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -497,14 +503,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -554,14 +560,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -611,14 +617,14 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -668,14 +674,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -725,14 +732,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -782,14 +790,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -839,14 +848,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -896,14 +906,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -953,14 +964,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -1010,14 +1022,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -1067,14 +1080,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -1124,14 +1138,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -1181,14 +1196,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",
@@ -1238,14 +1254,15 @@
         "operating_temperature": {
           "min": 0,
           "max": 0
-        }
+        },
+        "process_technology": ["seamless welding", "mirror finish"]
       },
-      "technology": "seamless welding, mirror finish",
+      
       "application_scenarios": [],
       "customization": "",
       "engineering_drawings": {
-        "2d": [],
-        "3d": []
+        "ortho_projections": [],
+        "models": []
       },
       "policies": {
         "warranty": "",

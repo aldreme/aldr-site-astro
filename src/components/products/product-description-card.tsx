@@ -22,8 +22,8 @@ import { ProductDescriptionTab } from "./product-description-tab";
 
 interface Props {
   productName: string,
-  productDescription?: string,
-  productFeatures?: string[],
+  productDescription: string,
+  productFeatures: string[],
   className?: string;
 }
 
@@ -297,7 +297,7 @@ export function ProductDescriptionCard(props: Props) {
     <div className='flex flex-col w-full md:h-full md:ml-32 md:items-stretch md:justify-between md:justify-items-stretch'>
       <h1 className='text-3xl md:text-5xl font-semibold align-top my-5'>{productName}</h1>
 
-      <ProductDescriptionTab className='w-auto mt-[2vmin]' />
+      <ProductDescriptionTab className='w-auto mt-[2vmin]' productDescription={productDescription} productFeatures={productFeatures} />
 
       <div className='flex flex-col justify-between items-start pt-10 md:justify-between md:items-start md:h-full'>
         <CustomerInputsSection />

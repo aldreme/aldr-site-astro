@@ -5,40 +5,40 @@ export interface ProductData {
   price: number;
   images: string[];
   description: string;
-  introduction: string;
+  introduction?: string;
   features: string[];
   specs: ProductSpecs;
-  technology: string;
   application_scenarios: string[];
-  customization: string;
+  customization?: string;
   engineering_drawings: EngineeringDrawings;
   policies: Policies;
 }
 
-interface ProductSpecs {
-  weight: number;
-  volume: number;
+export interface ProductSpecs {
+  weight: number; // in Kilograms
+  volume?: number; // in Liters
   material: string;
   dimension: Dimensions;
-  electrical: Electrical;
-  operating_temperature: TemperatureRange;
+  electrical?: ElectricalSpecs;
+  operating_temperature?: TemperatureRange;
+  process_technology: string[];
 }
 
-interface Dimensions {
-  external: DimensionMeasurements;
-  internal: DimensionMeasurements;
+export interface Dimensions {
+  external?: DimensionMeasurements;
+  internal?: DimensionMeasurements;
 }
 
-interface DimensionMeasurements {
-  width: number;
-  height: number;
-  length: number;
+export interface DimensionMeasurements {
+  width: number; // in centimeters
+  height: number; // in centimeters
+  length: number; // in centimeters
 }
 
-interface Electrical {
-  voltage: Range;
-  current: Range;
-  power: Range;
+export interface ElectricalSpecs {
+  voltage: Range; // in Volts
+  current: Range; // in Amperes
+  power: Range; // in Watts
 }
 
 interface Range {
@@ -46,14 +46,14 @@ interface Range {
   max: number;
 }
 
-interface TemperatureRange extends Range { }
+export interface TemperatureRange extends Range { }
 
-interface EngineeringDrawings {
-  "2d": string[];
-  "3d": string[];
+export interface EngineeringDrawings {
+  ortho_projections: string[];
+  models: string[];
 }
 
-interface Policies {
+export interface Policies {
   warranty: string;
   return: string;
   shipping: string;

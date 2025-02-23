@@ -29,7 +29,7 @@ const itemAnimationDelay = (index: number) => {
 }
 ---
 
-<Card className=`flex flex-col w-[30vmin] h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-500` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
+<Card className=`flex flex-col w-[30vmin] h-[40vmin] max-h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-500` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
 
   <ProductCarousel client:visible
     productImageUris={[productImageUri]}
@@ -37,7 +37,8 @@ const itemAnimationDelay = (index: number) => {
   />
   
   <h1 class='w-full text-start text-[2vmin] font-semibold'>{productData.name}</h1>
-  <p class='w-full text-start'>{productData.description}</p>
+
+  <p class='w-full text-start overflow-hidden  text-ellipsis whitespace-nowrap'>{productData.description}</p>
 
   <div class='flex flex-row justify-between w-full mt-[2vmin]'>
     <Button className='w-[8vmin] h-[3vmin] text-[1vmin]'>

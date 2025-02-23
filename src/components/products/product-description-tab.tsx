@@ -9,11 +9,14 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 
+
 interface Props {
+  productDescription: string;
+  productFeatures: string[];
   className?: string;
 }
 
-export function ProductDescriptionTab({ className }: Props) {
+export function ProductDescriptionTab({ productDescription, productFeatures, className }: Props) {
   return (
     <Tabs defaultValue="description" className={className}>
       <TabsList className="grid w-full grid-cols-2">
@@ -24,7 +27,9 @@ export function ProductDescriptionTab({ className }: Props) {
         <Card>
           <CardContent className="p-6">
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat orci id nibh suscipit molestie. Quisque imperdiet tortor vel arcu condimentum convallis. Pellentesque semper turpis quis velit pulvinar pharetra. Sed libero quam, auctor eu viverra imperdiet, porttitor nec nunc. Curabitur commodo ante quis ex tincidunt, in pulvinar erat luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas vestibulum tellus enim, sed porttitor dolor finibus non. Aenean sodales lobortis ipsum gravida venenatis. Donec at scelerisque ligula.
+              <p>
+                {productDescription}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -35,10 +40,11 @@ export function ProductDescriptionTab({ className }: Props) {
           <CardContent className="p-6">
             <div>
               <ul className="list-disc list-inside">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>consectetur adipiscing elit</li>
-                <li>Donec feugiat orci id nibh suscipit molestie</li>
-                <li>Quisque imperdiet tortor vel arcu condimentum convallis</li>
+                {
+                  productFeatures.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))
+                }
               </ul>
             </div>
           </CardContent>
