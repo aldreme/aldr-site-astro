@@ -5,9 +5,10 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbPage,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import { Link } from "@heroui/link";
+import { Button } from "@heroui/react";
 
 export interface BreadcrumbItemData {
   href?: string;
@@ -37,7 +38,8 @@ export function BreadcrumbResponsive({ data }: Props) {
                 asChild
                 className="max-w-20 truncate md:max-w-none"
               >
-                <Link href={item.href ? item.href : '#'}>{item.label}</Link>
+                {/* {item.href ? <Link isBlock href={item.href}>{item.label}</Link> : <BreadcrumbPage>{item.label}</BreadcrumbPage>} */}
+                {item.href ? <Button as='a' href={item.href}>{item.label}</Button> : <BreadcrumbPage>{item.label}</BreadcrumbPage>}
               </BreadcrumbLink>
 
               {index < data.items.length - 1 && <BreadcrumbSeparator />}
