@@ -88,20 +88,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -109,19 +119,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -145,20 +160,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -166,19 +191,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -202,20 +232,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -223,19 +263,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -259,20 +304,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -280,19 +335,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -316,20 +376,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -337,19 +407,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -373,20 +448,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -394,19 +479,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -430,20 +520,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -451,19 +551,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -487,20 +592,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -508,19 +623,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -544,20 +664,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -565,19 +695,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -601,20 +736,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -622,19 +767,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [],
       "customization": "",
@@ -658,20 +808,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -679,19 +839,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -716,20 +881,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -737,19 +912,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -774,20 +954,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -795,19 +985,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -832,20 +1027,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -853,19 +1058,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -890,20 +1100,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -911,19 +1131,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -948,20 +1173,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -969,19 +1204,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -1006,20 +1246,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -1027,19 +1277,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -1064,20 +1319,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -1085,19 +1350,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -1122,20 +1392,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -1143,19 +1423,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -1180,20 +1465,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -1201,19 +1496,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
@@ -1238,20 +1538,30 @@
       "introduction": "",
       "features": [],
       "specs": {
-        "weight": 0,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
-            "width": 0,
-            "height": 0,
-            "length": 0
+            "width": 160,
+            "height": 180,
+            "length": 80
           },
           "internal": {
-            "width": 0,
-            "height": 0,
-            "length": 0
-          }
+            "width": 160,
+            "height": 180,
+            "length": 80
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -1259,19 +1569,24 @@
             "max": 240
           },
           "current": {
-            "min": 0,
-            "max": 0
+            "min": 10,
+            "max": 15
           },
           "power": {
-            "min": 0,
-            "max": 0
-          }
+            "min": 3.0,
+            "max": 3.6
+          },
+          "customizable": false
         },
         "operating_temperature": {
-          "min": 0,
-          "max": 0
+          "min": -50,
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       
       "application_scenarios": [],
