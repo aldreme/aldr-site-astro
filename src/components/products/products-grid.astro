@@ -6,12 +6,13 @@ import '@/styles/globals.css';
 import db from '@/assets/data/db.json';
 
 import ProductItemCard from './product-item-card.astro';
+import type { ProductData } from './types';
 
 ---
 <div class='flex flex-row flex-wrap justify-center items-center mt-[10vmin]'>
   {
     db.products.map((item, index) => (
-      <ProductItemCard index={index} productData={item} />
+      <ProductItemCard index={index} productData={item as ProductData} />
     ))
   }
 </div>

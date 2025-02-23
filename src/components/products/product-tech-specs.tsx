@@ -22,7 +22,7 @@ export function ProductTechSpecs() {
           <TableCell>20 L / 5 gallons</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell className="font-medium">Materal</TableCell>
+          <TableCell className="font-medium">Material</TableCell>
           <TableCell>304 Stainless Steel</TableCell>
         </TableRow>
         <TableRow>
