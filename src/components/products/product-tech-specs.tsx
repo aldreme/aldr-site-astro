@@ -1,4 +1,6 @@
+import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+
 import type { DimensionMeasurements, ElectricalSpecs, ProductSpecs, TemperatureRange } from "./types";
 
 interface Props {
@@ -55,6 +57,12 @@ function electricalSpecsStr(electricalSpecs: ElectricalSpecs) {
   return `${electricalSpecs.voltage.min.toFixed(2)} - ${electricalSpecs.voltage.max.toFixed(2)} VAC, ${electricalSpecs.current.min.toFixed(2)} - ${electricalSpecs.current.max.toFixed(2)} A, ${electricalSpecs.power.min.toFixed(2)} - ${electricalSpecs.power.max.toFixed(2)} kW`;
 }
 
+function BadgeCustomizable() {
+  return (
+    <Badge className="bg-blue-500 select-none hover:bg-blue-400">customizable</Badge>
+  );
+}
+
 export function ProductTechSpecs({ productTechSpecs }: Props) {
   const externalDimension = productTechSpecs.dimension.external;
   const internalDimension = productTechSpecs.dimension.internal;
@@ -67,6 +75,11 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             <TableRow>
               <TableCell className="font-medium">External Size</TableCell>
               <TableCell>{dimensionStr(externalDimension)}</TableCell>
+              {
+                productTechSpecs.dimension.customizable && (
+                  <TableCell><BadgeCustomizable /></TableCell>
+                )
+              }
             </TableRow>
           )
         }
@@ -76,31 +89,56 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             <TableRow>
               <TableCell className="font-medium">Internal Size</TableCell>
               <TableCell>{dimensionStr(internalDimension)}</TableCell>
+              {
+                productTechSpecs.dimension.customizable && (
+                  <TableCell><BadgeCustomizable /></TableCell>
+                )
+              }
             </TableRow>
           )
         }
 
         <TableRow>
           <TableCell className="font-medium">Weight</TableCell>
-          <TableCell>{weightStr(productTechSpecs.weight)}</TableCell>
+          <TableCell>{weightStr(productTechSpecs.weight.value)}</TableCell>
+          {
+            productTechSpecs.weight.customizable && (
+              <TableCell><BadgeCustomizable /></TableCell>
+            )
+          }
         </TableRow>
 
         {
           productTechSpecs.volume !== undefined && (
             <TableRow>
               <TableCell className="font-medium">Volume</TableCell>
-              <TableCell>{volumeStr(productTechSpecs.volume)}</TableCell>
+              <TableCell>{volumeStr(productTechSpecs.volume.value)}</TableCell>
+              {
+                productTechSpecs.volume.customizable && (
+                  <TableCell><BadgeCustomizable /></TableCell>
+                )
+              }
             </TableRow>
           )
         }
 
         <TableRow>
           <TableCell className="font-medium">Material</TableCell>
-          <TableCell>{productTechSpecs.material}</TableCell>
+          <TableCell>{productTechSpecs.material.value}</TableCell>
+          {
+            productTechSpecs.material.customizable && (
+              <TableCell><BadgeCustomizable /></TableCell>
+            )
+          }
         </TableRow>
         <TableRow>
           <TableCell className="font-medium">Process</TableCell>
-          <TableCell>{productTechSpecs.process_technology.map(v => v.toUpperCase()).join(', ')}</TableCell>
+          <TableCell>{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
+          {
+            productTechSpecs.process_technology.customizable && (
+              <TableCell><BadgeCustomizable /></TableCell>
+            )
+          }
         </TableRow>
 
         {
@@ -108,6 +146,11 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             <TableRow>
               <TableCell className="font-medium">Operating Temperature Range</TableCell>
               <TableCell>{opTemperatureStr(productTechSpecs.operating_temperature)}</TableCell>
+              {
+                productTechSpecs.operating_temperature.customizable && (
+                  <TableCell><BadgeCustomizable /></TableCell>
+                )
+              }
             </TableRow>
           )
         }
@@ -117,6 +160,11 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             <TableRow>
               <TableCell className="font-medium">Electrical Specifications</TableCell>
               <TableCell>{electricalSpecsStr(productTechSpecs.electrical)}</TableCell>
+              {
+                productTechSpecs.electrical.customizable && (
+                  <TableCell><BadgeCustomizable /></TableCell>
+                )
+              }
             </TableRow>
           )
         }

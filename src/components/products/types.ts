@@ -15,18 +15,31 @@ export interface ProductData {
 }
 
 export interface ProductSpecs {
-  weight: number; // in Kilograms
-  volume?: number; // in Liters
-  material: string;
+  weight: {
+    value: number; // in Kilograms
+    customizable: boolean;
+  };
+  volume?: {
+    value: number; // in Liters
+    customizable: boolean;
+  };
+  material: {
+    value: string;
+    customizable: boolean;
+  };
   dimension: Dimensions;
   electrical?: ElectricalSpecs;
   operating_temperature?: TemperatureRange;
-  process_technology: string[];
+  process_technology: {
+    value: string[],
+    customizable: boolean;
+  };
 }
 
 export interface Dimensions {
   external?: DimensionMeasurements;
   internal?: DimensionMeasurements;
+  customizable: boolean;
 }
 
 export interface DimensionMeasurements {
@@ -39,6 +52,7 @@ export interface ElectricalSpecs {
   voltage: Range; // in Volts
   current: Range; // in Amperes
   power: Range; // in Watts
+  customizable: boolean;
 }
 
 interface Range {
@@ -46,7 +60,9 @@ interface Range {
   max: number;
 }
 
-export interface TemperatureRange extends Range { }
+export interface TemperatureRange extends Range {
+  customizable: boolean;
+}
 
 export interface EngineeringDrawings {
   ortho_projections: string[];

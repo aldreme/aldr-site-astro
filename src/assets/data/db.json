@@ -14,9 +14,18 @@
         "Feature 3"
       ],
       "specs": {
-        "weight": 30,
-        "volume": 0,
-        "material": "304 Stainless Steel",
+        "weight": {
+          "value": 30,
+          "customizable": true
+        },
+        "volume": {
+          "value": 0,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
         "dimension": {
           "external": {
             "width": 160,
@@ -27,7 +36,8 @@
             "width": 160,
             "height": 180,
             "length": 80
-          }
+          },
+          "customizable": true
         },
         "electrical": {
           "voltage": {
@@ -41,13 +51,18 @@
           "power": {
             "min": 3.0,
             "max": 3.6
-          }
+          },
+          "customizable": false
         },
         "operating_temperature": {
           "min": -50,
-          "max": 200
+          "max": 200,
+          "customizable": true
         },
-        "process_technology": ["seamless welding", "mirror finish"]
+        "process_technology": {
+          "value": ["seamless welding", "mirror finish"],
+          "customizable": false
+        }
       },
       "application_scenarios": [
         "Integer tincidunt, quam eget placerat lacinia, nisi risus porta ex, eget euismod neque orci nec metus. Nam vehicula dignissim semper. Suspendisse aliquam ultricies pretium. Nunc consectetur at neque vitae ullamcorper. Mauris id ex sem. Sed eleifend, nisl ut sollicitudin vestibulum, quam purus facilisis magna, id gravida neque dolor non lacus. Duis pretium sem quam. Praesent lobortis auctor sem, eu porta metus consequat at. Vivamus suscipit imperdiet eleifend. Ut tincidunt posuere accumsan. Nunc quis ex a mi dictum tempus. Praesent laoreet mattis risus, vitae varius mauris euismod ac. Nam volutpat mi id dui finibus fringilla."
