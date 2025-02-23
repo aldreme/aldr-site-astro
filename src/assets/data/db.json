@@ -126,6 +126,7 @@
       "tags":[],
       "price": 0,
       "images": ["cart-01.jpg", "cart-02.jpg"],
+      "description": "",
       "introduction": "",
       "features": [],
       "specs": {
