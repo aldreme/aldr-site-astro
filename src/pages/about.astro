@@ -1,13 +1,25 @@
 ---
 import '@/styles/globals.css';
 
+import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
 import PageLayout from '../layouts/page-layout.astro';
+
+const breadcrumbData: BreadcrumbData = {
+  items: [
+    { href: "/", label: "Home" },
+    { label: "About Us" },
+  ]
+}
+
 ---
 
 <PageLayout pageTitle="About Us">
-  <main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+  <div class="bg-white px-[5vmin] py-[3vmin] min-h-[100vh] md:px-[15vw]">
+
+    <BreadcrumbResponsive data={breadcrumbData} client:visible />
+    
     <div class="text-center">
-      <p class="text-base font-semibold text-indigo-600">About</p>
+      <p class="text-base font-semibold text-indigo-600">ALDR EME</p>
     </div>
-  </main>
+  </div>
 </PageLayout>
