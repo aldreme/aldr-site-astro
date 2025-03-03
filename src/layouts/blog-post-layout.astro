@@ -4,22 +4,26 @@ const { frontmatter } = Astro.props;
 ---
 
 <PageLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.coverImage.url} width="300" alt={frontmatter.coverImage.alt} />
+  <div class="bg-white px-[5vmin] py-[3vmin] min-h-[100vh] md:px-[15vw]">
+    <!-- metadata -->
+    <p>{frontmatter.pubDate.toLocaleDateString()}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <p>Written by: {frontmatter.author}</p>
+    <img src={frontmatter.coverImage.url} width="300" alt={frontmatter.coverImage.alt} />
 
-  <div class="tags">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
+    <div class="tags">
+      {
+        frontmatter.tags.map((tag: string) => (
+          <p class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+
+    <!-- main content -->
+    <slot />
   </div>
-
-  <slot />
 </PageLayout>
 <style>
   a {
