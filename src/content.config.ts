@@ -1,8 +1,8 @@
 import { glob } from 'astro/loaders'; // Not available with legacy API
 import { defineCollection, z } from 'astro:content';
 
-const blog = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/assets/data/blog" }),
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/assets/data/news" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -17,4 +17,4 @@ const blog = defineCollection({
   })
 });
 
-export const collections = { blog };
+export const collections = { news };

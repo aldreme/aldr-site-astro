@@ -23,7 +23,7 @@ export const ROUTES: RoutesConfig = {
       { name: 'Manufacturing', href: '/services/manufacturing' },
     ]
   },
-  news: { name: 'News', href: '/blog' },
+  news: { name: 'News', href: '/news' },
   about: { name: 'About', href: '/about' },
   contact: { name: 'Contact', href: '/contact' },
 }
