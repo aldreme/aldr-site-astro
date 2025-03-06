@@ -22,7 +22,9 @@ const { frontmatter } = Astro.props;
     </div>
 
     <!-- main content -->
-    <slot />
+    <article class="prose lg:prose-xl max-w-none" >
+      <slot />
+    </article>
   </div>
 </PageLayout>
 <style>

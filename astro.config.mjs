@@ -18,5 +18,15 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    mdx()],
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: {
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark',
+        },
+      },
+      remarkRehype: { footnoteLabel: 'Footnotes' },
+      gfm: false,
+    })],
 });
