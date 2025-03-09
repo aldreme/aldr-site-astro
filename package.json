@@ -44,7 +44,8 @@
     "@types/node": "^22.13.0",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.1",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "supabase": "^2.15.8"
   },
   "packageManager": "pnpm@10.6.1+sha256.81204845a396962a9c4b49cc2d6cafbb49a758652d3c243f2128cbc638084fe2"
 }
