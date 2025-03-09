@@ -9,6 +9,9 @@ function ips(req: Request) {
   return req.headers.get('x-forwarded-for')?.split(/\s*,\s*/);
 }
 
+/**
+ * location function returns the requester's geolocation from the IP retreieved from the `x-forwarded-for` header. 
+ */
 Deno.serve(async (req) => {
   const clientIps = ips(req);
 
