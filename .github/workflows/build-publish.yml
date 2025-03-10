@@ -32,6 +32,7 @@ jobs:
           touch .env
           echo PUBLIC_SUPABASE_URL="https://epglayfaliztrbbmijxu.supabase.co" >> .env
           echo PUBLIC_SUPABASE_KEY=${{ secrets.SUPABASE_KEY }} >> .env
+          cat .env
       - name: Install packages
         run: pnpm install
       - name: Build pages
