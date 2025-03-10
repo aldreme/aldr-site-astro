@@ -1,0 +1,1 @@
+import{P as e}from"./breadcrumb.BRrJaIWV.js";import"./utils.CtB8oukX.js";import"./index.Cs2mXJDt.js";import"./createLucideIcon.D0gDnhFR.js";import"./chunk-UWE6H66T.DkFv3yx3.js";export{e as BreadcrumbResponsive};

@@ -18,4 +18,4 @@ import{r as s}from"./index.Cs2mXJDt.js";import{j as u}from"./utils.CtB8oukX.js";
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const k=(e,r)=>{const n=s.forwardRef(({className:t,...o},l)=>s.createElement(x,{ref:l,iconNode:r,className:m(`lucide-${b(e)}`,t),...o}));return n.displayName=`${e}`,n};export{y as S,k as c,S as u};
+ */const k=(e,r)=>{const n=s.forwardRef(({className:t,...o},l)=>s.createElement(x,{ref:l,iconNode:r,className:m(`lucide-${b(e)}`,t),...o}));return n.displayName=`${e}`,n};export{y as S,C as a,k as c,S as u};
