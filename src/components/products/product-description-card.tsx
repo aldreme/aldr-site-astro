@@ -1,3 +1,14 @@
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -15,7 +26,7 @@ import { cn } from "@/lib/utils";
 import { Divider } from "@heroui/react";
 import { format } from "date-fns";
 import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { ProductDescriptionTab } from "./product-description-tab";
@@ -27,14 +38,43 @@ interface Props {
   className?: string;
 }
 
+interface CustomerInquiry {
+  cxRepName: string,
+  cxRepTitle?: string,
+  cxCompany: string,
+  cxRepOccupation?: string,
+  cxContactNumber?: string,
+  cxAddress?: string,
+  cxEmailAddress: string,
+  cxInquirySubject: string,
+  cxInquiryMessage: string,
+  cxInquiryQuantity?: number,
+  cxInquiryExpectedDeliveryDate?: Date,
+  cxInquiryProduct: string,
+}
+
+interface Store {
+  customerInquiry: CustomerInquiry,
+  setCustomerInquiry: React.Dispatch<React.SetStateAction<CustomerInquiry>>
+}
+
+const CustomerInquiryContext = createContext<Store>({} as Store);
+
 function QuantityInput() {
+  const ctx = useContext(CustomerInquiryContext);
   return (
-    <Input type='number' min={1} placeholder='Enter quantity' className='w-48' />
+    <Input type='number' min={1} placeholder='Enter quantity' className='w-48'
+      onChange={e =>
+        ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryQuantity: Number(e.target.value) })
+      }
+    />
   );
 }
 
 function ExpectedDeliveryDatePicker() {
   const [date, setDate] = useState<Date>()
+
+  const ctx = useContext(CustomerInquiryContext);
 
   return (
     <Popover>
@@ -55,7 +95,10 @@ function ExpectedDeliveryDatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={e => {
+            setDate(e)
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryExpectedDeliveryDate: e })
+          }}
           initialFocus
         />
       </PopoverContent>
@@ -80,6 +123,8 @@ function CustomerInputsSection() {
 }
 
 function TitleCombobox() {
+  const ctx = useContext(CustomerInquiryContext);
+
   const titles = [
     {
       value: "",
@@ -140,8 +185,9 @@ function TitleCombobox() {
                   key={titles.value}
                   value={titles.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
+                    setValue(currentValue);
+                    ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepTitle: currentValue })
+                    setOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -163,6 +209,8 @@ function TitleCombobox() {
 }
 
 function GetQuoteDialogInputs() {
+  const ctx = useContext(CustomerInquiryContext);
+
   return (
     <div className="grid gap-4 md:py-4">
       <div className="grid grid-cols-4 md:grid-cols-8 items-center gap-4">
@@ -179,6 +227,9 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="Your first and last name"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepName: e.target.value })
+          }
         />
       </div>
 
@@ -191,16 +242,22 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="Your company name"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxCompany: e.target.value })
+          }
         />
 
-        <Label htmlFor="position" className="text-right">
-          Position
+        <Label htmlFor="occupation" className="text-right">
+          Occupation
         </Label>
         <Input
-          id="position"
+          id="occupation"
           defaultValue=""
-          placeholder="Your position in the company"
+          placeholder="Your occupation in the company"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepOccupation: e.target.value })
+          }
         />
       </div>
 
@@ -213,6 +270,9 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="Your phone number"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxContactNumber: e.target.value })
+          }
         />
 
         <Label htmlFor="address" className="text-right">
@@ -223,6 +283,9 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="Your address for shipping"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxAddress: e.target.value })
+          }
         />
       </div>
 
@@ -235,6 +298,9 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="Your email address for contact"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxEmailAddress: e.target.value })
+          }
         />
 
         <Label htmlFor="subject" className="text-right">
@@ -245,6 +311,9 @@ function GetQuoteDialogInputs() {
           defaultValue=""
           placeholder="The subject of your inquiry"
           className="col-span-3"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquirySubject: e.target.value })
+          }
         />
       </div>
 
@@ -257,13 +326,82 @@ function GetQuoteDialogInputs() {
         <Textarea
           className="w-full col-span-7"
           placeholder="The detailed information of your inquiry"
+          onChange={e =>
+            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryMessage: e.target.value })
+          }
         />
       </div>
     </div>
   );
 }
 
+export function AlertDialogDemo() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Show Dialog</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
+
 function GetQuoteButtonWithDialog() {
+  const ctx = useContext(CustomerInquiryContext);
+
+  const sendInquiry = async () => {
+    const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+    const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_KEY;
+
+    const cxInquiryApiEndpoint = `${SUPABASE_URL}/functions/v1/cx_inquiry`;
+
+    try {
+      const resp = await fetch(cxInquiryApiEndpoint, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          inquiry: {
+            cx_rep_name: ctx.customerInquiry.cxRepName,
+            cx_rep_title: ctx.customerInquiry.cxRepTitle,
+            cx_company: ctx.customerInquiry.cxCompany,
+            cx_rep_occupation: ctx.customerInquiry.cxRepOccupation,
+            cx_contact_number: ctx.customerInquiry.cxContactNumber,
+            cx_address: ctx.customerInquiry.cxAddress,
+            cx_email_addr: ctx.customerInquiry.cxEmailAddress,
+            cx_inquiry_subject: ctx.customerInquiry.cxInquirySubject,
+            cx_inquiry_msg: ctx.customerInquiry.cxInquiryMessage,
+            quantity_needed: ctx.customerInquiry.cxInquiryQuantity,
+            expected_delivery_date: ctx.customerInquiry.cxInquiryExpectedDeliveryDate,
+            cx_inquiry_product: ctx.customerInquiry.cxInquiryProduct,
+          },
+        })
+      });
+
+      if (!resp.ok) {
+        console.error(`failed to send the inquiry, error: ${await resp.text()}`);
+        return;
+      }
+
+      console.info('inquiry sent successfully');
+    } catch (err) {
+      console.error(`failed to send the inquiry, error: ${err}`);
+    }
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -283,7 +421,7 @@ function GetQuoteButtonWithDialog() {
           <DialogClose asChild>
             <Button variant='ghost'>Cancel</Button>
           </DialogClose>
-          <Button type='submit'>Send Inquiry</Button>
+          <Button type='submit' onClick={sendInquiry}>Send Inquiry</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -293,19 +431,23 @@ function GetQuoteButtonWithDialog() {
 export function ProductDescriptionCard(props: Props) {
   const { productName, productDescription, productFeatures, className } = props;
 
+  const [customerInquiry, setCustomerInquiry] = useState<CustomerInquiry>({ cxInquiryProduct: productName } as CustomerInquiry);
+
   return (
-    <div className='flex flex-col w-full md:h-full md:ml-32 md:items-stretch md:justify-between md:justify-items-stretch'>
-      <h1 className='text-3xl md:text-5xl font-semibold align-top my-5'>{productName}</h1>
+    <CustomerInquiryContext.Provider value={{ customerInquiry, setCustomerInquiry }}>
+      <div className='flex flex-col w-full md:h-full md:ml-32 md:items-stretch md:justify-between md:justify-items-stretch'>
+        <h1 className='text-3xl md:text-5xl font-semibold align-top my-5'>{productName}</h1>
 
-      <ProductDescriptionTab className='w-auto mt-[2vmin]' productDescription={productDescription} productFeatures={productFeatures} />
+        <ProductDescriptionTab className='w-auto mt-[2vmin]' productDescription={productDescription} productFeatures={productFeatures} />
 
-      <div className='flex flex-col justify-between items-start pt-10 md:justify-between md:items-start md:h-full'>
-        <CustomerInputsSection />
+        <div className='flex flex-col justify-between items-start pt-10 md:justify-between md:items-start md:h-full'>
+          <CustomerInputsSection />
 
-        <Divider className='border-1 my-3 border-solid border-gray-100' />
+          <Divider className='border-1 my-3 border-solid border-gray-100' />
 
-        <GetQuoteButtonWithDialog />
+          <GetQuoteButtonWithDialog />
+        </div>
       </div>
-    </div>
+    </CustomerInquiryContext.Provider>
   )
 }
