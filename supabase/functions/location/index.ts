@@ -4,6 +4,7 @@
 
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { corsHeaders } from '../_shared/cors.ts';
 
 function ips(req: Request) {
   return req.headers.get('x-forwarded-for')?.split(/\s*,\s*/);
@@ -20,6 +21,7 @@ Deno.serve(async (req) => {
   if (!clientIps) {
     return new Response('cannot find client ip in the request x-forwarded-for header', {
       status: 400,
+      headers: corsHeaders
     });
   }
 
@@ -30,7 +32,7 @@ Deno.serve(async (req) => {
   const res = await fetch(
     `https://ipinfo.io/${ipToQuery}?token=${Deno.env.get('IPINFO_TOKEN')}`,
     {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     }
   );
 
@@ -44,6 +46,7 @@ Deno.serve(async (req) => {
     if (!country) {
       return new Response(`no country found for the ip ${ipToQuery}`, {
         status: 404,
+        headers: corsHeaders
       });
     }
     
@@ -55,12 +58,13 @@ Deno.serve(async (req) => {
         country: country,
       }),
       {
-       headers: { 'Content-Type': 'application/json' },
+       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
   } else {
     return new Response(await res.text(), {
       status: 400,
+      headers: corsHeaders
     });
   }
 })

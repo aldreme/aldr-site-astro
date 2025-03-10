@@ -10,7 +10,6 @@
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnSave": true
   },
-  "deno.enable": true,
   "deno.enablePaths": [
     "supabase/functions"
   ],
