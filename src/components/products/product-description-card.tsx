@@ -39,7 +39,7 @@ interface Props {
   className?: string;
 }
 
-type CustomerRfq = Database['public']['Tables']['customer_request_for_quotes']['Insert']
+type CustomerRfq = Omit<Database['public']['Tables']['customer_request_for_quotes']['Insert'], 'created_at' | 'updated_at'>;
 
 interface Store {
   cxRfq: CustomerRfq,
@@ -354,6 +354,8 @@ function GetQuoteButtonWithDialog() {
     const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_KEY;
 
     const cxRfqApiEndpoint = `${SUPABASE_URL}/functions/v1/cx_rfq`;
+
+    console.info(`request to be sent: ${JSON.stringify({ rfq: ctx.cxRfq })}`);
 
     try {
       const resp = await fetch(cxRfqApiEndpoint, {
