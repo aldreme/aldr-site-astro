@@ -4,23 +4,23 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { corsHeaders } from '../_shared/cors.ts';
 import supabase from "../_shared/supabaseAdmin.ts";
 
-const TABLE_NAME = 'customer_inquiries';
+const TABLE_NAME = 'customer_request_for_quotes';
 
-async function createCxInquiry(req: Request) {
-  console.info('received a new customer inquiry request');
+async function createCxRFQ(req: Request) {
+  console.info('received a new customer RFQ request');
 
   const body = await req.json();
-  const cxInquiry = body.inquiry;
+  const cxRFQ = body.rfq;
 
-  console.info(`payload: ${JSON.stringify(cxInquiry)}`);
+  console.info(`payload: ${JSON.stringify(cxRFQ)}`);
 
-  const { error } = await supabase.from(TABLE_NAME).insert(cxInquiry);
+  const { error } = await supabase.from(TABLE_NAME).insert(cxRFQ);
   if (error) {
-    console.error('failed to insert customer inquiry into the database');
+    console.error('failed to insert customer RFQ into the database');
     throw error;
   }
 
-  console.info('successfully inserted customer inquiry into the database');
+  console.info('successfully inserted customer RFQ into the database');
 
   return new Response(
     null,
@@ -42,7 +42,7 @@ Deno.serve(async (req) => {
   try {
     switch(method) {
       case 'POST':
-        return await createCxInquiry(req);
+        return await createCxRFQ(req);
       default:
         return new Response(
           null,
@@ -54,7 +54,7 @@ Deno.serve(async (req) => {
       }
       
   } catch (error) {
-    console.error(`failed to process the request for customer inquiry, error: ${JSON.stringify(error)}`);
+    console.error(`failed to process the request for customer RFQ, error: ${JSON.stringify(error)}`);
 
     return new Response(JSON.stringify({ error: JSON.stringify(error) }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

@@ -2,7 +2,12 @@
   "extends": "astro/tsconfigs/strict",
   "include": [
     ".astro/types.d.ts",
-    "**/*"
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.astro",
+    "**/*.mdx",
+    "seed.ts",
+    "seed.config.ts"
   ],
   "exclude": [
     "dist",

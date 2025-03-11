@@ -22,6 +22,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
+import type { Database } from '@/lib/types/database.types';
 import { cn } from "@/lib/utils";
 import { Divider } from "@heroui/react";
 import { format } from "date-fns";
@@ -38,34 +39,21 @@ interface Props {
   className?: string;
 }
 
-interface CustomerInquiry {
-  cxRepName: string,
-  cxRepTitle?: string,
-  cxCompany: string,
-  cxRepOccupation?: string,
-  cxContactNumber?: string,
-  cxAddress?: string,
-  cxEmailAddress: string,
-  cxInquirySubject: string,
-  cxInquiryMessage: string,
-  cxInquiryQuantity?: number,
-  cxInquiryExpectedDeliveryDate?: Date,
-  cxInquiryProduct: string,
-}
+type CustomerRfq = Database['public']['Tables']['customer_request_for_quotes']['Insert']
 
 interface Store {
-  customerInquiry: CustomerInquiry,
-  setCustomerInquiry: React.Dispatch<React.SetStateAction<CustomerInquiry>>
+  cxRfq: CustomerRfq,
+  setCxRfq: React.Dispatch<React.SetStateAction<CustomerRfq>>
 }
 
-const CustomerInquiryContext = createContext<Store>({} as Store);
+const CustomerRfqContext = createContext<Store>({} as Store);
 
 function QuantityInput() {
-  const ctx = useContext(CustomerInquiryContext);
+  const ctx = useContext(CustomerRfqContext);
   return (
     <Input type='number' min={1} placeholder='Enter quantity' className='w-48'
       onChange={e =>
-        ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryQuantity: Number(e.target.value) })
+        ctx.setCxRfq({ ...ctx.cxRfq, quantity_needed: Number(e.target.value) })
       }
     />
   );
@@ -74,7 +62,7 @@ function QuantityInput() {
 function ExpectedDeliveryDatePicker() {
   const [date, setDate] = useState<Date>()
 
-  const ctx = useContext(CustomerInquiryContext);
+  const ctx = useContext(CustomerRfqContext);
 
   return (
     <Popover>
@@ -97,7 +85,7 @@ function ExpectedDeliveryDatePicker() {
           selected={date}
           onSelect={e => {
             setDate(e)
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryExpectedDeliveryDate: e })
+            ctx.setCxRfq({ ...ctx.cxRfq, expected_delivery_date: e?.toDateString() })
           }}
           initialFocus
         />
@@ -123,7 +111,7 @@ function CustomerInputsSection() {
 }
 
 function TitleCombobox() {
-  const ctx = useContext(CustomerInquiryContext);
+  const ctx = useContext(CustomerRfqContext);
 
   const titles = [
     {
@@ -186,7 +174,7 @@ function TitleCombobox() {
                   value={titles.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue);
-                    ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepTitle: currentValue })
+                    ctx.setCxRfq({ ...ctx.cxRfq, cx_rep_title: currentValue })
                     setOpen(false);
                   }}
                   className="cursor-pointer"
@@ -209,7 +197,7 @@ function TitleCombobox() {
 }
 
 function GetQuoteDialogInputs() {
-  const ctx = useContext(CustomerInquiryContext);
+  const ctx = useContext(CustomerRfqContext);
 
   return (
     <div className="grid gap-4 md:py-4">
@@ -228,7 +216,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your first and last name"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepName: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_rep_name: e.target.value })
           }
         />
       </div>
@@ -243,7 +231,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your company name"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxCompany: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_company: e.target.value })
           }
         />
 
@@ -256,7 +244,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your occupation in the company"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxRepOccupation: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_rep_occupation: e.target.value })
           }
         />
       </div>
@@ -271,7 +259,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your phone number"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxContactNumber: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_contact_number: e.target.value })
           }
         />
 
@@ -284,7 +272,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your address for shipping"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxAddress: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_address: e.target.value })
           }
         />
       </div>
@@ -299,7 +287,7 @@ function GetQuoteDialogInputs() {
           placeholder="Your email address for contact"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxEmailAddress: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_email_addr: e.target.value })
           }
         />
 
@@ -312,7 +300,7 @@ function GetQuoteDialogInputs() {
           placeholder="The subject of your inquiry"
           className="col-span-3"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquirySubject: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_rfq_subject: e.target.value })
           }
         />
       </div>
@@ -327,7 +315,7 @@ function GetQuoteDialogInputs() {
           className="w-full col-span-7"
           placeholder="The detailed information of your inquiry"
           onChange={e =>
-            ctx.setCustomerInquiry({ ...ctx.customerInquiry, cxInquiryMessage: e.target.value })
+            ctx.setCxRfq({ ...ctx.cxRfq, cx_rfq_msg: e.target.value })
           }
         />
       </div>
@@ -359,46 +347,33 @@ export function AlertDialogDemo() {
 }
 
 function GetQuoteButtonWithDialog() {
-  const ctx = useContext(CustomerInquiryContext);
+  const ctx = useContext(CustomerRfqContext);
 
-  const sendInquiry = async () => {
+  const sendRfq = async () => {
     const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
     const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_KEY;
 
-    const cxInquiryApiEndpoint = `${SUPABASE_URL}/functions/v1/cx_inquiry`;
+    const cxRfqApiEndpoint = `${SUPABASE_URL}/functions/v1/cx_rfq`;
 
     try {
-      const resp = await fetch(cxInquiryApiEndpoint, {
+      const resp = await fetch(cxRfqApiEndpoint, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
-          inquiry: {
-            cx_rep_name: ctx.customerInquiry.cxRepName,
-            cx_rep_title: ctx.customerInquiry.cxRepTitle,
-            cx_company: ctx.customerInquiry.cxCompany,
-            cx_rep_occupation: ctx.customerInquiry.cxRepOccupation,
-            cx_contact_number: ctx.customerInquiry.cxContactNumber,
-            cx_address: ctx.customerInquiry.cxAddress,
-            cx_email_addr: ctx.customerInquiry.cxEmailAddress,
-            cx_inquiry_subject: ctx.customerInquiry.cxInquirySubject,
-            cx_inquiry_msg: ctx.customerInquiry.cxInquiryMessage,
-            quantity_needed: ctx.customerInquiry.cxInquiryQuantity,
-            expected_delivery_date: ctx.customerInquiry.cxInquiryExpectedDeliveryDate,
-            cx_inquiry_product: ctx.customerInquiry.cxInquiryProduct,
-          },
+          rfq: ctx.cxRfq,
         })
       });
 
       if (!resp.ok) {
-        console.error(`failed to send the inquiry, error: ${await resp.text()}`);
+        console.error(`failed to send the rfq, error: ${await resp.text()}`);
         return;
       }
 
-      console.info('inquiry sent successfully');
+      console.info('rfq sent successfully');
     } catch (err) {
-      console.error(`failed to send the inquiry, error: ${err}`);
+      console.error(`failed to send the rfq, error: ${err}`);
     }
   }
 
@@ -421,7 +396,7 @@ function GetQuoteButtonWithDialog() {
           <DialogClose asChild>
             <Button variant='ghost'>Cancel</Button>
           </DialogClose>
-          <Button type='submit' onClick={sendInquiry}>Send Inquiry</Button>
+          <Button type='submit' onClick={sendRfq}>Send Request for Quote</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -431,10 +406,10 @@ function GetQuoteButtonWithDialog() {
 export function ProductDescriptionCard(props: Props) {
   const { productName, productDescription, productFeatures, className } = props;
 
-  const [customerInquiry, setCustomerInquiry] = useState<CustomerInquiry>({ cxInquiryProduct: productName } as CustomerInquiry);
+  const [cxRfq, setCxRfq] = useState<CustomerRfq>({ cx_rfq_product: productName } as CustomerRfq);
 
   return (
-    <CustomerInquiryContext.Provider value={{ customerInquiry, setCustomerInquiry }}>
+    <CustomerRfqContext.Provider value={{ cxRfq: cxRfq, setCxRfq: setCxRfq }}>
       <div className='flex flex-col w-full md:h-full md:ml-32 md:items-stretch md:justify-between md:justify-items-stretch'>
         <h1 className='text-3xl md:text-5xl font-semibold align-top my-5'>{productName}</h1>
 
@@ -448,6 +423,6 @@ export function ProductDescriptionCard(props: Props) {
           <GetQuoteButtonWithDialog />
         </div>
       </div>
-    </CustomerInquiryContext.Provider>
+    </CustomerRfqContext.Provider>
   )
 }
