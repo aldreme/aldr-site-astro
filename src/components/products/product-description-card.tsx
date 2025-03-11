@@ -26,7 +26,7 @@ import type { Database } from '@/lib/types/database.types';
 import { cn } from "@/lib/utils";
 import { Divider } from "@heroui/react";
 import { format } from "date-fns";
-import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react";
+import { CalendarIcon, Check, ChevronsUpDown, Loader2 } from "lucide-react";
 import { createContext, useContext, useState } from "react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
@@ -348,6 +348,7 @@ export function AlertDialogDemo() {
 
 function GetQuoteButtonWithDialog() {
   const ctx = useContext(CustomerRfqContext);
+  const [sendingRfq, setSendingRfq] = useState<boolean>(false);
 
   const sendRfq = async () => {
     const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
@@ -358,6 +359,8 @@ function GetQuoteButtonWithDialog() {
     console.info(`request to be sent: ${JSON.stringify({ rfq: ctx.cxRfq })}`);
 
     try {
+      setSendingRfq(true);
+
       const resp = await fetch(cxRfqApiEndpoint, {
         method: 'POST',
         headers: {
@@ -376,6 +379,8 @@ function GetQuoteButtonWithDialog() {
       console.info('rfq sent successfully');
     } catch (err) {
       console.error(`failed to send the rfq, error: ${err}`);
+    } finally {
+      setSendingRfq(false);
     }
   }
 
@@ -398,7 +403,15 @@ function GetQuoteButtonWithDialog() {
           <DialogClose asChild>
             <Button variant='ghost'>Cancel</Button>
           </DialogClose>
-          <Button type='submit' onClick={sendRfq}>Send Request for Quote</Button>
+          <Button disabled={sendingRfq} type='submit' onClick={sendRfq}>
+            {
+              sendingRfq &&
+              <Loader2 className="animate-spin" />
+            }
+            {
+              sendingRfq ? "Please wait" : "Send Request for Quote"
+            }
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
