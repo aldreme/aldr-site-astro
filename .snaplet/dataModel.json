@@ -467,7 +467,7 @@
           "name": "updated_at",
           "columnName": "updated_at",
           "type": "timestamptz",
-          "isRequired": false,
+          "isRequired": true,
           "kind": "scalar",
           "isList": false,
           "isGenerated": false,
