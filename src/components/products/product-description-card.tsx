@@ -51,7 +51,7 @@ const CustomerRfqContext = createContext<Store>({} as Store);
 function QuantityInput() {
   const ctx = useContext(CustomerRfqContext);
   return (
-    <Input type='number' min={1} placeholder='Enter quantity' className='w-48'
+    <Input id='quantity' type='number' min={1} placeholder='Enter quantity' className='w-48'
       onChange={e =>
         ctx.setCxRfq({ ...ctx.cxRfq, quantity_needed: Number(e.target.value) })
       }
