@@ -1,14 +1,3 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -27,7 +16,8 @@ import { cn } from "@/lib/utils";
 import { Divider } from "@heroui/react";
 import { format } from "date-fns";
 import { CalendarIcon, Check, ChevronsUpDown, Loader2 } from "lucide-react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import MsgModal from "../msg-modal";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { ProductDescriptionTab } from "./product-description-tab";
@@ -212,7 +202,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="name"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_rep_name}
           placeholder="Your first and last name"
           className="col-span-3"
           onChange={e =>
@@ -227,7 +217,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="company"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_company}
           placeholder="Your company name"
           className="col-span-3"
           onChange={e =>
@@ -240,7 +230,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="occupation"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_rep_occupation || ''}
           placeholder="Your occupation in the company"
           className="col-span-3"
           onChange={e =>
@@ -255,7 +245,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="phone"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_contact_number || ''}
           placeholder="Your phone number"
           className="col-span-3"
           onChange={e =>
@@ -268,7 +258,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="address"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_address || ''}
           placeholder="Your address for shipping"
           className="col-span-3"
           onChange={e =>
@@ -283,7 +273,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="email"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_email_addr}
           placeholder="Your email address for contact"
           className="col-span-3"
           onChange={e =>
@@ -296,7 +286,7 @@ function GetQuoteDialogInputs() {
         </Label>
         <Input
           id="subject"
-          defaultValue=""
+          defaultValue={ctx.cxRfq.cx_rfq_subject}
           placeholder="The subject of your inquiry"
           className="col-span-3"
           onChange={e =>
@@ -313,6 +303,7 @@ function GetQuoteDialogInputs() {
 
         <Textarea
           className="w-full col-span-7"
+          defaultValue={ctx.cxRfq.cx_rfq_msg}
           placeholder="The detailed information of your inquiry"
           onChange={e =>
             ctx.setCxRfq({ ...ctx.cxRfq, cx_rfq_msg: e.target.value })
@@ -323,32 +314,18 @@ function GetQuoteDialogInputs() {
   );
 }
 
-export function AlertDialogDemo() {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+enum SendRfqState {
+  UNKNOWN,
+  SENDING,
+  SUCCESS,
+  FAILED
 }
-
 function GetQuoteButtonWithDialog() {
   const ctx = useContext(CustomerRfqContext);
-  const [sendingRfq, setSendingRfq] = useState<boolean>(false);
+  const [sendRfqState, setSendRfqState] = useState<SendRfqState>(SendRfqState.UNKNOWN);
+  const [showMsgModal, setShowMsgModal] = useState<boolean>(false);
+  const [msgModalTitle, setMsgModalTitle] = useState<string>('');
+  const [msgModalMessage, setMsgModalMessage] = useState<string>('');
 
   const sendRfq = async () => {
     const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
@@ -359,7 +336,7 @@ function GetQuoteButtonWithDialog() {
     console.info(`request to be sent: ${JSON.stringify({ rfq: ctx.cxRfq })}`);
 
     try {
-      setSendingRfq(true);
+      setSendRfqState(SendRfqState.SENDING);
 
       const resp = await fetch(cxRfqApiEndpoint, {
         method: 'POST',
@@ -372,17 +349,26 @@ function GetQuoteButtonWithDialog() {
       });
 
       if (!resp.ok) {
-        console.error(`failed to send the rfq, error: ${await resp.text()}`);
-        return;
+        throw new Error(await resp.text());
       }
 
       console.info('rfq sent successfully');
+
+      setSendRfqState(SendRfqState.SUCCESS);
     } catch (err) {
       console.error(`failed to send the rfq, error: ${err}`);
-    } finally {
-      setSendingRfq(false);
+
+      setSendRfqState(SendRfqState.FAILED);
     }
   }
+
+  useEffect(() => {
+    if (sendRfqState === SendRfqState.SUCCESS || sendRfqState === SendRfqState.FAILED) {
+      setShowMsgModal(true);
+      setMsgModalTitle(sendRfqState === SendRfqState.SUCCESS ? 'Info' : 'Error');
+      setMsgModalMessage(sendRfqState === SendRfqState.SUCCESS ? 'Successfully sent the request for quote!' : 'Failed to send the request for quote, please try again later.')
+    }
+  }, [sendRfqState]);
 
   return (
     <Dialog>
@@ -403,16 +389,18 @@ function GetQuoteButtonWithDialog() {
           <DialogClose asChild>
             <Button variant='ghost'>Cancel</Button>
           </DialogClose>
-          <Button disabled={sendingRfq} type='submit' onClick={sendRfq}>
+          <Button disabled={sendRfqState == SendRfqState.SENDING} type='submit' onClick={sendRfq}>
             {
-              sendingRfq &&
+              sendRfqState == SendRfqState.SENDING &&
               <Loader2 className="animate-spin" />
             }
             {
-              sendingRfq ? "Please wait" : "Send Request for Quote"
+              sendRfqState == SendRfqState.SENDING ? "Please wait" : "Send Request for Quote"
             }
           </Button>
         </DialogFooter>
+
+        <MsgModal open={showMsgModal} title={msgModalTitle} message={msgModalMessage} onButtonPressed={() => setShowMsgModal(false)} />
       </DialogContent>
     </Dialog>
   );
