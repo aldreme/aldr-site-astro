@@ -1,9 +1,10 @@
 // @ts-check
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
 import mdx from '@astrojs/mdx';
+
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,9 +16,6 @@ export default defineConfig({
 
   integrations: [
     react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     mdx({
       syntaxHighlight: 'shiki',
       shikiConfig: {
@@ -29,4 +27,8 @@ export default defineConfig({
       remarkRehype: { footnoteLabel: 'Footnotes' },
       gfm: false,
     })],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

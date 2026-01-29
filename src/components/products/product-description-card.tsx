@@ -86,7 +86,7 @@ function ExpectedDeliveryDatePicker() {
 
 function CustomerInputsSection() {
   return (
-    <div className='flex flex-col justify-between items-start md:w-[28rem]'>
+    <div className='flex flex-col justify-between items-start md:w-md'>
       <div className='flex flex-col mb-5 mr-10 md:w-full md:mr-0 md:flex-row md:justify-between md:items-center'>
         <h2 className='text-xl mb-2 mr-3 font-semibold'>Quantity Needed</h2>
         <QuantityInput />
@@ -375,7 +375,7 @@ function GetQuoteButtonWithDialog() {
       <DialogTrigger asChild>
         <Button size={'lg'}>Get a Quote</Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[40rem]">
+      <DialogContent className="max-w-160">
         <DialogHeader>
           <DialogTitle className="text-base md:text-lg">Get a Quote</DialogTitle>
           <DialogDescription className="text-xs md:text-sm">
@@ -421,7 +421,7 @@ export function ProductDescriptionCard(props: Props) {
         <div className='flex flex-col justify-between items-start pt-10 md:justify-between md:items-start md:h-full'>
           <CustomerInputsSection />
 
-          <Divider className='border-1 my-3 border-solid border-gray-100' />
+          <Divider className='border my-3 border-solid border-gray-100' />
 
           <GetQuoteButtonWithDialog />
         </div>

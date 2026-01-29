@@ -3,6 +3,9 @@
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnSave": true
   },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },

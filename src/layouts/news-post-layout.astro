@@ -4,7 +4,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <PageLayout pageTitle={frontmatter.title}>
-  <div class="bg-white px-[5vmin] py-[3vmin] min-h-[100vh] md:px-[15vw]">
+  <div class="bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]">
     <!-- metadata -->
     <p>{frontmatter.pubDate.toLocaleDateString()}</p>
     <p><em>{frontmatter.description}</em></p>

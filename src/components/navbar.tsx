@@ -79,7 +79,7 @@ function NavLinksMobile() {
 
 export default function Navbar() {
   return (
-    <header className='sticky top-0 z-40 w-full border-b border-zinc-700 bg-zinc-900 md:min-w-[100rem]'>
+    <header className='sticky top-0 z-40 w-full border-b border-zinc-700 bg-zinc-900 md:min-w-400'>
       <div className='container mx-auto flex h-16 items-center px-4'>
         <NavbarBrand />
         <NavLinksDesktop />

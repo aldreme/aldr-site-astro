@@ -67,7 +67,7 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
   const externalDimension = productTechSpecs.dimension.external;
   const internalDimension = productTechSpecs.dimension.internal;
   return (
-    <Table className="w-full max-w-screen-xl">
+    <Table className="w-full max-w-(--breakpoint-xl)">
       {/* Table body with vertical entries (label on the left, value on the right) */}
       <TableBody>
         {
