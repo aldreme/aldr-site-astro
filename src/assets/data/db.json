@@ -66,11 +66,12 @@
       }
     },
     {
-      "name": "Cabinet",
+      "name": "Mobile Storage Bin",
       "category": "Storage",
       "tags": [
         "Storage",
-        "Organization",
+        "Mobile",
+        "Bin",
         "Stainless Steel"
       ],
       "price": 0,
@@ -78,82 +79,19 @@
         "cabinet-01.jpg",
         "cabinet-02.jpg"
       ],
-      "description": "Vertical cleanroom storage cabinet with sloped top and tempered glass doors. Provides contamination-free storage for garments and consumables.",
-      "introduction": "Maximize vertical storage efficiency while maintaining ISO compliance. This 304 stainless steel High-Density Storage Cabinet features a sloped top cap to prevent particle settling and simplify cleaning of high surfaces. Dual tempered glass doors provide full visibility of contents, reducing door openings and air exchange. The electropolished exterior ensures resilience against frequent exposure to sporicidal disinfectants.",
+      "description": "Mobile stainless steel bulk storage bin with hinged lid. Ideal for transporting and storing bulk ingredients or waste in cleanroom areas.",
+      "introduction": "Versatile mobile storage for bulk materials. This Mobile Storage Bin features a heavy-duty stainless steel chassis with a hinged lid, protecting contents from contamination during transport. Its smooth, seamless interior ensures standard-compliant cleaning, while the robust casters allow for easy maneuvering of heavy loads. Perfect for moving raw materials, waste, or laundry through classified zones.",
       "features": [
-        "Sloped top design eliminates dust accumulation",
-        "Tempered safety glass viewing windows",
-        "Adjustable stainless steel shelves (50lb capacity each)",
-        "Magnetic gasket door seals for air-tight closure",
-        "Ventilation ports with optional filter filters",
-        "Lockable T-handle latches for security"
+        "Hinged stainless steel lid with handle",
+        "Seamless interior construction for easy cleaning",
+        "Heavy-duty swivel casters",
+        "Corrosion-resistant Type 304 stainless steel",
+        "Large capacity for bulk items",
+        "Push handle for ergonomic transport"
       ],
       "specs": {
         "weight": {
-          "value": 90,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel (Brushed #4 or Electropolished)",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 91,
-            "height": 198,
-            "length": 46
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "TIG Welding",
-            "Sloped Top Fabrication"
-          ],
-          "customizable": false
-        }
-      },
-      "application_scenarios": [
-        "Garment Storage",
-        "Consumable Stocking",
-        "Cleanroom Tool Storage"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "5-Year Manufacturer Warranty",
-        "return": "Restocking fee applies",
-        "shipping": "Crated Freight"
-      }
-    },
-    {
-      "name": "Cart",
-      "category": "Transport",
-      "tags": [
-        "Transport",
-        "Utility",
-        "Mobile"
-      ],
-      "price": 0,
-      "images": [
-        "cart-01.jpg",
-        "cart-02.jpg"
-      ],
-      "description": "Three-tier utility cart with raised marine edges. Smooth-rolling swivel casters ensure vibration-free transport of sensitive materials.",
-      "introduction": "The definitive solution for cleanroom material transfer. This Multi-Tier Utility Cart is protected by raised marine edges on all shelves to contain spills and prevent items from rolling off. Mounted on premium pharmaceutical-grade non-marking casters, it glides silently across facility floors, minimizing vibration and particle generation. Fully autoclavable design options available for sterile cores.",
-      "features": [
-        "Raised marine edges (10mm) for spill containment",
-        "Vibration-dampening chassis construction",
-        "Pharmaceutical-grade non-marking swivel casters (2 with brakes)",
-        "Protective donut bumpers on corners",
-        "Electropolished for easy wipe-down",
-        "High load capacity (400 lbs total)"
-      ],
-      "specs": {
-        "weight": {
-          "value": 18,
+          "value": 35,
           "customizable": true
         },
         "material": {
@@ -162,33 +100,96 @@
         },
         "dimension": {
           "external": {
-            "width": 61,
-            "height": 90,
-            "length": 91
+            "width": 60,
+            "height": 80,
+            "length": 100
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Seamless Tube Bending",
-            "Polishing"
+            "TIG Welding",
+            "Sheet Metal Folding"
           ],
-          "customizable": true
+          "customizable": false
         }
       },
       "application_scenarios": [
-        "Sample Transport",
-        "Chemical Transfer",
-        "General Utility"
+        "Ingredient Transport",
+        "Waste Collection",
+        "Laundry Hamper"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "2-Year Warranty",
+        "warranty": "3-Year Manufacturer Warranty",
+        "return": "Restocking fee applies",
+        "shipping": "Freight"
+      }
+    },
+    {
+      "name": "Equipment Chassis Cart",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Equipment",
+        "Mobile"
+      ],
+      "price": 0,
+      "images": [
+        "cart-01.jpg",
+        "cart-02.jpg"
+      ],
+      "description": "Specialized cantilevered chassis cart for transporting heavy equipment. Open design allows for easy loading of production machinery.",
+      "introduction": "A tailored solution for machinery mobility. This Equipment Chassis Cart features a unique cantilevered frame designed to interface with specific production equipment or tanks. The angled handle structure allows operators to maneuver heavy loads while maintaining visibility. Its low center of gravity and high-capacity wheels ensure stable transport of valuable assets.",
+      "features": [
+        "Heavy-duty cantilevered frame design",
+        "Integrated equipment mounting points",
+        "Ergonomic angled push handle",
+        "Reinforced base for stability",
+        "Electropolished finish",
+        "Customizable for specific equipment footprints"
+      ],
+      "specs": {
+        "weight": {
+          "value": 45,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 80,
+            "height": 110,
+            "length": 120
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Tube Bending",
+            "Structural Welding"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Machine Transport",
+        "Tank Moving",
+        "Production Line Setup"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "5-Year Structural Warranty",
         "return": "Standard",
-        "shipping": "Flat Pack or Assembled"
+        "shipping": "Freight"
       }
     },
     {
@@ -326,11 +327,11 @@
       }
     },
     {
-      "name": "Display Frame",
+      "name": "PC Enclosure",
       "category": "Accessories",
       "tags": [
-        "Signage",
-        "Document Holder",
+        "Workstation",
+        "Computer",
         "Wall Mount"
       ],
       "price": 0,
@@ -340,19 +341,19 @@
         "display_frame-03.jpg",
         "display_frame-04.jpg"
       ],
-      "description": "Flush-mount stainless steel document holder with beveled edges. Cleanroom-safe solution for displaying SOPs and schedules.",
-      "introduction": "Maintain document visibility without compromising cleanliness. Traditional frames trap dust and shed particles. Our Cleanroom Display Frame features a sealed, flush-mount design with beveled edges to eliminate horizontal dust ledges. It securely encases SOPs, schedules, or digital displays behind a chemically resistant polycarbonate or tempered glass face.",
+      "description": "Flush-mount stainless steel computer enclosure with keyboard tray. Protects IT hardware in wash-down and sterile environments.",
+      "introduction": "Integrate digital workflows without compromising cleanliness. This Flush-Mount PC Enclosure is designed to house standard monitors and keyboards within the cleanroom wall, eliminating horizontal surfaces that collect dust. The sealed unit features a hinged glass door for monitor access and a fold-down or integrated keyboard station, all constructed from corrosion-resistant 304 stainless steel.",
       "features": [
-        "Beveled, easy-clean edges (45-degree slope)",
-        "Flush wall mounting capability",
-        "Sealed backing preventing particle migration",
-        "Chemical resistant polycarbonate/glass face",
-        "Quick-change design for documents",
-        "Compatible with wash-down protocols"
+        "Flush-mount design for seamless wall integration",
+        "Tempered glass screen protection",
+        "Integrated keyboard shelf/compartment",
+        "Sealed cable entry points",
+        "Resistant to biological and chemical agents",
+        "Ventilated for equipment cooling"
       ],
       "specs": {
         "weight": {
-          "value": 3,
+          "value": 12,
           "customizable": true
         },
         "material": {
@@ -361,24 +362,24 @@
         },
         "dimension": {
           "external": {
-            "width": 30,
-            "height": 45,
-            "length": 2
+            "width": 60,
+            "height": 80,
+            "length": 15
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
             "Precision Laser Cutting",
-            "Fine Brushed Finish"
+            "Glass Bonding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "SOP Display",
-        "Room Status Board",
-        "Digital Screen Enclosure"
+        "HMI Terminals",
+        "Cleanroom Data Entry",
+        "Digital SOP Stations"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -391,12 +392,12 @@
       }
     },
     {
-      "name": "Dolly",
+      "name": "Multi-Tier Wire Cart",
       "category": "Transport",
       "tags": [
         "Transport",
         "Mobile",
-        "Material Handling"
+        "Wire Splint"
       ],
       "price": 0,
       "images": [
@@ -404,52 +405,52 @@
         "dolly-02.jpg",
         "dolly-03.jpg"
       ],
-      "description": "Low-profile heavy-duty stainless dolly for euro-crates and totes. Open-frame design allows vertical airflow and easy wash-down.",
-      "introduction": "Optimized for heavy material handling in laminar flow areas. This Stainless Steel Dolly features an open-frame design that permits vertical airflow to pass through, maintaining cleanroom air patterns. Designed to fit standard Euro-crates and totes, it facilitates the easy transport of bulk materials or liquids. Its low center of gravity and corner bumpers ensure safety and stability.",
+      "description": "High-capacity multi-tier wire cart with deep baskets. Perfect for batch transport of small components or sterile packs.",
+      "introduction": "Maximize transport efficiency for small items. This Multi-Tier Wire Cart features 3 generous wire basket shelves, providing ample volume for loose items like shoe covers, wipers, or small vials. The wire construction ensures full visibility and airflow, while the raised basket edges prevent items from falling during transit. Includes a full-width handle for easy steerability.",
       "features": [
-        "Open-frame construction for laminar airflow",
-        "Sized for standard Euro-crates/totes",
-        "Heavy-duty load capacity (300kg+)",
-        "Non-marking rubber corner bumpers",
-        "High-temperature autoclavable wheels available",
-        "Fully welded 304 stainless steel frame"
+        "3-tier deep wire basket shelves",
+        "Full visibility and airflow",
+        "Raised edges for secure containment",
+        "Stainless steel tubular frame",
+        "Smooth rolling casters (2 braking)",
+        "Easy to clean design"
       ],
       "specs": {
         "weight": {
-          "value": 7,
+          "value": 22,
           "customizable": true
         },
         "material": {
-          "value": "304 Stainless Steel",
+          "value": "304 Stainless Steel Wire",
           "customizable": true
         },
         "dimension": {
           "external": {
-            "width": 42,
-            "height": 15,
-            "length": 62
+            "width": 46,
+            "height": 100,
+            "length": 90
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "TIG Welding",
-            "Passivation"
+            "Wire Forming",
+            "Spot Welding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Bulk Material Transport",
-        "Tote Moving",
-        "Wash-down Areas"
+        "Component Kitting",
+        "Garment Distribution",
+        "Sterile Supply"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Structural Warranty",
+        "warranty": "2-Year Warranty",
         "return": "Standard",
         "shipping": "Standard Ground"
       }
@@ -602,93 +603,31 @@
       }
     },
     {
-      "name": "Grid Cart",
+      "name": "Wire Basket Trolley",
       "category": "Transport",
       "tags": [
         "Transport",
-        "Laminar Flow",
-        "Wire"
-      ],
-      "price": 0,
-      "images": [
-        "grid_cart-01.jpg"
-      ],
-      "description": "Chrome or stainless steel wire cart for ISO 5 environments. Wire shelves offer 85% laminar flow penetration.",
-      "introduction": "Preserve the integrity of your unidirectional airflow. The Grid Cart's open-wire shelf design allows laminar air to flow vertically through the unit with minimal obstruction (less than 15% blockage), preventing the formation of 'dead zones' where particles collect. Ideal for transporting sensitive components through ISO 5 work zones.",
-      "features": [
-        "Open-wire construction for 85% laminar flow permeability",
-        "Adjustable shelf heights (1-inch increments)",
-        "High strength-to-weight ratio",
-        "ESD conductive split-sleeve options available",
-        "Easy disassembly for deep cleaning",
-        "Available in 304 Stainless Steel or Chrome-plated"
-      ],
-      "specs": {
-        "weight": {
-          "value": 14,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel Wire or Chrome",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 46,
-            "height": 100,
-            "length": 91
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Resistance Welding",
-            "Electro-plating/polishing"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "ISO 5 Work Zones",
-        "Drying Racks",
-        "Kitting Carts"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "2-Year Warranty",
-        "return": "Standard",
-        "shipping": "Standard"
-      }
-    },
-    {
-      "name": "Grid Dolly",
-      "category": "Transport",
-      "tags": [
-        "Transport",
+        "Basket",
         "Wire",
         "Utility"
       ],
       "price": 0,
       "images": [
-        "grid_dolly-01.jpg",
-        "grid_dolly-02.jpg"
+        "grid_cart-01.jpg"
       ],
-      "description": "Wire-deck dolly for transport in wash-down areas. Prevents water pooling and facilitates rapid drying of transported items.",
-      "introduction": "Superior drainage for wet environments. Unlike solid dollies that trap water, our Grid Dolly allows liquids to drain instantly, making it the perfect choice for autoclave loading, wash-down bays, and drying areas. The robust wire grid supports heavy totes while ensuring maximum air circulation for rapid drying.",
+      "description": "Deep wire basket trolley for transporting bulk items, garments, or sterile packages. Large volume with excellent visibility and airflow.",
+      "introduction": "Efficient bulk transport with maximum visibility. This Wire Basket Trolley features a deep, high-volume basket design constructed from stainless steel wire grid. It allows for full air circulation around contents, making it ideal for laundry, shoe covers, or packaged sterile goods. The lightweight yet durable frame ensures easy maneuverability through busy corridors.",
       "features": [
-        "Self-draining wire deck design",
-        "Compatible with standard wire shelving components",
-        "Corner bumpers to protect facility walls",
-        "Wash-down ready construction",
-        "Lightweight for reduced operator strain",
-        "Autoclavable configurations available"
+        "Deep basket design for maximum volume",
+        "Grid construction prevents dust accumulation",
+        "Stainless steel tubular push handle",
+        "Full-perimeter bumper protection",
+        "Smooth-rolling non-marking casters",
+        "Electropolished finish"
       ],
       "specs": {
         "weight": {
-          "value": 6,
+          "value": 16,
           "customizable": true
         },
         "material": {
@@ -697,24 +636,87 @@
         },
         "dimension": {
           "external": {
-            "width": 46,
-            "height": 20,
-            "length": 61
+            "width": 60,
+            "height": 90,
+            "length": 100
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
             "Wire Forming",
-            "Spot Welding"
+            "Resistance Welding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Autoclave Loading",
-        "Wash Bays",
-        "Sterile Supply"
+        "Laundry Transport",
+        "Bulk Supply Distribution",
+        "Waste Handling"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "2-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
+      }
+    },
+    {
+      "name": "3-Tier Perforated Trolley",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Utility",
+        "Perforated"
+      ],
+      "price": 0,
+      "images": [
+        "grid_dolly-01.jpg",
+        "grid_dolly-02.jpg"
+      ],
+      "description": "Three-tier stainless steel trolley with perforated shelves. Combines flat-surface utility with vertical airflow permeability.",
+      "introduction": "The perfect balance of stability and airflow. This 3-Tier Trolley features perforated flat shelves which offer the stable support of a solid surface for transport of small beakers or vials, while the perforation pattern allows for 30% vertical airflow pass-through. Ideal for laminar flow zones where air disruption must be minimized.",
+      "features": [
+        "Perforated shelves for laminar flow compatibility",
+        "Flat surface stability for small items",
+        "Ergonomic handle height",
+        "Raised lips on shelves to prevent rolling",
+        "Fully welded construction",
+        "Easy-clean electropolished finish"
+      ],
+      "specs": {
+        "weight": {
+          "value": 20,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 50,
+            "height": 95,
+            "length": 80
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Laser Perforation",
+            "TIG Welding"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Labware Transport",
+        "Cleanroom Utility",
+        "Sample Handling"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -1261,12 +1263,12 @@
       }
     },
     {
-      "name": "Trolley",
+      "name": "Tray Trolley",
       "category": "Transport",
       "tags": [
         "Transport",
         "Utility",
-        "Light Duty"
+        "High Capacity"
       ],
       "price": 0,
       "images": [
@@ -1274,19 +1276,19 @@
         "trolley-02.jpg",
         "trolley-03.jpg"
       ],
-      "description": "Compact 2-tier stainless steel shuttle trolley. Agile design for quick transport of small batches or tools through narrow aisles.",
-      "introduction": "Agility for fast-paced environments. The Shuttle Trolley is designed for 'grab-and-go' tasks. Its compact footprint allows it to navigate crowded labs and narrow corridors with ease. Perfect for distributing mail, small parts, or documentation, it features guard rails on shelves to keep items secure during rapid movement.",
+      "description": "Multi-tier stainless steel tray trolley. High-density transport solution for baking trays, drying filters, or component trays.",
+      "introduction": "Maximize transport density in minimal footprint. This Multi-Tier Tray Trolley (Ladder Cart) is capable of holding up to 10 standard size trays or pans. Ideal for drying operations, batch transport, or cafeteria service, it utilizes vertical space efficiently. The open design facilitates airflow for cooling or drying applications while keeping trays securely in place.",
       "features": [
-        "Lightweight, agile tube frame",
-        "Integrated push handle",
-        "Guard rails on all shelves",
-        "Quiet, non-marking casters",
-        "Small footprint for maneuverability",
-        "Easy-clean surfaces"
+        "High-density capacity (8-10 tray slides)",
+        "Secure tray retention stops",
+        "Hygienic open-frame design",
+        "Heavy-duty swivel casters",
+        "Reinforced tubular frame",
+        "Compatible with standard bakery/drying trays"
       ],
       "specs": {
         "weight": {
-          "value": 11,
+          "value": 28,
           "customizable": true
         },
         "material": {
@@ -1295,24 +1297,24 @@
         },
         "dimension": {
           "external": {
-            "width": 46,
-            "height": 95,
-            "length": 75
+            "width": 55,
+            "height": 170,
+            "length": 70
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
             "Tube Bending",
-            "Polishing"
+            "TIG Welding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Document Distribution",
-        "Small Parts Delivery",
-        "Tool Staging"
+        "Filter Drying",
+        "Component Batching",
+        "Tray Transport"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -1321,7 +1323,7 @@
       "policies": {
         "warranty": "2-Year Warranty",
         "return": "Standard",
-        "shipping": "Standard"
+        "shipping": "Freight"
       }
     },
     {
@@ -1388,7 +1390,7 @@
       }
     },
     {
-      "name": "Workbench",
+      "name": "Heavy Duty Workbench",
       "category": "Workstations",
       "tags": [
         "Furniture",
@@ -1406,19 +1408,19 @@
         "workbench-07.jpg",
         "workbench-08.jpg"
       ],
-      "description": "Modular heavy-duty workbench integrated with storage drawers and overhead frame. The complete workstation for assembly and testing.",
-      "introduction": "A comprehensive workspace ecosystem. This Modular Heavy-Duty Workbench is designed to support the entire workflow. It features integrated pedestal drawers for tool storage, an overhead frame for lighting and bin rail attachment, and a reinforced top for heavy equipment. The modular design allows for future reconfiguration as your process evolves.",
+      "description": "Robust 2-tier stainless steel industrial workbench. Simple, super-heavy-duty construction for handling massive loads in clean zones.",
+      "introduction": "Uncompromising strength for heavy tasks. This Heavy-Duty 2-Tier Workbench eliminates the bells and whistles to focus on pure structural integrity. Built with oversized tubular framing and a thick-gauge top, it is designed to support heavy equipment or large valve assemblies. The lower shelf offers additional reinforced storage space.",
       "features": [
-        "High-capacity pedestal drawer units",
-        "Overhead accessory frame (Light/Bin Rail)",
-        "Reinforced top supports 500kg+",
-        "ESD grounding points included",
+        "Extra-heavy load capacity (600kg+)",
+        "Simple, cleanable 2-tier design",
+        "Reinforced top and bottom shelves",
+        "Oversized tubular legs for stability",
         "Adjustable leveling feet",
-        "Modular expansion capability"
+        "All-welded construction option available"
       ],
       "specs": {
         "weight": {
-          "value": 95,
+          "value": 85,
           "customizable": true
         },
         "material": {
@@ -1427,24 +1429,24 @@
         },
         "dimension": {
           "external": {
-            "width": 80,
-            "height": 180,
-            "length": 180
+            "width": 75,
+            "height": 90,
+            "length": 150
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Cabinetry Fabrication",
-            "Structural Assembly"
+            "Structural Assembly",
+            "TIG Welding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Device Assembly",
+        "Heavy Device Assembly",
         "Repair Station",
-        "Testing Lab"
+        "Valve Maintenance"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
