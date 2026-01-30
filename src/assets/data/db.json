@@ -1,99 +1,159 @@
 {
   "products": [
     {
-      "name":"Bench",
-      "category":"",
-      "tags":[],
+      "name": "Bench",
+      "category": "Cleanroom Furniture",
+      "tags": [
+        "Furniture",
+        "Gowning",
+        "Seating",
+        "Stainless Steel"
+      ],
       "price": 0,
-      "images": ["bench-01.jpg", "bench-02.jpg", "bench-03.jpg"],
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat orci id nibh suscipit molestie. Quisque imperdiet tortor vel arcu condimentum convallis. Pellentesque semper turpis quis velit pulvinar pharetra. Sed libero quam, auctor eu viverra imperdiet, porttitor nec nunc. Curabitur commodo ante quis ex tincidunt, in pulvinar erat luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas vestibulum tellus enim, sed porttitor dolor finibus non. Aenean sodales lobortis ipsum gravida venenatis. Donec at scelerisque ligula.",
-      "introduction": "Suspendisse potenti. Donec nec leo ut tortor malesuada placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus quam enim, molestie a tempor sed, facilisis ac est. Integer sit amet maximus mi, in vehicula sem. Vestibulum ut tellus eleifend augue consectetur rutrum ut in risus. In aliquet quam nunc, non imperdiet orci finibus id. Fusce placerat dui enim, eu rutrum nisl ornare sed. Nullam suscipit est vel neque porttitor, id sagittis neque commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer tristique tellus eget ligula aliquam vestibulum. In dignissim facilisis nisi, at maximus nulla dictum nec. Etiam vitae semper leo, et sollicitudin eros. Aenean eu pharetra purus. Vivamus posuere, ex venenatis imperdiet placerat, nisl nibh maximus diam, eu accumsan lacus felis a mauris. Quisque hendrerit, arcu posuere ornare scelerisque, lacus sem aliquet ex, hendrerit maximus magna sem a dolor.",
+      "images": [
+        "bench-01.jpg",
+        "bench-02.jpg",
+        "bench-03.jpg"
+      ],
+      "description": "ISO 5 compliant electropolished 304 stainless steel gowning bench with perforated top. Designed for maximum airflow and minimal particle retention in critical gowning areas.",
+      "introduction": "Engineered for sterile environments, this Heavy-Duty Cleanroom Gowning Bench combines ergonomic design with rigorous contamination control. Constructed from heavy-gauge Type 304 stainless steel with an electropolished finish, it resists corrosion and harsh sterilants. The perforated top surface allows for 35% laminar airflow pass-through, eliminating turbulence and dead zones where particles accumulate. Essential for personnel gowning protocols in pharmaceutical, biotech, and semiconductor facilities.",
       "features": [
-        "Feature 1",
-        "Feature 2",
-        "Feature 3"
+        "Electropolished Type 304 stainless steel construction (14-gauge)",
+        "Perforated top for laminar flow compatibility (35% open area)",
+        "Rounded 'bullnose' edges to prevent glove snagging",
+        "Continuous seam welds, ground smooth for easy sanitization",
+        "Adjustable non-marking leveling feet for stability",
+        "ISO Class 5 (Class 100) Cleanroom compatible"
       ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 25,
           "customizable": true
         },
         "material": {
-          "value": "304 Stainless Steel",
+          "value": "304 Stainless Steel (Electropolished)",
           "customizable": true
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 40,
+            "height": 45,
+            "length": 120
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
+          "value": [
+            "Electropolishing",
+            "Continuous Seam Welding"
+          ],
           "customizable": false
         }
       },
       "application_scenarios": [
-        "Integer tincidunt, quam eget placerat lacinia, nisi risus porta ex, eget euismod neque orci nec metus. Nam vehicula dignissim semper. Suspendisse aliquam ultricies pretium. Nunc consectetur at neque vitae ullamcorper. Mauris id ex sem. Sed eleifend, nisl ut sollicitudin vestibulum, quam purus facilisis magna, id gravida neque dolor non lacus. Duis pretium sem quam. Praesent lobortis auctor sem, eu porta metus consequat at. Vivamus suscipit imperdiet eleifend. Ut tincidunt posuere accumsan. Nunc quis ex a mi dictum tempus. Praesent laoreet mattis risus, vitae varius mauris euismod ac. Nam volutpat mi id dui finibus fringilla."
+        "Gowning Rooms",
+        "Change Areas",
+        "Sterile Corridors"
       ],
-      "customization": "Aliquam sit amet sagittis orci. Ut a pretium mauris, a molestie orci. In vel massa sit amet augue tristique lobortis et ut urna. Vivamus rutrum dolor ut odio posuere, id mollis nibh varius. Ut in nisi et tellus placerat bibendum. Praesent et dui auctor, semper elit vel, dignissim metus. Fusce porttitor semper rutrum. Mauris laoreet urna nec sapien aliquam, sed volutpat augue fringilla. Nulla maximus odio et massa blandit, eu malesuada mauris fermentum. Mauris ut est elementum, pharetra dui a, suscipit massa. Aenean suscipit viverra erat eu luctus. Nunc quis odio vitae odio consectetur facilisis. Donec malesuada leo quis libero faucibus vehicula. Nullam malesuada ullamcorper fermentum. Nunc ex odio, pellentesque vitae porta eget, laoreet eu lorem. Aliquam laoreet eget orci sed ultricies.",
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "1 year warranty",
-        "return": "TBD",
-        "shipping": "TBD"
+        "warranty": "Lifetime Structural Warranty",
+        "return": "30-Day Return Policy",
+        "shipping": "Ships assembled via Freight"
       }
     },
     {
-      "name":"Cabinet",
-      "category":"",
-      "tags":[],
+      "name": "Cabinet",
+      "category": "Storage",
+      "tags": [
+        "Storage",
+        "Organization",
+        "Stainless Steel"
+      ],
       "price": 0,
-      "images": ["cabinet-01.jpg", "cabinet-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "cabinet-01.jpg",
+        "cabinet-02.jpg"
+      ],
+      "description": "Vertical cleanroom storage cabinet with sloped top and tempered glass doors. Provides contamination-free storage for garments and consumables.",
+      "introduction": "Maximize vertical storage efficiency while maintaining ISO compliance. This 304 stainless steel High-Density Storage Cabinet features a sloped top cap to prevent particle settling and simplify cleaning of high surfaces. Dual tempered glass doors provide full visibility of contents, reducing door openings and air exchange. The electropolished exterior ensures resilience against frequent exposure to sporicidal disinfectants.",
+      "features": [
+        "Sloped top design eliminates dust accumulation",
+        "Tempered safety glass viewing windows",
+        "Adjustable stainless steel shelves (50lb capacity each)",
+        "Magnetic gasket door seals for air-tight closure",
+        "Ventilation ports with optional filter filters",
+        "Lockable T-handle latches for security"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
+          "value": 90,
           "customizable": true
         },
-        "volume": {
-          "value": 0,
+        "material": {
+          "value": "304 Stainless Steel (Brushed #4 or Electropolished)",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 91,
+            "height": 198,
+            "length": 46
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "TIG Welding",
+            "Sloped Top Fabrication"
+          ],
+          "customizable": false
+        }
+      },
+      "application_scenarios": [
+        "Garment Storage",
+        "Consumable Stocking",
+        "Cleanroom Tool Storage"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "5-Year Manufacturer Warranty",
+        "return": "Restocking fee applies",
+        "shipping": "Crated Freight"
+      }
+    },
+    {
+      "name": "Cart",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Utility",
+        "Mobile"
+      ],
+      "price": 0,
+      "images": [
+        "cart-01.jpg",
+        "cart-02.jpg"
+      ],
+      "description": "Three-tier utility cart with raised marine edges. Smooth-rolling swivel casters ensure vibration-free transport of sensitive materials.",
+      "introduction": "The definitive solution for cleanroom material transfer. This Multi-Tier Utility Cart is protected by raised marine edges on all shelves to contain spills and prevent items from rolling off. Mounted on premium pharmaceutical-grade non-marking casters, it glides silently across facility floors, minimizing vibration and particle generation. Fully autoclavable design options available for sterile cores.",
+      "features": [
+        "Raised marine edges (10mm) for spill containment",
+        "Vibration-dampening chassis construction",
+        "Pharmaceutical-grade non-marking swivel casters (2 with brakes)",
+        "Protective donut bumpers on corners",
+        "Electropolished for easy wipe-down",
+        "High load capacity (400 lbs total)"
+      ],
+      "specs": {
+        "weight": {
+          "value": 18,
           "customizable": true
         },
         "material": {
@@ -102,70 +162,197 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 61,
+            "height": 90,
+            "length": 91
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Seamless Tube Bending",
+            "Polishing"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Sample Transport",
+        "Chemical Transfer",
+        "General Utility"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "2-Year Warranty",
+        "return": "Standard",
+        "shipping": "Flat Pack or Assembled"
       }
     },
     {
-      "name":"Cart",
-      "category":"",
-      "tags":[],
+      "name": "Cleaner Cart",
+      "category": "Maintenance",
+      "tags": [
+        "Cleaning",
+        "Janitorial",
+        "Mobile"
+      ],
       "price": 0,
-      "images": ["cart-01.jpg", "cart-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "cleaner_cart-01.jpg",
+        "cleaner_cart-02.jpg"
+      ],
+      "description": "Modular stainless steel janitorial cart designed for cleanroom mopping systems. Organizes buckets, wringers, and waste without harboring contaminants.",
+      "introduction": "Elevate your facility's sanitation protocol with our Modular Cleaner Cart. Specifically built to accommodate cleanroom-specific bucket systems and wringers, it keeps cleaning tools organized and off the floor. The open-wire or tubular frame design minimizes surface area for particle accumulation, while the electropolished finish withstands daily exposure to aggressive phenolic and quaternary disinfectants.",
+      "features": [
+        "Universal compatibility with double-bucket systems",
+        "Integrated holders for mop handles and wringers",
+        "Autoclavable stainless steel construction",
+        "Waste bag retention ring with lid",
+        "Chemical-resistant polyurethane casters",
+        "Compact footprint for narrow aisles"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
+          "value": 15,
           "customizable": true
         },
-        "volume": {
-          "value": 0,
+        "material": {
+          "value": "316L Stainless Steel",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 55,
+            "height": 100,
+            "length": 110
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Electropolished",
+            "Passivated"
+          ],
+          "customizable": false
+        }
+      },
+      "application_scenarios": [
+        "Facility Cleaning",
+        "Spill Response",
+        "Daily Sanitization"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "3-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard Ground"
+      }
+    },
+    {
+      "name": "Convey Window",
+      "category": "Transfer",
+      "tags": [
+        "Pass Box",
+        "Transfer",
+        "Built-in",
+        "Contamination Control"
+      ],
+      "price": 0,
+      "images": [
+        "convey_window-01.jpg",
+        "convey_window-02.jpg",
+        "convey_window-03.jpg",
+        "convey_window-04.jpg"
+      ],
+      "description": "Static pass-through with mechanical interlock. Double-wall stainless steel construction prevents cross-contamination between classified zones.",
+      "introduction": "Control contamination at the source. Our Convey Window (Static Pass Box) serves as a barrier between zones of different cleanliness levels. The robust Mechanical Interlock System ensures that one door remains locked while the other is open, preventing direct air exchange. The interior chamber features coved corners (rounded radius) to eliminate particle traps and allow for thorough disinfection.",
+      "features": [
+        "Reliable Mechanical Interlock System (Maintenance-free)",
+        "Type 304 Stainless Steel double-wall construction",
+        "Seamless, coved internal chamber for easy cleaning",
+        "Tempered safety glass viewing windows",
+        "Stainless steel mounting trim included",
+        "Optional: UV-C Sterilization Module"
+      ],
+      "specs": {
+        "weight": {
+          "value": 35,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
+        "dimension": {
+          "internal": {
+            "width": 60,
+            "height": 60,
+            "length": 60
+          },
+          "external": {
+            "width": 76,
+            "height": 76,
+            "length": 68
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Double-wall Fabrication",
+            "Coved Corner Forming"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Material Transfer",
+        "Sample Pass-through",
+        "Pharmacy Compounding"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "2-Year Mechanical Warranty",
+        "return": "Defect Only",
+        "shipping": "Crated Freight"
+      }
+    },
+    {
+      "name": "Display Frame",
+      "category": "Accessories",
+      "tags": [
+        "Signage",
+        "Document Holder",
+        "Wall Mount"
+      ],
+      "price": 0,
+      "images": [
+        "display_frame-01.jpg",
+        "display_frame-02.jpg",
+        "display_frame-03.jpg",
+        "display_frame-04.jpg"
+      ],
+      "description": "Flush-mount stainless steel document holder with beveled edges. Cleanroom-safe solution for displaying SOPs and schedules.",
+      "introduction": "Maintain document visibility without compromising cleanliness. Traditional frames trap dust and shed particles. Our Cleanroom Display Frame features a sealed, flush-mount design with beveled edges to eliminate horizontal dust ledges. It securely encases SOPs, schedules, or digital displays behind a chemically resistant polycarbonate or tempered glass face.",
+      "features": [
+        "Beveled, easy-clean edges (45-degree slope)",
+        "Flush wall mounting capability",
+        "Sealed backing preventing particle migration",
+        "Chemical resistant polycarbonate/glass face",
+        "Quick-change design for documents",
+        "Compatible with wash-down protocols"
+      ],
+      "specs": {
+        "weight": {
+          "value": 3,
           "customizable": true
         },
         "material": {
@@ -174,70 +361,62 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 30,
+            "height": 45,
+            "length": 2
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Precision Laser Cutting",
+            "Fine Brushed Finish"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "SOP Display",
+        "Room Status Board",
+        "Digital Screen Enclosure"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "1-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard Ground"
       }
     },
     {
-      "name":"Cleaner Cart",
-      "category":"",
-      "tags":[],
+      "name": "Dolly",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Mobile",
+        "Material Handling"
+      ],
       "price": 0,
-      "images": ["cleaner_cart-01.jpg", "cleaner_cart-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "dolly-01.jpg",
+        "dolly-02.jpg",
+        "dolly-03.jpg"
+      ],
+      "description": "Low-profile heavy-duty stainless dolly for euro-crates and totes. Open-frame design allows vertical airflow and easy wash-down.",
+      "introduction": "Optimized for heavy material handling in laminar flow areas. This Stainless Steel Dolly features an open-frame design that permits vertical airflow to pass through, maintaining cleanroom air patterns. Designed to fit standard Euro-crates and totes, it facilitates the easy transport of bulk materials or liquids. Its low center of gravity and corner bumpers ensure safety and stability.",
+      "features": [
+        "Open-frame construction for laminar airflow",
+        "Sized for standard Euro-crates/totes",
+        "Heavy-duty load capacity (300kg+)",
+        "Non-marking rubber corner bumpers",
+        "High-temperature autoclavable wheels available",
+        "Fully welded 304 stainless steel frame"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 7,
           "customizable": true
         },
         "material": {
@@ -246,20 +425,81 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 42,
+            "height": 15,
+            "length": 62
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "TIG Welding",
+            "Passivation"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Bulk Material Transport",
+        "Tote Moving",
+        "Wash-down Areas"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "5-Year Structural Warranty",
+        "return": "Standard",
+        "shipping": "Standard Ground"
+      }
+    },
+    {
+      "name": "Electric Workbench",
+      "category": "Workstations",
+      "tags": [
+        "Furniture",
+        "Ergonomic",
+        "Powered",
+        "Adjustable"
+      ],
+      "price": 0,
+      "images": [
+        "electric_workbench-01.jpg",
+        "electric_workbench-02.jpg",
+        "electric_workbench-03.jpg",
+        "electric_workbench-04.jpg"
+      ],
+      "description": "Ergonomic height-adjustable workbench with ESD top. Electric actuators assist sit/stand operations for improved operator productivity.",
+      "introduction": "Combine operator wellness with process precision. The Electric Height-Adjustable Workbench allows operators to seamlessly transition between sitting and standing, reducing fatigue during long shifts. Powered by smooth, quiet electric lifters sealed within the legs to prevent particle generation. The work surface is available in ESD laminate or perforated stainless steel for critical electronics assembly.",
+      "features": [
+        "Electric height adjustment (750mm - 1100mm)",
+        "Programmable memory height presets",
+        "ESD-safe laminate top (Static Dissipative)",
+        "Integrated electrical raceway with cleanroom-safe outlets",
+        "Sealed lifting columns for ISO 5 compliance",
+        "Heavy-duty load capacity (500 lbs)"
+      ],
+      "specs": {
+        "weight": {
+          "value": 75,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel Frame / ESD Laminate Top",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 76,
+            "height": 110,
+            "length": 152
           },
           "customizable": true
         },
         "electrical": {
           "voltage": {
-            "min": 220,
+            "min": 110,
             "max": 240
           },
           "current": {
@@ -267,49 +507,63 @@
             "max": 15
           },
           "power": {
-            "min": 3.0,
-            "max": 3.6
+            "min": 100,
+            "max": 3000
           },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
+          "value": [
+            "Linear Actuation",
+            "ESD Grounding"
+          ],
           "customizable": false
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Electronics Assembly",
+        "Medical Device Packaging",
+        "Inspection Stations"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Frame, 2-Year Motor",
+        "return": "Restocking fee",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Convey Window",
-      "category":"",
-      "tags":[],
+      "name": "Fridge Cart",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Specialized",
+        "Equipment Handling"
+      ],
       "price": 0,
-      "images": ["convey_window-01.jpg", "convey_window-02.jpg", "convey_window-03.jpg", "convey_window-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "fridge_cart-01.jpg",
+        "fridge_cart-02.jpg",
+        "fridge_cart-03.jpg",
+        "fridge_cart-04.jpg",
+        "fridge_cart-05.jpg"
+      ],
+      "description": "Heavy-duty chassis cart designed to mobilize under-counter lab refrigerators. Features side ventilation slots for compressor airflow.",
+      "introduction": "Transform stationary equipment into mobile assets. Specifically engineered to support heavy laboratory refrigerators, freezers, and incubators, this Fridge Cart enables easy equipment relocation for cleaning or reconfiguration. The reinforced chassis creates a rigid platform, while precision laser-cut ventilation patterns on the side panels ensure the appliance's compressor receives adequate airflow to prevent overheating.",
+      "features": [
+        "Reinforced 12-gauge chassis for heavy loads (up to 500 lbs)",
+        "Laser-cut side ventilation for compressor cooling",
+        "Safety retention lip (1\") prevents tipping",
+        "Swivel-lock heavy-duty casters for precise positioning",
+        "Low-profile design minimizes working height increase",
+        "Custom sizing to fit specific appliance models"
+      ],
       "specs": {
         "weight": {
           "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
           "customizable": true
         },
         "material": {
@@ -318,70 +572,187 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 62,
+            "height": 15,
+            "length": 62
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Laser Cutting",
+            "Bending"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Mobile Lab Equipment",
+        "Flexible Lab Layouts",
+        "Equipment Maintenance"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "3-Year Structural Warranty",
+        "return": "Standard",
+        "shipping": "Standard Ground"
       }
     },
     {
-      "name":"Display Frame",
-      "category":"",
-      "tags":[],
+      "name": "Grid Cart",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Laminar Flow",
+        "Wire"
+      ],
       "price": 0,
-      "images": ["display_frame-01.jpg", "display_frame-02.jpg", "display_frame-03.jpg", "display_frame-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "grid_cart-01.jpg"
+      ],
+      "description": "Chrome or stainless steel wire cart for ISO 5 environments. Wire shelves offer 85% laminar flow penetration.",
+      "introduction": "Preserve the integrity of your unidirectional airflow. The Grid Cart's open-wire shelf design allows laminar air to flow vertically through the unit with minimal obstruction (less than 15% blockage), preventing the formation of 'dead zones' where particles collect. Ideal for transporting sensitive components through ISO 5 work zones.",
+      "features": [
+        "Open-wire construction for 85% laminar flow permeability",
+        "Adjustable shelf heights (1-inch increments)",
+        "High strength-to-weight ratio",
+        "ESD conductive split-sleeve options available",
+        "Easy disassembly for deep cleaning",
+        "Available in 304 Stainless Steel or Chrome-plated"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
+          "value": 14,
           "customizable": true
         },
-        "volume": {
-          "value": 0,
+        "material": {
+          "value": "304 Stainless Steel Wire or Chrome",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 46,
+            "height": 100,
+            "length": 91
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Resistance Welding",
+            "Electro-plating/polishing"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "ISO 5 Work Zones",
+        "Drying Racks",
+        "Kitting Carts"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "2-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard"
+      }
+    },
+    {
+      "name": "Grid Dolly",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Wire",
+        "Utility"
+      ],
+      "price": 0,
+      "images": [
+        "grid_dolly-01.jpg",
+        "grid_dolly-02.jpg"
+      ],
+      "description": "Wire-deck dolly for transport in wash-down areas. Prevents water pooling and facilitates rapid drying of transported items.",
+      "introduction": "Superior drainage for wet environments. Unlike solid dollies that trap water, our Grid Dolly allows liquids to drain instantly, making it the perfect choice for autoclave loading, wash-down bays, and drying areas. The robust wire grid supports heavy totes while ensuring maximum air circulation for rapid drying.",
+      "features": [
+        "Self-draining wire deck design",
+        "Compatible with standard wire shelving components",
+        "Corner bumpers to protect facility walls",
+        "Wash-down ready construction",
+        "Lightweight for reduced operator strain",
+        "Autoclavable configurations available"
+      ],
+      "specs": {
+        "weight": {
+          "value": 6,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel Wire",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 46,
+            "height": 20,
+            "length": 61
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Wire Forming",
+            "Spot Welding"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Autoclave Loading",
+        "Wash Bays",
+        "Sterile Supply"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "2-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard"
+      }
+    },
+    {
+      "name": "Locker",
+      "category": "Storage",
+      "tags": [
+        "Furniture",
+        "Personnel",
+        "Gowning"
+      ],
+      "price": 0,
+      "images": [
+        "locker-01.jpg",
+        "locker-02.jpg",
+        "locker-03.jpg"
+      ],
+      "description": "Sloped-top stainless steel garment locker with separated compartments. vented for airflow and odor control in gowning rooms.",
+      "introduction": "Secure, organized, and compliant personnel storage. These Stainless Steel Lockers feature a dramatically sloped top to ensure dust falls to the floor rather than accumulating overhead. The interior is divided to separate street clothes from cleanroom garments, preventing cross-contamination. Louvered vents ensure proper air circulation to keep garments fresh.",
+      "features": [
+        "Steep sloped top (1:3 pitch) prevents dust build-up",
+        "Dedicated compartments for shoes and garments",
+        "Louvered vents for air circulation",
+        "Recessed handles with padlock hasps or digital locks",
+        "Number plates for identification",
+        "Modular banks (1 to 5 columns)"
+      ],
+      "specs": {
+        "weight": {
+          "value": 60,
           "customizable": true
         },
         "material": {
@@ -390,70 +761,206 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 38,
+            "height": 198,
+            "length": 46
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Sheet Metal Folding",
+            "Riveting/Welding"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Gowning Rooms",
+        "Change Rooms",
+        "Staff Entrances"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Warranty",
+        "return": "Defect Only",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Dolly",
-      "category":"",
-      "tags":[],
+      "name": "Mixer",
+      "category": "Process Equipment",
+      "tags": [
+        "Processing",
+        "Mixing",
+        "Pharma"
+      ],
       "price": 0,
-      "images": ["dolly-01.jpg", "dolly-02.jpg", "dolly-03.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "mixer-01.jpg",
+        "mixer-02.jpg",
+        "mixer-03.jpg",
+        "mixer-04.jpg"
+      ],
+      "description": "Sanitary 316L stainless steel mixing vessel with CIP capability. High-shear impeller for homogeneous mixing of pharma formulations.",
+      "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4μm) to prevent residue adherence. Equipped with a variable-speed high-shear impeller, it ensures rapid and homogenous blending of liquids and powders. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
+      "features": [
+        "316L Stainless Steel contact surfaces (Ra < 0.4µm)",
+        "Sanitary Tri-Clamp connections",
+        "Integrated CIP spray ball",
+        "Variable frequency drive (VFD) for speed control",
+        "Jacketed vessel option for heating/cooling",
+        "Zero-dead-leg drain valve"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
+          "value": 150,
           "customizable": true
         },
-        "volume": {
-          "value": 0,
+        "material": {
+          "value": "316L Stainless Steel (Contact), 304 (Cladding)",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 110,
+            "height": 170,
+            "length": 110
+          },
+          "customizable": true
+        },
+        "electrical": {
+          "voltage": {
+            "min": 208,
+            "max": 480
+          },
+          "current": {
+            "min": 15,
+            "max": 30
+          },
+          "power": {
+            "min": 1500,
+            "max": 7500
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Orbital Welding",
+            "Mechanical Polishing"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Media Preparation",
+        "Buffer Formulation",
+        "Chemical Blending"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "1-Year Warranty",
+        "return": "No Returns",
+        "shipping": "Crated Freight"
+      }
+    },
+    {
+      "name": "Nitrogen Cabinet",
+      "category": "Storage",
+      "tags": [
+        "Storage",
+        "Desiccator",
+        "Dry Storage"
+      ],
+      "price": 0,
+      "images": [
+        "nitrogen_cabinet-01.jpg",
+        "nitrogen_cabinet-02.jpg"
+      ],
+      "description": "Smart nitrogen-purge desiccator cabinet. Maintains ultra-low humidity (<5% RH) for oxidation-free storage of sensitive wafers and optics.",
+      "introduction": "Ultimate protection for moisture-sensitive components. Our Smart Nitrogen Cabinet creates a clean, dry, and inert environment to prevent oxidation and moisture defects. The automated purge system creates positive pressure with nitrogen gas, efficiently displacing moisture. Ideal for storing semiconductor wafers, ICs, and precision optics.",
+      "features": [
+        "Automated Nitrogen Purge System (setpoint control)",
+        "Digital Hygrometer/Thermometer Display",
+        "Static-Dissipative PVC or Stainless Steel construction",
+        "Plenum chamber for uniform gas distribution",
+        "Reinforced doors with airtight elastomeric seals",
+        "Flow-meter for gas consumption monitoring"
+      ],
+      "specs": {
+        "weight": {
+          "value": 85,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel / SD-PVC",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 64,
+            "height": 183,
+            "length": 55
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Gas Sealing",
+            "Digital Integration"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Wafer Storage",
+        "Optics Preservation",
+        "Electronic Component Storage"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "2-Year Electronics Warranty",
+        "return": "Condition Applied",
+        "shipping": "Freight"
+      }
+    },
+    {
+      "name": "Scaffold",
+      "category": "Maintenance",
+      "tags": [
+        "Access",
+        "Safety",
+        "Maintenance"
+      ],
+      "price": 0,
+      "images": [
+        "scaffold-01.jpg",
+        "scaffold-02.jpg",
+        "scaffold-03.jpg",
+        "scaffold-04.jpg"
+      ],
+      "description": "Collapsible all-stainless steel cleanroom scaffold. Provides safe elevated access for HEPA filter changes and facility maintenance.",
+      "introduction": "Reach new heights safely and cleanly. This specially designed Cleanroom Scaffold eliminates the particle shedding associated with aluminum ladders. Constructed entirely from electropolished stainless steel, it features non-slip punched treads and a folding design for compact storage. The safety cage and guardrails ensure OSHA compliance for overhead work.",
+      "features": [
+        "100% Stainless Steel construction (Zero particle shedding)",
+        "Collapsible design for easy storage and transport",
+        "Non-slip punched surface steps",
+        "Safety cage with toe-boards",
+        "Locking cleanroom casters",
+        "OSHA compliant design"
+      ],
+      "specs": {
+        "weight": {
+          "value": 160,
           "customizable": true
         },
         "material": {
@@ -462,70 +969,64 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 74,
+            "height": 210,
+            "length": 185
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Structural Welding",
+            "Hinge Mechanisms"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "HEPA Filter Replacement",
+        "Ceiling Maintenance",
+        "Equipment Installation"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Structural Warranty",
+        "return": "No Returns",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Electric Workbench",
-      "category":"",
-      "tags":[],
+      "name": "Sink",
+      "category": "Furniture",
+      "tags": [
+        "Washing",
+        "Plumbing",
+        "Sanitation"
+      ],
       "price": 0,
-      "images": ["electric_workbench-01.jpg", "electric_workbench-02.jpg", "electric_workbench-03.jpg", "electric_workbench-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "sink-01.jpg",
+        "sink-02.jpg",
+        "sink-03.jpg",
+        "sink-04.jpg",
+        "sink-05.jpg"
+      ],
+      "description": "Hands-free electropolished sink station. Deep basin and high backsplash design prevents splash contamination. Pedal or sensor activated.",
+      "introduction": "Touch-free hygiene for critical areas. Our Stainless Steel Sink Station is designed to minimize cross-contamination risks. The deep-drawn basin and high integral backsplash contain water within the unit. Activated by knee-pedals or infrared sensors, it allows users to wash without touching faucet handles. The electropolished finish ensures the basin remains biofilm-free.",
+      "features": [
+        "Hands-free activation (Knee-valve or IR Sensor)",
+        "Deep-drawn seamless basin (no sharp corners)",
+        "High integral backsplash",
+        "Electropolished finish for easy sanitization",
+        "Soap dispenser integration",
+        "Optional: Under-sink storage cabinet"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 45,
           "customizable": true
         },
         "material": {
@@ -534,70 +1035,130 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 64,
+            "height": 115,
+            "length": 122
           },
           "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 55,
+            "height": 35,
+            "length": 55
           },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Deep Drawing",
+            "Plumbing Integration"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Gowning Entry",
+        "Lab cleanup",
+        "Production Support"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "3-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Fridge Cart",
-      "category":"",
-      "tags":[],
+      "name": "Small Pillar",
+      "category": "Accessories",
+      "tags": [
+        "Protection",
+        "Structural",
+        "Safety"
+      ],
       "price": 0,
-      "images": ["fridge_cart-01.jpg", "fridge_cart-02.jpg", "fridge_cart-03.jpg", "fridge_cart-04.jpg", "fridge_cart-05.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "small_pillar-01.jpg"
+      ],
+      "description": "Stainless steel impact protection bollard. Protects facility corners, door frames, and equipment from cart collisions.",
+      "introduction": "The silent guardian of your cleanroom infrastructure. These Stainless Steel Pillars (Bollards) provide robust protection against accidental impacts from carts and trolleys, preventing costly damage to walls and door frames. Designed with a sleek, polished finish and concealed floor mounting, they offer maximum protection with minimal visual intrusion.",
+      "features": [
+        "Absorbs heavy impacts from carts",
+        "Polished finish matches cleanroom aesthetics",
+        "Concealed heavy-duty floor anchors",
+        "Rounded top cap so no particles settle",
+        "Concrete-filled option for extreme duty",
+        "Various diameters and heights available"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
+          "value": 14,
           "customizable": true
         },
-        "volume": {
-          "value": 0,
+        "material": {
+          "value": "304 Stainless Steel (Schedule 40 Pipe)",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 16,
+            "height": 100,
+            "length": 16
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Pipe Forming",
+            "Polishing"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Corner Protection",
+        "Doorway Guards",
+        "Equipment Bumpers"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "10-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard"
+      }
+    },
+    {
+      "name": "Storage Rack",
+      "category": "Storage",
+      "tags": [
+        "Storage",
+        "Shelving",
+        "Organization"
+      ],
+      "price": 0,
+      "images": [
+        "storage_rack-01.jpg",
+        "storage_rack-02.jpg",
+        "storage_rack-03.jpg",
+        "storage_rack-04.jpg"
+      ],
+      "description": "Adjustable 4-tier stainless steel shelving unit. High load capacity and corrosion resistant. Perforated or solid shelf options.",
+      "introduction": "Adaptable, heavy-duty storage for sterile supplies. Our Modular Storage Racks are the backbone of cleanroom inventory management. Constructed from corrosion-resistant 304 stainless steel, they withstand frequent cleaning with harsh chemicals. Shelves are easily adjustable to accommodate varying package sizes, and the open design ensures unrestricted airflow.",
+      "features": [
+        "Tool-free assembly and adjustment",
+        "Heavy-duty load capacity (250kg per shelf)",
+        "Adjustable shelf increments (25mm)",
+        "Choice of Solid or Perforated shelves",
+        "Adjustable leveling feet for uneven floors",
+        "Seismic restraint kits available"
+      ],
+      "specs": {
+        "weight": {
+          "value": 55,
           "customizable": true
         },
         "material": {
@@ -606,70 +1167,62 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 61,
+            "height": 183,
+            "length": 122
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Roll Forming",
+            "Spot Welding"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Warehouse",
+        "Cold Storage",
+        "In-Lab Storage"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight or Flat Pack"
       }
     },
     {
-      "name":"Grid Cart",
-      "category":"",
-      "tags":[],
+      "name": "Table",
+      "category": "Furniture",
+      "tags": [
+        "Furniture",
+        "Work Surface",
+        "Assembly"
+      ],
       "price": 0,
-      "images": ["grid_cart-01.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "table-01.jpg",
+        "table-02.jpg",
+        "table-03.jpg"
+      ],
+      "description": "Reinforced stainless steel work table with lower undershelf. Vibration-resistant top suitable for microscopy and general assembly.",
+      "introduction": "Stability creates precision. This Standard Cleanroom Table features a reinforced top with sound-deadening channels to create a rigid, vibration-free surface ideal for inspection and assembly. The lower undershelf adds structural rigidity and convenient storage. The fully welded frame eliminates crevices, ensuring full compliance with sanitation protocols.",
+      "features": [
+        "Top reinforced with U-channels for rigidity",
+        "Adjustable undershelf for flexible storage",
+        "Bullnose edge front and back",
+        "Sanitary leg gussets (fully sealed)",
+        "Adjustable stainless steel feet",
+        "High weight capacity (300kg)"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 40,
           "customizable": true
         },
         "material": {
@@ -678,70 +1231,62 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 76,
+            "height": 90,
+            "length": 152
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "TIG Welding",
+            "Polishing"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Packaging Station",
+        "Documentation Area",
+        "General Assembly"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "3-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Grid Dolly",
-      "category":"",
-      "tags":[],
+      "name": "Trolley",
+      "category": "Transport",
+      "tags": [
+        "Transport",
+        "Utility",
+        "Light Duty"
+      ],
       "price": 0,
-      "images": ["grid_dolly-01.jpg", "grid_dolly-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "trolley-01.jpg",
+        "trolley-02.jpg",
+        "trolley-03.jpg"
+      ],
+      "description": "Compact 2-tier stainless steel shuttle trolley. Agile design for quick transport of small batches or tools through narrow aisles.",
+      "introduction": "Agility for fast-paced environments. The Shuttle Trolley is designed for 'grab-and-go' tasks. Its compact footprint allows it to navigate crowded labs and narrow corridors with ease. Perfect for distributing mail, small parts, or documentation, it features guard rails on shelves to keep items secure during rapid movement.",
+      "features": [
+        "Lightweight, agile tube frame",
+        "Integrated push handle",
+        "Guard rails on all shelves",
+        "Quiet, non-marking casters",
+        "Small footprint for maneuverability",
+        "Easy-clean surfaces"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 11,
           "customizable": true
         },
         "material": {
@@ -750,70 +1295,61 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 46,
+            "height": 95,
+            "length": 75
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Tube Bending",
+            "Polishing"
+          ],
+          "customizable": true
         }
       },
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Document Distribution",
+        "Small Parts Delivery",
+        "Tool Staging"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "2-Year Warranty",
+        "return": "Standard",
+        "shipping": "Standard"
       }
     },
     {
-      "name":"Locker",
-      "category":"",
-      "tags":[],
+      "name": "Work Platform",
+      "category": "Maintenance",
+      "tags": [
+        "Access",
+        "Step",
+        "Safety"
+      ],
       "price": 0,
-      "images": ["locker-01.jpg", "locker-02.jpg", "locker-03.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "work_platform-01.jpg",
+        "work_platform-02.jpg"
+      ],
+      "description": "Rolling stainless steel ladder platform with 8 steps and safety handrails. Provides safe elevated access for maintenance and inspection.",
+      "introduction": "Secure access for hard-to-reach areas. This Mobile Cleanroom Work Platform functions as a robust rolling ladder. Featuring 8 non-slip perforated steps and full-height safety handrails, it allows personnel to safely ascend to elevated equipment or facility infrastructure. The spring-loaded casters lock into place when weight is applied, ensuring complete stability during use.",
+      "features": [
+        "8-step design with large top working platform",
+        "Spring-loaded locking casters for auto-braking",
+        "Full-height safety handrails (OSHA compliant)",
+        "Perforated treads used for liquid drainage",
+        "Electropolished for cleanroom compatibility",
+        "Heavy-duty load rating (150kg)"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 70,
           "customizable": true
         },
         "material": {
@@ -822,71 +1358,67 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
+            "width": 80,
+            "height": 250,
+            "length": 200
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Structural Welding",
+            "Tube Bending"
+          ],
+          "customizable": true
         }
       },
-      
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Overhead Maintenance",
+        "Tank Inspection",
+        "Facility Repairs"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Structural Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
       }
     },
     {
-      "name":"Mixer",
-      "category":"",
-      "tags":[],
+      "name": "Workbench",
+      "category": "Workstations",
+      "tags": [
+        "Furniture",
+        "Construction",
+        "Assembly"
+      ],
       "price": 0,
-      "images": ["mixer-01.jpg", "mixer-02.jpg", "mixer-03.jpg", "mixer-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
+      "images": [
+        "workbench-01.jpg",
+        "workbench-02.jpg",
+        "workbench-03.jpg",
+        "workbench-04.jpg",
+        "workbench-05.jpg",
+        "workbench-06.jpg",
+        "workbench-07.jpg",
+        "workbench-08.jpg"
+      ],
+      "description": "Modular heavy-duty workbench integrated with storage drawers and overhead frame. The complete workstation for assembly and testing.",
+      "introduction": "A comprehensive workspace ecosystem. This Modular Heavy-Duty Workbench is designed to support the entire workflow. It features integrated pedestal drawers for tool storage, an overhead frame for lighting and bin rail attachment, and a reinforced top for heavy equipment. The modular design allows for future reconfiguration as your process evolves.",
+      "features": [
+        "High-capacity pedestal drawer units",
+        "Overhead accessory frame (Light/Bin Rail)",
+        "Reinforced top supports 500kg+",
+        "ESD grounding points included",
+        "Adjustable leveling feet",
+        "Modular expansion capability"
+      ],
       "specs": {
         "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
+          "value": 95,
           "customizable": true
         },
         "material": {
@@ -895,802 +1427,122 @@
         },
         "dimension": {
           "external": {
-            "width": 160,
+            "width": 80,
             "height": 180,
-            "length": 80
+            "length": 180
           },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
           "customizable": true
         },
         "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
+          "value": [
+            "Cabinetry Fabrication",
+            "Structural Assembly"
+          ],
+          "customizable": true
         }
       },
-      
-      "application_scenarios": [],
-      "customization": "",
+      "application_scenarios": [
+        "Device Assembly",
+        "Repair Station",
+        "Testing Lab"
+      ],
       "engineering_drawings": {
         "ortho_projections": [],
         "models": []
       },
       "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Nitrogen Cabinet",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["nitrogen_cabinet-01.jpg", "nitrogen_cabinet-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Scaffold",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["scaffold-01.jpg", "scaffold-02.jpg", "scaffold-03.jpg", "scaffold-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Sink",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["sink-01.jpg", "sink-02.jpg", "sink-03.jpg", "sink-04.jpg", "sink-05.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Small Pillar",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["small_pillar-01.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Storage Rack",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["storage_rack-01.jpg", "storage_rack-02.jpg", "storage_rack-03.jpg", "storage_rack-04.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Table",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["table-01.jpg", "table-02.jpg", "table-03.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Trolley",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["trolley-01.jpg", "trolley-02.jpg", "trolley-03.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Work Platform",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["work_platform-01.jpg", "work_platform-02.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
-      }
-    },
-    {
-      "name":"Workbench",
-      "category":"",
-      "tags":[],
-      "price": 0,
-      "images": ["workbench-01.jpg", "workbench-02.jpg", "workbench-03.jpg", "workbench-04.jpg", "workbench-05.jpg", "workbench-06.jpg", "workbench-07.jpg", "workbench-08.jpg"],
-      "description": "",
-      "introduction": "",
-      "features": [],
-      "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
-        "volume": {
-          "value": 0,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "internal": {
-            "width": 160,
-            "height": 180,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 220,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 3.0,
-            "max": 3.6
-          },
-          "customizable": false
-        },
-        "operating_temperature": {
-          "min": -50,
-          "max": 200,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": ["seamless welding", "mirror finish"],
-          "customizable": false
-        }
-      },
-      
-      "application_scenarios": [],
-      "customization": "",
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "",
-        "return": "",
-        "shipping": ""
+        "warranty": "5-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
       }
     }
   ],
-
   "partners": [
     {
       "name": "Johnson & Johnson",
       "logo_file_name": "JnJ-logo.jpg",
-      "tags":[],
+      "tags": [],
       "website": "www.jnj.com",
       "description": ""
-
     },
     {
       "name": "Eli Lilly and Company",
       "logo_file_name": "lilly-logo.png",
-      "tags":[],
+      "tags": [],
       "website": "www.lilly.com",
       "description": ""
     },
     {
       "name": "Weyth Nutrition",
       "logo_file_name": "wn-logo.svg",
-      "tags":[],
+      "tags": [],
       "website": "www.wyethnutrition.com",
       "description": ""
     },
     {
       "name": "Merck & Co., Inc.",
       "logo_file_name": "merck-logo.svg",
-      "tags":[],
+      "tags": [],
       "website": "www.merck.com",
       "description": ""
     },
     {
       "name": "Roche Diagnostics",
       "logo_file_name": "roche-logo.png",
-      "tags":[],
+      "tags": [],
       "website": "www.roche.com",
       "description": ""
     },
     {
       "name": "Novartis",
       "logo_file_name": "novartis-logo.svg",
-      "tags":[],
+      "tags": [],
       "website": "www.novartis.com",
       "description": ""
     },
     {
       "name": "Corning",
       "logo_file_name": "corning-logo.jpg",
-      "tags":[],
+      "tags": [],
       "website": "www.corning.com",
       "description": ""
     },
     {
       "name": "Nestle",
       "logo_file_name": "nestle-logo.png",
-      "tags":[],
+      "tags": [],
       "website": "www.nestle.com",
       "description": ""
     },
     {
       "name": "AstraZeneca",
       "logo_file_name": "astrazeneca-logo.jpg",
-      "tags":[],
+      "tags": [],
       "website": "www.astrazeneca.com",
       "description": ""
     },
     {
       "name": "Servier Laboratories",
       "logo_file_name": "servier-logo.svg",
-      "tags":[],
+      "tags": [],
       "website": "www.servier.com",
       "description": ""
     },
     {
       "name": "Pfizer",
       "logo_file_name": "pfizer-logo.png",
-      "tags":[],
+      "tags": [],
       "website": "www.pfizer.com",
       "description": ""
     },
     {
       "name": "ThermoFisher",
       "logo_file_name": "thermofisher-logo.png",
-      "tags":[],
+      "tags": [],
       "website": "www.thermofisher.com",
       "description": ""
     }
   ],
-
   "jobs": [
     {
       "priority": 0,
@@ -1721,7 +1573,6 @@
       "salary": "100k"
     }
   ],
-
   "contact_info": {
     "tel_cn": "+86 18051120028",
     "tel_us": "+1 4242487465",
