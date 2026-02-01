@@ -67,25 +67,29 @@ const breadcrumbData: BreadcrumbData = {
     </p>
 
     <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Application Scenarios</h1>
-    <p>
-      {productData.application_scenarios}
-    </p>
+    <ul class="list-disc list-inside">
+      {
+        productData.application_scenarios.map((scenario) => (
+          <li>{scenario}</li>
+        ))
+      }
+    </ul>
 
     <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Technical Specifications</h1>
     <ProductTechSpecs productTechSpecs={productData.specs} client:visible />
 
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Customization</h1>
+    <!-- <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Customization</h1>
     <p>
       {productData.customization}
-    </p>
+    </p> -->
 
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Engineering Drawings</h1>
+    <!-- <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Engineering Drawings</h1>
 
     <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>2D Drawings</h2>
     // TBD
 
     <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>3D Models</h2>
-    // TBD
+    // TBD -->
 
     <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Shipping</h1>
     <p>
