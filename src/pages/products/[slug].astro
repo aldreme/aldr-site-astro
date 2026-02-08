@@ -45,65 +45,88 @@ const breadcrumbData: BreadcrumbData = {
 ---
 
 <PageLayout pageTitle={productData.name}>
-  <div class='bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]'>
-    <BreadcrumbResponsive data={breadcrumbData} client:visible />
-
-    <div class='flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start'>
-      <ProductCarousel client:visible
-        productImageUris={productImageUri}
-        className='w-full rounded-lg shadow-lg md:min-w-120 md:w-240'
-      />
-    
-      <ProductDescriptionCard client:visible
-        productName={productData.name}
-        productDescription={productData.description}
-        productFeatures={productData.features}
-      />
+  <div class="bg-zinc-50 min-h-screen pb-20">
+    {/* Breadcrumb Section */}
+    <div class="bg-white border-b border-zinc-200">
+      <div class="container mx-auto px-4 py-4">
+        <BreadcrumbResponsive data={breadcrumbData} client:visible />
+      </div>
     </div>
 
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Introduction</h1>
-    <p>
-      {productData.introduction}
-    </p>
+    <div class="container mx-auto px-4 py-8 md:py-12">
+      {/* Top Section: Carousel + Quick Info + RFQ */}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* Left Column: Images */}
+        <div class="lg:col-span-7 space-y-8">
+          <div class="bg-white rounded-xl shadow-xs border border-zinc-200 p-4">
+            <ProductCarousel client:visible
+              productImageUris={productImageUri}
+              className='w-full aspect-4/3 object-contain rounded-lg'
+            />
+          </div>
 
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Application Scenarios</h1>
-    <ul class="list-disc list-inside">
-      {
-        productData.application_scenarios.map((scenario) => (
-          <li>{scenario}</li>
-        ))
-      }
-    </ul>
+          {/* Product Intro - moved here for better flow on mobile/desktop */}
+          <div class="prose prose-zinc max-w-none">
+            <h2 class="text-2xl font-bold text-zinc-900 mb-4">Product Overview</h2>
+            <p class="text-zinc-600 leading-relaxed">
+              {productData.introduction}
+            </p>
+          </div>
+          
+          {/* Applications */}
+          <div>
+            <h3 class="text-xl font-bold text-zinc-900 mb-4">Application Scenarios</h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {
+                productData.application_scenarios.map((scenario) => (
+                  <li class="flex items-start text-zinc-600 bg-white p-3 rounded-lg border border-zinc-100 shadow-xs">
+                    <span class="mr-2 text-blue-600">•</span>
+                    {scenario}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
 
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Technical Specifications</h1>
-    <ProductTechSpecs productTechSpecs={productData.specs} client:visible />
+        {/* Right Column: Key Features & RFQ */}
+        <div class="lg:col-span-5">
+          <div class="sticky top-24">
+            <ProductDescriptionCard client:visible
+              productName={productData.name}
+              image={productImageUri[0]}
+              productDescription={productData.description}
+              productFeatures={productData.features}
+              className="bg-white rounded-xl shadow-sm border border-zinc-200 p-6"
+            />
+          </div>
+        </div>
+      </div>
 
-    <!-- <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Customization</h1>
-    <p>
-      {productData.customization}
-    </p> -->
+      {/* Tech Specs Section */}
+      <div class="mt-16">
+        <div class="flex items-center justify-between mb-8 border-b border-zinc-200 pb-4">
+          <h2 class="text-2xl font-bold text-zinc-900">Technical Specifications</h2>
+          <span class="text-sm text-zinc-500 font-mono">Ref: {productData.name.toUpperCase().replace(/\s+/g, '-')}</span>
+        </div>
+        <ProductTechSpecs productTechSpecs={productData.specs} client:visible />
+      </div>
 
-    <!-- <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Engineering Drawings</h1>
-
-    <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>2D Drawings</h2>
-    // TBD
-
-    <h2 class='text-2xl md:text-3xl font-semibold mt-10 mb-5'>3D Models</h2>
-    // TBD -->
-
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Shipping</h1>
-    <p>
-      {productData.policies.shipping}
-    </p>
-
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Warranty</h1>
-    <p>
-      {productData.policies.warranty}
-    </p>
-
-    <h1 class='text-3xl md:text-5xl font-semibold mt-10 mb-5'>Return Policy</h1>
-    <p>
-      {productData.policies.return}
-    </p>
+      {/* Policies Section */}
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-zinc-600 border-t border-zinc-200 pt-12">
+        <div>
+          <h3 class="font-bold text-zinc-900 mb-2">Shipping Information</h3>
+          <p>{productData.policies.shipping}</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-zinc-900 mb-2">Warranty Support</h3>
+          <p>{productData.policies.warranty}</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-zinc-900 mb-2">Return Policy</h3>
+          <p>{productData.policies.return}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </PageLayout>

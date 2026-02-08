@@ -9,7 +9,7 @@ import ProductItemCard from './product-item-card.astro';
 import type { ProductData } from './types';
 
 ---
-<div class='flex flex-row flex-wrap justify-center items-center mt-[10vmin]'>
+<div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
   {
     db.products.map((item, index) => (
       <ProductItemCard index={index} productData={item as ProductData} />

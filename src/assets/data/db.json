@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "Bench",
+      "name": "Gowning bench",
       "category": "Cleanroom Furniture",
       "tags": [
         "Furniture",
@@ -15,15 +15,12 @@
         "bench-02.jpg",
         "bench-03.jpg"
       ],
-      "description": "ISO 5 compliant electropolished 304 stainless steel gowning bench with perforated top. Designed for maximum airflow and minimal particle retention in critical gowning areas.",
-      "introduction": "Engineered for sterile environments, this Heavy-Duty Cleanroom Gowning Bench combines ergonomic design with rigorous contamination control. Constructed from heavy-gauge Type 304 stainless steel with an electropolished finish, it resists corrosion and harsh sterilants. The perforated top surface allows for 35% laminar airflow pass-through, eliminating turbulence and dead zones where particles accumulate. Essential for personnel gowning protocols in pharmaceutical, biotech, and semiconductor facilities.",
+      "description": "304 stainless steel gowning bench. Designed for minimal particle retention in critical gowning areas.",
+      "introduction": "Constructed from premium-grade stainless steel, this gowning bench features a sophisticated circular arc design and a reinforced double-layer panel for superior structural integrity. The unit is meticulously fabricated using seamless welding techniques and polished to a high-luster finish, effectively eliminating all hygienic dead zones to ensure full compliance with stringent sterile environment protocols.",
       "features": [
-        "Electropolished Type 304 stainless steel construction (14-gauge)",
-        "Perforated top for laminar flow compatibility (35% open area)",
-        "Rounded 'bullnose' edges to prevent glove snagging",
-        "Continuous seam welds, ground smooth for easy sanitization",
-        "Adjustable non-marking leveling feet for stability",
-        "ISO Class 5 (Class 100) Cleanroom compatible"
+        "Full Welding: Ensures no crevices for particulate accumulation or microbial growth.",
+        "Polished Finish: Provides a non-shedding, easy-to-sanitize surface compatible with cleanroom cleaning agents.",
+        "Reinforced Design: Provides structural stability for industrial laboratory use while maintaining a minimalist profile."
       ],
       "specs": {
         "weight": {
@@ -31,7 +28,7 @@
           "customizable": true
         },
         "material": {
-          "value": "304 Stainless Steel (Electropolished)",
+          "value": "304 Stainless Steel",
           "customizable": true
         },
         "dimension": {
@@ -44,15 +41,14 @@
         },
         "process_technology": {
           "value": [
-            "Electropolishing",
-            "Continuous Seam Welding"
+            "Seamless Welding"
           ],
           "customizable": false
         }
       },
       "application_scenarios": [
         "Gowning Rooms",
-        "Change Areas",
+        "CNC Change Areas",
         "Sterile Corridors"
       ],
       "engineering_drawings": {
@@ -60,9 +56,8 @@
         "models": []
       },
       "policies": {
-        "warranty": "Lifetime Structural Warranty",
-        "return": "30-Day Return Policy",
-        "shipping": "Ships assembled via Freight"
+        "warranty": "1 Year Warranty",
+        "shipping": "Standard Shipping"
       }
     },
     {

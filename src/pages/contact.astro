@@ -2,6 +2,8 @@
 import '@/styles/globals.css';
 
 import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
+import { ContactForm } from '@/components/contact/contact-form';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import PageLayout from '../layouts/page-layout.astro';
 
 const breadcrumbData: BreadcrumbData = {
@@ -14,11 +16,79 @@ const breadcrumbData: BreadcrumbData = {
 ---
 
 <PageLayout pageTitle= "Contact Us">
-  <div class="bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]">
+  <div class="bg-zinc-50 min-h-screen pb-20">
+    {/* Header */}
+    <div class="bg-white border-b border-zinc-200">
+      <div class="container mx-auto px-4 py-8">
+        <BreadcrumbResponsive data={breadcrumbData} client:visible />
+        <div class="mt-8 mb-4">
+          <h1 class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl mb-4">
+            Contact Us
+          </h1>
+          <p class="text-lg text-zinc-600 max-w-2xl">
+            Get in touch with our engineering team for product specifications, custom fabrication requests, or general inquiries.
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <BreadcrumbResponsive data={breadcrumbData} client:visible />
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        {/* Left Column: Contact Info & Map */}
+        <div class="lg:col-span-5 space-y-8">
+          {/* Contact Details Card */}
+          <div class="bg-white rounded-xl border border-zinc-200 shadow-sm p-6 space-y-6">
+            <h3 class="font-bold text-zinc-900 text-lg">Contact Information</h3>
+            
+            <div class="flex items-start space-x-3">
+              <MapPin className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
+              <div>
+                <p class="font-medium text-zinc-900">Factory Address</p>
+                <p class="text-zinc-600 text-sm leading-relaxed">
+                  67 Youming Road, Wujiang District<br/>
+                  Suzhou, Jiangsu Province<br/>
+                  China, 215200
+                </p>
+              </div>
+            </div>
 
-    
-    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d718.2006237789999!2d120.65961086953573!3d31.099803554263595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDA1JzU5LjQiTiAxMjDCsDM5JzM0LjciRQ!5e0!3m2!1sen!2sca!4v1741497475247!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="flex items-start space-x-3">
+              <Phone className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
+              <div>
+                <p class="font-medium text-zinc-900">Phone</p>
+                <p class="text-zinc-600 text-sm">+86 512 6300 1234</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3">
+              <Mail className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
+              <div>
+                <p class="font-medium text-zinc-900">Email</p>
+                <p class="text-zinc-600 text-sm">sales@aldr-eme.com</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Map */}
+          <div class="bg-white rounded-xl border border-zinc-200 shadow-sm overflow-hidden h-[300px] lg:h-[400px]">
+             <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d718.2006237789999!2d120.65961086953573!3d31.099803554263595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDA1JzU5LjQiTiAxMjDCsDM5JzM0LjciRQ!5e0!3m2!1sen!2sca!4v1741497475247!5m2!1sen!2sca" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full"
+              ></iframe>
+          </div>
+        </div>
+
+        {/* Right Column: Contact Form */}
+        <div class="lg:col-span-7">
+           <ContactForm client:load />
+        </div>
+      </div>
+    </div>
   </div>
 </PageLayout>

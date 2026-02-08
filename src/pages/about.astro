@@ -16,13 +16,27 @@ const breadcrumbData: BreadcrumbData = {
 ---
 
 <PageLayout pageTitle="About Us">
-  <div class="bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]">
+  <div class="bg-zinc-50 min-h-screen pb-20">
+    {/* Header Background */}
+    <div class="bg-white border-b border-zinc-200">
+      <div class="container mx-auto px-4 py-8">
+        <BreadcrumbResponsive data={breadcrumbData} client:visible />
+        <div class="mt-8 mb-4 max-w-3xl">
+          <h1 class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl mb-4">
+            About ALDR
+          </h1>
+          <p class="text-lg text-zinc-600">
+            Pioneering precision stainless steel solutions for the world's most critical environments.
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <BreadcrumbResponsive data={breadcrumbData} client:visible />
-    
-    <article class="prose lg:prose-xl max-w-none prose-code:before:hidden prose-code:after:hidden" >
-      <AboutPageContent/>
-    </article>
-    
+    {/* Content */}
+    <div class="container mx-auto px-4 py-12">
+      <article class="prose prose-zinc prose-lg max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-zinc-200">
+        <AboutPageContent/>
+      </article>
+    </div>
   </div>
 </PageLayout>

@@ -67,108 +67,109 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
   const externalDimension = productTechSpecs.dimension.external;
   const internalDimension = productTechSpecs.dimension.internal;
   return (
-    <Table className="w-full max-w-(--breakpoint-xl)">
-      {/* Table body with vertical entries (label on the left, value on the right) */}
-      <TableBody>
-        {
-          externalDimension && (
-            <TableRow>
-              <TableCell className="font-medium">External Size</TableCell>
-              <TableCell>{dimensionStr(externalDimension)}</TableCell>
-              <TableCell>
-                {
-                  productTechSpecs.dimension.customizable && <BadgeCustomizable />
-                }
-              </TableCell>
-            </TableRow>
-          )
-        }
+    <div className="rounded-md border border-zinc-200 overflow-hidden">
+      <Table className="w-full">
+        <TableBody>
+          {
+            externalDimension && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 w-1/3 bg-zinc-50/50">External Dimensions</TableCell>
+                <TableCell className="font-mono text-zinc-600">{dimensionStr(externalDimension)}</TableCell>
+                <TableCell className="w-10">
+                  {
+                    productTechSpecs.dimension.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
-        {
-          internalDimension && (
-            <TableRow>
-              <TableCell className="font-medium">Internal Size</TableCell>
-              <TableCell>{dimensionStr(internalDimension)}</TableCell>
-              <TableCell>
-                {
-                  productTechSpecs.dimension.customizable && <BadgeCustomizable />
-                }
-              </TableCell>
-            </TableRow>
-          )
-        }
+          {
+            internalDimension && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Internal Dimensions</TableCell>
+                <TableCell className="font-mono text-zinc-600">{dimensionStr(internalDimension)}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.dimension.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
-        <TableRow>
-          <TableCell className="font-medium">Weight</TableCell>
-          <TableCell>{weightStr(productTechSpecs.weight.value)}</TableCell>
-          <TableCell>
-            {
-              productTechSpecs.weight.customizable && <BadgeCustomizable />
-            }
-          </TableCell>
-        </TableRow>
+          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Weight</TableCell>
+            <TableCell className="font-mono text-zinc-600">{weightStr(productTechSpecs.weight.value)}</TableCell>
+            <TableCell>
+              {
+                productTechSpecs.weight.customizable && <BadgeCustomizable />
+              }
+            </TableCell>
+          </TableRow>
 
-        {
-          productTechSpecs.volume !== undefined && (
-            <TableRow>
-              <TableCell className="font-medium">Volume</TableCell>
-              <TableCell>{volumeStr(productTechSpecs.volume.value)}</TableCell>
-              <TableCell>
-                {
-                  productTechSpecs.volume.customizable && <BadgeCustomizable />
-                }
-              </TableCell>
-            </TableRow>
-          )
-        }
+          {
+            productTechSpecs.volume !== undefined && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Volume</TableCell>
+                <TableCell className="font-mono text-zinc-600">{volumeStr(productTechSpecs.volume.value)}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.volume.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
-        <TableRow>
-          <TableCell className="font-medium">Material</TableCell>
-          <TableCell>{productTechSpecs.material.value}</TableCell>
-          <TableCell>
-            {
-              productTechSpecs.material.customizable && <BadgeCustomizable />
-            }
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell className="font-medium">Process</TableCell>
-          <TableCell>{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
-          <TableCell>
-            {
-              productTechSpecs.process_technology.customizable && <BadgeCustomizable />
-            }
-          </TableCell>
-        </TableRow>
+          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Material</TableCell>
+            <TableCell className="text-zinc-600">{productTechSpecs.material.value}</TableCell>
+            <TableCell>
+              {
+                productTechSpecs.material.customizable && <BadgeCustomizable />
+              }
+            </TableCell>
+          </TableRow>
+          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Process</TableCell>
+            <TableCell className="text-zinc-600">{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
+            <TableCell>
+              {
+                productTechSpecs.process_technology.customizable && <BadgeCustomizable />
+              }
+            </TableCell>
+          </TableRow>
 
-        {
-          productTechSpecs.operating_temperature && (
-            <TableRow>
-              <TableCell className="font-medium">Operating Temperature Range</TableCell>
-              <TableCell>{opTemperatureStr(productTechSpecs.operating_temperature)}</TableCell>
-              <TableCell>
-                {
-                  productTechSpecs.operating_temperature.customizable && <BadgeCustomizable />
-                }
-              </TableCell>
-            </TableRow>
-          )
-        }
+          {
+            productTechSpecs.operating_temperature && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Operating Temp.</TableCell>
+                <TableCell className="font-mono text-zinc-600">{opTemperatureStr(productTechSpecs.operating_temperature)}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.operating_temperature.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
-        {
-          productTechSpecs.electrical && (
-            <TableRow>
-              <TableCell className="font-medium">Electrical Specifications</TableCell>
-              <TableCell>{electricalSpecsStr(productTechSpecs.electrical)}</TableCell>
-              <TableCell>
-                {
-                  productTechSpecs.electrical.customizable && <BadgeCustomizable />
-                }
-              </TableCell>
-            </TableRow>
-          )
-        }
-      </TableBody>
-    </Table>
+          {
+            productTechSpecs.electrical && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Electrical</TableCell>
+                <TableCell className="font-mono text-zinc-600">{electricalSpecsStr(productTechSpecs.electrical)}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.electrical.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
+        </TableBody>
+      </Table>
+    </div>
   )
 }

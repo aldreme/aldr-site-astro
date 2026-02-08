@@ -1,15 +1,10 @@
 ---
-import '@/styles/common.css';
-import '@/styles/components/products/product-item-card.css';
-import '@/styles/globals.css';
-
+import { ProductCardActions } from '@/components/products/product-card-actions';
 import ProductCarousel from '@/components/products/product-carousel';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-
 import { productSlug } from '@/lib/utils';
-import { Link } from "@heroui/link";
 import { getImage } from 'astro:assets';
+import { ArrowRight, Ruler, Weight } from 'lucide-react';
 import { type ProductData } from './types';
 
 interface Props {
@@ -22,29 +17,63 @@ const { index, productData } = Astro.props;
 const productImagesDir = '/src/assets/images/products/';
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{jpeg,jpg,png,svg}');
 
-const productImageUri = (await getImage({src: images[productImagesDir + productData.images[0]]()})).src;
+// Safely get the first image or fallback if needed (though existing logic assumes 0 exists)
+const firstImage = productData.images[0];
+const productImageUri = firstImage ? (await getImage({src: images[productImagesDir + firstImage]()})).src : '';
 
 const itemAnimationDelay = (index: number) => {
-  return 300 + index * 100;
+  return index * 100; // Simplified delay
 }
 ---
 
-<Card className=`flex flex-col w-[30vmin] h-[40vmin] max-h-[40vmin] p-[2vmin] m-[2vmin] items-center justify-between animate-fadein-up duration-500` style={{animationDelay: `${itemAnimationDelay(index)}ms`}}>
-
-  <ProductCarousel client:visible
-    productImageUris={[productImageUri]}
-    className='w-full'
-  />
-  
-  <h1 class='w-full text-start text-[2vmin] font-semibold'>{productData.name}</h1>
-
-  <p class='w-full text-start overflow-hidden  text-ellipsis whitespace-nowrap'>{productData.description}</p>
-
-  <div class='flex flex-row justify-between w-full mt-[2vmin]'>
-    <Button className='w-[8vmin] h-[3vmin] text-[1vmin]'>
-      <Link href=`/products/${productSlug(productData.name)}` className='text-white'>More details</Link>
-    </Button>
+<div 
+  class="group flex flex-col bg-white rounded-xl border border-zinc-200 overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all duration-300 animate-fadein-up" 
+  style={{animationDelay: `${itemAnimationDelay(index)}ms`}}
+>
+  {/* Image Area - Aspect Ratio Box */}
+  <div class="relative w-full aspect-4/3 bg-zinc-50 p-6 flex items-center justify-center border-b border-zinc-100 group-hover:bg-white transition-colors">
+    <div class="relative w-full h-full">
+      <ProductCarousel client:visible
+        productImageUris={[productImageUri]}
+        className='w-full h-full object-contain mix-blend-multiply'
+      />
+    </div>
+    
+    {/* Action Buttons Overlay */}
+    <div class="absolute bottom-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+       <ProductCardActions client:visible product={{ name: productData.name, image: productImageUri }} />
+    </div>
   </div>
 
-</Card>
+  {/* Content Area */}
+  <div class="flex flex-col flex-grow p-5">
+    <h3 class="text-lg font-bold text-zinc-900 group-hover:text-blue-700 transition-colors line-clamp-1 mb-2">
+      {productData.name}
+    </h3>
+    
+    <p class="text-sm text-zinc-500 line-clamp-2 mb-4 flex-grow h-10">
+      {productData.description}
+    </p>
+
+    {/* Mini Specs Grid */}
+    <div class="grid grid-cols-2 gap-2 mb-5 py-3 border-y border-zinc-50">
+      <div class="flex items-center text-xs text-zinc-500">
+        <Ruler className="w-3 h-3 mr-1.5 text-zinc-400" />
+        <span class="truncate">Custom Dims</span>
+      </div>
+      <div class="flex items-center text-xs text-zinc-500">
+        <Weight className="w-3 h-3 mr-1.5 text-zinc-400" />
+        <span class="truncate">{productData.specs.weight.value.toFixed(1)} kg</span>
+      </div>
+    </div>
+
+    {/* Action */}
+    <a href={`/products/${productSlug(productData.name)}`} class="mt-auto">
+      <Button variant="outline" className="w-full justify-between hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 group-hover:border-blue-200 transition-all">
+        <span class="text-xs font-medium uppercase tracking-wide">View Specs</span>
+        <ArrowRight className="w-4 h-4 ml-2" />
+      </Button>
+    </a>
+  </div>
+</div>
 

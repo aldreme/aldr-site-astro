@@ -1,46 +1,184 @@
 'use client';
 
-import policeIcon from '@/assets/images/misc/ccp-police-icon.png';
-import { detectLocation } from '@/lib/utils';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
+import STRINGS from '@/assets/i18n/en_us.json';
+import logo from '@/assets/images/logo/logo-light.png';
+import policeIcon from '@/assets/images/misc/ccp-police-icon.png';
+import { ROUTES_DATA } from '@/config';
+import { detectLocation } from '@/lib/utils';
 
 function ChinaICP() {
   const [isGeoLocationChina, setIsGeoLocationChina] = useState(false);
 
   useEffect(() => {
-    console.info('fetching geolocation ...')
-
     const getGeoLocation = async () => {
-      const location = await detectLocation();
-      setIsGeoLocationChina(location?.country === 'CN');
+      try {
+        const location = await detectLocation();
+        setIsGeoLocationChina(location?.country === 'CN');
+      } catch (error) {
+        console.error('Failed to detect location for ICP display', error);
+      }
     };
 
     getGeoLocation();
   }, []);
 
+  if (!isGeoLocationChina) return null;
+
   return (
-    isGeoLocationChina &&
-    <>
-      <p>
-        <a className="text-xs text-white" href="http://beian.miit.gov.cn">{"苏ICP备2020053862号-1"}</a>
-      </p>
-      <div className="flex flex-row items-center text-white no-underline">
-        <img className="mr-1 w-4 h-4" alt="police-icon" src={policeIcon.src} /> <span className='text-xs'>{"苏公网安备 32050902101167号"}</span>
+    <div className="flex flex-col items-center gap-2 mt-4 md:flex-row md:gap-4 justify-center">
+      <a
+        className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+        href="http://beian.miit.gov.cn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {STRINGS['cn-icp-license']}
+      </a>
+      <div className="flex items-center gap-1 text-xs text-zinc-500">
+        <img
+          className="w-4 h-4 opacity-70"
+          alt="police-icon"
+          src={policeIcon.src}
+        />
+        <span>{STRINGS['cn-police-license']}</span>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  return (
-    <div className='flex flex-col items-center bg-slate-800 border-none p-4'>
-      <p className='text-white'>
-        {"Copyright"} @{currentYear} {"ALDR Co., Ltd. All rights reserved"}
-      </p>
+  // Selected quick links from ROUTES_DATA
+  const quickLinks = ROUTES_DATA.filter(route =>
+    ['home', 'about', 'products', 'contact'].some(key => route.href?.includes(key) || route.href === '/')
+  );
 
-      <ChinaICP />
-    </div>
-  )
+  return (
+    <footer className="w-full bg-zinc-950 text-zinc-300 border-t border-zinc-800">
+      <div className="container mx-auto px-6 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 xl:gap-12">
+
+          {/* Brand Column */}
+          <div className="flex flex-col gap-6">
+            <a href="/" className="inline-block">
+              <img
+                src={logo.src}
+                alt="ALDR Logo"
+                className="h-10 w-auto object-contain brightness-200 contrast-125" // Enhance logo visibility on dark
+              />
+            </a>
+            <div className="flex flex-col gap-2">
+              <p className="font-semibold text-white tracking-wide">
+                {STRINGS['home-banner-caption1']}
+              </p>
+              <p className="text-sm text-zinc-400">
+                {STRINGS['home-banner-caption2']}
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Links Column */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
+              {STRINGS['footer-quick-links']}
+            </h3>
+            <nav className="flex flex-col gap-3">
+              {quickLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Services Column */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
+              {STRINGS['footer-services']}
+            </h3>
+            <nav className="flex flex-col gap-3">
+              <a href="/services/oem" className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+                OEM Service
+              </a>
+              <a href="/services/odm" className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+                ODM Service
+              </a>
+              <a href="/services/design" className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+                Design
+              </a>
+              <a href="/services/manufacturing" className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+                Manufacturing
+              </a>
+            </nav>
+          </div>
+
+          {/* Products Column */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
+              {STRINGS['footer-products']}
+            </h3>
+            <div className="flex flex-col gap-3 text-sm text-zinc-400">
+              {/* Hardcoded key categories for reliability and SEO structure */}
+              <a href="/products?category=Cleanroom%20Furniture" className="hover:text-white transition-colors duration-200">
+                Cleanroom Furniture
+              </a>
+              <a href="/products?category=Transport" className="hover:text-white transition-colors duration-200">
+                Transport Solutions
+              </a>
+              <a href="/products?category=Storage" className="hover:text-white transition-colors duration-200">
+                Storage Systems
+              </a>
+              <a href="/products?category=Process%20Equipment" className="hover:text-white transition-colors duration-200">
+                Process Equipment
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Column */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
+              {STRINGS['footer-contact']}
+            </h3>
+            <div className="flex flex-col gap-4 text-sm">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-aldr-blue shrink-0 mt-0.5 text-blue-500" />
+                <span className="text-zinc-400">
+                  {STRINGS['address-info']}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
+                <span className="text-zinc-400">
+                  +86 512 6309 6666 {/* Assuming phone is standard, hardcoded for now or fetch from json if needed but json key is just label */}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
+                <a href="mailto:contact@aldreme.com" className="text-zinc-400 hover:text-white transition-colors">
+                  contact@aldreme.com {/* Hardcoded based on context, update if distinct key exists */}
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-zinc-800 flex flex-col items-center gap-4 text-center">
+          <p className="text-zinc-600 text-sm">
+            &copy; {currentYear} {STRINGS['ALDR Automation Equipment Co., Ltd. All rights reserved']}
+          </p>
+          <ChinaICP />
+        </div>
+      </div>
+    </footer>
+  );
 }

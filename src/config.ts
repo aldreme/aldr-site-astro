@@ -1,6 +1,7 @@
 interface RouteData {
   name: string;
   href?: string;
+  description?: string;
   children?: RouteData[];
 }
 
@@ -19,8 +20,30 @@ export const ROUTES: RoutesConfig = {
   services: {
     name: "Services",
     children: [
-      { name: "Design", href: "/services/design" },
-      { name: "Manufacturing", href: "/services/manufacturing" },
+      {
+        name: "Cleanroom Design",
+        href: "/services/design",
+        description:
+          "GMP-compliant layout and workflow design for ISO 8-5 environments.",
+      },
+      {
+        name: "Precision Manufacturing",
+        href: "/services/manufacturing",
+        description:
+          "Pharmaceutical-grade stainless steel fabrication with 150k annual capacity.",
+      },
+      {
+        name: "OEM Partnership",
+        href: "/services/oem",
+        description:
+          "Contract manufacturing for global life science and medical device brands.",
+      },
+      {
+        name: "ODM Development",
+        href: "/services/odm",
+        description:
+          "Custom instrumentation and equipment design from concept to commercialization.",
+      },
     ],
   },
   // news: { name: 'News', href: '/news' },

@@ -1,27 +1,39 @@
 ---
 import '@/styles/globals.css';
 import '@/styles/pages/page.css';
-import '@/styles/pages/products.css';
 
-import PageLayout from '@/layouts/page-layout.astro';
-
-import { Image } from 'astro:assets';
-
-import productsBannerImg from '@/assets/images/products/products-banner.jpg';
 import ProductsGrid from '@/components/products/products-grid.astro';
+import PageLayout from '@/layouts/page-layout.astro';
 
 ---
 
 <PageLayout pageTitle="Products">
-  <Image src={productsBannerImg} alt="Products Banner" class="page-banner-img" />
-
-  <div class="w-full min-h-full">
-    <div class='products-banner-caption mt-[5vmin]'>
-      <p class='products-banner-caption-h0'>
-        {'PRODUCTS'}
-      </p>
+  <div class="w-full min-h-screen bg-zinc-50">
+    {/* Hero Section */}
+    <div class="relative bg-zinc-900 py-24 sm:py-32">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent"></div>
+      </div>
+      <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          Precision Engineering
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-zinc-300 max-w-2xl mx-auto">
+          GMP-ready stainless steel furniture and equipment designed for the world's most critical environments.
+        </p>
+      </div>
     </div>
 
-    <ProductsGrid />
+    {/* Products Grid Section */}
+    <div class="container mx-auto px-4 py-16 sm:py-24">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">Our Catalog</h2>
+        <p class="mt-4 text-zinc-500">
+          Browse our comprehensive range of pharmaceutical-grade solutions.
+        </p>
+      </div>
+      <ProductsGrid />
+    </div>
   </div>
 </PageLayout>

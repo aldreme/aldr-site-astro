@@ -8,7 +8,7 @@
 interactivity.
 
 The design philosophy prioritizes a "Premium" and "High Quality" aesthetic,
-reflecting the company's status as a Fortune Global 500 supplier.
+reflecting the company's status as a Fortune Global 500 Vendor.
 
 ## Tech Stack
 
