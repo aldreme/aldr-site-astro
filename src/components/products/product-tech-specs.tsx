@@ -77,7 +77,7 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
                 <TableCell className="font-mono text-zinc-600">{dimensionStr(externalDimension)}</TableCell>
                 <TableCell className="w-10">
                   {
-                    productTechSpecs.dimension.customizable && <BadgeCustomizable />
+                    productTechSpecs.dimension?.customizable && <BadgeCustomizable />
                   }
                 </TableCell>
               </TableRow>
@@ -91,7 +91,7 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
                 <TableCell className="font-mono text-zinc-600">{dimensionStr(internalDimension)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.dimension.customizable && <BadgeCustomizable />
+                    productTechSpecs.dimension?.customizable && <BadgeCustomizable />
                   }
                 </TableCell>
               </TableRow>

@@ -1,5 +1,6 @@
 export interface ProductData {
   name: string;
+  featured?: boolean;
   category: string;
   tags: string[];
   price: number;
@@ -15,7 +16,7 @@ export interface ProductData {
 }
 
 export interface ProductSpecs {
-  weight: {
+  weight?: {
     value: number; // in Kilograms
     customizable: boolean;
   };
@@ -27,11 +28,11 @@ export interface ProductSpecs {
     value: string;
     customizable: boolean;
   };
-  dimension: Dimensions;
+  dimension?: Dimensions;
   electrical?: ElectricalSpecs;
   operating_temperature?: TemperatureRange;
   process_technology: {
-    value: string[],
+    value: string[];
     customizable: boolean;
   };
 }
@@ -71,6 +72,6 @@ export interface EngineeringDrawings {
 
 export interface Policies {
   warranty: string;
-  return: string;
+  return?: string;
   shipping: string;
 }

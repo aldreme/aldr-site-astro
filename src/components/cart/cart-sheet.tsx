@@ -35,6 +35,8 @@ export function CartSheet() {
     try {
       const { supabase } = await import('@/lib/supabase');
 
+      const itemsWithoutImages = items.map(({ image, ...rest }) => rest);
+
       const rfqPayload = {
         cx_rep_name: $rfqContact.name,
         cx_company: $rfqContact.company,
@@ -43,7 +45,7 @@ export function CartSheet() {
         cx_rfq_msg: $rfqContact.notes || 'No additional notes.',
         expected_delivery_date: $rfqContact.expectedDeliveryDate || null,
         cx_rfq_product: items[0].name, // Using first item as primary product reference
-        cx_rfq_items: items, // Multi-product details in the new JSONB column
+        cx_rfq_items: itemsWithoutImages, // Multi-product details in the new JSONB column
         quantity_needed: items.reduce((acc, item) => acc + item.quantity, 0)
       };
 
