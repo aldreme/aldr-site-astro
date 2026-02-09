@@ -1,13 +1,17 @@
 
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 import { cartItems, clearCart, isCartOpen, removeCartItem, updateCartItemQuantity } from '@/store/cart';
 import { useStore } from '@nanostores/react';
-import { Minus, Plus, Send, Trash2 } from 'lucide-react';
+import { format } from 'date-fns';
+import { CalendarIcon, Minus, Plus, Send, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
 export function CartSheet() {
@@ -15,11 +19,18 @@ export function CartSheet() {
   const $cartItems = useStore(cartItems);
   const items = Object.values($cartItems);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    company: string;
+    notes: string;
+    date: Date | undefined;
+  }>({
     name: '',
     email: '',
     company: '',
-    notes: ''
+    notes: '',
+    date: undefined
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -30,7 +41,10 @@ export function CartSheet() {
 
     // Here you would implement the actual API call
     console.log('Submitting RFQ:', {
-      customer: formData,
+      customer: {
+        ...formData,
+        expectedDelivery: formData.date ? format(formData.date, 'yyyy-MM-dd') : undefined
+      },
       items: items
     });
 
@@ -39,7 +53,7 @@ export function CartSheet() {
       setSubmitted(false);
       clearCart();
       isCartOpen.set(false);
-      setFormData({ name: '', email: '', company: '', notes: '' });
+      setFormData({ name: '', email: '', company: '', notes: '', date: undefined });
     }, 2000);
   };
 
@@ -102,6 +116,32 @@ export function CartSheet() {
                   <Separator className="my-4" />
 
                   <form id="rfq-form" onSubmit={handleSubmit} className="space-y-4 pt-2">
+                    <div className="space-y-2 mb-6">
+                      <h3 className="font-semibold text-sm">Expected Delivery</h3>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-full justify-start text-left font-normal text-sm h-10",
+                              !formData.date && "text-muted-foreground"
+                            )}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {formData.date ? format(formData.date, "PPP") : <span>Pick a date</span>}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={formData.date}
+                            onSelect={(date) => setFormData({ ...formData, date })}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
                     <h3 className="font-semibold text-sm">Contact Information</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
@@ -117,12 +157,15 @@ export function CartSheet() {
                         />
                       </div>
                     </div>
+
                     <div className="space-y-1">
                       <Label htmlFor="email" className="text-xs">Work Email</Label>
                       <Input id="email" type="email" required placeholder="john@company.com"
                         value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })}
                       />
                     </div>
+
+
                     <div className="space-y-1">
                       <Label htmlFor="notes" className="text-xs">Project Notes (Optional)</Label>
                       <Input id="notes" placeholder="e.g., Delivery needed by Q3..."

@@ -48,7 +48,9 @@ const itemAnimationDelay = (index: number) => {
   {/* Content Area */}
   <div class="flex flex-col flex-grow p-5">
     <h3 class="text-lg font-bold text-zinc-900 group-hover:text-blue-700 transition-colors line-clamp-1 mb-2">
-      {productData.name}
+      <a href={`/products/${productSlug(productData.name)}`} class="hover:underline">
+        {productData.name}
+      </a>
     </h3>
     
     <p class="text-sm text-zinc-500 line-clamp-2 mb-4 flex-grow h-10">

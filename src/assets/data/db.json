@@ -2,6 +2,7 @@
   "products": [
     {
       "name": "Gowning bench",
+      "featured": true,
       "category": "Cleanroom Furniture",
       "tags": [
         "Furniture",
@@ -252,6 +253,7 @@
     },
     {
       "name": "Convey Window",
+      "featured": true,
       "category": "Transfer",
       "tags": [
         "Pass Box",
@@ -452,6 +454,7 @@
     },
     {
       "name": "Electric Workbench",
+      "featured": true,
       "category": "Workstations",
       "tags": [
         "Furniture",
@@ -789,6 +792,7 @@
     },
     {
       "name": "Mixer",
+      "featured": true,
       "category": "Process Equipment",
       "tags": [
         "Processing",

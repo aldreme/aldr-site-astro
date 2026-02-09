@@ -7,7 +7,13 @@ import Partners from '@/components/partners.astro';
 import PageLayout from '@/layouts/page-layout.astro';
 
 import homeBannerImg from '@/assets/images/home/home-banner-min.jpg';
+import ProductItemCard from '@/components/products/product-item-card.astro';
 import { Image } from 'astro:assets';
+import { ArrowRight } from 'lucide-react';
+
+import db from '@/assets/data/db.json';
+
+const featuredProducts = db.products.filter(p => (p as any).featured).slice(0, 4);
 ---
 
 <PageLayout>
@@ -29,6 +35,25 @@ import { Image } from 'astro:assets';
 				{'High Quality Cleanroom Stainless Steel Furnitures'}
 			</h3>
 		</div>
+
+		{/* Featured Products Section */}
+		<section class="relative z-10 mt-12 sm:mt-24 px-6 sm:px-0 flex flex-col">
+			<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full mb-8 lg:mb-12 gap-4">
+				<h2 class="text-2xl sm:text-3xl font-bold text-white border-l-4 border-blue-600 pl-4 tracking-tight">
+					Featured Products
+				</h2>
+				<a href="/products" class="flex items-center text-blue-400 hover:text-blue-300 transition-colors group text-sm font-medium self-start sm:self-auto">
+					View All Products
+					<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+				</a>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+				{featuredProducts.map((product, index) => (
+					<ProductItemCard index={index} productData={product as any} />
+				))}
+			</div>
+		</section>
 
 		<div class='mt-[5vw] flex flex-col justify-center items-center text-white animate-fadein-up duration-500 delay-300 z-10'>
 			<h1 class="text-[4.5vw] font-bold my-[3vmin]">{'Our Partners'}</h1>
