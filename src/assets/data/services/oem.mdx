@@ -5,7 +5,8 @@ pubDate: 2026-02-09
 updatedDate: 2026-02-09
 ---
 
-import { Handshake, Fingerprint, Lock, Globe } from 'lucide-react';
+import { CtaSection } from '@/components/ui/cta-section';
+import { Fingerprint, Globe, Handshake, Lock } from 'lucide-react';
 
 <div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
 
@@ -58,14 +59,13 @@ import { Handshake, Fingerprint, Lock, Globe } from 'lucide-react';
     </div>
   </div>
 
-  <div class="bg-zinc-900 rounded-3xl p-8 sm:p-12 text-center space-y-6">
-    <h2 class="text-3xl font-bold text-white">Scale your brand with ALDR</h2>
-    <p class="text-zinc-400 max-w-2xl mx-auto">
-      Focus on your R&D and market presence while we ensure your hardware meets the highest pharmaceutical standards.
-    </p>
-    <a href="/contact" class="inline-block bg-blue-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-500 transition-colors">
-      Discuss OEM Opportunities
-    </a>
-  </div>
+  <CtaSection 
+    client:visible
+    title="Scale your brand with ALDR"
+    description="Focus on your R&D and market presence while we ensure your hardware meets the highest pharmaceutical standards. Our facility is your dedicated production arm."
+    buttonText="Discuss OEM Opportunities"
+    buttonLink="/contact"
+    iconName="Handshake"
+  />
 
 </div>

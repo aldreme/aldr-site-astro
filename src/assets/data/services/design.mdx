@@ -5,7 +5,8 @@ pubDate: 2026-02-09
 updatedDate: 2026-02-09
 ---
 
-import { ClipboardPen, Ruler, Box, Sparkles } from 'lucide-react';
+import { CtaSection } from '@/components/ui/cta-section';
+import { Box, ClipboardPen, Ruler, ShieldCheck, Sparkles } from 'lucide-react';
 
 <div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
 
@@ -58,14 +59,13 @@ import { ClipboardPen, Ruler, Box, Sparkles } from 'lucide-react';
     </div>
   </div>
 
-  <div class="bg-blue-900 rounded-3xl p-8 sm:p-12 text-center space-y-6">
-    <h2 class="text-3xl font-bold text-white">Validate your facility design</h2>
-    <p class="text-blue-100 max-w-2xl mx-auto">
-      Collaborate with engineers who understand the rigor of FDA and EMA regulations.
-    </p>
-    <a href="/contact" class="inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full hover:bg-blue-50 transition-colors">
-      Start Your Design
-    </a>
-  </div>
+  <CtaSection 
+    client:visible
+    title="Validate your facility design"
+    description="Collaborate with engineers who understand the rigor of FDA and EMA regulations. We ensure your furniture integration is compliant, ergonomic, and efficient."
+    buttonText="Start Your Design"
+    buttonLink="/contact"
+    iconName="ShieldCheck"
+  />
 
 </div>
