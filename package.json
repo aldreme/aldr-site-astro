@@ -56,7 +56,7 @@
     "@types/react-dom": "18.3.1",
     "postgres": "^3.4.8",
     "sharp": "^0.33.5",
-    "supabase": "^2.72.9",
+    "supabase": "^2.76.6",
     "vite": "^6.0.0"
   },
   "packageManager": "pnpm@10.6.1+sha256.81204845a396962a9c4b49cc2d6cafbb49a758652d3c243f2128cbc638084fe2",

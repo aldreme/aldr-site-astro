@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro.aldreme.com',
+  site: 'https://www.aldreme.com',
 
   // https://docs.astro.build/en/guides/prefetch/
   // add data-astro-prefetch attribute to <a /> links
