@@ -1,48 +1,110 @@
-# Astro Starter Kit: Basics
+# ALDR (Advanced Laboratory Durable Reliable)
 
-```sh
-npm create astro@latest -- --template basics
-```
+[![Astro](https://img.shields.io/badge/Astro-5.0-orange?style=flat-square&logo=astro)](https://astro.build/)
+[![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com/)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+A premium corporate and product showcase website built for **ALDR**. Engineered
+for high performance, SEO, and rich interactivity.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🔗 **Live Site:** [www.aldreme.com](https://www.aldreme.com)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+---
 
-## 🚀 Project Structure
+## ✨ Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- **🚀 High Performance:** Built with Astro 5 for optimal server-side rendering
+  and static generation.
+- **💎 Premium Design:** Luxurious UI built with **HeroUI** and **Framer
+  Motion**.
+- **📦 Product Catalog:** Comprehensive product showcase with technical
+  specifications.
+- **📨 RFQ System:** Integrated Global Request for Quote system powered by
+  **Supabase Edge Functions**.
+- **🌍 Internationalization:** Robust i18n support for global reach.
+- **🌙 Dark Mode:** Full support for sleek, high-end dark aesthetics.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Astro 5](https://astro.build/)
+- **Interactivity:** [React 18](https://react.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) +
+  [HeroUI](https://heroui.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) +
+  `tailwindcss-animate`
+- **Backend:** [Supabase](https://supabase.com/) (PostgreSQL, Edge Functions)
+- **CMS/Content:** MDX + Astro Content Collections
+
+---
+
+## 📂 Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── public/                 # Static assets (favicons, robots.txt)
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/             # Images, JSON data, i18n dictionaries
+│   ├── components/         # React & Astro components
+│   ├── content/            # MDX Content Collections (News, Products)
+│   ├── layouts/            # Global page layouts
+│   ├── lib/                # Shared utilities & Supabase client
+│   ├── pages/              # File-based routing
+│   └── styles/             # Global CSS & Tailwind configuration
+├── supabase/
+│   ├── functions/          # Deno Edge Functions (cx_rfq, location)
+│   └── migrations/         # Database schema migrations
+├── astro.config.mjs        # Astro configuration
+└── package.json            # Scripts & Dependencies
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 🚀 Getting Started
 
-All commands are run from the root of the project, from a terminal:
+### Prerequisites
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- [Node.js](https://nodejs.org/) (Latest LTS)
+- [`pnpm`](https://pnpm.io/) (Strictly enforced)
 
-## 👀 Want to learn more?
+### Installation
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+pnpm install
+```
+
+### Development
+
+```bash
+pnpm dev
+```
+
+The site will be available at `http://localhost:4321`.
+
+### Production Build
+
+```bash
+pnpm build
+pnpm preview
+```
+
+---
+
+## 👷 Development Workflow
+
+### Supabase Integration
+
+The project uses Supabase for backend logic (Edge Functions).
+
+- **Local Development:** Ensure `.env.local` is configured with
+  `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_KEY`.
+- **Edge Functions:** Managed via `supabase/functions`.
+- **Deployment:** `pnpm supabase functions deploy`
+
+---
+
+## ⚖️ License
+
+© 2026 ALDR (Advanced Laboratory Durable Reliable). All rights Reserved.
