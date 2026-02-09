@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { cartItems, isCartOpen } from "@/store/cart";
 import '@/styles/components/navbar.css';
 import { useStore } from "@nanostores/react";
-import { Menu as MenuIcon, ShoppingBag } from "lucide-react";
+import { FileText, Menu as MenuIcon } from "lucide-react";
 
 function NavbarBrand() {
   return (
@@ -154,7 +154,7 @@ export default function Navbar() {
 
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="relative text-zinc-100 hover:bg-zinc-800 hover:text-white" onClick={() => isCartOpen.set(true)}>
-              <ShoppingBag className="h-5 w-5" />
+              <FileText className="h-5 w-5" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] h-[18px] flex items-center justify-center">
                   {cartCount}

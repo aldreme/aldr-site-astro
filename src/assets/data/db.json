@@ -2,6 +2,7 @@
   "products": [
     {
       "name": "Heavy Duty Workbench",
+      "featured": true,
       "category": "Workstations",
       "tags": [
         "Furniture",
@@ -30,10 +31,6 @@
         "Worktop Reinforced with PVC or Aluminum Honeycomb Core"
       ],
       "specs": {
-        "weight": {
-          "value": 85,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -64,8 +61,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
       }
     },
@@ -93,10 +89,6 @@
         "Reinforced Design: Provides structural stability for industrial laboratory use while maintaining a minimalist profile."
       ],
       "specs": {
-        "weight": {
-          "value": 25,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -155,10 +147,6 @@
         "Push handle for ergonomic transport"
       ],
       "specs": {
-        "weight": {
-          "value": 35,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -192,9 +180,65 @@
         "models": []
       },
       "policies": {
-        "warranty": "3-Year Manufacturer Warranty",
-        "return": "Restocking fee applies",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
+      }
+    },
+    {
+      "name": "Mixing Tank",
+      "featured": true,
+      "category": "Process Equipment",
+      "tags": [
+        "Processing",
+        "Mixing",
+        "Pharma"
+      ],
+      "price": 0,
+      "images": [
+        "mixer-01.jpg",
+        "mixer-02.jpg",
+        "mixer-03.jpg",
+        "mixer-04.jpg"
+      ],
+      "description": "Sanitary 316L stainless steel mixing vessel with CIP capability. High-shear impeller for homogeneous mixing of pharma formulations.",
+      "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4\u03bcm) to prevent residue adherence. Equipped with a variable-speed high-shear impeller, it ensures rapid and homogenous blending of liquids and powders. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
+      "features": [
+        "316L Stainless Steel contact surfaces (Ra < 0.4\u00b5m)",
+        "Sanitary Tri-Clamp connections",
+        "Integrated CIP spray ball",
+        "Variable frequency drive (VFD) for speed control",
+        "Jacketed vessel option for heating/cooling",
+        "Zero-dead-leg drain valve"
+      ],
+      "specs": {
+        "material": {
+          "value": "316L Stainless Steel (Contact), 304 (Cladding)",
+          "customizable": true
+        },
+        "volume": {
+          "value": 50,
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Bead Blasting",
+            "Seamless Welding"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Media Preparation",
+        "Buffer Formulation",
+        "Chemical Blending"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "1 Year Warranty",
+        "shipping": "Crated Freight"
       }
     },
     {
@@ -210,10 +254,10 @@
         "cart-01.jpg",
         "cart-02.jpg"
       ],
-      "description": "Wash Rack Transfer Trolley – Designed for transporting washer racks and conducting offline cleaning efficacy testing.",
+      "description": "Wash Rack Transfer Trolley \u2013 Designed for transporting washer racks and conducting offline cleaning efficacy testing.",
       "introduction": "The equipment is constructed from 316L stainless steel and features 316L sanitary tubing with orbital welds. It is equipped with SKF lifting columns, a fully electropolished surface finish, and is powered by a 24V DC battery.",
       "features": [
-        "Lifting Range: 580 mm – 980 mm",
+        "Lifting Range: 580 mm \u2013 980 mm",
         "Max. Load Capacity: 400 kg",
         "Rechargeable Lithium Battery",
         "Remote-Controlled Lifting",
@@ -222,10 +266,6 @@
         "Customizable for specific equipment footprints"
       ],
       "specs": {
-        "weight": {
-          "value": 45,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -256,8 +296,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Structural Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
       }
     },
@@ -281,15 +320,11 @@
         "Sanitary Piping System: Made of 316L sanitary tubing. Welded to sanitary standards to ensure smooth, consistent internal and external seams.",
         "High-Performance Nozzles: Equipped with durable PEEK nozzles for optimal chemical resistance and spray pattern.",
         "Pressure Compatibility: Designed to match the specific operating water pressure of the connected washing machine.",
-        "In-Washer Cleaning: Seamlessly transports into the washer via trolley and connects to the machine’s internal water supply.",
+        "In-Washer Cleaning: Seamlessly transports into the washer via trolley and connects to the machine\u2019s internal water supply.",
         "Offline Verification: Supports cleaning efficacy testing while docked on the transfer trolley outside the machine.",
         "Surface Finish: Fully electropolished for superior hygiene and corrosion resistance."
       ],
       "specs": {
-        "weight": {
-          "value": 15,
-          "customizable": true
-        },
         "material": {
           "value": "316L Stainless Steel",
           "customizable": true
@@ -319,8 +354,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "3-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Standard Ground"
       }
     },
@@ -352,20 +386,11 @@
         "Optional: UV-C Sterilization Module"
       ],
       "specs": {
-        "weight": {
-          "value": 35,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
         },
         "dimension": {
-          "internal": {
-            "width": 60,
-            "height": 60,
-            "length": 60
-          },
           "external": {
             "width": 76,
             "height": 76,
@@ -391,8 +416,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "2-Year Mechanical Warranty",
-        "return": "Defect Only",
+        "warranty": "1 Year Warranty",
         "shipping": "Crated Freight"
       }
     },
@@ -422,10 +446,6 @@
         "Ventilated for equipment cooling"
       ],
       "specs": {
-        "weight": {
-          "value": 12,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -456,8 +476,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "1-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Standard Ground"
       }
     },
@@ -492,10 +511,6 @@
         "Easy to clean design"
       ],
       "specs": {
-        "weight": {
-          "value": 22,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel Wire",
           "customizable": true
@@ -526,8 +541,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "2-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Standard Ground"
       }
     },
@@ -542,10 +556,7 @@
       "price": 0,
       "images": [
         "fridge_cart-01.jpg",
-        "fridge_cart-02.jpg",
-        "fridge_cart-03.jpg",
-        "fridge_cart-04.jpg",
-        "fridge_cart-05.jpg"
+        "fridge_cart-02.jpg"
       ],
       "description": "Heavy-duty chassis cart designed to mobilize under-counter lab refrigerators. Features side ventilation slots for compressor airflow.",
       "introduction": "Transform stationary equipment into mobile assets. Specifically engineered to support heavy laboratory refrigerators, freezers, and incubators, this Fridge Cart enables easy equipment relocation for cleaning or reconfiguration. The reinforced chassis creates a rigid platform, while precision laser-cut ventilation patterns on the side panels ensure the appliance's compressor receives adequate airflow to prevent overheating.",
@@ -558,10 +569,6 @@
         "Custom sizing to fit specific appliance models"
       ],
       "specs": {
-        "weight": {
-          "value": 30,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -592,13 +599,12 @@
         "models": []
       },
       "policies": {
-        "warranty": "3-Year Structural Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Standard Ground"
       }
     },
     {
-      "name": "Gowning Cabinet",
+      "name": "Garment Cabinet",
       "category": "Storage",
       "tags": [
         "Furniture",
@@ -611,8 +617,8 @@
         "locker-02.jpg",
         "locker-03.jpg"
       ],
-      "description": "Sloped-top stainless steel garment locker with separated compartments. vented for airflow and odor control in gowning rooms.",
-      "introduction": "Secure, organized, and compliant personnel storage. These Stainless Steel Lockers feature a dramatically sloped top to ensure dust falls to the floor rather than accumulating overhead. The interior is divided to separate street clothes from cleanroom garments, preventing cross-contamination. Louvered vents ensure proper air circulation to keep garments fresh.",
+      "description": "Sloped-top stainless steel garment cabinet with separated compartments. vented for airflow and odor control in gowning rooms.",
+      "introduction": "Secure, organized, and compliant personnel storage. These Stainless Steel Cabinets feature a sloped top to ensure dust falls to the floor rather than accumulating overhead. The interior is divided to separate street clothes from cleanroom garments, preventing cross-contamination. Louvered vents ensure proper air circulation to keep garments fresh.",
       "features": [
         "Steep sloped top (1:3 pitch) prevents dust build-up",
         "Dedicated compartments for shoes and garments",
@@ -622,10 +628,6 @@
         "Modular banks (1 to 5 columns)"
       ],
       "specs": {
-        "weight": {
-          "value": 60,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -656,67 +658,8 @@
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Warranty",
-        "return": "Defect Only",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Mixer Tank",
-      "featured": true,
-      "category": "Process Equipment",
-      "tags": [
-        "Processing",
-        "Mixing",
-        "Pharma"
-      ],
-      "price": 0,
-      "images": [
-        "mixer-01.jpg",
-        "mixer-02.jpg",
-        "mixer-03.jpg",
-        "mixer-04.jpg"
-      ],
-      "description": "Sanitary 316L stainless steel mixing vessel with CIP capability. High-shear impeller for homogeneous mixing of pharma formulations.",
-      "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4μm) to prevent residue adherence. Equipped with a variable-speed high-shear impeller, it ensures rapid and homogenous blending of liquids and powders. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
-      "features": [
-        "316L Stainless Steel contact surfaces (Ra < 0.4µm)",
-        "Sanitary Tri-Clamp connections",
-        "Integrated CIP spray ball",
-        "Variable frequency drive (VFD) for speed control",
-        "Jacketed vessel option for heating/cooling",
-        "Zero-dead-leg drain valve"
-      ],
-      "specs": {
-        "material": {
-          "value": "316L Stainless Steel (Contact), 304 (Cladding)",
-          "customizable": true
-        },
-        "volume": {
-          "value": 50,
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Bead Blasting",
-            "Seamless Welding"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Media Preparation",
-        "Buffer Formulation",
-        "Chemical Blending"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "1-Year Warranty",
-        "return": "No Returns",
-        "shipping": "Crated Freight"
       }
     },
     {
@@ -743,10 +686,6 @@
         "Flow-meter for gas consumption monitoring"
       ],
       "specs": {
-        "weight": {
-          "value": 85,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel / SD-PVC",
           "customizable": true
@@ -777,8 +716,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "2-Year Electronics Warranty",
-        "return": "Condition Applied",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
       }
     },
@@ -804,10 +742,6 @@
         "Piping system made of 316L sanitary tubing"
       ],
       "specs": {
-        "weight": {
-          "value": 45,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -838,8 +772,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "3-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
       }
     },
@@ -869,10 +802,6 @@
         "Seismic restraint kits available"
       ],
       "specs": {
-        "weight": {
-          "value": 55,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -904,8 +833,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight or Flat Pack"
       }
     },
@@ -933,10 +861,6 @@
         "Heavy-duty load rating (150kg)"
       ],
       "specs": {
-        "weight": {
-          "value": 70,
-          "customizable": true
-        },
         "material": {
           "value": "304 Stainless Steel",
           "customizable": true
@@ -967,8 +891,7 @@
         "models": []
       },
       "policies": {
-        "warranty": "5-Year Structural Warranty",
-        "return": "Standard",
+        "warranty": "1 Year Warranty",
         "shipping": "Freight"
       }
     }
