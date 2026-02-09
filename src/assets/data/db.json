@@ -119,7 +119,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Standard Shipping"
+        "shipping": "Freight"
       }
     },
     {
@@ -200,19 +200,15 @@
         "mixer-03.jpg",
         "mixer-04.jpg"
       ],
-      "description": "Sanitary 316L stainless steel mixing vessel with CIP capability. High-shear impeller for homogeneous mixing of pharma formulations.",
-      "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4\u03bcm) to prevent residue adherence. Equipped with a variable-speed high-shear impeller, it ensures rapid and homogenous blending of liquids and powders. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
+      "description": "Mixing tank are vessels or totes mounted onto a frame where the single-use biocontainers are installed",
+      "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4\u03bcm) to prevent residue adherence. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
       "features": [
         "316L Stainless Steel contact surfaces (Ra < 0.4\u00b5m)",
-        "Sanitary Tri-Clamp connections",
-        "Integrated CIP spray ball",
-        "Variable frequency drive (VFD) for speed control",
-        "Jacketed vessel option for heating/cooling",
-        "Zero-dead-leg drain valve"
+        "For magnetic drive mixer"
       ],
       "specs": {
         "material": {
-          "value": "316L Stainless Steel (Contact), 304 (Cladding)",
+          "value": "316L Stainless Steel",
           "customizable": true
         },
         "volume": {
@@ -238,7 +234,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Crated Freight"
+        "shipping": "Freight"
       }
     },
     {
@@ -355,11 +351,11 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Standard Ground"
+        "shipping": "Freight"
       }
     },
     {
-      "name": "Pass-through Window",
+      "name": "Pass Through Cabinet",
       "featured": true,
       "category": "Transfer",
       "tags": [
@@ -376,14 +372,12 @@
         "convey_window-04.jpg"
       ],
       "description": "Static pass-through with mechanical interlock. Double-wall stainless steel construction prevents cross-contamination between classified zones.",
-      "introduction": "Control contamination at the source. Our Convey Window (Static Pass Box) serves as a barrier between zones of different cleanliness levels. The robust Mechanical Interlock System ensures that one door remains locked while the other is open, preventing direct air exchange. The interior chamber features coved corners (rounded radius) to eliminate particle traps and allow for thorough disinfection.",
+      "introduction": "Control contamination at the source. Our Pass Through Cabinet serves as a barrier between zones of different cleanliness levels. The robust Mechanical Interlock System ensures that one door remains locked while the other is open, preventing direct air exchange. The interior chamber features coved corners (rounded radius) to eliminate particle traps and allow for thorough disinfection.",
       "features": [
-        "Reliable Mechanical Interlock System (Maintenance-free)",
-        "Type 304 Stainless Steel double-wall construction",
-        "Seamless, coved internal chamber for easy cleaning",
-        "Tempered safety glass viewing windows",
-        "Stainless steel mounting trim included",
-        "Optional: UV-C Sterilization Module"
+        "Material Options: 304L/316L stainless steel",
+        "Internal stainless steel frames for added support",
+        "Windows",
+        "Interlocked and/or self-closing doors"
       ],
       "specs": {
         "material": {
@@ -400,8 +394,8 @@
         },
         "process_technology": {
           "value": [
-            "Double-wall Fabrication",
-            "Coved Corner Forming"
+            "Brushed Finish",
+            "Seamless Welding"
           ],
           "customizable": true
         }
@@ -409,7 +403,8 @@
       "application_scenarios": [
         "Material Transfer",
         "Sample Pass-through",
-        "Pharmacy Compounding"
+        "Pharmacy Compounding",
+        "Acid, base, or solvent chemical pass through and storage"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -417,7 +412,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Crated Freight"
+        "shipping": "Freight"
       }
     },
     {
@@ -461,7 +456,9 @@
         "process_technology": {
           "value": [
             "Precision Laser Cutting",
-            "Glass Bonding"
+            "Brushed Finish",
+            "TIG Welding",
+            "Seamless Welding"
           ],
           "customizable": true
         }
@@ -477,7 +474,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Standard Ground"
+        "shipping": "Freight"
       }
     },
     {
@@ -500,19 +497,20 @@
         "trolley-03.jpg",
         "grid_cart-01.jpg"
       ],
-      "description": "High-capacity multi-tier wire cart with deep baskets. Perfect for batch transport of small components or sterile packs.",
-      "introduction": "Maximize transport efficiency for small items. This Multi-Tier Wire Cart features 3 generous wire basket shelves, providing ample volume for loose items like shoe covers, wipers, or small vials. The wire construction ensures full visibility and airflow, while the raised basket edges prevent items from falling during transit. Includes a full-width handle for easy steerability.",
+      "description": "A Cleanroom Multi-Tier Trolley is a high-performance transport solution engineered from non-corrosive, non-shedding materials (typically 304 or 316L stainless steel).",
+      "introduction": "A high-grade, mobile storage and transport solution specifically designed for sterile or particulate-controlled environments. Its primary purpose is to move delicate instruments, chemicals, or sterile products through different zones (such as from a gowning room to a Grade A lab) without introducing \"bio-burden\" or metallic dust. Built with a focus on non-shedding materials and easy-to-clean surfaces, these trolleys are essential for optimizing workflow efficiency while adhering to ISO classification standards.",
       "features": [
-        "3-tier deep wire basket shelves",
-        "Full visibility and airflow",
-        "Raised edges for secure containment",
-        "Stainless steel tubular frame",
-        "Smooth rolling casters (2 braking)",
-        "Easy to clean design"
+        "Material Construction: Usually made from 304 or 316L Grade Stainless Steel. This offers superior corrosion resistance against harsh disinfectants like IPA (Isopropyl Alcohol) or hydrogen peroxide.",
+        "Electropolished Finish: Many models feature an electropolished surface that reduces microscopic surface roughness, ensuring bacteria have nowhere to hide.",
+        "ESD (Electrostatic Discharge) Safety: For electronics manufacturing, carts are equipped with conductive wheels and grounding chains to prevent static buildup that could fry sensitive components.",
+        "Non-Marking Castors: The wheels are typically made of high-quality polyurethane or synthetic rubber that leaves no scuff marks on epoxy cleanroom floors.",
+        "Ergonomic Design: Tubular handles are seamlessly welded (not bolted) to eliminate \"dead spots\" where dust can accumulate.",
+        "Perforated vs. Solid Shelves: * Solid: Prevents drips from reaching lower tiers.",
+        "Perforated: Allows for laminar airflow to pass through the cart, maintaining the cleanroom's air pressure equilibrium."
       ],
       "specs": {
         "material": {
-          "value": "304 Stainless Steel Wire",
+          "value": "304 Stainless Steel",
           "customizable": true
         },
         "dimension": {
@@ -532,9 +530,10 @@
         }
       },
       "application_scenarios": [
-        "Component Kitting",
-        "Garment Distribution",
-        "Sterile Supply"
+        "Pharmaceuticals: Moving vials, syringes, or sterilized glassware.",
+        "Semiconductors: Transporting silicon wafers in FOUPs.",
+        "Hospitals: Moving sterile surgical kits within operating theaters.",
+        "Research Labs: Organizing chemicals and samples across different containment zones."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -542,7 +541,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Standard Ground"
+        "shipping": "Freight"
       }
     },
     {
@@ -558,15 +557,14 @@
         "fridge_cart-01.jpg",
         "fridge_cart-02.jpg"
       ],
-      "description": "Heavy-duty chassis cart designed to mobilize under-counter lab refrigerators. Features side ventilation slots for compressor airflow.",
-      "introduction": "Transform stationary equipment into mobile assets. Specifically engineered to support heavy laboratory refrigerators, freezers, and incubators, this Fridge Cart enables easy equipment relocation for cleaning or reconfiguration. The reinforced chassis creates a rigid platform, while precision laser-cut ventilation patterns on the side panels ensure the appliance's compressor receives adequate airflow to prevent overheating.",
+      "description": "A high-grade stainless steel transport system designed for moving temperature-sensitive biologicals, chemicals, or samples through cleanroom environments. It combines ISO-rated cleanliness compatibility with integrated cooling or insulated storage to maintain specific thermal conditions.",
+      "introduction": "In sterile environments, the \"last mile\" of transport—moving a product from a long-term medical refrigerator to a processing bench—is a critical vulnerability. A Cleanroom Fridge Trolley bridges this gap. Constructed primarily from 304 or 316L stainless steel, these trolleys are non-shedding, corrosion-resistant, and designed with smooth surfaces to prevent the accumulation of particulates and bacteria.",
       "features": [
-        "Reinforced 12-gauge chassis for heavy loads (up to 500 lbs)",
-        "Laser-cut side ventilation for compressor cooling",
-        "Safety retention lip (1\") prevents tipping",
-        "Swivel-lock heavy-duty casters for precise positioning",
-        "Low-profile design minimizes working height increase",
-        "Custom sizing to fit specific appliance models"
+        "Sterile Construction: Fully welded stainless steel frames with a brushed or electropolished finish to withstand aggressive VHP (Vaporized Hydrogen Peroxide) or alcohol-based cleaning agents.",
+        "Advanced Mobility: Equipped with non-marking, ESD-safe (Electrostatic Dissipative) wheels to prevent static build-up and ensure floor integrity.",
+        "Temperature Management: Features either active refrigeration (battery-powered) or passive cooling (high-density insulation with cold-plate slots).",
+        "Ergonomic Design: Smooth, continuous-weld handles and \"no-snag\" corners to comply with safety and hygiene protocols.",
+        "Digital Monitoring: Often includes integrated LED displays for real-time temperature logging and alarm systems for deviations."
       ],
       "specs": {
         "material": {
@@ -575,24 +573,26 @@
         },
         "dimension": {
           "external": {
-            "width": 62,
-            "height": 15,
-            "length": 62
+            "width": 65,
+            "height": 133,
+            "length": 85
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
             "Laser Cutting",
-            "Bending"
+            "Seamless Welding",
+            "Brushed Finish"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Mobile Lab Equipment",
-        "Flexible Lab Layouts",
-        "Equipment Maintenance"
+        "Pharmaceuticals: Transporting vaccines, insulin, or active pharmaceutical ingredients (APIs) between clean zones.",
+        "Biotechnology: Moving live cell cultures, enzymes, or tissue samples that require strict 2°C to 8°C environments.",
+        "Medical Research: Transferring blood plasma or sensitive reagents from cold storage to testing stations.",
+        "Semiconductors: Handling specialized chilled chemicals or photoresists that are sensitive to both particles and heat."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -600,7 +600,7 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Standard Ground"
+        "shipping": "Freight"
       }
     },
     {
@@ -617,15 +617,14 @@
         "locker-02.jpg",
         "locker-03.jpg"
       ],
-      "description": "Sloped-top stainless steel garment cabinet with separated compartments. vented for airflow and odor control in gowning rooms.",
-      "introduction": "Secure, organized, and compliant personnel storage. These Stainless Steel Cabinets feature a sloped top to ensure dust falls to the floor rather than accumulating overhead. The interior is divided to separate street clothes from cleanroom garments, preventing cross-contamination. Louvered vents ensure proper air circulation to keep garments fresh.",
+      "description": "A high-performance storage unit, typically made of stainless steel, designed to store cleanroom apparel in a sterile, organized, and often HEPA-filtered environment to prevent dust and microbial accumulation on garments.",
+      "introduction": "The Garment Cabinet is a staple of the \"gowning room\" or \"ante-room\". Its primary purpose is to act as a buffer between the outside world and the sterile production zone. By providing a dedicated space for hanging or shelving cleanroom attire, these cabinets minimize garment handling and exposure to ambient air, which significantly extends the life and sterility of the clothing.",
       "features": [
-        "Steep sloped top (1:3 pitch) prevents dust build-up",
-        "Dedicated compartments for shoes and garments",
-        "Louvered vents for air circulation",
-        "Recessed handles with padlock hasps or digital locks",
-        "Number plates for identification",
-        "Modular banks (1 to 5 columns)"
+        "Air Filtration (Optional but Common): Integrated HEPA or ULPA filters that provide a continuous flow of laminar air (Class 100/ISO 5) over the garments to blow away any settling particles.",
+        "Material Integrity: Constructed from 304 or 316L Stainless Steel for easy wipe-down and resistance to sterilization chemicals.",
+        "Sloping Top: A slanted roof design to prevent the accumulation of dust and to discourage the storage of items on top of the unit.",
+        "Static Dissipation: Often features ESD-safe glass or acrylic doors to prevent the buildup of static electricity that attracts dust.",
+        "Configurable Interiors: Includes a mix of hanging rails, adjustable shelving for folded items, and dedicated compartments for \"cleanroom shoes\" or \"clogs.\""
       ],
       "specs": {
         "material": {
@@ -642,16 +641,20 @@
         },
         "process_technology": {
           "value": [
-            "Sheet Metal Folding",
-            "Riveting/Welding"
+            "Brushed Finish",
+            "Seamless Welding",
+            "Laser Cutting"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Gowning Rooms",
-        "Change Rooms",
-        "Staff Entrances"
+        "Aseptic Staging: Maintaining the sterility of gowns and hoods used in pharmaceutical filling suites.",
+        "Static Prevention: Storing ESD-safe \"bunny suits\" for semiconductor and microelectronics assembly.",
+        "Contamination Control: Protecting low-linting apparel used in aerospace and high-precision optics labs.",
+        "Cross-Zone Buffer: Separating garments used in different bio-safety levels (BSL) to prevent cross-contamination.",
+        "Surgical Integrity: Housing specialized footwear and headgear for ultra-clean hospital operating theaters.",
+        "Visitor Management: Providing a sterile storage point for temporary gowns used by guests or auditors."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -675,15 +678,14 @@
         "nitrogen_cabinet-01.jpg",
         "nitrogen_cabinet-02.jpg"
       ],
-      "description": "Smart nitrogen-purge desiccator cabinet. Maintains ultra-low humidity (<5% RH) for oxidation-free storage of sensitive wafers and optics.",
-      "introduction": "Ultimate protection for moisture-sensitive components. Our Smart Nitrogen Cabinet creates a clean, dry, and inert environment to prevent oxidation and moisture defects. The automated purge system creates positive pressure with nitrogen gas, efficiently displacing moisture. Ideal for storing semiconductor wafers, ICs, and precision optics.",
+      "description": "A hermetically sealed storage system that replaces internal atmosphere with pressurized nitrogen gas to achieve near-zero humidity (typically <1% to 10% RH) and an inert, non-reactive environment for high-value sensitive components.",
+      "introduction": "In cleanroom operations, moisture and oxygen are \"invisible contaminants.\" A Nitrogen Cabinet solves this by \"purging\"—forcing nitrogen into the cabinet to push out heavier, moisture-laden air through one-way relief valves. Because nitrogen is an inert gas, it creates a stable \"blanket\" around materials, making it the gold standard for long-term storage of semiconductors, optics, and reactive chemicals.",
       "features": [
-        "Automated Nitrogen Purge System (setpoint control)",
-        "Digital Hygrometer/Thermometer Display",
-        "Static-Dissipative PVC or Stainless Steel construction",
-        "Plenum chamber for uniform gas distribution",
-        "Reinforced doors with airtight elastomeric seals",
-        "Flow-meter for gas consumption monitoring"
+        "Automatic Purge Control: Uses RH (Relative Humidity) sensors to trigger N2 flow only when humidity rises (e.g., after a door opens), significantly reducing gas consumption.",
+        "Airtight Construction: Built from 304/316L Stainless Steel or Static-Dissipative PVC with reinforced door frames and non-outgassing gaskets.",
+        "Plenum Distribution: Internal \"plenum\" walls with perforated holes ensure even gas distribution across all shelves, preventing \"moisture pockets.\"",
+        "Pressure Management: Integrated flow meters and pressure relief valves prevent over-pressurization while maintaining a positive pressure seal against outside dust.",
+        "Rapid Recovery: Able to return to target humidity levels (e.g., <5% RH) within minutes of closing the door, much faster than desiccant-based systems."
       ],
       "specs": {
         "material": {
@@ -700,16 +702,20 @@
         },
         "process_technology": {
           "value": [
-            "Gas Sealing",
-            "Digital Integration"
+            "Brushed Finish",
+            "Laser Cutting",
+            "Seamless Welding"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Wafer Storage",
-        "Optics Preservation",
-        "Electronic Component Storage"
+        "Wafer & Chip Storage: Preventing the oxidation of silicon wafers, lead frames, and microchips between manufacturing steps.",
+        "MSD Protection: Safely housing Moisture Sensitive Devices (MSDs) to prevent the \"popcorn effect\" (cracking) during later solder reflow processes.",
+        "Optical Preservation: Storing high-precision lenses and laser crystals to prevent surface fogging and \"glass disease\" caused by humidity.",
+        "Biotech Stability: Protecting hygroscopic (moisture-absorbing) powders, DNA samples, and enzymes that degrade in the presence of oxygen.",
+        "Aerospace Electronics: Long-term preservation of critical avionics and sensors that must remain in a \"factory-fresh\" state for years.",
+        "Museum & Archive: Preserving rare artifacts or sensitive film that would otherwise deteriorate through oxidative aging."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -733,12 +739,16 @@
         "sink-01.jpg",
         "sink-02.jpg",
         "sink-03.jpg",
-        "sink-04.jpg",
-        "sink-05.jpg"
+        "sink-04.jpg"
       ],
-      "description": "Hands-free electropolished sink station. Deep basin and high backsplash design prevents splash contamination. Pedal or sensor activated.",
-      "introduction": "Touch-free hygiene for critical areas. Our Stainless Steel Sink Station is designed to minimize cross-contamination risks. The deep-drawn basin and high integral backsplash contain water within the unit. Activated by knee-pedals or infrared sensors, it allows users to wash without touching faucet handles. The electropolished finish ensures the basin remains biofilm-free.",
+      "description": "A precision-engineered, stainless steel sanitation station featuring a seamless, crevice-free design and hands-free operation to maintain strict hygiene protocols in controlled environments.",
+      "introduction": "The cleanroom sink is the primary defense against cross-contamination at the entry or exit of a sterile zone. Standard sinks have joints and overflows where bacteria can thrive; cleanroom sinks eliminate these risks through monolithic construction. Every curve is radiused (coved) for easy wiping, and the hardware is typically automated to ensure the user never has to touch a handle, preserving hand hygiene.",
       "features": [
+        "Seamless Construction: Made from 304 or 316L Stainless Steel with fully welded, radiused corners to eliminate cracks where biofilms can grow.",
+        "Hands-Free Operation: Equipped with infrared sensors, knee-operated panels, or foot pedals to prevent re-contaminating hands after washing.",
+        "Hygienic Drainage: Features a specialized \"rear-set\" or \"conical\" drain to prevent standing water and minimize splashing.",
+        "No Overflow Hole: Unlike domestic sinks, cleanroom models omit the overflow hole—a notorious breeding ground for bacteria and mold.",
+        "Integrated Backsplash: Deep-drawn, high-back designs to protect the surrounding cleanroom walls from moisture and spray.",
         "Piping system made of 316L sanitary tubing"
       ],
       "specs": {
@@ -763,9 +773,12 @@
         }
       },
       "application_scenarios": [
-        "Gowning Entry",
-        "Lab cleanup",
-        "Production Support"
+        "Gowning Entry/Exit: Facilitating the mandatory hand-scrubbing protocols before staff enter sterile production areas.",
+        "Laboratory Tool Cleaning: Providing a contamination-free zone for rinsing high-precision glassware or sampling tools.",
+        "Aseptic Processing: Used in pharmaceutical formulation areas for necessary sanitation steps that require ultrapure water (WFI).",
+        "Compounding Pharmacies: Meeting USP <797> standards for hand hygiene prior to sterile drug preparation.",
+        "Biotech Sample Prep: Rinsing non-reactive components used in cell culture or genomic sequencing.",
+        "Medical Device Cleaning: Final-stage rinsing of surgical implants or instruments before they are moved to packaging."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -791,15 +804,14 @@
         "storage_rack-03.jpg",
         "storage_rack-04.jpg"
       ],
-      "description": "Adjustable 4-tier stainless steel shelving unit. High load capacity and corrosion resistant. Perforated or solid shelf options.",
-      "introduction": "Adaptable, heavy-duty storage for sterile supplies. Our Modular Storage Racks are the backbone of cleanroom inventory management. Constructed from corrosion-resistant 304 stainless steel, they withstand frequent cleaning with harsh chemicals. Shelves are easily adjustable to accommodate varying package sizes, and the open design ensures unrestricted airflow.",
+      "description": "A modular, high-stability shelving unit constructed from non-shedding materials, designed for maximum airflow and easy decontamination in sterile or particulate-sensitive zones.",
+      "introduction": "In a cleanroom, \"standard\" shelving is a liability. Particle-shedding paint, hidden rust, and flat surfaces that trap dust can ruin a production batch. Cleanroom Storage Racks solve this by using electropolished stainless steel and often feature wire-mesh or perforated designs. These specialized structures ensure that vertical laminar airflow (the \"clean air shower\" from the ceiling) can pass through the racks rather than being blocked, which prevents \"dead zones\" where contaminants might settle.",
       "features": [
-        "Tool-free assembly and adjustment",
-        "Heavy-duty load capacity (250kg per shelf)",
-        "Adjustable shelf increments (25mm)",
-        "Choice of Solid or Perforated shelves",
-        "Adjustable leveling feet for uneven floors",
-        "Seismic restraint kits available"
+        "Open-Wire or Perforated Design: Minimizes surface area for dust collection and allows unobstructed vertical airflow.",
+        "Non-Shedding Materials: Typically made from 304 or 316L Stainless Steel, which does not flake, chip, or outgas.",
+        "Adjustable & Modular: Shelves can be repositioned without specialized tools that might generate metal shavings or debris.",
+        "High Load Capacity: Engineered for high weight-to-strength ratios to support heavy lab equipment or bulk chemical containers.",
+        "ESD Compatibility: Naturally conductive properties (often paired with grounding chains) to protect sensitive electronics from static discharge."
       ],
       "specs": {
         "material": {
@@ -824,9 +836,12 @@
         }
       },
       "application_scenarios": [
-        "Warehouse",
-        "Cold Storage",
-        "In-Lab Storage"
+        "WIP (Work-in-Progress) Staging: Holding semi-finished semiconductor wafers or medical devices between processing stages.",
+        "Sterile Supply Storage: Organizing autoclaved tools and surgical kits in hospital or pharmaceutical prep rooms.",
+        "Cooling/Drying Racks: Allowing freshly cleaned components to air-dry under HEPA-filtered flow.",
+        "Chemical Management: Storing non-reactive canisters and reagents in a visible, organized manner.",
+        "Cleanroom Shoe/Clog Storage: Used in gowning areas to keep specialized footwear off the floor and organized.",
+        "Electronics Housing: Holding circuit board racks or sensitive hardware during testing and assembly."
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -834,11 +849,11 @@
       },
       "policies": {
         "warranty": "1 Year Warranty",
-        "shipping": "Freight or Flat Pack"
+        "shipping": "Freight"
       }
     },
     {
-      "name": "Ladder",
+      "name": "Mobile Work Platforms",
       "category": "Maintenance",
       "tags": [
         "Access",
@@ -850,15 +865,15 @@
         "work_platform-01.jpg",
         "work_platform-02.jpg"
       ],
-      "description": "Rolling stainless steel ladder platform with 8 steps and safety handrails. Provides safe elevated access for maintenance and inspection.",
-      "introduction": "Secure access for hard-to-reach areas. This Mobile Cleanroom Work Platform functions as a robust rolling ladder. Featuring 8 non-slip perforated steps and full-height safety handrails, it allows personnel to safely ascend to elevated equipment or facility infrastructure. The spring-loaded casters lock into place when weight is applied, ensuring complete stability during use.",
+      "description": "A versatile, stainless steel mobile station featuring high-grade casters and an easy-to-sanitize surface, used to bring tools, laptops, or processing equipment directly to the point of need in a cleanroom.",
+      "introduction": "In a dynamic cleanroom environment, fixed benchtop space is often limited. The Mobile Work Platform acts as a 'roving' sterile zone. Unlike standard utility carts, these platforms are designed with ergonomics and cleanliness in balance—ensuring that even as they move between different ISO zones, they do not track contaminants or harbor bacteria in their adjustment mechanisms.",
       "features": [
-        "8-step design with large top working platform",
-        "Spring-loaded locking casters for auto-braking",
-        "Full-height safety handrails (OSHA compliant)",
-        "Perforated treads used for liquid drainage",
-        "Electropolished for cleanroom compatibility",
-        "Heavy-duty load rating (150kg)"
+        "Mobile & Maneuverable: Equipped with high-grade, non-marking casters (often with locking mechanisms) that allow the platform to be moved silently and precisely to any location within the facility.",
+        "Adjustable Height: Features a robust mechanical or pneumatic lift system, allowing operators to set the perfect ergonomic height for standing or seated work without compromising stability.",
+        "Easy-to-Clean Surfaces: Constructed from electropolished 304 or 316L stainless steel with minimal seams, crevices, or holes to prevent the accumulation of dust or microbial growth.",
+        "Load Capacity: Engineered to support significant weight—typically ranging from 100kg to 250kg—making them suitable for heavy equipment, bulk materials, or multiple workstations.",
+        "ESD Safe Options: Available with conductive casters and grounding straps to safely dissipate static electricity, protecting sensitive electronic components.",
+        "Access & Safety: Includes integrated handrails or guardrails to ensure personnel safety while working at height, compliant with cleanroom safety standards."
       ],
       "specs": {
         "material": {
@@ -882,9 +897,12 @@
         }
       },
       "application_scenarios": [
-        "Overhead Maintenance",
-        "Tank Inspection",
-        "Facility Repairs"
+        "Point-of-Use Assembly: Creating a temporary sterile workspace for the manual assembly of medical devices or electronic sensors.",
+        "Mobile Data Entry: Serving as a laptop or tablet station for technicians recording batch data directly next to production machinery.",
+        "Equipment Calibration: Supporting heavy testing instruments that need to be moved from one fixed station to another.",
+        "Aseptic Transfer: Moving sterile components from a pass-through hatch to a secondary processing area without hand-carrying.",
+        "Microbiological Sampling: Providing a stable, clean surface for environmental monitoring (EM) equipment during air and surface testing.",
+        "Temporary Tool Station: Holding specialized surgical or mechanical tools during long-duration maintenance tasks inside a sterile suite."
       ],
       "engineering_drawings": {
         "ortho_projections": [],

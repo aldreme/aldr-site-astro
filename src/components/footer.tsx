@@ -162,8 +162,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
-                <a href="mailto:contact@aldreme.com" className="text-zinc-400 hover:text-white transition-colors">
-                  contact@aldreme.com {/* Hardcoded based on context, update if distinct key exists */}
+                <a href="mailto:sales@aldreme.com" className="text-zinc-400 hover:text-white transition-colors">
+                  sales@aldreme.com {/* Hardcoded based on context, update if distinct key exists */}
                 </a>
               </div>
             </div>
