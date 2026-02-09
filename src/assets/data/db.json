@@ -1,6 +1,75 @@
 {
   "products": [
     {
+      "name": "Heavy Duty Workbench",
+      "category": "Workstations",
+      "tags": [
+        "Furniture",
+        "Construction",
+        "Assembly"
+      ],
+      "price": 0,
+      "images": [
+        "workbench-brushed.png",
+        "workbench-ep.png",
+        "workbench-03.jpg",
+        "workbench-04.jpg",
+        "workbench-05.jpg",
+        "workbench-06.jpg",
+        "workbench-07.jpg",
+        "workbench-08.jpg",
+        "workbench-02.jpg"
+      ],
+      "description": "Robust 2-tier stainless steel industrial workbench. Simple, super-heavy-duty construction for handling massive loads in clean zones.",
+      "introduction": "Uncompromising strength for heavy tasks. This Heavy-Duty 2-Tier Workbench eliminates the bells and whistles to focus on pure structural integrity. Built with oversized tubular framing and a thick-gauge top, it is designed to support heavy equipment or large valve assemblies. The lower shelf offers additional reinforced storage space.",
+      "features": [
+        "Extra-heavy load capacity (200kg)",
+        "Fully Welded, Double-Skin Construction",
+        "Brushed Finish",
+        "SUS304 Adjustable Leveling Feet",
+        "Worktop Reinforced with PVC or Aluminum Honeycomb Core"
+      ],
+      "specs": {
+        "weight": {
+          "value": 85,
+          "customizable": true
+        },
+        "material": {
+          "value": "304 Stainless Steel",
+          "customizable": true
+        },
+        "dimension": {
+          "external": {
+            "width": 75,
+            "height": 85,
+            "length": 290
+          },
+          "customizable": true
+        },
+        "process_technology": {
+          "value": [
+            "Structural Assembly",
+            "TIG Welding"
+          ],
+          "customizable": true
+        }
+      },
+      "application_scenarios": [
+        "Heavy Device Assembly",
+        "Repair Station",
+        "Valve Maintenance"
+      ],
+      "engineering_drawings": {
+        "ortho_projections": [],
+        "models": []
+      },
+      "policies": {
+        "warranty": "5-Year Warranty",
+        "return": "Standard",
+        "shipping": "Freight"
+      }
+    },
+    {
       "name": "Gowning bench",
       "featured": true,
       "category": "Cleanroom Furniture",
@@ -35,8 +104,8 @@
         "dimension": {
           "external": {
             "width": 40,
-            "height": 45,
-            "length": 120
+            "height": 40,
+            "length": 290
           },
           "customizable": true
         },
@@ -81,7 +150,7 @@
         "Hinged stainless steel lid with handle",
         "Seamless interior construction for easy cleaning",
         "Heavy-duty swivel casters",
-        "Corrosion-resistant Type 304 stainless steel",
+        "SUS 304 stainless steel",
         "Large capacity for bulk items",
         "Push handle for ergonomic transport"
       ],
@@ -96,8 +165,8 @@
         },
         "dimension": {
           "external": {
-            "width": 60,
-            "height": 80,
+            "width": 50,
+            "height": 70,
             "length": 100
           },
           "customizable": true
@@ -105,15 +174,18 @@
         "process_technology": {
           "value": [
             "TIG Welding",
-            "Sheet Metal Folding"
+            "Seamless Welding",
+            "Double-Clad",
+            "Full Polishing Process",
+            "Brushed Finish"
           ],
           "customizable": false
         }
       },
       "application_scenarios": [
-        "Ingredient Transport",
+        "Cleanroom Material Transport",
         "Waste Collection",
-        "Laundry Hamper"
+        "Liquid Transfer"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -126,7 +198,7 @@
       }
     },
     {
-      "name": "Equipment Chassis Cart",
+      "name": "Wash Rack Lifting Trolley for Cleaning Machines",
       "category": "Transport",
       "tags": [
         "Transport",
@@ -138,13 +210,14 @@
         "cart-01.jpg",
         "cart-02.jpg"
       ],
-      "description": "Specialized cantilevered chassis cart for transporting heavy equipment. Open design allows for easy loading of production machinery.",
-      "introduction": "A tailored solution for machinery mobility. This Equipment Chassis Cart features a unique cantilevered frame designed to interface with specific production equipment or tanks. The angled handle structure allows operators to maneuver heavy loads while maintaining visibility. Its low center of gravity and high-capacity wheels ensure stable transport of valuable assets.",
+      "description": "Wash Rack Transfer Trolley – Designed for transporting washer racks and conducting offline cleaning efficacy testing.",
+      "introduction": "The equipment is constructed from 316L stainless steel and features 316L sanitary tubing with orbital welds. It is equipped with SKF lifting columns, a fully electropolished surface finish, and is powered by a 24V DC battery.",
       "features": [
-        "Heavy-duty cantilevered frame design",
-        "Integrated equipment mounting points",
-        "Ergonomic angled push handle",
-        "Reinforced base for stability",
+        "Lifting Range: 580 mm – 980 mm",
+        "Max. Load Capacity: 400 kg",
+        "Rechargeable Lithium Battery",
+        "Remote-Controlled Lifting",
+        "Offline Cleaning Efficacy Testing",
         "Electropolished finish",
         "Customizable for specific equipment footprints"
       ],
@@ -159,24 +232,24 @@
         },
         "dimension": {
           "external": {
-            "width": 80,
-            "height": 110,
-            "length": 120
+            "width": 85,
+            "height": 128,
+            "length": 188
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Tube Bending",
-            "Structural Welding"
+            "TIG Welding",
+            "Seamless Welding",
+            "Electropolishing"
           ],
           "customizable": true
         }
       },
       "application_scenarios": [
-        "Machine Transport",
-        "Tank Moving",
-        "Production Line Setup"
+        "Wash Rack Transfer",
+        "Cleaning Efficacy Assessment of Washed Items"
       ],
       "engineering_drawings": {
         "ortho_projections": [],
@@ -189,7 +262,7 @@
       }
     },
     {
-      "name": "Cleaner Cart",
+      "name": "Wash Rack for Cleaning Machine",
       "category": "Maintenance",
       "tags": [
         "Cleaning",
@@ -201,15 +274,16 @@
         "cleaner_cart-01.jpg",
         "cleaner_cart-02.jpg"
       ],
-      "description": "Modular stainless steel janitorial cart designed for cleanroom mopping systems. Organizes buckets, wringers, and waste without harboring contaminants.",
-      "introduction": "Elevate your facility's sanitation protocol with our Modular Cleaner Cart. Specifically built to accommodate cleanroom-specific bucket systems and wringers, it keeps cleaning tools organized and off the floor. The open-wire or tubular frame design minimizes surface area for particle accumulation, while the electropolished finish withstands daily exposure to aggressive phenolic and quaternary disinfectants.",
+      "description": "Wash Rack with Integrated Piping and Spray Nozzles Custom-designed wash rack tailored to specific load items.",
+      "introduction": "The entire rack is constructed from 316L stainless steel, featuring a piping system made of 316L sanitary tubing. All piping is welded to sanitary standards, ensuring smooth, consistent internal and external weld seams. The unit utilizes PEEK nozzles and is designed to match the operating water pressure of the washing machine. This rack can be transported into the washer via a transfer trolley, where it connects to the machine's internal piping system to clean loaded parts. It also supports offline cleaning efficacy verification while docked on the transfer trolley. The entire rack features an electropolished surface finish.",
       "features": [
-        "Universal compatibility with double-bucket systems",
-        "Integrated holders for mop handles and wringers",
-        "Autoclavable stainless steel construction",
-        "Waste bag retention ring with lid",
-        "Chemical-resistant polyurethane casters",
-        "Compact footprint for narrow aisles"
+        "Construction Material: Entire rack structure manufactured from 316L Stainless Steel",
+        "Sanitary Piping System: Made of 316L sanitary tubing. Welded to sanitary standards to ensure smooth, consistent internal and external seams.",
+        "High-Performance Nozzles: Equipped with durable PEEK nozzles for optimal chemical resistance and spray pattern.",
+        "Pressure Compatibility: Designed to match the specific operating water pressure of the connected washing machine.",
+        "In-Washer Cleaning: Seamlessly transports into the washer via trolley and connects to the machine’s internal water supply.",
+        "Offline Verification: Supports cleaning efficacy testing while docked on the transfer trolley outside the machine.",
+        "Surface Finish: Fully electropolished for superior hygiene and corrosion resistance."
       ],
       "specs": {
         "weight": {
@@ -222,16 +296,15 @@
         },
         "dimension": {
           "external": {
-            "width": 55,
-            "height": 100,
-            "length": 110
+            "width": 106,
+            "height": 65,
+            "length": 147
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Electropolished",
-            "Passivated"
+            "Electropolished"
           ],
           "customizable": false
         }
@@ -252,7 +325,7 @@
       }
     },
     {
-      "name": "Convey Window",
+      "name": "Pass-through Window",
       "featured": true,
       "category": "Transfer",
       "tags": [
@@ -324,7 +397,7 @@
       }
     },
     {
-      "name": "PC Enclosure",
+      "name": "Cleanroom Computer Workstation",
       "category": "Accessories",
       "tags": [
         "Workstation",
@@ -359,9 +432,9 @@
         },
         "dimension": {
           "external": {
-            "width": 60,
-            "height": 80,
-            "length": 15
+            "width": 50,
+            "height": 120,
+            "length": 80
           },
           "customizable": true
         },
@@ -389,7 +462,7 @@
       }
     },
     {
-      "name": "Multi-Tier Wire Cart",
+      "name": "Multi-Tier Trolley",
       "category": "Transport",
       "tags": [
         "Transport",
@@ -400,7 +473,13 @@
       "images": [
         "dolly-01.jpg",
         "dolly-02.jpg",
-        "dolly-03.jpg"
+        "dolly-03.jpg",
+        "grid_dolly-01.jpg",
+        "grid_dolly-02.jpg",
+        "trolley-01.jpg",
+        "trolley-02.jpg",
+        "trolley-03.jpg",
+        "grid_cart-01.jpg"
       ],
       "description": "High-capacity multi-tier wire cart with deep baskets. Perfect for batch transport of small components or sterile packs.",
       "introduction": "Maximize transport efficiency for small items. This Multi-Tier Wire Cart features 3 generous wire basket shelves, providing ample volume for loose items like shoe covers, wipers, or small vials. The wire construction ensures full visibility and airflow, while the raised basket edges prevent items from falling during transit. Includes a full-width handle for easy steerability.",
@@ -423,16 +502,16 @@
         },
         "dimension": {
           "external": {
-            "width": 46,
-            "height": 100,
-            "length": 90
+            "width": 50,
+            "height": 120,
+            "length": 80
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Wire Forming",
-            "Spot Welding"
+            "Brushed Finish",
+            "Seamless Welding"
           ],
           "customizable": true
         }
@@ -453,89 +532,7 @@
       }
     },
     {
-      "name": "Electric Workbench",
-      "featured": true,
-      "category": "Workstations",
-      "tags": [
-        "Furniture",
-        "Ergonomic",
-        "Powered",
-        "Adjustable"
-      ],
-      "price": 0,
-      "images": [
-        "electric_workbench-01.jpg",
-        "electric_workbench-02.jpg",
-        "electric_workbench-03.jpg",
-        "electric_workbench-04.jpg"
-      ],
-      "description": "Ergonomic height-adjustable workbench with ESD top. Electric actuators assist sit/stand operations for improved operator productivity.",
-      "introduction": "Combine operator wellness with process precision. The Electric Height-Adjustable Workbench allows operators to seamlessly transition between sitting and standing, reducing fatigue during long shifts. Powered by smooth, quiet electric lifters sealed within the legs to prevent particle generation. The work surface is available in ESD laminate or perforated stainless steel for critical electronics assembly.",
-      "features": [
-        "Electric height adjustment (750mm - 1100mm)",
-        "Programmable memory height presets",
-        "ESD-safe laminate top (Static Dissipative)",
-        "Integrated electrical raceway with cleanroom-safe outlets",
-        "Sealed lifting columns for ISO 5 compliance",
-        "Heavy-duty load capacity (500 lbs)"
-      ],
-      "specs": {
-        "weight": {
-          "value": 75,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel Frame / ESD Laminate Top",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 76,
-            "height": 110,
-            "length": 152
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 110,
-            "max": 240
-          },
-          "current": {
-            "min": 10,
-            "max": 15
-          },
-          "power": {
-            "min": 100,
-            "max": 3000
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Linear Actuation",
-            "ESD Grounding"
-          ],
-          "customizable": false
-        }
-      },
-      "application_scenarios": [
-        "Electronics Assembly",
-        "Medical Device Packaging",
-        "Inspection Stations"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "5-Year Frame, 2-Year Motor",
-        "return": "Restocking fee",
-        "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Fridge Cart",
+      "name": "Fridge Trolley",
       "category": "Transport",
       "tags": [
         "Transport",
@@ -601,133 +598,7 @@
       }
     },
     {
-      "name": "Wire Basket Trolley",
-      "category": "Transport",
-      "tags": [
-        "Transport",
-        "Basket",
-        "Wire",
-        "Utility"
-      ],
-      "price": 0,
-      "images": [
-        "grid_cart-01.jpg"
-      ],
-      "description": "Deep wire basket trolley for transporting bulk items, garments, or sterile packages. Large volume with excellent visibility and airflow.",
-      "introduction": "Efficient bulk transport with maximum visibility. This Wire Basket Trolley features a deep, high-volume basket design constructed from stainless steel wire grid. It allows for full air circulation around contents, making it ideal for laundry, shoe covers, or packaged sterile goods. The lightweight yet durable frame ensures easy maneuverability through busy corridors.",
-      "features": [
-        "Deep basket design for maximum volume",
-        "Grid construction prevents dust accumulation",
-        "Stainless steel tubular push handle",
-        "Full-perimeter bumper protection",
-        "Smooth-rolling non-marking casters",
-        "Electropolished finish"
-      ],
-      "specs": {
-        "weight": {
-          "value": 16,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel Wire",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 60,
-            "height": 90,
-            "length": 100
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Wire Forming",
-            "Resistance Welding"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Laundry Transport",
-        "Bulk Supply Distribution",
-        "Waste Handling"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "2-Year Warranty",
-        "return": "Standard",
-        "shipping": "Freight"
-      }
-    },
-    {
-      "name": "3-Tier Perforated Trolley",
-      "category": "Transport",
-      "tags": [
-        "Transport",
-        "Utility",
-        "Perforated"
-      ],
-      "price": 0,
-      "images": [
-        "grid_dolly-01.jpg",
-        "grid_dolly-02.jpg"
-      ],
-      "description": "Three-tier stainless steel trolley with perforated shelves. Combines flat-surface utility with vertical airflow permeability.",
-      "introduction": "The perfect balance of stability and airflow. This 3-Tier Trolley features perforated flat shelves which offer the stable support of a solid surface for transport of small beakers or vials, while the perforation pattern allows for 30% vertical airflow pass-through. Ideal for laminar flow zones where air disruption must be minimized.",
-      "features": [
-        "Perforated shelves for laminar flow compatibility",
-        "Flat surface stability for small items",
-        "Ergonomic handle height",
-        "Raised lips on shelves to prevent rolling",
-        "Fully welded construction",
-        "Easy-clean electropolished finish"
-      ],
-      "specs": {
-        "weight": {
-          "value": 20,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 50,
-            "height": 95,
-            "length": 80
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Laser Perforation",
-            "TIG Welding"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Labware Transport",
-        "Cleanroom Utility",
-        "Sample Handling"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "2-Year Warranty",
-        "return": "Standard",
-        "shipping": "Standard"
-      }
-    },
-    {
-      "name": "Locker",
+      "name": "Gowning Cabinet",
       "category": "Storage",
       "tags": [
         "Furniture",
@@ -791,7 +662,7 @@
       }
     },
     {
-      "name": "Mixer",
+      "name": "Mixer Tank",
       "featured": true,
       "category": "Process Equipment",
       "tags": [
@@ -817,41 +688,18 @@
         "Zero-dead-leg drain valve"
       ],
       "specs": {
-        "weight": {
-          "value": 150,
-          "customizable": true
-        },
         "material": {
           "value": "316L Stainless Steel (Contact), 304 (Cladding)",
           "customizable": true
         },
-        "dimension": {
-          "external": {
-            "width": 110,
-            "height": 170,
-            "length": 110
-          },
-          "customizable": true
-        },
-        "electrical": {
-          "voltage": {
-            "min": 208,
-            "max": 480
-          },
-          "current": {
-            "min": 15,
-            "max": 30
-          },
-          "power": {
-            "min": 1500,
-            "max": 7500
-          },
+        "volume": {
+          "value": 50,
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Orbital Welding",
-            "Mechanical Polishing"
+            "Bead Blasting",
+            "Seamless Welding"
           ],
           "customizable": true
         }
@@ -935,71 +783,6 @@
       }
     },
     {
-      "name": "Scaffold",
-      "category": "Maintenance",
-      "tags": [
-        "Access",
-        "Safety",
-        "Maintenance"
-      ],
-      "price": 0,
-      "images": [
-        "scaffold-01.jpg",
-        "scaffold-02.jpg",
-        "scaffold-03.jpg",
-        "scaffold-04.jpg"
-      ],
-      "description": "Collapsible all-stainless steel cleanroom scaffold. Provides safe elevated access for HEPA filter changes and facility maintenance.",
-      "introduction": "Reach new heights safely and cleanly. This specially designed Cleanroom Scaffold eliminates the particle shedding associated with aluminum ladders. Constructed entirely from electropolished stainless steel, it features non-slip punched treads and a folding design for compact storage. The safety cage and guardrails ensure OSHA compliance for overhead work.",
-      "features": [
-        "100% Stainless Steel construction (Zero particle shedding)",
-        "Collapsible design for easy storage and transport",
-        "Non-slip punched surface steps",
-        "Safety cage with toe-boards",
-        "Locking cleanroom casters",
-        "OSHA compliant design"
-      ],
-      "specs": {
-        "weight": {
-          "value": 160,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 74,
-            "height": 210,
-            "length": 185
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Structural Welding",
-            "Hinge Mechanisms"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "HEPA Filter Replacement",
-        "Ceiling Maintenance",
-        "Equipment Installation"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "5-Year Structural Warranty",
-        "return": "No Returns",
-        "shipping": "Freight"
-      }
-    },
-    {
       "name": "Sink",
       "category": "Furniture",
       "tags": [
@@ -1018,12 +801,7 @@
       "description": "Hands-free electropolished sink station. Deep basin and high backsplash design prevents splash contamination. Pedal or sensor activated.",
       "introduction": "Touch-free hygiene for critical areas. Our Stainless Steel Sink Station is designed to minimize cross-contamination risks. The deep-drawn basin and high integral backsplash contain water within the unit. Activated by knee-pedals or infrared sensors, it allows users to wash without touching faucet handles. The electropolished finish ensures the basin remains biofilm-free.",
       "features": [
-        "Hands-free activation (Knee-valve or IR Sensor)",
-        "Deep-drawn seamless basin (no sharp corners)",
-        "High integral backsplash",
-        "Electropolished finish for easy sanitization",
-        "Soap dispenser integration",
-        "Optional: Under-sink storage cabinet"
+        "Piping system made of 316L sanitary tubing"
       ],
       "specs": {
         "weight": {
@@ -1036,21 +814,16 @@
         },
         "dimension": {
           "external": {
-            "width": 64,
-            "height": 115,
-            "length": 122
-          },
-          "internal": {
-            "width": 55,
-            "height": 35,
-            "length": 55
+            "width": 60,
+            "height": 85,
+            "length": 240
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Deep Drawing",
-            "Plumbing Integration"
+            "Brushed Finish",
+            "Seamless Welding"
           ],
           "customizable": true
         }
@@ -1068,68 +841,6 @@
         "warranty": "3-Year Warranty",
         "return": "Standard",
         "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Small Pillar",
-      "category": "Accessories",
-      "tags": [
-        "Protection",
-        "Structural",
-        "Safety"
-      ],
-      "price": 0,
-      "images": [
-        "small_pillar-01.jpg"
-      ],
-      "description": "Stainless steel impact protection bollard. Protects facility corners, door frames, and equipment from cart collisions.",
-      "introduction": "The silent guardian of your cleanroom infrastructure. These Stainless Steel Pillars (Bollards) provide robust protection against accidental impacts from carts and trolleys, preventing costly damage to walls and door frames. Designed with a sleek, polished finish and concealed floor mounting, they offer maximum protection with minimal visual intrusion.",
-      "features": [
-        "Absorbs heavy impacts from carts",
-        "Polished finish matches cleanroom aesthetics",
-        "Concealed heavy-duty floor anchors",
-        "Rounded top cap so no particles settle",
-        "Concrete-filled option for extreme duty",
-        "Various diameters and heights available"
-      ],
-      "specs": {
-        "weight": {
-          "value": 14,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel (Schedule 40 Pipe)",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 16,
-            "height": 100,
-            "length": 16
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Pipe Forming",
-            "Polishing"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Corner Protection",
-        "Doorway Guards",
-        "Equipment Bumpers"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "10-Year Warranty",
-        "return": "Standard",
-        "shipping": "Standard"
       }
     },
     {
@@ -1168,16 +879,17 @@
         },
         "dimension": {
           "external": {
-            "width": 61,
-            "height": 183,
-            "length": 122
+            "width": 60,
+            "height": 180,
+            "length": 200
           },
           "customizable": true
         },
         "process_technology": {
           "value": [
-            "Roll Forming",
-            "Spot Welding"
+            "Seamless Welding",
+            "Double-Clad",
+            "Brushed Finish"
           ],
           "customizable": true
         }
@@ -1198,135 +910,7 @@
       }
     },
     {
-      "name": "Table",
-      "category": "Furniture",
-      "tags": [
-        "Furniture",
-        "Work Surface",
-        "Assembly"
-      ],
-      "price": 0,
-      "images": [
-        "table-01.jpg",
-        "table-02.jpg",
-        "table-03.jpg"
-      ],
-      "description": "Reinforced stainless steel work table with lower undershelf. Vibration-resistant top suitable for microscopy and general assembly.",
-      "introduction": "Stability creates precision. This Standard Cleanroom Table features a reinforced top with sound-deadening channels to create a rigid, vibration-free surface ideal for inspection and assembly. The lower undershelf adds structural rigidity and convenient storage. The fully welded frame eliminates crevices, ensuring full compliance with sanitation protocols.",
-      "features": [
-        "Top reinforced with U-channels for rigidity",
-        "Adjustable undershelf for flexible storage",
-        "Bullnose edge front and back",
-        "Sanitary leg gussets (fully sealed)",
-        "Adjustable stainless steel feet",
-        "High weight capacity (300kg)"
-      ],
-      "specs": {
-        "weight": {
-          "value": 40,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 76,
-            "height": 90,
-            "length": 152
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "TIG Welding",
-            "Polishing"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Packaging Station",
-        "Documentation Area",
-        "General Assembly"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "3-Year Warranty",
-        "return": "Standard",
-        "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Tray Trolley",
-      "category": "Transport",
-      "tags": [
-        "Transport",
-        "Utility",
-        "High Capacity"
-      ],
-      "price": 0,
-      "images": [
-        "trolley-01.jpg",
-        "trolley-02.jpg",
-        "trolley-03.jpg"
-      ],
-      "description": "Multi-tier stainless steel tray trolley. High-density transport solution for baking trays, drying filters, or component trays.",
-      "introduction": "Maximize transport density in minimal footprint. This Multi-Tier Tray Trolley (Ladder Cart) is capable of holding up to 10 standard size trays or pans. Ideal for drying operations, batch transport, or cafeteria service, it utilizes vertical space efficiently. The open design facilitates airflow for cooling or drying applications while keeping trays securely in place.",
-      "features": [
-        "High-density capacity (8-10 tray slides)",
-        "Secure tray retention stops",
-        "Hygienic open-frame design",
-        "Heavy-duty swivel casters",
-        "Reinforced tubular frame",
-        "Compatible with standard bakery/drying trays"
-      ],
-      "specs": {
-        "weight": {
-          "value": 28,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 55,
-            "height": 170,
-            "length": 70
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Tube Bending",
-            "TIG Welding"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Filter Drying",
-        "Component Batching",
-        "Tray Transport"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "2-Year Warranty",
-        "return": "Standard",
-        "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Work Platform",
+      "name": "Ladder",
       "category": "Maintenance",
       "tags": [
         "Access",
@@ -1367,8 +951,8 @@
         },
         "process_technology": {
           "value": [
-            "Structural Welding",
-            "Tube Bending"
+            "Seamless Welding",
+            "Brushed Finish"
           ],
           "customizable": true
         }
@@ -1384,75 +968,6 @@
       },
       "policies": {
         "warranty": "5-Year Structural Warranty",
-        "return": "Standard",
-        "shipping": "Freight"
-      }
-    },
-    {
-      "name": "Heavy Duty Workbench",
-      "category": "Workstations",
-      "tags": [
-        "Furniture",
-        "Construction",
-        "Assembly"
-      ],
-      "price": 0,
-      "images": [
-        "workbench-01.jpg",
-        "workbench-02.jpg",
-        "workbench-03.jpg",
-        "workbench-04.jpg",
-        "workbench-05.jpg",
-        "workbench-06.jpg",
-        "workbench-07.jpg",
-        "workbench-08.jpg"
-      ],
-      "description": "Robust 2-tier stainless steel industrial workbench. Simple, super-heavy-duty construction for handling massive loads in clean zones.",
-      "introduction": "Uncompromising strength for heavy tasks. This Heavy-Duty 2-Tier Workbench eliminates the bells and whistles to focus on pure structural integrity. Built with oversized tubular framing and a thick-gauge top, it is designed to support heavy equipment or large valve assemblies. The lower shelf offers additional reinforced storage space.",
-      "features": [
-        "Extra-heavy load capacity (600kg+)",
-        "Simple, cleanable 2-tier design",
-        "Reinforced top and bottom shelves",
-        "Oversized tubular legs for stability",
-        "Adjustable leveling feet",
-        "All-welded construction option available"
-      ],
-      "specs": {
-        "weight": {
-          "value": 85,
-          "customizable": true
-        },
-        "material": {
-          "value": "304 Stainless Steel",
-          "customizable": true
-        },
-        "dimension": {
-          "external": {
-            "width": 75,
-            "height": 90,
-            "length": 150
-          },
-          "customizable": true
-        },
-        "process_technology": {
-          "value": [
-            "Structural Assembly",
-            "TIG Welding"
-          ],
-          "customizable": true
-        }
-      },
-      "application_scenarios": [
-        "Heavy Device Assembly",
-        "Repair Station",
-        "Valve Maintenance"
-      ],
-      "engineering_drawings": {
-        "ortho_projections": [],
-        "models": []
-      },
-      "policies": {
-        "warranty": "5-Year Warranty",
         "return": "Standard",
         "shipping": "Freight"
       }

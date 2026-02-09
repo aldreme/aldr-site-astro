@@ -9,6 +9,7 @@ interface RoutesConfig {
   home: RouteData;
   products: RouteData;
   services: RouteData;
+  gallery: RouteData;
   // news: RouteData
   about: RouteData;
   contact: RouteData;
@@ -17,6 +18,7 @@ interface RoutesConfig {
 export const ROUTES: RoutesConfig = {
   home: { name: "Home", href: "/" },
   products: { name: "Products", href: "/products" },
+  gallery: { name: "Gallery", href: "/gallery" },
   services: {
     name: "Services",
     children: [

@@ -8,53 +8,64 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { cartItems, clearCart, isCartOpen, removeCartItem, updateCartItemQuantity } from '@/store/cart';
+import { cartItems, clearCart, isCartOpen, removeCartItem, rfqContactStore, updateCartItemQuantity, type CartItem } from '@/store/cart';
 import { useStore } from '@nanostores/react';
-import { format } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import { CalendarIcon, Minus, Plus, Send, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
 export function CartSheet() {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
-  const items = Object.values($cartItems);
+  const $rfqContact = useStore(rfqContactStore);
+  const items = Object.values($cartItems) as CartItem[];
 
-  const [formData, setFormData] = useState<{
-    name: string;
-    email: string;
-    company: string;
-    notes: string;
-    date: Date | undefined;
-  }>({
-    name: '',
-    email: '',
-    company: '',
-    notes: '',
-    date: undefined
-  });
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const dateValue = $rfqContact.expectedDeliveryDate ? parseISO($rfqContact.expectedDeliveryDate) : undefined;
+  const safeDate = dateValue && isValid(dateValue) ? dateValue : undefined;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (items.length === 0) return;
+    if (items.length === 0 || isSubmitting) return;
 
-    // Here you would implement the actual API call
-    console.log('Submitting RFQ:', {
-      customer: {
-        ...formData,
-        expectedDelivery: formData.date ? format(formData.date, 'yyyy-MM-dd') : undefined
-      },
-      items: items
-    });
+    setIsSubmitting(true);
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      clearCart();
-      isCartOpen.set(false);
-      setFormData({ name: '', email: '', company: '', notes: '', date: undefined });
-    }, 2000);
+    try {
+      const { supabase } = await import('@/lib/supabase');
+
+      const rfqPayload = {
+        cx_rep_name: $rfqContact.name,
+        cx_company: $rfqContact.company,
+        cx_email_addr: $rfqContact.email,
+        cx_rfq_subject: `Consolidated RFQ (${items.length} items)`,
+        cx_rfq_msg: $rfqContact.notes || 'No additional notes.',
+        expected_delivery_date: $rfqContact.expectedDeliveryDate || null,
+        cx_rfq_product: items[0].name, // Using first item as primary product reference
+        cx_rfq_items: items, // Multi-product details in the new JSONB column
+        quantity_needed: items.reduce((acc, item) => acc + item.quantity, 0)
+      };
+
+      const { error } = await supabase.functions.invoke('cx_rfq', {
+        body: { rfq: rfqPayload }
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        clearCart();
+        isCartOpen.set(false);
+        rfqContactStore.set({ name: '', email: '', company: '', notes: '', expectedDeliveryDate: undefined });
+      }, 3000);
+    } catch (error) {
+      console.error('Failed to submit RFQ:', error);
+      alert('There was an error submitting your request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -124,18 +135,21 @@ export function CartSheet() {
                             variant={"outline"}
                             className={cn(
                               "w-full justify-start text-left font-normal text-sm h-10",
-                              !formData.date && "text-muted-foreground"
+                              !safeDate && "text-muted-foreground"
                             )}
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
-                            {formData.date ? format(formData.date, "PPP") : <span>Pick a date</span>}
+                            {safeDate ? format(safeDate, "PPP") : <span>Pick a date</span>}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            selected={formData.date}
-                            onSelect={(date) => setFormData({ ...formData, date })}
+                            selected={safeDate}
+                            onSelect={(date) => rfqContactStore.set({
+                              ...$rfqContact,
+                              expectedDeliveryDate: date ? format(date, 'yyyy-MM-dd') : undefined
+                            })}
                             initialFocus
                           />
                         </PopoverContent>
@@ -147,13 +161,13 @@ export function CartSheet() {
                       <div className="space-y-1">
                         <Label htmlFor="name" className="text-xs">Name</Label>
                         <Input id="name" required placeholder="John Doe"
-                          value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })}
+                          value={$rfqContact.name} onChange={e => rfqContactStore.set({ ...$rfqContact, name: e.target.value })}
                         />
                       </div>
                       <div className="space-y-1">
                         <Label htmlFor="company" className="text-xs">Company</Label>
                         <Input id="company" placeholder="Acme Pharma"
-                          value={formData.company} onChange={e => setFormData({ ...formData, company: e.target.value })}
+                          value={$rfqContact.company} onChange={e => rfqContactStore.set({ ...$rfqContact, company: e.target.value })}
                         />
                       </div>
                     </div>
@@ -161,7 +175,7 @@ export function CartSheet() {
                     <div className="space-y-1">
                       <Label htmlFor="email" className="text-xs">Work Email</Label>
                       <Input id="email" type="email" required placeholder="john@company.com"
-                        value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        value={$rfqContact.email} onChange={e => rfqContactStore.set({ ...$rfqContact, email: e.target.value })}
                       />
                     </div>
 
@@ -169,7 +183,7 @@ export function CartSheet() {
                     <div className="space-y-1">
                       <Label htmlFor="notes" className="text-xs">Project Notes (Optional)</Label>
                       <Input id="notes" placeholder="e.g., Delivery needed by Q3..."
-                        value={formData.notes} onChange={e => setFormData({ ...formData, notes: e.target.value })}
+                        value={$rfqContact.notes} onChange={e => rfqContactStore.set({ ...$rfqContact, notes: e.target.value })}
                       />
                     </div>
                   </form>
@@ -177,8 +191,17 @@ export function CartSheet() {
               )}
             </ScrollArea>
             <SheetFooter className="mt-auto border-t pt-4">
-              <Button type="submit" form="rfq-form" className="w-full bg-blue-600 hover:bg-blue-700" disabled={items.length === 0}>
-                Send Request {items.length > 0 && `(${items.length} Items)`}
+              <Button type="submit" form="rfq-form" className="w-full bg-blue-600 hover:bg-blue-700" disabled={items.length === 0 || isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Plus className="mr-2 h-4 w-4 animate-spin rotate-45" />
+                    Sending Request...
+                  </>
+                ) : (
+                  <>
+                    Send Request {items.length > 0 && `(${items.length} Items)`}
+                  </>
+                )}
               </Button>
             </SheetFooter>
           </>

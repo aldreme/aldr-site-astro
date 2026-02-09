@@ -7,37 +7,8 @@ const { frontmatter } = Astro.props;
   <div class="bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]">
     <!-- metadata -->
     {
-      frontmatter.pubDate && (
-        <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-      )
-    }
-    {
       frontmatter.description && (
         <p><em>{frontmatter.description}</em></p>
-      )
-    }
-    {
-      frontmatter.author && (
-        <p>Written by: {frontmatter.author}</p>
-      )
-    }
-    {
-      frontmatter.coverImage && (
-        <img src={frontmatter.coverImage.url} width="300" alt={frontmatter.coverImage.alt} />
-      )
-    }
-    
-    {
-      frontmatter.tags && frontmatter.tags.length > 0 && (
-        <div class="tags">
-          {
-            frontmatter.tags.map((tag: string) => (
-              <p class="tag">
-                <a href={`/tags/${tag}`}>{tag}</a>
-              </p>
-            ))
-          }
-        </div>
       )
     }
 

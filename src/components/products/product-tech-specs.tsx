@@ -64,8 +64,8 @@ function BadgeCustomizable() {
 }
 
 export function ProductTechSpecs({ productTechSpecs }: Props) {
-  const externalDimension = productTechSpecs.dimension.external;
-  const internalDimension = productTechSpecs.dimension.internal;
+  const externalDimension = productTechSpecs.dimension?.external;
+  const internalDimension = productTechSpecs.dimension?.internal;
   return (
     <div className="rounded-md border border-zinc-200 overflow-hidden">
       <Table className="w-full">
@@ -98,15 +98,19 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             )
           }
 
-          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Weight</TableCell>
-            <TableCell className="font-mono text-zinc-600">{weightStr(productTechSpecs.weight.value)}</TableCell>
-            <TableCell>
-              {
-                productTechSpecs.weight.customizable && <BadgeCustomizable />
-              }
-            </TableCell>
-          </TableRow>
+          {
+            productTechSpecs.weight && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Weight</TableCell>
+                <TableCell className="font-mono text-zinc-600">{weightStr(productTechSpecs.weight.value)}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.weight.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
           {
             productTechSpecs.volume !== undefined && (
