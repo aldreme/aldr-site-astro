@@ -3,31 +3,62 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/lib/supabase";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import MsgModal from "../msg-modal";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
+    first_name: '',
+    last_name: '',
     email: '',
+    phone: '',
+    company: '',
+    industry: '',
     subject: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const { data, error } = await supabase.functions.invoke('cx_contact_form', {
+        body: { contact_message: formData }
+      });
 
-    setIsSubmitting(false);
-    setModalOpen(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+      if (error) throw error;
+
+      setModalContent({
+        title: "Message Sent",
+        message: "Thank you for contacting us. We will get back to you shortly."
+      });
+      setFormData({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        company: '',
+        industry: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      setModalContent({
+        title: "Submission Failed",
+        message: error.message || "There was an error sending your message. Please try again later."
+      });
+    } finally {
+      setIsSubmitting(false);
+      setModalOpen(true);
+    }
   };
 
   return (
@@ -38,15 +69,28 @@ export function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="first_name">First Name</Label>
             <Input
-              id="name"
+              id="first_name"
               required
-              placeholder="Your name"
-              value={formData.name}
-              onChange={e => setFormData({ ...formData, name: e.target.value })}
+              placeholder="First name"
+              value={formData.first_name}
+              onChange={e => setFormData({ ...formData, first_name: e.target.value })}
             />
           </div>
+          <div className="space-y-2">
+            <Label htmlFor="last_name">Last Name</Label>
+            <Input
+              id="last_name"
+              required
+              placeholder="Last name"
+              value={formData.last_name}
+              onChange={e => setFormData({ ...formData, last_name: e.target.value })}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -56,6 +100,38 @@ export function ContactForm() {
               placeholder="name@company.com"
               value={formData.email}
               onChange={e => setFormData({ ...formData, email: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="phone">Phone (Optional)</Label>
+            <Input
+              id="phone"
+              type="tel"
+              placeholder="+1 (555) 000-0000"
+              value={formData.phone}
+              onChange={e => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="company">Company</Label>
+            <Input
+              id="company"
+              required
+              placeholder="Your company name"
+              value={formData.company}
+              onChange={e => setFormData({ ...formData, company: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="industry">Industry (Optional)</Label>
+            <Input
+              id="industry"
+              placeholder="e.g. Pharmaceutical"
+              value={formData.industry}
+              onChange={e => setFormData({ ...formData, industry: e.target.value })}
             />
           </div>
         </div>
@@ -97,8 +173,8 @@ export function ContactForm() {
 
       <MsgModal
         open={modalOpen}
-        title="Message Sent"
-        message="Thank you for contacting us. We will get back to you shortly."
+        title={modalContent.title}
+        message={modalContent.message}
         onButtonPressed={() => setModalOpen(false)}
       />
     </div>

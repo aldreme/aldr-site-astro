@@ -60,7 +60,7 @@ Deno.serve(async (req) => {
           },
         );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(
       `failed to process contact message, error: ${
         error.message || JSON.stringify(error)
