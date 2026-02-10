@@ -1,23 +1,22 @@
 ---
 import '@/styles/globals.css';
 
-import db from '@/assets/data/db.json';
 import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
 import ProductCarousel from '@/components/products/product-carousel';
 import { ProductDescriptionCard } from '@/components/products/product-description-card';
 import { ProductTechSpecs } from '@/components/products/product-tech-specs';
 import type { ProductData } from '@/components/products/types';
 import PageLayout from '@/layouts/page-layout.astro';
-import { productSlug } from '@/lib/utils';
-import { getImage } from 'astro:assets';
+import { supabase } from "@/lib/supabase";
 
-export function getStaticPaths() {
-  return db.products.map((productData) => ({
+export async function getStaticPaths() {
+  const { data: products } = await supabase.from('products').select('*');
+  return products?.map((product) => ({
     params: {
-      slug: productSlug(productData.name)
+      slug: product.slug
     },
-    props: { productData }
-  }));
+    props: { productData: product as unknown as ProductData }
+  })) || [];
 }
 
 interface Props {
@@ -26,13 +25,11 @@ interface Props {
 
 const { productData } = Astro.props;
 
-const productImagesDir = '/src/assets/images/products/';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{jpeg,jpg,png,svg}');
-const productImageUri = await Promise.all(
-  productData.images.map(async (imageFileName) => {
-    return (await getImage({src: images[productImagesDir + imageFileName]()})).src;
-  })
-);
+// Construct remote image URIs
+const productImageUri = productData.images?.map(img => {
+    if (img.startsWith('http')) return img;
+    return `${import.meta.env.PUBLIC_SUPABASE_URL}/storage/v1/object/public/products/${img}`;
+}) || [];
 
 const breadcrumbData: BreadcrumbData = {
   items: [

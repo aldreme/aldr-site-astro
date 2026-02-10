@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/node": "^9.5.2",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.0",
     "@heroui/react": "^2.8.7",
@@ -53,9 +54,12 @@
     "@types/node": "^22.19.7",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.1",
+    "dotenv": "^17.2.4",
+    "glob": "^13.0.1",
     "postgres": "^3.4.8",
     "sharp": "^0.33.5",
     "supabase": "^2.76.6",
+    "tsx": "^4.21.0",
     "vite": "^6.0.0"
   },
   "packageManager": "pnpm@10.6.1+sha256.81204845a396962a9c4b49cc2d6cafbb49a758652d3c243f2128cbc638084fe2",

@@ -3,15 +3,15 @@ import '@/styles/common.css';
 import '@/styles/components/products/product-item-card.css';
 import '@/styles/globals.css';
 
-import db from '@/assets/data/db.json';
-
+import { supabase } from "@/lib/supabase";
 import ProductItemCard from './product-item-card.astro';
 import type { ProductData } from './types';
 
+const { data: products } = await supabase.from('products').select('*').order('price', { ascending: true });
 ---
 <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
   {
-    db.products.map((item, index) => (
+    products?.map((item, index) => (
       <ProductItemCard index={index} productData={item as unknown as ProductData} />
     ))
   }

@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, type CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -14,6 +15,7 @@ export default function ProductCarousel({ productImageUris, className }: Product
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     if (!api) {
@@ -34,8 +36,21 @@ export default function ProductCarousel({ productImageUris, className }: Product
         {productImageUris.map((imgUri, ind) => (
           <CarouselItem key={ind}>
             <Card className="border-0 shadow-none">
-              <CardContent className="flex aspect-square items-center justify-center p-[2vmin]">
-                <img src={imgUri} className='object-scale-down h-[80%]' alt={`img-${ind}`} />
+              <CardContent className="flex aspect-square items-center justify-center p-[2vmin] relative">
+                {!loadedImages[ind] && (
+                  <Skeleton className="absolute inset-0 w-full h-full rounded-xl" />
+                )}
+                <img
+                  src={imgUri}
+                  className={cn('object-scale-down h-[80%] transition-opacity duration-300', !loadedImages[ind] ? 'opacity-0' : 'opacity-100')}
+                  alt={`img-${ind}`}
+                  onLoad={() => setLoadedImages(prev => ({ ...prev, [ind]: true }))}
+                  ref={(el) => {
+                    if (el?.complete && !loadedImages[ind]) {
+                      setLoadedImages(prev => ({ ...prev, [ind]: true }));
+                    }
+                  }}
+                />
               </CardContent>
             </Card>
           </CarouselItem>

@@ -1,12 +1,24 @@
 ---
-import '@/styles/globals.css';
-import '@/styles/pages/page.css';
+import "@/styles/globals.css";
+import "@/styles/pages/page.css";
 
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import SeoHead from '@/components/seo/SeoHead.astro';
+import { supabase } from "@/lib/supabase";
 
 const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd } = Astro.props;
+
+// Fetch site_config for Footer
+let contactInfo = {};
+try {
+  const { data } = await supabase.from('site_config').select('value').eq('key', 'contact_info').single();
+  if (data) {
+    contactInfo = data.value;
+  }
+} catch (e) {
+  console.error("Error fetching site config", e);
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -25,7 +37,7 @@ const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd } = Astro.props;
 			<slot/>
 		</main>
 		
-		<Footer client:visible />
+		<Footer client:visible contactInfo={contactInfo} />
 	</body>
 </html>
 

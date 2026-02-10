@@ -6,6 +6,8 @@ import {
   DialogOverlay,
   DialogPortal
 } from '@/components/ui/dialog';
+import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Maximize2, X } from 'lucide-react';
@@ -14,8 +16,8 @@ import { useState } from 'react';
 interface GalleryImage {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 interface GalleryMasonryProps {
@@ -25,6 +27,7 @@ interface GalleryMasonryProps {
 export default function GalleryMasonry({ images }: GalleryMasonryProps) {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>({});
 
   const handleImageClick = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -44,17 +47,31 @@ export default function GalleryMasonry({ images }: GalleryMasonryProps) {
             className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900"
             onClick={() => handleImageClick(image)}
           >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              width={image.width}
-              height={image.height}
-            />
+            <div className={cn("relative", !imageLoaded[image.src] && "min-h-[200px]")}>
+              {!imageLoaded[image.src] && (
+                <Skeleton className="absolute inset-0 w-full h-full z-10" />
+              )}
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={cn(
+                  "w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105",
+                  !imageLoaded[image.src] ? "opacity-0" : "opacity-100"
+                )}
+                loading="lazy"
+                width={image.width}
+                height={image.height}
+                onLoad={() => setImageLoaded(prev => ({ ...prev, [image.src]: true }))}
+                ref={(el) => {
+                  if (el?.complete && !imageLoaded[image.src]) {
+                    setImageLoaded(prev => ({ ...prev, [image.src]: true }));
+                  }
+                }}
+              />
+            </div>
 
             {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center z-20">
               <div className="p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
                 <Maximize2 size={24} />
               </div>

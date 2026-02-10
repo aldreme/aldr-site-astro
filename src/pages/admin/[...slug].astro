@@ -1,0 +1,44 @@
+---
+import AdminRouter from "@/components/admin/AdminRouter";
+import AdminLayout from "@/layouts/admin-layout";
+import "@/styles/globals.css";
+
+import { supabase } from "@/lib/supabase";
+
+export async function getStaticPaths() {
+  const paths = [
+    { params: { slug: undefined } }, // /admin
+    { params: { slug: "products" } },
+    { params: { slug: "products/new" } },
+    { params: { slug: "partners" } },
+    { params: { slug: "rfqs" } },
+    { params: { slug: "messages" } },
+    { params: { slug: "settings" } },
+  ];
+
+  // Fetch existing product IDs to generate static paths for them
+  const { data: products } = await supabase.from("products").select("id");
+  if (products) {
+    products.forEach((p) => {
+      paths.push({ params: { slug: `products/${p.id}` } });
+    });
+  }
+
+  return paths;
+}
+
+const { slug } = Astro.params;
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ALDR Admin Console</title>
+</head>
+<body>
+    <AdminLayout client:only="react">
+        <AdminRouter client:only="react" />
+    </AdminLayout>
+</body>
+</html>

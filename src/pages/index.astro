@@ -12,8 +12,26 @@ import { Image } from 'astro:assets';
 import { ArrowRight } from 'lucide-react';
 
 import db from '@/assets/data/db.json';
+import { supabase } from "@/lib/supabase";
 
-const featuredProducts = db.products.filter(p => (p as any).featured).slice(0, 4);
+// Fetch featured products from Supabase
+const { data: products } = await supabase
+  .from('products')
+  .select('*')
+  .eq('featured', true)
+  .limit(4);
+
+const featuredProducts = products || db.products.filter(p => (p as any).featured).slice(0, 4);
+
+// Fetch Hero Config
+let heroConfig = {
+	title_h1: 'Trusted by Global Industry Leaders',
+	title_h2: 'High Quality Cleanroom Stainless Steel Furnitures'
+};
+try {
+  const { data } = await supabase.from('site_config').select('value').eq('key', 'home_hero').single();
+  if (data) heroConfig = { ...heroConfig, ...data.value };
+} catch (e) {}
 const pageTitle = "Cleanroom Stainless Steel Furniture & Equipment";
 const seoDescription = "ALDR EME specializes in premium cleanroom stainless steel furniture and equipment. Trusted globally for durable, reliable, and high-quality laboratory solutions.";
 const seoJsonLd = {
@@ -40,7 +58,7 @@ const seoJsonLd = {
 		<Image src={homeBannerImg} alt="Home Banner" class="page-banner-img" />
 
 		<div class="home-banner-caption">
-			<h1 class="home-banner-caption-h0">{'Trusted by Global Industry Leaders'}</h1>
+			<h1 class="home-banner-caption-h0">{heroConfig.title_h1}</h1>
 			
 			<!-- "Advanced Laboratory Durable Reliable" with the first letter BOLD weight -->
 			<h2 class="home-banner-caption-h1">
@@ -51,7 +69,7 @@ const seoJsonLd = {
 			</h2>
 
 			<h3 class="home-banner-caption-h2">
-				{'High Quality Cleanroom Stainless Steel Furnitures'}
+				{heroConfig.title_h2}
 			</h3>
 		</div>
 

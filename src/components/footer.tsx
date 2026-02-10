@@ -1,4 +1,3 @@
-'use client';
 
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -8,6 +7,15 @@ import logo from '@/assets/images/logo/logo-light.png';
 import policeIcon from '@/assets/images/misc/ccp-police-icon.png';
 import { ROUTES_DATA } from '@/config';
 import { detectLocation } from '@/lib/utils';
+
+interface FooterProps {
+  contactInfo?: {
+    tel_us?: string;
+    tel_cn?: string;
+    email?: string;
+    address?: string;
+  };
+}
 
 function ChinaICP() {
   const [isGeoLocationChina, setIsGeoLocationChina] = useState(false);
@@ -49,7 +57,7 @@ function ChinaICP() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ contactInfo }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   // Selected quick links from ROUTES_DATA
@@ -144,34 +152,39 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
-              {STRINGS['footer-contact']}
-            </h3>
-            <div className="flex flex-col gap-4 text-sm">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-aldr-blue shrink-0 mt-0.5 text-blue-500" />
-                <span className="text-zinc-400">
-                  {STRINGS['address-info']}
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
-                <span className="text-zinc-400">
-                  +1 (617) 356-8065 (USA)
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
-                <span className="text-zinc-400">
-                  +86 18051120028 (China)
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
-                <a href="mailto:sales@aldreme.com" className="text-zinc-400 hover:text-white transition-colors">
-                  sales@aldreme.com
-                </a>
-              </div>
+            {/* Contact Info */}
+            <div>
+              <h3 className='text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4'>
+                {STRINGS['footer-contact']}
+              </h3>
+              <ul className='space-y-4'>
+                <li className='flex items-start'>
+                  <Phone className='w-5 h-5 text-gray-400 mt-1 mr-3' />
+                  <div className='flex flex-col'>
+                    <span className='text-gray-300 hover:text-white transition-colors'>
+                      {contactInfo?.tel_us || "+1 (617) 356-8065 (USA)"}
+                    </span>
+                    <span className='text-gray-500 text-sm'>
+                      {contactInfo?.tel_cn || "+86 18051120028 (China)"}
+                    </span>
+                  </div>
+                </li>
+                <li className='flex items-center'>
+                  <Mail className='w-5 h-5 text-gray-400 mr-3' />
+                  <a
+                    href={`mailto:${contactInfo?.email || "sales@aldreme.com"}`}
+                    className='text-gray-300 hover:text-white transition-colors'
+                  >
+                    {contactInfo?.email || "sales@aldreme.com"}
+                  </a>
+                </li>
+                <li className='flex items-start'>
+                  <MapPin className='w-5 h-5 text-gray-400 mt-1 mr-3' />
+                  <span className='text-gray-300'>
+                    {contactInfo?.address || STRINGS['address-info']}
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
 

@@ -3,7 +3,6 @@ import { ProductCardActions } from '@/components/products/product-card-actions';
 import ProductCarousel from '@/components/products/product-carousel';
 import { Button } from '@/components/ui/button';
 import { productSlug } from '@/lib/utils';
-import { getImage } from 'astro:assets';
 import { ArrowRight, Ruler, Weight } from 'lucide-react';
 import { type ProductData } from './types';
 
@@ -14,12 +13,17 @@ interface Props {
 
 const { index, productData } = Astro.props;
 
-const productImagesDir = '/src/assets/images/products/';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{jpeg,jpg,png,svg}');
+// Construct full image URL for Supabase Storage
+const firstImage = productData.images?.[0];
+let productImageUri = '';
 
-// Safely get the first image or fallback if needed (though existing logic assumes 0 exists)
-const firstImage = productData.images[0];
-const productImageUri = firstImage ? (await getImage({src: images[productImagesDir + firstImage]()})).src : '';
+if (firstImage) {
+  if (firstImage.startsWith('http')) {
+     productImageUri = firstImage;
+  } else {
+     productImageUri = `${import.meta.env.PUBLIC_SUPABASE_URL}/storage/v1/object/public/products/${firstImage}`;
+  }
+}
 
 const itemAnimationDelay = (index: number) => {
   return index * 100; // Simplified delay
