@@ -24,14 +24,14 @@ export interface ProductSpecs {
     value: number; // in Liters
     customizable: boolean;
   };
-  material: {
+  material?: {
     value: string;
     customizable: boolean;
   };
   dimension?: Dimensions;
   electrical?: ElectricalSpecs;
   operating_temperature?: TemperatureRange;
-  process_technology: {
+  process_technology?: {
     value: string[];
     customizable: boolean;
   };

@@ -64,6 +64,8 @@ function BadgeCustomizable() {
 }
 
 export function ProductTechSpecs({ productTechSpecs }: Props) {
+  if (!productTechSpecs) return null;
+
   const externalDimension = productTechSpecs.dimension?.external;
   const internalDimension = productTechSpecs.dimension?.internal;
   return (
@@ -126,24 +128,33 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
             )
           }
 
-          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Material</TableCell>
-            <TableCell className="text-zinc-600">{productTechSpecs.material.value}</TableCell>
-            <TableCell>
-              {
-                productTechSpecs.material.customizable && <BadgeCustomizable />
-              }
-            </TableCell>
-          </TableRow>
-          <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-            <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Process</TableCell>
-            <TableCell className="text-zinc-600">{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
-            <TableCell>
-              {
-                productTechSpecs.process_technology.customizable && <BadgeCustomizable />
-              }
-            </TableCell>
-          </TableRow>
+          {
+            productTechSpecs.material && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Material</TableCell>
+                <TableCell className="text-zinc-600">{productTechSpecs.material.value}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.material.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
+
+          {
+            productTechSpecs.process_technology && (
+              <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Process</TableCell>
+                <TableCell className="text-zinc-600">{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
+                <TableCell>
+                  {
+                    productTechSpecs.process_technology.customizable && <BadgeCustomizable />
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          }
 
           {
             productTechSpecs.operating_temperature && (
