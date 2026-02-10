@@ -179,7 +179,7 @@ export default function Footer({ contactInfo }: FooterProps) {
                   </a>
                 </li>
                 <li className='flex items-start'>
-                  <MapPin className='w-5 h-5 text-gray-400 mt-1 mr-3' />
+                  <MapPin className='w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0' />
                   <span className='text-gray-300'>
                     {contactInfo?.address || STRINGS['address-info']}
                   </span>
