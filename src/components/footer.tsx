@@ -162,10 +162,10 @@ export default function Footer({ contactInfo }: FooterProps) {
                   <Phone className='w-5 h-5 text-gray-400 mt-1 mr-3' />
                   <div className='flex flex-col'>
                     <span className='text-gray-300 hover:text-white transition-colors'>
-                      {contactInfo?.tel_us || "+1 (617) 356-8065 (USA)"}
+                      {contactInfo?.tel_us || "+1 (617) 356-8065"} (US)
                     </span>
-                    <span className='text-gray-500 text-sm'>
-                      {contactInfo?.tel_cn || "+86 18051120028 (China)"}
+                    <span className='text-gray-300 hover:text-white transition-colors'>
+                      {contactInfo?.tel_cn || "+86 18051120028"} (China)
                     </span>
                   </div>
                 </li>
