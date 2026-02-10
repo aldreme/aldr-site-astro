@@ -1,0 +1,1 @@
+import{j as e,c as t}from"./utils.hSKcPMvD.js";function n({className:a,...r}){return e.jsx("div",{className:t("relative overflow-hidden rounded-md bg-zinc-200 dark:bg-zinc-700",a),...r,children:e.jsx("div",{className:"absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent dark:via-white/20"})})}export{n as S};
