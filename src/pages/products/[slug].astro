@@ -42,9 +42,33 @@ const breadcrumbData: BreadcrumbData = {
   ]
 }
 
+const seoDescription = productData.introduction || productData.description;
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": productData.name,
+  "description": seoDescription,
+  "image": productImageUri[0],
+  "brand": {
+    "@type": "Brand",
+    "name": "ALDR EME"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": Astro.url.href,
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+};
 ---
 
-<PageLayout pageTitle={productData.name}>
+<PageLayout 
+  pageTitle={productData.name}
+  seoDescription={seoDescription}
+  seoImage={productImageUri[0]}
+  seoType="product"
+  seoJsonLd={productJsonLd}
+>
   <div class="bg-zinc-50 min-h-screen pb-20">
     {/* Breadcrumb Section */}
     <div class="bg-white border-b border-zinc-200">

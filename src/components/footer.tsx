@@ -157,13 +157,19 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
                 <span className="text-zinc-400">
-                  +86 512 6309 6666 {/* Assuming phone is standard, hardcoded for now or fetch from json if needed but json key is just label */}
+                  +1 (617) 356-8065 (USA)
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
+                <span className="text-zinc-400">
+                  +86 18051120028 (China)
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-aldr-blue shrink-0 text-blue-500" />
                 <a href="mailto:sales@aldreme.com" className="text-zinc-400 hover:text-white transition-colors">
-                  sales@aldreme.com {/* Hardcoded based on context, update if distinct key exists */}
+                  sales@aldreme.com
                 </a>
               </div>
             </div>

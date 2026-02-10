@@ -152,8 +152,8 @@ export function ContactForm() {
           <Textarea
             id="message"
             required
-            placeholder="Tell us about your project..."
-            className="min-h-[120px]"
+            placeholder="Tell us more details about your needs..."
+            className="min-h-30"
             value={formData.message}
             onChange={e => setFormData({ ...formData, message: e.target.value })}
           />
