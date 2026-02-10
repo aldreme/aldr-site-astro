@@ -39,13 +39,22 @@ const breadcrumbData: BreadcrumbData = {
   ]
 }
 
+const keywords = [
+  ...productData.tags || [],
+  productData.category,
+  productData.name,
+  "Stainless Steel",
+  "Cleanroom Equipment",
+  "Laboratory Furniture"
+].filter(Boolean).join(", ");
+
 const seoDescription = productData.introduction || productData.description;
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": productData.name,
   "description": seoDescription,
-  "image": productImageUri[0],
+  "image": productImageUri,
   "brand": {
     "@type": "Brand",
     "name": "ALDR EME"
@@ -54,8 +63,11 @@ const productJsonLd = {
     "@type": "Offer",
     "url": Astro.url.href,
     "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock"
-  }
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  },
+  "category": productData.category,
+  "material": productData.specs?.material?.value || "Stainless Steel"
 };
 ---
 
@@ -65,6 +77,7 @@ const productJsonLd = {
   seoImage={productImageUri[0]}
   seoType="product"
   seoJsonLd={productJsonLd}
+  seoKeywords={keywords}
 >
   <div class="bg-zinc-50 min-h-screen pb-20">
     {/* Breadcrumb Section */}

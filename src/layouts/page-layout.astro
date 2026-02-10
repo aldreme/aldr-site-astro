@@ -7,7 +7,7 @@ import Navbar from '@/components/navbar';
 import SeoHead from '@/components/seo/SeoHead.astro';
 import { supabase } from "@/lib/supabase";
 
-const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd } = Astro.props;
+const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd, seoKeywords } = Astro.props;
 
 // Fetch site_config for Footer
 let contactInfo = {};
@@ -28,6 +28,7 @@ try {
   image={seoImage}
   type={seoType}
   jsonLd={seoJsonLd}
+  keywords={seoKeywords}
 />
 
 	<body class="bg-black">

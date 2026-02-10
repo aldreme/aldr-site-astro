@@ -10,6 +10,7 @@ interface Props {
   type?: 'website' | 'article' | 'product' | 'profile';
   publishDate?: Date;
   jsonLd?: Record<string, any>;
+  keywords?: string;
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
   type = 'website',
   publishDate,
-  jsonLd
+  jsonLd,
+  keywords,
 } = Astro.props;
 
 const siteName = "ALDR EME";
@@ -53,6 +55,7 @@ if (image) {
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
