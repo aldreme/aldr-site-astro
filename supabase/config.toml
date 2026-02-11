@@ -288,13 +288,13 @@ s3_access_key = "env(S3_ACCESS_KEY)"
 # Configures AWS_SECRET_ACCESS_KEY for S3 bucket
 s3_secret_key = "env(S3_SECRET_KEY)"
 
-[functions.trigger-github-cicd-workflow]
+[functions.trigger_github_cicd_workflow]
 enabled = true
 verify_jwt = true
-import_map = "./functions/trigger-github-cicd-workflow/deno.json"
+import_map = "./functions/trigger_github_cicd_workflow/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
-entrypoint = "./functions/trigger-github-cicd-workflow/index.ts"
+entrypoint = "./functions/trigger_github_cicd_workflow/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/trigger-github-cicdworkflow/*.html" ]

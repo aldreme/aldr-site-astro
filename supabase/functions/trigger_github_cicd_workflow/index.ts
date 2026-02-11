@@ -1,7 +1,7 @@
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
-console.log("Hello from Functions!");
+console.log("Triggering GitHub CICD Workflow");
 
 Deno.serve(async (_req) => {
   const GITHUB_PAT = Deno.env.get("GITHUB_PAT");
