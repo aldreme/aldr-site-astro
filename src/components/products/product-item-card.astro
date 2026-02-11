@@ -44,7 +44,7 @@ const itemAnimationDelay = (index: number) => {
     </div>
     
     {/* Action Buttons Overlay */}
-    <div class="absolute bottom-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+    <div class="absolute bottom-3 right-3 z-10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
        <ProductCardActions client:visible product={{ name: productData.name, image: productImageUri }} />
     </div>
   </div>
