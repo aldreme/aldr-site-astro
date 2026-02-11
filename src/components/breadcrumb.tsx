@@ -8,7 +8,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import { Button } from "@heroui/react";
 import { Fragment } from "react/jsx-runtime";
 
 export interface BreadcrumbItemData {
@@ -30,17 +29,20 @@ export function BreadcrumbResponsive({ data }: Props) {
   }
 
   return (
-    <Breadcrumb className="mb-8">
-      <BreadcrumbList className="flex flex-row items-center justify-start">
+    <Breadcrumb className="mb-6">
+      <BreadcrumbList>
         {data.items.map((item, index) => (
           <Fragment key={`frag-item-${index}`}>
-            <BreadcrumbItem className="flex flex-row items-center justify-center" key={index}>
-              <BreadcrumbLink
-                asChild
-                className="max-w-20 truncate md:max-w-none"
-              >
-                {item.href ? <Button as='a' href={item.href}>{item.label}</Button> : <BreadcrumbPage>{item.label}</BreadcrumbPage>}
-              </BreadcrumbLink>
+            <BreadcrumbItem key={index}>
+              {item.href ? (
+                <BreadcrumbLink href={item.href} className="max-w-40 truncate md:max-w-none">
+                  {item.label}
+                </BreadcrumbLink>
+              ) : (
+                <BreadcrumbPage className="max-w-56 truncate md:max-w-none">
+                  {item.label}
+                </BreadcrumbPage>
+              )}
             </BreadcrumbItem>
 
             {index < data.items.length - 1 && <BreadcrumbSeparator key={`separator-${index}`} />}
