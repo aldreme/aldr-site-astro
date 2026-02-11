@@ -301,6 +301,22 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             </div>
           </section>
 
+          {/* Features */}
+          <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Features & Highlights</h3>
+            </div>
+            <Textarea
+              placeholder="Enter each feature on a new line..."
+              labelPlacement="outside"
+              variant="bordered"
+              classNames={{ inputWrapper: "rounded-2xl" }}
+              minRows={6}
+              value={Array.isArray(formData.features) ? formData.features.join("\n") : formData.features || ""}
+              onChange={(e) => handleFeaturesChange(e.target.value)}
+            />
+          </section>
+
           {/* Product Specs */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">Technical Specifications</h3>
@@ -632,21 +648,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
           </section>
 
-          {/* Features */}
-          <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Features & Highlights</h3>
-            </div>
-            <Textarea
-              placeholder="Enter each feature on a new line..."
-              labelPlacement="outside"
-              variant="bordered"
-              classNames={{ inputWrapper: "rounded-2xl" }}
-              minRows={6}
-              value={Array.isArray(formData.features) ? formData.features.join("\n") : formData.features || ""}
-              onChange={(e) => handleFeaturesChange(e.target.value)}
-            />
-          </section>
+
         </div>
 
         <div className="space-y-8">
