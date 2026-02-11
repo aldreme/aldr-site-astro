@@ -2,13 +2,14 @@
 import { supabase } from "@/lib/supabase";
 import {
   Button,
+  Chip,
   Input,
   Select,
   SelectItem,
   Switch,
   Textarea
 } from "@heroui/react";
-import { ArrowLeft, Save, Trash } from "lucide-react";
+import { ArrowLeft, Plus, Save, Trash, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 interface ProductFormProps {
@@ -38,27 +39,102 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
     description: "",
     introduction: "",
     images: [],
-    specs: {},
+    tags: [],
     features: [],
-    application_scenarios: []
+    application_scenarios: [],
+    specs: {},
+    engineering_drawings: { ortho_projections: [], models: [] },
+    policies: { warranty: "", return: "", shipping: "" }
   });
 
-  const [uploading, setUploading] = useState(false);
-
+  // Safe defaults for nested objects if they are missing in initialData
   useEffect(() => {
     if (initialData) {
-      setFormData(initialData);
+      setFormData((prev: any) => ({
+        ...prev,
+        ...initialData,
+        tags: initialData.tags || [],
+        features: initialData.features || [],
+        application_scenarios: initialData.application_scenarios || [],
+        specs: initialData.specs || {},
+        engineering_drawings: initialData.engineering_drawings || { ortho_projections: [], models: [] },
+        policies: initialData.policies || { warranty: "", return: "", shipping: "" }
+      }));
     }
   }, [initialData]);
+
+  const [uploading, setUploading] = useState(false);
+  const [tagInput, setTagInput] = useState("");
+  const [scenarioInput, setScenarioInput] = useState("");
+  const [drawingInput, setDrawingInput] = useState("");
+  const [modelInput, setModelInput] = useState("");
 
   const handleChange = (name: string, value: any) => {
     setFormData((prev: any) => ({ ...prev, [name]: value }));
   };
 
+  const handleNestedChange = (parent: string, key: string, value: any) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      [parent]: { ...prev[parent], [key]: value }
+    }));
+  };
+
+  const handleSpecsChange = (path: string[], value: any) => {
+    setFormData((prev: any) => {
+      const newSpecs = { ...(prev.specs || {}) };
+      let current = newSpecs;
+      for (let i = 0; i < path.length - 1; i++) {
+        if (!current[path[i]]) current[path[i]] = {};
+        current = current[path[i]];
+      }
+      current[path[path.length - 1]] = value;
+      return { ...prev, specs: newSpecs };
+    });
+  };
+
   const handleFeaturesChange = (value: string) => {
     // Simple line-separated for now
-    const features = value.split("\n").filter(line => line.trim() !== "");
+    const features = value.split("\n");
     setFormData((prev: any) => ({ ...prev, features }));
+  };
+
+  const addArrayItem = (field: string, value: string, setter: (val: string) => void) => {
+    if (!value.trim()) return;
+    setFormData((prev: any) => ({
+      ...prev,
+      [field]: [...(prev[field] || []), value.trim()]
+    }));
+    setter("");
+  };
+
+  const removeArrayItem = (field: string, index: number) => {
+    setFormData((prev: any) => {
+      const newArray = [...(prev[field] || [])];
+      newArray.splice(index, 1);
+      return { ...prev, [field]: newArray };
+    });
+  };
+
+  const addNestedArrayItem = (parent: string, field: string, value: string, setter: (val: string) => void) => {
+    if (!value.trim()) return;
+    setFormData((prev: any) => ({
+      ...prev,
+      [parent]: {
+        ...prev[parent],
+        [field]: [...(prev[parent]?.[field] || []), value.trim()]
+      }
+    }));
+    setter("");
+  };
+
+  const removeNestedArrayItem = (parent: string, field: string, index: number) => {
+    setFormData((prev: any) => {
+      const parentObj = { ...prev[parent] };
+      const newArray = [...(parentObj[field] || [])];
+      newArray.splice(index, 1);
+      return { ...prev, [parent]: { ...parentObj, [field]: newArray } };
+    });
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +167,9 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
     setLoading(true);
 
     const payload = { ...formData };
+    // Clean up features (remove empty lines)
+    payload.features = payload.features.filter((f: string) => f.trim() !== "");
+
     if (isNew) {
       // Check slug uniqueness? Supabase will error if duplicate.
       // Ensure slug exists
@@ -118,6 +197,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
   return (
     <div className="max-w-6xl mx-auto pb-24 space-y-8">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <Button
@@ -162,7 +242,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          {/* Main Info */}
+          {/* General Information */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">General Information</h3>
             <div className="grid gap-6">
@@ -221,6 +301,337 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             </div>
           </section>
 
+          {/* Product Specs */}
+          <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Technical Specifications</h3>
+
+            {/* Weight & Base Specs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Input
+                  label="Weight (kg)"
+                  type="number"
+                  placeholder="0"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.specs?.weight?.value || ""}
+                  onChange={(e) => handleSpecsChange(["weight", "value"], parseFloat(e.target.value))}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+                <div className="flex items-center justify-between px-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.weight?.customizable || false} onValueChange={(v) => handleSpecsChange(["weight", "customizable"], v)} />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Input
+                  label="Volume (L)"
+                  type="number"
+                  placeholder="0"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.specs?.volume?.value || ""}
+                  onChange={(e) => handleSpecsChange(["volume", "value"], parseFloat(e.target.value))}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+                <div className="flex items-center justify-between px-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.volume?.customizable || false} onValueChange={(v) => handleSpecsChange(["volume", "customizable"], v)} />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Input
+                  label="Material"
+                  placeholder="e.g. 304 Stainless Steel"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.specs?.material?.value || ""}
+                  onChange={(e) => handleSpecsChange(["material", "value"], e.target.value)}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+                <div className="flex items-center justify-between px-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.material?.customizable || false} onValueChange={(v) => handleSpecsChange(["material", "customizable"], v)} />
+                </div>
+              </div>
+            </div>
+
+            {/* Dimensions */}
+            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Dimensions (cm)</h4>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.dimension?.customizable || false} onValueChange={(v) => handleSpecsChange(["dimension", "customizable"], v)} />
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <Input label="Ext. Width" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "width"], parseFloat(e.target.value))} />
+                <Input label="Ext. Height" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "height"], parseFloat(e.target.value))} />
+                <Input label="Ext. Length" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "length"], parseFloat(e.target.value))} />
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <Input label="Int. Width" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "width"], parseFloat(e.target.value))} />
+                <Input label="Int. Height" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "height"], parseFloat(e.target.value))} />
+                <Input label="Int. Length" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "length"], parseFloat(e.target.value))} />
+              </div>
+            </div>
+
+            {/* Electrical */}
+            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Electrical</h4>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.electrical?.customizable || false} onValueChange={(v) => handleSpecsChange(["electrical", "customizable"], v)} />
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <Input label="Voltage (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "min"], parseFloat(e.target.value))} />
+                <Input label="Current (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "min"], parseFloat(e.target.value))} />
+                <Input label="Power (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "min"], parseFloat(e.target.value))} />
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <Input label="Voltage (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "max"], parseFloat(e.target.value))} />
+                <Input label="Current (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "max"], parseFloat(e.target.value))} />
+                <Input label="Power (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "max"], parseFloat(e.target.value))} />
+              </div>
+            </div>
+
+            {/* Temperature */}
+            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Operating Temperature</h4>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.operating_temperature?.customizable || false} onValueChange={(v) => handleSpecsChange(["operating_temperature", "customizable"], v)} />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <Input label="Min Temp" size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.min || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "min"], parseFloat(e.target.value))} />
+                <Input label="Max Temp" size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.max || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "max"], parseFloat(e.target.value))} />
+              </div>
+            </div>
+
+            {/* Process Technology */}
+            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Process Technology</h4>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">Customizable</span>
+                  <Switch size="sm" isSelected={formData.specs?.process_technology?.customizable || false} onValueChange={(v) => handleSpecsChange(["process_technology", "customizable"], v)} />
+                </div>
+              </div>
+              <Textarea
+                placeholder="Enter each technology on a new line..."
+                minRows={3}
+                variant="bordered"
+                classNames={{ inputWrapper: "rounded-xl" }}
+                value={Array.isArray(formData.specs?.process_technology?.value) ? formData.specs?.process_technology?.value.join("\n") : ""}
+                onChange={(e) => handleSpecsChange(["process_technology", "value"], e.target.value.split("\n"))}
+              />
+            </div>
+          </section>
+
+          {/* Details: Tags, Scenarios, Policies */}
+          <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-8">
+            {/* Tags */}
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Tags</h3>
+              <div className="flex flex-wrap gap-2 mb-3">
+                {formData.tags?.map((tag: string, i: number) => (
+                  <Chip
+                    key={i}
+                    onClose={() => removeArrayItem("tags", i)}
+                    variant="flat"
+                    color="secondary"
+                  >
+                    {tag}
+                  </Chip>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <Input
+                  placeholder="Add a tag..."
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addArrayItem("tags", tagInput, setTagInput);
+                    }
+                  }}
+                  variant="bordered"
+                  size="sm"
+                  classNames={{ inputWrapper: "rounded-lg" }}
+                />
+                <Button
+                  isIconOnly
+                  size="sm"
+                  onClick={() => addArrayItem("tags", tagInput, setTagInput)}
+                >
+                  <Plus className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Application Scenarios */}
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Application Scenarios</h3>
+              <div className="flex flex-wrap gap-2 mb-3">
+                {formData.application_scenarios?.map((item: string, i: number) => (
+                  <Chip
+                    key={i}
+                    onClose={() => removeArrayItem("application_scenarios", i)}
+                    variant="flat"
+                    color="primary"
+                  >
+                    {item}
+                  </Chip>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <Input
+                  placeholder="Add a scenario..."
+                  value={scenarioInput}
+                  onChange={(e) => setScenarioInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addArrayItem("application_scenarios", scenarioInput, setScenarioInput);
+                    }
+                  }}
+                  variant="bordered"
+                  size="sm"
+                  classNames={{ inputWrapper: "rounded-lg" }}
+                />
+                <Button
+                  isIconOnly
+                  size="sm"
+                  onClick={() => addArrayItem("application_scenarios", scenarioInput, setScenarioInput)}
+                >
+                  <Plus className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Policies */}
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-4">Policies</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input
+                  label="Warranty"
+                  placeholder="e.g. 1 Year Warranty"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.policies?.warranty || ""}
+                  onChange={(e) => handleNestedChange("policies", "warranty", e.target.value)}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+                <Input
+                  label="Shipping"
+                  placeholder="e.g. Freight"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.policies?.shipping || ""}
+                  onChange={(e) => handleNestedChange("policies", "shipping", e.target.value)}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+                <Input
+                  label="Return Policy"
+                  placeholder="e.g. 30 Days"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  value={formData.policies?.return || ""}
+                  onChange={(e) => handleNestedChange("policies", "return", e.target.value)}
+                  classNames={{ inputWrapper: "rounded-xl" }}
+                />
+              </div>
+            </div>
+
+            {/* Engineering Drawings */}
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Engineering Drawings</h3>
+
+              {/* Ortho Projections */}
+              <div className="mb-4">
+                <label className="text-xs text-gray-500 mb-1.5 block">Ortho Projections (URLs)</label>
+                <div className="flex flex-col gap-2 mb-2">
+                  {formData.engineering_drawings?.ortho_projections?.map((item: string, i: number) => (
+                    <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
+                      <span className="text-sm flex-1 truncate">{item}</span>
+                      <Button isIconOnly size="sm" variant="light" onClick={() => removeNestedArrayItem("engineering_drawings", "ortho_projections", i)}>
+                        <X className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder="Add projection URL..."
+                    value={drawingInput}
+                    onChange={(e) => setDrawingInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addNestedArrayItem("engineering_drawings", "ortho_projections", drawingInput, setDrawingInput);
+                      }
+                    }}
+                    variant="bordered"
+                    size="sm"
+                    classNames={{ inputWrapper: "rounded-lg" }}
+                  />
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    onClick={() => addNestedArrayItem("engineering_drawings", "ortho_projections", drawingInput, setDrawingInput)}
+                  >
+                    <Plus className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Models */}
+              <div>
+                <label className="text-xs text-gray-500 mb-1.5 block">3D Models (URLs)</label>
+                <div className="flex flex-col gap-2 mb-2">
+                  {formData.engineering_drawings?.models?.map((item: string, i: number) => (
+                    <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
+                      <span className="text-sm flex-1 truncate">{item}</span>
+                      <Button isIconOnly size="sm" variant="light" onClick={() => removeNestedArrayItem("engineering_drawings", "models", i)}>
+                        <X className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder="Add model URL..."
+                    value={modelInput}
+                    onChange={(e) => setModelInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addNestedArrayItem("engineering_drawings", "models", modelInput, setModelInput);
+                      }
+                    }}
+                    variant="bordered"
+                    size="sm"
+                    classNames={{ inputWrapper: "rounded-lg" }}
+                  />
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    onClick={() => addNestedArrayItem("engineering_drawings", "models", modelInput, setModelInput)}
+                  >
+                    <Plus className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
           {/* Features */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
             <div className="flex items-center justify-between">
@@ -232,7 +643,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
               variant="bordered"
               classNames={{ inputWrapper: "rounded-2xl" }}
               minRows={6}
-              value={formData.features ? formData.features.join("\n") : ""}
+              value={Array.isArray(formData.features) ? formData.features.join("\n") : formData.features || ""}
               onChange={(e) => handleFeaturesChange(e.target.value)}
             />
           </section>
