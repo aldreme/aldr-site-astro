@@ -15,6 +15,14 @@ export default defineConfig({
   // add data-astro-prefetch attribute to <a /> links
   prefetch: true,
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "zh"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
+
   integrations: [
     react(),
     sitemap(),

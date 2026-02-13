@@ -1,4 +1,6 @@
 export interface ProductData {
+  id: string;
+  slug: string;
   name: string;
   featured?: boolean;
   category: string;

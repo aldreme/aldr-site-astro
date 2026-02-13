@@ -2,7 +2,8 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import STRINGS from '@/assets/i18n/en_us.json';
+import { ui, useTranslations } from '@/i18n/ui'; // Import i18n utils
+// import STRINGS from '@/assets/i18n/en_us.json'; // Remove direct import
 import logo from '@/assets/images/logo/logo-light.png';
 import policeIcon from '@/assets/images/misc/ccp-police-icon.png';
 import { ROUTES_DATA } from '@/config';
@@ -15,9 +16,10 @@ interface FooterProps {
     email?: string;
     address?: string;
   };
+  currentLang?: string;
 }
 
-function ChinaICP() {
+function ChinaICP({ t }: { t: (key: any) => string }) {
   const [isGeoLocationChina, setIsGeoLocationChina] = useState(false);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ function ChinaICP() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        {STRINGS['cn-icp-license']}
+        {t('cn-icp-license')}
       </a>
       <div className="flex items-center gap-1 text-xs text-zinc-500">
         <img
@@ -51,13 +53,14 @@ function ChinaICP() {
           alt="police-icon"
           src={policeIcon.src}
         />
-        <span>{STRINGS['cn-police-license']}</span>
+        <span>{t('cn-police-license')}</span>
       </div>
     </div>
   );
 }
 
-export default function Footer({ contactInfo }: FooterProps) {
+export default function Footer({ contactInfo, currentLang = 'en' }: FooterProps) {
+  const t = useTranslations(currentLang as keyof typeof ui);
   const currentYear = new Date().getFullYear();
 
   // Selected quick links from ROUTES_DATA
@@ -81,10 +84,10 @@ export default function Footer({ contactInfo }: FooterProps) {
             </a>
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-white tracking-wide">
-                {STRINGS['home-banner-caption1']}
+                {t('home-banner-caption1')}
               </p>
               <p className="text-sm text-zinc-400">
-                {STRINGS['home-banner-caption2']}
+                {t('home-banner-caption2')}
               </p>
             </div>
           </div>
@@ -92,7 +95,7 @@ export default function Footer({ contactInfo }: FooterProps) {
           {/* Quick Links Column */}
           <div className="flex flex-col gap-6">
             <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
-              {STRINGS['footer-quick-links']}
+              {t('footer-quick-links')}
             </h3>
             <nav className="flex flex-col gap-3">
               {quickLinks.map((link) => (
@@ -110,7 +113,7 @@ export default function Footer({ contactInfo }: FooterProps) {
           {/* Services Column */}
           <div className="flex flex-col gap-6">
             <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
-              {STRINGS['footer-services']}
+              {t('footer-services')}
             </h3>
             <nav className="flex flex-col gap-3">
               <a href="/services/oem" className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
@@ -131,7 +134,7 @@ export default function Footer({ contactInfo }: FooterProps) {
           {/* Products Column */}
           <div className="flex flex-col gap-6">
             <h3 className="text-white font-semibold uppercase tracking-wider text-sm">
-              {STRINGS['footer-products']}
+              {t('footer-products')}
             </h3>
             <div className="flex flex-col gap-3 text-sm text-zinc-400">
               {/* Hardcoded key categories for reliability and SEO structure */}
@@ -155,7 +158,7 @@ export default function Footer({ contactInfo }: FooterProps) {
             {/* Contact Info */}
             <div>
               <h3 className='text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4'>
-                {STRINGS['footer-contact']}
+                {t('footer-contact')}
               </h3>
               <ul className='space-y-4'>
                 <li className='flex items-start'>
@@ -181,7 +184,7 @@ export default function Footer({ contactInfo }: FooterProps) {
                 <li className='flex items-start'>
                   <MapPin className='w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0' />
                   <span className='text-gray-300'>
-                    {contactInfo?.address || STRINGS['address-info']}
+                    {contactInfo?.address || t('address-info')}
                   </span>
                 </li>
               </ul>
@@ -193,9 +196,9 @@ export default function Footer({ contactInfo }: FooterProps) {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-zinc-800 flex flex-col items-center gap-4 text-center">
           <p className="text-zinc-600 text-sm">
-            &copy; {currentYear} {STRINGS['ALDR Automation Equipment Co., Ltd. All rights reserved']}
+            &copy; {currentYear} {t('ALDR Automation Equipment Co., Ltd. All rights reserved')}
           </p>
-          <ChinaICP />
+          <ChinaICP t={t} />
         </div>
       </div>
     </footer>

@@ -13,10 +13,14 @@ interface Props {
   productDescription: string;
   productFeatures: string[];
   className?: string;
+  lang?: string;
 }
 
+import { ui, useTranslations } from "@/i18n/ui";
+
 export function ProductDescriptionCard(props: Props) {
-  const { productName, image, productDescription, productFeatures, className } = props;
+  const { productName, image, productDescription, productFeatures, className, lang = 'en' } = props;
+  const t = useTranslations(lang as keyof typeof ui);
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
@@ -32,18 +36,26 @@ export function ProductDescriptionCard(props: Props) {
     <div className={cn('flex flex-col w-full', className)}>
       <h1 className='text-2xl font-bold text-zinc-900 mb-4'>{productName}</h1>
       <div className="flex items-center space-x-2 mb-6">
-        <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">GMP Ready</span>
-        <span className="inline-flex items-center rounded-md bg-zinc-50 px-2 py-1 text-xs font-medium text-zinc-600 ring-1 ring-inset ring-zinc-500/10">In Stock</span>
+        <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+          {t('gmp-ready') || 'GMP Ready'}
+        </span>
+        <span className="inline-flex items-center rounded-md bg-zinc-50 px-2 py-1 text-xs font-medium text-zinc-600 ring-1 ring-inset ring-zinc-500/10">
+          {t('in-stock') || 'In Stock'}
+        </span>
       </div>
 
       <ProductDescriptionTab className='w-full mb-8' productDescription={productDescription} productFeatures={productFeatures} />
 
       <div className='bg-zinc-50 rounded-lg p-6 border border-zinc-100'>
-        <h3 className="text-sm font-semibold text-zinc-900 uppercase tracking-wide mb-4">Add to Quote</h3>
+        <h3 className="text-sm font-semibold text-zinc-900 uppercase tracking-wide mb-4">
+          {t('add-to-quote') || 'Add to Quote'}
+        </h3>
 
         <div className='flex flex-col space-y-4 w-full mb-6'>
           <div className='flex flex-col space-y-1.5'>
-            <Label htmlFor="quantity" className="text-sm font-medium text-zinc-700">Quantity Needed</Label>
+            <Label htmlFor="quantity" className="text-sm font-medium text-zinc-700">
+              {t('quantity-needed') || 'Quantity Needed'}
+            </Label>
             <Input
               id='quantity'
               type='number'
@@ -60,7 +72,7 @@ export function ProductDescriptionCard(props: Props) {
             className="w-full bg-blue-600 hover:bg-blue-700"
             onClick={handleAddToCart}
           >
-            Add to Quote Cart
+            {t('add-to-quote-cart') || 'Add to Quote Cart'}
           </Button>
         </div>
       </div>

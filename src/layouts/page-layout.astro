@@ -9,6 +9,9 @@ import { supabase } from "@/lib/supabase";
 
 const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd, seoKeywords } = Astro.props;
 
+const currentLocale = Astro.currentLocale || "en";
+const { pathname } = Astro.url;
+
 // Fetch site_config for Footer
 let contactInfo = {};
 try {
@@ -21,7 +24,7 @@ try {
 }
 ---
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}>
 <SeoHead 
   title={pageTitle}
   description={seoDescription}
@@ -32,13 +35,13 @@ try {
 />
 
 	<body class="bg-black">
-		<Navbar client:load/>
+		<Navbar client:load currentLang={currentLocale} currentPath={pathname} />
 
 		<main class="w-full min-h-screen md:min-w-400">
 			<slot/>
 		</main>
 		
-		<Footer client:visible contactInfo={contactInfo} />
+		<Footer client:visible contactInfo={contactInfo} currentLang={currentLocale} />
 	</body>
 </html>
 

@@ -1,11 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
+import { ui, useTranslations } from "@/i18n/ui";
 import type { DimensionMeasurements, ElectricalSpecs, ProductSpecs, TemperatureRange } from "./types";
 
 interface Props {
   productTechSpecs: ProductSpecs;
+  lang?: string;
 }
+
 
 function kilogramsToPounds(kg: number) {
   return (kg * 2.20462);
@@ -57,14 +60,16 @@ function electricalSpecsStr(electricalSpecs: ElectricalSpecs) {
   return `${electricalSpecs.voltage.min.toFixed(2)} - ${electricalSpecs.voltage.max.toFixed(2)} VAC, ${electricalSpecs.current.min.toFixed(2)} - ${electricalSpecs.current.max.toFixed(2)} A, ${electricalSpecs.power.min.toFixed(2)} - ${electricalSpecs.power.max.toFixed(2)} kW`;
 }
 
-function BadgeCustomizable() {
+function BadgeCustomizable({ t }: { t: any }) {
   return (
-    <Badge className="bg-blue-500 select-none hover:bg-blue-400">customizable</Badge>
+    <Badge className="bg-blue-500 select-none hover:bg-blue-400">{t('customizable') || 'customizable'}</Badge>
   );
 }
 
-export function ProductTechSpecs({ productTechSpecs }: Props) {
+export function ProductTechSpecs({ productTechSpecs, lang = 'en' }: Props) {
   if (!productTechSpecs) return null;
+
+  const t = useTranslations(lang as keyof typeof ui);
 
   const externalDimension = productTechSpecs.dimension?.external;
   const internalDimension = productTechSpecs.dimension?.internal;
@@ -75,11 +80,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             externalDimension && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 w-1/3 bg-zinc-50/50">External Dimensions</TableCell>
+                <TableCell className="font-semibold text-zinc-700 w-1/3 bg-zinc-50/50">
+                  {t('external-dimensions') || 'External Dimensions'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{dimensionStr(externalDimension)}</TableCell>
                 <TableCell className="w-10">
                   {
-                    productTechSpecs.dimension?.customizable && <BadgeCustomizable />
+                    productTechSpecs.dimension?.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -89,11 +96,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             internalDimension && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Internal Dimensions</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('internal-dimensions') || 'Internal Dimensions'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{dimensionStr(internalDimension)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.dimension?.customizable && <BadgeCustomizable />
+                    productTechSpecs.dimension?.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -103,11 +112,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.weight && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Weight</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('weight') || 'Weight'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{weightStr(productTechSpecs.weight.value)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.weight.customizable && <BadgeCustomizable />
+                    productTechSpecs.weight.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -117,11 +128,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.volume !== undefined && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Volume</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('volume') || 'Volume'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{volumeStr(productTechSpecs.volume.value)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.volume.customizable && <BadgeCustomizable />
+                    productTechSpecs.volume.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -131,11 +144,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.material && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Material</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('material') || 'Material'}
+                </TableCell>
                 <TableCell className="text-zinc-600">{productTechSpecs.material.value}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.material.customizable && <BadgeCustomizable />
+                    productTechSpecs.material.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -145,11 +160,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.process_technology && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Process</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('process') || 'Process'}
+                </TableCell>
                 <TableCell className="text-zinc-600">{productTechSpecs.process_technology.value.map(v => v.toUpperCase()).join(', ')}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.process_technology.customizable && <BadgeCustomizable />
+                    productTechSpecs.process_technology.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -159,11 +176,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.operating_temperature && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Operating Temp.</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('operating-temp') || 'Operating Temp.'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{opTemperatureStr(productTechSpecs.operating_temperature)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.operating_temperature.customizable && <BadgeCustomizable />
+                    productTechSpecs.operating_temperature.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>
@@ -173,11 +192,13 @@ export function ProductTechSpecs({ productTechSpecs }: Props) {
           {
             productTechSpecs.electrical && (
               <TableRow className="even:bg-zinc-50 hover:bg-zinc-100">
-                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">Electrical</TableCell>
+                <TableCell className="font-semibold text-zinc-700 bg-zinc-50/50">
+                  {t('electrical') || 'Electrical'}
+                </TableCell>
                 <TableCell className="font-mono text-zinc-600">{electricalSpecsStr(productTechSpecs.electrical)}</TableCell>
                 <TableCell>
                   {
-                    productTechSpecs.electrical.customizable && <BadgeCustomizable />
+                    productTechSpecs.electrical.customizable && <BadgeCustomizable t={t} />
                   }
                 </TableCell>
               </TableRow>

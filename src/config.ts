@@ -3,6 +3,7 @@ interface RouteData {
   href?: string;
   description?: string;
   children?: RouteData[];
+  i18nKey?: string;
 }
 
 interface RoutesConfig {
@@ -16,11 +17,12 @@ interface RoutesConfig {
 }
 
 export const ROUTES: RoutesConfig = {
-  home: { name: "Home", href: "/" },
-  products: { name: "Products", href: "/products" },
-  gallery: { name: "Gallery", href: "/gallery" },
+  home: { name: "Home", href: "/", i18nKey: "navbar-home" },
+  products: { name: "Products", href: "/products", i18nKey: "navbar-products" },
+  gallery: { name: "Gallery", href: "/gallery", i18nKey: "Products Gallery" },
   services: {
     name: "Services",
+    i18nKey: "footer-services",
     children: [
       {
         name: "Cleanroom Design",
@@ -49,8 +51,8 @@ export const ROUTES: RoutesConfig = {
     ],
   },
   // news: { name: 'News', href: '/news' },
-  about: { name: "About", href: "/about" },
-  contact: { name: "Contact", href: "/contact" },
+  about: { name: "About", href: "/about", i18nKey: "navbar-aboutus" },
+  contact: { name: "Contact", href: "/contact", i18nKey: "navbar-contact" },
 };
 
 export const ROUTES_DATA = Object.values(ROUTES) as RouteData[];

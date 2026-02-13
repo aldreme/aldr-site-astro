@@ -7,12 +7,35 @@ import { supabase } from "@/lib/supabase";
 import ProductItemCard from './product-item-card.astro';
 import type { ProductData } from './types';
 
-const { data: products } = await supabase.from('products').select('*').order('price', { ascending: true });
+import { defaultLang } from '@/i18n/ui';
+import { getProductTranslation } from '@/i18n/utils';
+
+interface Props {
+  lang?: string;
+  products?: ProductData[];
+}
+
+const { lang = defaultLang, products: propProducts } = Astro.props;
+
+let products = propProducts;
+
+if (!products) {
+  const { data } = await supabase.from('products').select('*').order('price', { ascending: true });
+  products = data as unknown as ProductData[];
+}
+
+// Transform if needed (only if we fetched them or they are raw, but if passed from parent likely already transformed? 
+// Actually, if passed from parent, we assume they are ready for display.
+// If we fetched them here, we need to transform them.)
+const displayProducts = !propProducts && lang !== defaultLang && products
+  ? products.map(p => ({ ...p, ...getProductTranslation(p, lang) }))
+  : products;
+
 ---
 <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
   {
-    products?.map((item, index) => (
-      <ProductItemCard index={index} productData={item as unknown as ProductData} />
+    displayProducts?.map((item, index) => (
+      <ProductItemCard index={index} productData={item} lang={lang} />
     ))
   }
 </div>

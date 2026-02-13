@@ -9,9 +9,18 @@ import { type ProductData } from './types';
 interface Props {
   index: number
   productData: ProductData;
+  lang?: string;
 };
 
-const { index, productData } = Astro.props;
+import { ui, useTranslations } from '@/i18n/ui'; // Import i18n utils
+import { getLocalizedRoute } from '@/i18n/utils';
+
+const { index, productData, lang = 'en' } = Astro.props;
+const t = useTranslations(lang as keyof typeof ui);
+
+// Use slug from data if available, fallback to generated (which might be wrong if localized name)
+const slug = productData.slug || productSlug(productData.name);
+const productLink = getLocalizedRoute(`/products/${slug}`, lang);
 
 // Construct full image URL for Supabase Storage
 const firstImage = productData.images?.[0];
@@ -52,7 +61,7 @@ const itemAnimationDelay = (index: number) => {
   {/* Content Area */}
   <div class="flex flex-col flex-grow p-5">
     <h3 class="text-lg font-bold text-zinc-900 group-hover:text-blue-700 transition-colors line-clamp-1 mb-2">
-      <a href={`/products/${productSlug(productData.name)}`} class="hover:underline">
+      <a href={productLink} class="hover:underline">
         {productData.name}
       </a>
     </h3>
@@ -65,7 +74,7 @@ const itemAnimationDelay = (index: number) => {
     <div class="grid grid-cols-2 gap-2 mb-5 py-3 border-y border-zinc-50">
       <div class="flex items-center text-xs text-zinc-500">
         <Ruler className="w-3 h-3 mr-1.5 text-zinc-400" />
-        <span class="truncate">Custom Dimensions</span>
+        <span class="truncate">{t('custom-dimensions') || 'Custom Dimensions'}</span>
       </div>
       {
         productData.specs.weight && (
@@ -78,9 +87,9 @@ const itemAnimationDelay = (index: number) => {
     </div>
 
     {/* Action */}
-    <a href={`/products/${productSlug(productData.name)}`} class="mt-auto">
+    <a href={productLink} class="mt-auto">
       <Button variant="outline" className="w-full justify-between hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 group-hover:border-blue-200 transition-all">
-        <span class="text-xs font-medium uppercase tracking-wide">View Specs</span>
+        <span class="text-xs font-medium uppercase tracking-wide">{t('view-specs') || 'View Specs'}</span>
         <ArrowRight className="w-4 h-4 ml-2" />
       </Button>
     </a>
