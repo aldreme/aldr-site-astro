@@ -1,0 +1,81 @@
+---
+title: "制造服务"
+description: "具有完整材料可追溯性的精密制药级制造。"
+pubDate: 2026-02-09
+updatedDate: 2026-02-09
+---
+
+import { Cog, Factory, ShieldCheck, Truck } from 'lucide-react';
+
+<div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
+
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">制药级精密制造</h1>
+    <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+      对用于生命科学和半导体行业的 304 和 316L 不锈钢设备执行严格的制造标准。
+    </p>
+  </div>
+
+  {/* Stats Section */}
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-y border-zinc-200">
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">2007</span>
+      <span class="text-sm text-zinc-500">成立年份</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">15万+</span>
+      <span class="text-sm text-zinc-500">年产量</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">316L</span>
+      <span class="text-sm text-zinc-500">生物制药级</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">Ra &lt; 0.4</span>
+      <span class="text-sm text-zinc-500">表面光洁度 (µm)</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Factory class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">专用洁净生产区</h3>
+      <p class="text-zinc-600">
+        我们保持碳钢和不锈钢生产区域的分离，以防止铁污染。我们的 CNC 激光切割和折弯操作使用氮气，确保边缘无氧化，可随时进行卫生焊接。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Cog class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">大师级工艺</h3>
+      <p class="text-zinc-600">
+        我们经过认证的焊工专门从事卫生管道和结构部件的 TIG 焊接。通过电解抛光和机械抛光，我们的表面光洁度达到 Ra < 0.4µm，满足最高的生物工艺要求。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <ShieldCheck class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">验证支持</h3>
+      <p class="text-zinc-600">
+        我们了解验证（DQ/IQ/OQ）的负担。ALDR 提供全面的文件包，包括材料测试报告（MTR）和表面粗糙度证书，以支持您的资格认证活动。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Truck class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">全球物流</h3>
+      <p class="text-zinc-600">
+        从敏感设备的安全包装箱到管理国际航运的国际贸易术语，我们确保您的关键基础设施完好无损地抵达您的设施并准备好安装。
+      </p>
+    </div>
+  </div>
+
+</div>

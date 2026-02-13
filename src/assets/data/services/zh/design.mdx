@@ -1,0 +1,71 @@
+---
+title: "设计服务"
+description: "符合GMP标准的洁净室家具设计，专为无菌工作流程量身定制。"
+pubDate: 2026-02-09
+updatedDate: 2026-02-09
+---
+
+import { CtaSection } from '@/components/ui/cta-section';
+import { Box, ClipboardPen, Ruler, ShieldCheck, Sparkles } from 'lucide-react';
+
+<div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
+
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">专为合规而设计</h1>
+    <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+      从 A 级到 ISO 8 环境，我们设计卫生的不锈钢解决方案，使其无缝集成到您的生物制药工艺中。
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <ClipboardPen class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">无菌工作流程分析</h3>
+      <p class="text-zinc-600">
+        我们要分析您的人员和物流（PAL/MAL），设计家具以最大限度地降低交叉污染风险。我们的解决方案支持精益实验室原则，并针对关键处理区域的单向流进行了优化。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Ruler class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">GMP 就绪定制</h3>
+      <p class="text-zinc-600">
+        标准尺寸很少适合经过验证的工艺。我们定制设计更衣凳、生物安全柜支撑架和传递窗，以适应特定的建筑限制，同时保持符合 ISO 14644 标准。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Box class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">3D 人体工程学模拟</h3>
+      <p class="text-zinc-600">
+        操作员的安全和舒适度在洁净室中至关重要。我们提供详细的 3D 渲染图，以验证更衣程序和重复性任务的人体工程学设计，确保在制造开始前符合 SOP。
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Sparkles class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">卫生设计原则</h3>
+      <p class="text-zinc-600">
+        遵循 ASME BPE 指南，我们的设计采用大半径圆角、无缝隙焊接和倾斜表面，以实现有效的清洁和灭菌（CIP/SIP兼容性），确保零生物负载积累。
+      </p>
+    </div>
+  </div>
+
+  <CtaSection 
+    client:visible
+    title="验证您的设施设计"
+    description="与了解 FDA 和 EMA 法规严谨性的工程师合作。我们确保您的家具集成合规、符合人体工程学且高效。"
+    buttonText="开始您的设计"
+    buttonLink="/zh/contact"
+    iconName="ShieldCheck"
+  />
+
+</div>

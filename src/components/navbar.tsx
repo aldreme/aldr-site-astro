@@ -50,9 +50,11 @@ function NavLinksDesktop({ currentLang = 'en' }: { currentLang?: string }) {
                             >
                               {/* @ts-ignore */}
                               <div className="text-sm font-medium leading-none">{child.i18nKey ? t(child.i18nKey) : child.name}</div>
-                              {child.description && (
+                              {/* @ts-ignore */}
+                              {(child.description || child.i18nDescriptionKey) && (
                                 <p className="line-clamp-2 text-sm leading-snug text-zinc-400">
-                                  {child.description}
+                                  {/* @ts-ignore */}
+                                  {child.i18nDescriptionKey ? t(child.i18nDescriptionKey) : child.description}
                                 </p>
                               )}
                             </a>
@@ -170,10 +172,6 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
         <div className="flex items-center space-x-4">
           <NavLinksMobile currentLang={currentLang} currentPath={currentPath} />
 
-          <div className="hidden md:flex items-center mr-2">
-            <LanguagePicker currentLang={currentLang} currentPath={currentPath} />
-          </div>
-
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="relative text-zinc-100 hover:bg-zinc-800 hover:text-white" onClick={() => isCartOpen.set(true)}>
               <FileText className="h-5 w-5" />
@@ -183,6 +181,10 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
                 </span>
               )}
             </Button>
+          </div>
+
+          <div className="hidden md:flex items-center ml-2">
+            <LanguagePicker currentLang={currentLang} currentPath={currentPath} />
           </div>
 
           <CartSheet />

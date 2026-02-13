@@ -3,17 +3,30 @@ import '@/styles/globals.css';
 
 import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
 import { ContactForm } from '@/components/contact/contact-form';
+import PageLayout from '@/layouts/page-layout.astro';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import PageLayout from '../layouts/page-layout.astro';
+
+import { useTranslations } from '@/i18n/ui';
+import { getLocalizedRoute } from '@/i18n/utils';
+import { supabase } from "@/lib/supabase";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
 
 const breadcrumbData: BreadcrumbData = {
   items: [
-    { href: "/", label: "Home" },
-    { label: "Contact Us" },
+    { href: getLocalizedRoute("/", currentLang), label: t('navbar-home') || "Home" },
+    { label: t('contact-page-title') || "Contact Us" },
   ]
 }
-
-import { supabase } from "@/lib/supabase";
 
 // Default contact info (fallback)
 let contactInfo = {
@@ -33,9 +46,11 @@ try {
   console.error("Error fetching site config", e);
 }
 
+const pageTitle = t('contact-page-title') || "Contact Us";
+const pageSubtitle = t('contact-page-subtitle') || "Get in touch with our engineering team for product specifications, custom fabrication requests, or general inquiries.";
 ---
 
-<PageLayout pageTitle= "Contact Us">
+<PageLayout pageTitle={pageTitle} lang={currentLang}>
   <div class="bg-zinc-50 min-h-screen pb-20">
     {/* Header */}
     <div class="bg-white border-b border-zinc-200">
@@ -43,10 +58,10 @@ try {
         <BreadcrumbResponsive data={breadcrumbData} client:visible />
         <div class="mt-8 mb-4">
           <h1 class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl mb-4">
-            Contact Us
+            {pageTitle}
           </h1>
           <p class="text-lg text-zinc-600 max-w-2xl">
-            Get in touch with our engineering team for product specifications, custom fabrication requests, or general inquiries.
+            {pageSubtitle}
           </p>
         </div>
       </div>
@@ -58,12 +73,12 @@ try {
         <div class="lg:col-span-5 space-y-8">
           {/* Contact Details Card */}
           <div class="bg-white rounded-xl border border-zinc-200 shadow-sm p-6 space-y-6">
-            <h3 class="font-bold text-zinc-900 text-lg">Contact Information</h3>
+            <h3 class="font-bold text-zinc-900 text-lg">{t('contact-info-title') || "Contact Information"}</h3>
             
             <div class="flex items-start space-x-3">
               <MapPin className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
-                <p class="font-medium text-zinc-900">Address</p>
+                <p class="font-medium text-zinc-900">{t('address-label') || "Address"}</p>
                 <p class="text-zinc-600 text-sm leading-relaxed">
                   <span set:html={contactInfo.address} />
                 </p>
@@ -73,7 +88,7 @@ try {
             <div class="flex items-start space-x-3">
               <Phone className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
-                <p class="font-medium text-zinc-900">Phone</p>
+                <p class="font-medium text-zinc-900">{t('phone-label') || "Phone"}</p>
                 <p class="text-zinc-600 text-sm">{contactInfo.tel_us} (USA)</p>
                 <p class="text-zinc-600 text-sm">{contactInfo.tel_cn} (China)</p>
               </div>
@@ -82,7 +97,7 @@ try {
             <div class="flex items-start space-x-3">
               <Mail className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
-                <p class="font-medium text-zinc-900">Email</p>
+                <p class="font-medium text-zinc-900">{t('email-label') || "Email"}</p>
                 <p class="text-zinc-600 text-sm">{contactInfo.email}</p>
               </div>
             </div>
@@ -105,7 +120,7 @@ try {
 
         {/* Right Column: Contact Form */}
         <div class="lg:col-span-7">
-           <ContactForm client:load />
+           <ContactForm client:visible lang={currentLang} />
         </div>
       </div>
     </div>

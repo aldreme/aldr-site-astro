@@ -1,0 +1,42 @@
+---
+import ServicePageLayout from '@/layouts/service-page-layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('services');
+
+  // Generate paths for both languages
+  // 1. English paths: Map root files (not in 'zh/') to '/services/[slug]'
+  // 2. Chinese paths: Map 'zh/' files to '/zh/services/[slug]' (removing 'zh/' prefix from slug)
+
+  const paths = [];
+
+  for (const post of posts) {
+    if (post.id.startsWith('zh/')) {
+        // ID is like 'zh/design', we want URL /zh/services/design
+        const slug = post.id.replace(/^zh\//, '');
+        paths.push({
+            params: { lang: 'zh', slug: slug },
+            props: { post },
+        });
+    } else {
+        // ID is like 'design', we want URL /services/design
+         paths.push({
+            params: { lang: undefined, slug: post.id },
+            props: { post },
+        });
+    }
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+---
+
+<ServicePageLayout frontmatter={post.data} lang={currentLang}>
+  <Content />
+</ServicePageLayout>

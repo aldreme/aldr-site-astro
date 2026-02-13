@@ -8,7 +8,14 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import MsgModal from "../msg-modal";
 
-export function ContactForm() {
+import { ui, useTranslations } from "@/i18n/ui";
+
+interface ContactFormProps {
+  lang?: string;
+}
+
+export function ContactForm({ lang = 'en' }: ContactFormProps) {
+  const t = useTranslations(lang as keyof typeof ui);
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -63,13 +70,17 @@ export function ContactForm() {
 
   return (
     <div className="bg-white rounded-xl border border-zinc-200 shadow-sm p-6 md:p-8">
-      <h2 className="text-2xl font-bold text-zinc-900 mb-2">Send us a Message</h2>
-      <p className="text-zinc-500 mb-6">Values, specs, or custom inquiries? We're here to help.</p>
+      <h2 className="text-2xl font-bold text-zinc-900 mb-2">
+        {t('contact-form-title') || "Send us a Message"}
+      </h2>
+      <p className="text-zinc-500 mb-6">
+        {t('contact-form-subtitle') || "Values, specs, or custom inquiries? We're here to help."}
+      </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="first_name">First Name</Label>
+            <Label htmlFor="first_name">{t('first-name') || "First Name"}</Label>
             <Input
               id="first_name"
               required
@@ -79,7 +90,7 @@ export function ContactForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="last_name">Last Name</Label>
+            <Label htmlFor="last_name">{t('last-name') || "Last Name"}</Label>
             <Input
               id="last_name"
               required
@@ -92,7 +103,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t('email') || "Email"}</Label>
             <Input
               id="email"
               type="email"
@@ -103,7 +114,7 @@ export function ContactForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone (Optional)</Label>
+            <Label htmlFor="phone">{t('phone-optional') || "Phone (Optional)"}</Label>
             <Input
               id="phone"
               type="tel"
@@ -116,7 +127,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="company">Company</Label>
+            <Label htmlFor="company">{t('company') || "Company"}</Label>
             <Input
               id="company"
               required
@@ -126,7 +137,7 @@ export function ContactForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="industry">Industry (Optional)</Label>
+            <Label htmlFor="industry">{t('industry-optional') || "Industry (Optional)"}</Label>
             <Input
               id="industry"
               placeholder="e.g. Pharmaceutical"
@@ -137,7 +148,7 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="subject">Subject</Label>
+          <Label htmlFor="subject">{t('subject') || "Subject"}</Label>
           <Input
             id="subject"
             required
@@ -148,7 +159,7 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message">{t('message') || "Message"}</Label>
           <Textarea
             id="message"
             required
@@ -166,7 +177,7 @@ export function ContactForm() {
               Sending...
             </>
           ) : (
-            "Send Message"
+            t('send-message') || "Send Message"
           )}
         </Button>
       </form>

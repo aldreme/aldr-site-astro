@@ -1,0 +1,24 @@
+---
+import { useTranslations } from '@/i18n/ui';
+import PageLayout from "@/layouts/page-layout.astro";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
+
+const pageTitle = t('news-title') || "ALDR News";
+---
+
+<PageLayout pageTitle={pageTitle} lang={currentLang}>
+  <div class="min-h-screen pt-32 px-4 container mx-auto">
+    <h1 class="text-zinc-900 text-3xl font-bold mb-4">{pageTitle}</h1>
+    <p class="text-zinc-500">{t('coming-soon') || "Coming soon..."}</p>
+  </div>
+</PageLayout>

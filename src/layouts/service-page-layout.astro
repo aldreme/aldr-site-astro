@@ -1,9 +1,9 @@
 ---
 import PageLayout from "./page-layout.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, lang } = Astro.props;
 ---
 
-<PageLayout pageTitle={frontmatter.title}>
+<PageLayout pageTitle={frontmatter.title} lang={lang || 'en'}>
   <div class="bg-white px-[5vmin] py-[3vmin] min-h-screen md:px-[15vw]">
     <!-- metadata -->
     {

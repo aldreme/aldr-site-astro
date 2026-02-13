@@ -1,0 +1,126 @@
+---
+import '@/styles/globals.css';
+import '@/styles/pages/home.css';
+import '@/styles/pages/page.css';
+
+import Partners from '@/components/partners.astro';
+import PageLayout from '@/layouts/page-layout.astro';
+
+import homeBannerImg from '@/assets/images/home/home-banner-min.jpg';
+import ProductItemCard from '@/components/products/product-item-card.astro';
+import { Image } from 'astro:assets';
+import { ArrowRight } from 'lucide-react';
+
+import db from '@/assets/data/db.json';
+import { useTranslations } from '@/i18n/ui'; // [NEW] Import translation hook
+import { getLocalizedRoute } from '@/i18n/utils'; // [NEW] Import localization helper
+import { supabase } from "@/lib/supabase";
+
+// [NEW] Dynamic Routing Logic
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } }, // English (Root)
+    { params: { lang: 'zh' } },      // Chinese
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any); // Type assertion for safety
+
+// Fetch featured products from Supabase
+const { data: products } = await supabase
+  .from('products')
+  .select('*')
+  .eq('featured', true)
+  .limit(4);
+
+const featuredProducts = products || db.products.filter(p => (p as any).featured).slice(0, 4);
+
+// Fetch Hero Config
+let heroConfig = {
+	title_h1: t('home-banner-caption0') || 'Trusted by Global Industry Leaders',
+	title_h2: t('home-banner-caption2') || 'High Quality Cleanroom Stainless Steel Furnitures'
+};
+
+// [Optional] If site_config also needs to be localized or fetched from DB, logic remains similar.
+// For now, we use translations for static hero text.
+
+const pageTitle = t('home-page-title') || "Cleanroom Stainless Steel Furniture & Equipment";
+const seoDescription = t('home-seo-description') || "ALDR EME specializes in premium cleanroom stainless steel furniture and equipment. Trusted globally for durable, reliable, and high-quality laboratory solutions.";
+const seoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ALDR EME",
+  "url": getLocalizedRoute("https://www.aldreme.com", currentLang),
+  "logo": "https://www.aldreme.com/logo-light.png",
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": currentLang === 'zh' ? "+86 18051120028" : "+1 (617) 356-8065",
+    "contactType": "sales"
+  }
+};
+const seoKeywords = t('home-seo-keywords') || "Cleanroom Furniture, Stainless Steel Laboratory Equipment, Gowning Bench, Pass Box, Industrial Workbench, Pharmaceutical Equipment, ALDR EME";
+---
+
+<PageLayout 
+  pageTitle={pageTitle} 
+  seoDescription={seoDescription}
+  seoJsonLd={seoJsonLd}
+  seoKeywords={seoKeywords}
+  lang={currentLang} 
+>
+	<div class='flex flex-col px-0 sm:px-[15vw]'>
+		<Image src={homeBannerImg} alt="Home Banner" class="page-banner-img" />
+
+		<div class="home-banner-caption">
+			<h1 class="home-banner-caption-h0">{heroConfig.title_h1}</h1>
+			
+			<!-- "Advanced Laboratory Durable Reliable" with the first letter BOLD weight -->
+            {/* Localize this creative text if needed, or keep English as brand slogan */}
+            { currentLang === 'en' ? (
+                <h2 class="home-banner-caption-h1">
+                    <span class='font-bold'>A</span>{'dvanced'}&nbsp;
+                    <span class='font-bold'>L</span>{'aboratory'}&nbsp;
+                    <span class='font-bold'>D</span>{'urable'}&nbsp;
+                    <span class='font-bold'>R</span>{'eliable'}
+                </h2>
+            ) : (
+                <h2 class="home-banner-caption-h1">
+                     {t('home-banner-caption1')}
+                </h2>
+            )}
+
+
+			<h3 class="home-banner-caption-h2">
+				{heroConfig.title_h2}
+			</h3>
+		</div>
+
+		{/* Featured Products Section */}
+		<section class="relative z-10 mt-12 sm:mt-24 px-6 sm:px-0 flex flex-col">
+			<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full mb-8 lg:mb-12 gap-4">
+				<h2 class="text-2xl sm:text-3xl font-bold text-white border-l-4 border-blue-600 pl-4 tracking-tight">
+					{t('featured-products') || "Featured Products"}
+				</h2>
+				<a href={getLocalizedRoute("/products", currentLang)} class="flex items-center text-blue-400 hover:text-blue-300 transition-colors group text-sm font-medium self-start sm:self-auto">
+					{t('view-all-products') || "View All Products"}
+					<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+				</a>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+				{featuredProducts.map((product, index) => (
+					<ProductItemCard index={index} productData={product as any} lang={currentLang} />
+				))}
+			</div>
+		</section>
+
+		<div class='mt-[5vw] flex flex-col justify-center items-center text-white animate-fadein-up duration-500 delay-300 z-10'>
+			<h1 class="text-[4.5vw] font-bold my-[3vmin]">{t('our-partners') || 'Our Partners'}</h1>
+
+			<Partners />
+		</div>
+	</div>
+</PageLayout>

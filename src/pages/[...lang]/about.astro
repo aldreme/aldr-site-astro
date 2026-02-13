@@ -1,0 +1,61 @@
+---
+import '@/styles/globals.css';
+
+import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
+import PageLayout from '@/layouts/page-layout.astro';
+
+// Import both MDX content files
+import { Content as AboutPageContentEn } from '@/assets/data/pages/about.mdx';
+import { Content as AboutPageContentZh } from '@/assets/data/pages/zh/about.mdx';
+
+import { useTranslations } from '@/i18n/ui';
+import { getLocalizedRoute } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
+
+const breadcrumbData: BreadcrumbData = {
+  items: [
+    { href: getLocalizedRoute("/", currentLang), label: t('navbar-home') || "Home" },
+    { label: t('navbar-aboutus') || "About Us" },
+  ]
+}
+
+const pageTitle = t('about-aldr-title') || "About ALDR";
+const pageSubtitle = t('about-aldr-subtitle') || "Pioneering precision stainless steel solutions for the world's most critical environments.";
+---
+
+<PageLayout pageTitle={pageTitle} lang={currentLang}>
+  <div class="bg-zinc-50 min-h-screen pb-20">
+    {/* Header Background */}
+    <div class="bg-white border-b border-zinc-200">
+      <div class="container mx-auto px-4 py-8">
+        <BreadcrumbResponsive data={breadcrumbData} client:visible />
+        <div class="mt-8 mb-4 max-w-3xl">
+          <h1 class="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl mb-4">
+            {pageTitle}
+          </h1>
+          <p class="text-lg text-zinc-600">
+            {pageSubtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Content */}
+    <div class="container mx-auto px-4 py-12">
+      <article class="prose prose-zinc prose-lg max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-zinc-200">
+        {/* Conditional rendering of MDX content */}
+        { currentLang === 'en' ? <AboutPageContentEn /> : <AboutPageContentZh /> }
+      </article>
+    </div>
+  </div>
+</PageLayout>

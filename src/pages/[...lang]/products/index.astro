@@ -1,0 +1,59 @@
+---
+import '@/styles/globals.css';
+import '@/styles/pages/page.css';
+
+import ProductsGrid from '@/components/products/products-grid.astro';
+import { useTranslations } from '@/i18n/ui';
+import PageLayout from '@/layouts/page-layout.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
+
+const pageTitle = t('products-page-title') || "Cleanroom Stainless Steel Furniture Catalog";
+const seoDescription = t('products-intro') || "Explore our comprehensive catalog of cleanroom stainless steel furniture. GMP-ready, pharmaceutical-grade cabinets, benches, and workstations.";
+---
+
+<PageLayout 
+  pageTitle={pageTitle}
+  seoDescription={seoDescription}
+  lang={currentLang}
+>
+  <div class="w-full min-h-screen bg-zinc-50">
+    {/* Hero Section */}
+    <div class="relative bg-zinc-900 py-24 sm:py-32">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 opacity-20"></div>
+        <div class="absolute inset-0 bg-linear-to-t from-zinc-900 to-transparent"></div>
+      </div>
+      <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+           {t('products-hero-title') || "Precision Engineering"}
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-zinc-300 max-w-2xl mx-auto">
+           {t('products-hero-subtitle') || "GMP-ready stainless steel furniture and equipment designed for the world's most critical environments."}
+        </p>
+      </div>
+    </div>
+
+    {/* Products Grid Section */}
+    <div class="container mx-auto px-4 py-16 sm:py-24">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+           {t('our-catalog') || "Our Catalog"}
+        </h2>
+        <p class="mt-4 text-zinc-500">
+           {t('catalog-subtitle') || "Browse our comprehensive range of pharmaceutical-grade solutions."}
+        </p>
+      </div>
+      <ProductsGrid lang={currentLang} />
+    </div>
+  </div>
+</PageLayout>

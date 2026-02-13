@@ -1,9 +1,21 @@
 ---
 import GalleryMasonry from '@/components/gallery/GalleryMasonry';
 import PageLayout from '@/layouts/page-layout.astro';
+import { useTranslations } from '@/i18n/ui';
 
 // Fetch images from Supabase storage
 import { supabase } from '@/lib/supabase';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
 
 const { data: files } = await supabase.storage.from('product-gallery').list();
 
@@ -23,17 +35,20 @@ const images = files ? files.map((file) => {
     // Dimensions not available from storage list
   };
 }).filter(img => !img.src.endsWith('.emptyFolderPlaceholder')) : [];
+
+const pageTitle = t('gallery-title') || "Product Gallery";
+const pageSubtitle = t('gallery-subtitle') || "Explore our collection of high-precision stainless steel equipment and laboratory solutions. Each piece is engineered to meet the highest standards of durability and hygiene.";
 ---
 
-<PageLayout pageTitle="Product Gallery">
+<PageLayout pageTitle={pageTitle} lang={currentLang}>
   <div class="bg-zinc-50 dark:bg-zinc-950 min-h-screen py-24 sm:py-32">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mb-16 px-4">
         <h1 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-6xl mb-6">
-          Product Gallery
+          {pageTitle}
         </h1>
         <p class="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-          Explore our collection of high-precision stainless steel equipment and laboratory solutions. Each piece is engineered to meet the highest standards of durability and hygiene.
+          {pageSubtitle}
         </p>
       </div>
 
@@ -42,8 +57,8 @@ const images = files ? files.map((file) => {
           <GalleryMasonry images={images} client:load />
         ) : (
           <div class="text-center py-20 bg-white rounded-2xl border border-zinc-200 shadow-sm">
-            <p class="text-zinc-500">No images found in the gallery.</p>
-            <p class="text-sm text-zinc-400 mt-2">Please check Supabase Storage 'product-gallery' bucket.</p>
+            <p class="text-zinc-500">{t('no-images-found') || "No images found in the gallery."}</p>
+            <p class="text-sm text-zinc-400 mt-2">{t('check-storage-bucket') || "Please check Supabase Storage 'product-gallery' bucket."}</p>
           </div>
         )}
       </div>

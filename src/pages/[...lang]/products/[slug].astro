@@ -6,34 +6,48 @@ import ProductCarousel from '@/components/products/product-carousel';
 import { ProductDescriptionCard } from '@/components/products/product-description-card';
 import { ProductTechSpecs } from '@/components/products/product-tech-specs';
 import type { ProductData } from '@/components/products/types';
-import { useTranslations } from '@/i18n/ui';
-import { getLocalizedRoute, getProductTranslation } from '@/i18n/utils';
+import { useTranslations } from '@/i18n/ui'; // Import translations
+import { getLocalizedRoute, getProductTranslation } from '@/i18n/utils'; // Import utils
 import PageLayout from '@/layouts/page-layout.astro';
 import { supabase } from "@/lib/supabase";
 
 export async function getStaticPaths() {
   const { data: products } = await supabase.from('products').select('*');
-  return products?.map((product) => ({
-    params: {
-      slug: product.slug
-    },
-    props: { productData: product as unknown as ProductData }
-  })) || [];
+  const paths = [];
+
+  // Generate paths for both languages
+  products?.forEach((product) => {
+    // English path (lang undefined)
+    paths.push({
+      params: { lang: undefined, slug: product.slug },
+      props: { productData: product as unknown as ProductData }
+    });
+     // Chinese path (lang 'zh')
+    paths.push({
+      params: { lang: 'zh', slug: product.slug },
+      props: { productData: product as unknown as ProductData }
+    });
+  });
+
+  return paths;
 }
 
 interface Props {
   productData: ProductData;
 };
 
-const { productData: rawProductData } = Astro.props;
-const lang = 'zh';
-const t = useTranslations(lang);
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
 
-// Transform product data
-const productData = {
-  ...rawProductData,
-  ...getProductTranslation(rawProductData, lang)
-} as ProductData;
+// Translate product data using our helper
+const rawProductData = Astro.props.productData;
+const translatedFields = getProductTranslation(rawProductData, currentLang);
+const productData = { 
+  ...rawProductData, 
+  ...translatedFields 
+};
+
 
 // Construct remote image URIs
 const productImageUri = productData.images?.map(img => {
@@ -43,8 +57,8 @@ const productImageUri = productData.images?.map(img => {
 
 const breadcrumbData: BreadcrumbData = {
   items: [
-    { href: getLocalizedRoute("/", lang), label: t('navbar-home') || "Home" },
-    { href: getLocalizedRoute("/products", lang), label: t('navbar-products') || "Products" },
+    { href: getLocalizedRoute("/", currentLang), label: t('navbar-home') || "Home" },
+    { href: getLocalizedRoute("/products", currentLang), label: t('navbar-products') || "Products" },
     { label: productData.name },
   ]
 }
@@ -73,6 +87,7 @@ const productJsonLd = {
     "@type": "Offer",
     "url": Astro.url.href,
     "priceCurrency": "USD",
+    // "price": "0", // Optional: Add price if available
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition"
   },
@@ -88,6 +103,7 @@ const productJsonLd = {
   seoType="product"
   seoJsonLd={productJsonLd}
   seoKeywords={keywords}
+  lang={currentLang}
 >
   <div class="bg-zinc-50 min-h-screen pb-20">
     {/* Breadcrumb Section */}
@@ -111,7 +127,7 @@ const productJsonLd = {
 
           {/* Product Intro - moved here for better flow on mobile/desktop */}
           <div class="prose prose-zinc max-w-none">
-            <h2 class="text-2xl font-bold text-zinc-900 mb-4">{t('product-overview') || 'Product Overview'}</h2>
+            <h2 class="text-2xl font-bold text-zinc-900 mb-4">{t('product-overview') || "Product Overview"}</h2>
             <p class="text-zinc-600 leading-relaxed">
               {productData.introduction}
             </p>
@@ -119,7 +135,7 @@ const productJsonLd = {
           
           {/* Applications */}
           <div>
-            <h3 class="text-xl font-bold text-zinc-900 mb-4">{t('application-scenarios') || 'Application Scenarios'}</h3>
+            <h3 class="text-xl font-bold text-zinc-900 mb-4">{t('application-scenarios') || "Application Scenarios"}</h3>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
               {
                 productData.application_scenarios.map((scenario) => (
@@ -142,7 +158,7 @@ const productJsonLd = {
               productDescription={productData.description}
               productFeatures={productData.features}
               className="bg-white rounded-xl shadow-sm border border-zinc-200 p-6"
-              lang={lang}
+              lang={currentLang}
             />
           </div>
         </div>
@@ -151,20 +167,20 @@ const productJsonLd = {
       {/* Tech Specs Section */}
       <div class="mt-16">
         <div class="flex items-center justify-between mb-8 border-b border-zinc-200 pb-4">
-          <h2 class="text-2xl font-bold text-zinc-900">{t('technical-specifications') || 'Technical Specifications'}</h2>
-          <span class="text-sm text-zinc-500 font-mono">Ref: {productData.slug.toUpperCase()}</span>
+          <h2 class="text-2xl font-bold text-zinc-900">{t('technical-specifications') || "Technical Specifications"}</h2>
+          <span class="text-sm text-zinc-500 font-mono">Ref: {productData.name.toUpperCase().replace(/\s+/g, '-')}</span>
         </div>
-        <ProductTechSpecs productTechSpecs={productData.specs} client:visible lang={lang} />
+        <ProductTechSpecs productTechSpecs={productData.specs} client:visible lang={currentLang} />
       </div>
 
       {/* Policies Section */}
       <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 border-t border-zinc-200 pt-12">
         <div>
-          <h3 class="font-bold text-zinc-900 mb-2">{t('shipping-information') || 'Shipping Information'}</h3>
+          <h3 class="font-bold text-zinc-900 mb-2">{t('shipping-information') || "Shipping Information"}</h3>
           <p>{productData.policies.shipping}</p>
         </div>
         <div>
-          <h3 class="font-bold text-zinc-900 mb-2">{t('warranty-support') || 'Warranty Support'}</h3>
+          <h3 class="font-bold text-zinc-900 mb-2">{t('warranty-support') || "Warranty Support"}</h3>
           <p>{productData.policies.warranty}</p>
         </div>
       </div>

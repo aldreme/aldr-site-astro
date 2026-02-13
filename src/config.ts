@@ -4,6 +4,7 @@ interface RouteData {
   description?: string;
   children?: RouteData[];
   i18nKey?: string;
+  i18nDescriptionKey?: string;
 }
 
 interface RoutesConfig {
@@ -27,24 +28,32 @@ export const ROUTES: RoutesConfig = {
       {
         name: "Cleanroom Design",
         href: "/services/design",
+        i18nKey: "navbar-service-design",
+        i18nDescriptionKey: "navbar-service-design-desc",
         description:
           "GMP-compliant layout and workflow design for ISO 8-5 environments.",
       },
       {
         name: "Precision Manufacturing",
         href: "/services/manufacturing",
+        i18nKey: "navbar-service-manufacturing",
+        i18nDescriptionKey: "navbar-service-manufacturing-desc",
         description:
           "Pharmaceutical-grade stainless steel fabrication with 150k annual capacity.",
       },
       {
         name: "OEM Partnership",
         href: "/services/oem",
+        i18nKey: "navbar-service-oem",
+        i18nDescriptionKey: "navbar-service-oem-desc",
         description:
           "Contract manufacturing for global life science and medical device brands.",
       },
       {
         name: "ODM Development",
         href: "/services/odm",
+        i18nKey: "navbar-service-odm",
+        i18nDescriptionKey: "navbar-service-odm-desc",
         description:
           "Custom instrumentation and equipment design from concept to commercialization.",
       },
