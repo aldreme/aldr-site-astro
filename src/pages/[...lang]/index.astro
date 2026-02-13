@@ -13,7 +13,7 @@ import { ArrowRight } from 'lucide-react';
 
 import db from '@/assets/data/db.json';
 import { useTranslations } from '@/i18n/ui'; // [NEW] Import translation hook
-import { getLocalizedRoute, getProductTranslation } from '@/i18n/utils'; // [NEW] Import localization helper
+import { getLocalizedRoute, getProductTranslation, getSiteConfigTranslation } from '@/i18n/utils'; // [NEW] Import localization helper
 import { supabase } from "@/lib/supabase";
 
 // [NEW] Dynamic Routing Logic
@@ -43,9 +43,29 @@ const featuredProducts = rawFeaturedProducts.map(product => ({
 
 // Fetch Hero Config
 let heroConfig = {
-	title_h1: t('home-banner-caption0') || 'Trusted by Global Industry Leaders',
-	title_h2: t('home-banner-caption2') || 'High Quality Cleanroom Stainless Steel Furnitures'
+	title_h1: '',
+	title_h2: ''
 };
+
+try {
+  const { data: heroData } = await supabase
+    .from('site_config')
+    .select('*')
+    .eq('key', 'home_hero')
+    .single();
+
+  if (heroData) {
+     const localizedHero = getSiteConfigTranslation(heroData, currentLang);
+     heroConfig.title_h1 = localizedHero?.title_h1;
+     heroConfig.title_h2 = localizedHero?.title_h2;
+  }
+} catch (e) {
+  console.error("Error fetching home hero config", e);
+}
+
+// Fallback
+if (!heroConfig.title_h1) heroConfig.title_h1 = t('home-banner-caption0') || 'Trusted by Global Industry Leaders';
+if (!heroConfig.title_h2) heroConfig.title_h2 = t('home-banner-caption2') || 'High Quality Cleanroom Stainless Steel Furnitures';
 
 // [Optional] If site_config also needs to be localized or fetched from DB, logic remains similar.
 // For now, we use translations for static hero text.

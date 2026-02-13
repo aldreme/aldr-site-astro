@@ -63,3 +63,25 @@ export function getProductTranslation(product: any, locale: string) {
     },
   };
 }
+
+export function getSiteConfigTranslation(configItem: any, locale: string) {
+  if (locale === defaultLang || !configItem) return configItem?.value;
+
+  const translations = configItem.translations as Record<string, any> | null;
+  const translation = translations?.[locale];
+
+  if (!translation) return configItem.value;
+
+  // Deep merge for objects (like contact_info), or simple replacement for primitives
+  if (
+    typeof configItem.value === "object" && configItem.value !== null &&
+    !Array.isArray(configItem.value)
+  ) {
+    return {
+      ...configItem.value,
+      ...translation,
+    };
+  }
+
+  return translation;
+}

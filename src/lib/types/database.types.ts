@@ -88,6 +88,30 @@ export type Database = {
         };
         relationships: [];
       };
+      site_config: {
+        Row: {
+          created_at: string;
+          id: number;
+          key: string;
+          translations: Json | null;
+          value: Json;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          key: string;
+          translations?: Json | null;
+          value: Json;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          key?: string;
+          translations?: Json | null;
+          value?: Json;
+        };
+        Relationships: [];
+      };
       products: {
         Row: {
           application_scenarios: string[] | null;

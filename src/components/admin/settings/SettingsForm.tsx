@@ -8,14 +8,23 @@ import {
   CardHeader,
   Divider,
   Input,
+  Tab,
+  Tabs,
   Textarea
 } from "@heroui/react";
 import { useEffect, useState } from "react";
 
+type ConfigItem = {
+  key: string;
+  value: any;
+  translations: Record<string, any> | null;
+};
+
 export default function SettingsForm() {
-  const [config, setConfig] = useState<any>({});
+  const [items, setItems] = useState<Record<string, ConfigItem>>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [selectedLang, setSelectedLang] = useState<string>("en");
 
   useEffect(() => {
     fetchConfig();
@@ -26,21 +35,75 @@ export default function SettingsForm() {
     const { data, error } = await supabase.from("site_config").select("*");
     if (error) console.error(error);
     else {
-      const configMap: any = {};
+      const configMap: Record<string, ConfigItem> = {};
       data?.forEach(item => {
-        configMap[item.key] = item.value;
+        configMap[item.key] = item;
       });
-      setConfig(configMap);
+      setItems(configMap);
     }
     setLoading(false);
   };
 
-  const handleSave = async (key: string, value: any) => {
+  const handleSave = async (key: string, currentItem: ConfigItem) => {
     setSaving(true);
-    const { error } = await supabase.from("site_config").upsert({ key, value });
+
+    // If saving English (default), update 'value'. 
+    // If saving other lang effectively, we update 'translations'.
+    // BUT the UI state is unified. 
+
+    const { error } = await supabase.from("site_config").upsert({
+      key,
+      value: currentItem.value,
+      translations: currentItem.translations
+    });
+
     if (error) alert("Error saving: " + error.message);
     else alert("Saved!");
     setSaving(false);
+  };
+
+  const updateField = (key: string, field: string, newValue: string) => {
+    const item = items[key] || { key, value: {}, translations: {} };
+
+    if (selectedLang === 'en') {
+      // Update Default Value
+      setItems({
+        ...items,
+        [key]: {
+          ...item,
+          value: { ...item.value, [field]: newValue }
+        }
+      });
+    } else {
+      // Update Translation
+      const currentTranslations = item.translations || {};
+      const langTranslation = currentTranslations[selectedLang] || {};
+
+      setItems({
+        ...items,
+        [key]: {
+          ...item,
+          translations: {
+            ...currentTranslations,
+            [selectedLang]: {
+              ...langTranslation,
+              [field]: newValue
+            }
+          }
+        }
+      });
+    }
+  };
+
+  const getValue = (key: string, field: string) => {
+    const item = items[key];
+    if (!item) return "";
+
+    if (selectedLang === 'en') {
+      return item.value?.[field] || "";
+    } else {
+      return item.translations?.[selectedLang]?.[field] || "";
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -51,6 +114,16 @@ export default function SettingsForm() {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Site Settings</h1>
         <p className="text-gray-500 dark:text-gray-400">Manage global website configuration and content</p>
       </div>
+
+      <Tabs
+        aria-label="Language Options"
+        selectedKey={selectedLang}
+        onSelectionChange={(key) => setSelectedLang(key as string)}
+        className="mb-4"
+      >
+        <Tab key="en" title="English (Default)" />
+        <Tab key="zh" title="Chinese (中文)" />
+      </Tabs>
 
       <div className="grid gap-8">
         {/* Contact Info */}
@@ -68,11 +141,8 @@ export default function SettingsForm() {
                 variant="bordered"
                 labelPlacement="outside"
                 classNames={{ inputWrapper: "rounded-2xl h-11" }}
-                value={config.contact_info?.tel_us || ""}
-                onChange={(e) => setConfig({
-                  ...config,
-                  contact_info: { ...config.contact_info, tel_us: e.target.value }
-                })}
+                value={getValue("contact_info", "tel_us")}
+                onChange={(e) => updateField("contact_info", "tel_us", e.target.value)}
               />
               <Input
                 label="CN Office Phone"
@@ -80,11 +150,8 @@ export default function SettingsForm() {
                 variant="bordered"
                 labelPlacement="outside"
                 classNames={{ inputWrapper: "rounded-2xl h-11" }}
-                value={config.contact_info?.tel_cn || ""}
-                onChange={(e) => setConfig({
-                  ...config,
-                  contact_info: { ...config.contact_info, tel_cn: e.target.value }
-                })}
+                value={getValue("contact_info", "tel_cn")}
+                onChange={(e) => updateField("contact_info", "tel_cn", e.target.value)}
               />
             </div>
             <Input
@@ -93,11 +160,8 @@ export default function SettingsForm() {
               variant="bordered"
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl h-11" }}
-              value={config.contact_info?.email || ""}
-              onChange={(e) => setConfig({
-                ...config,
-                contact_info: { ...config.contact_info, email: e.target.value }
-              })}
+              value={getValue("contact_info", "email")}
+              onChange={(e) => updateField("contact_info", "email", e.target.value)}
             />
             <Textarea
               label="HQ Office Address"
@@ -105,11 +169,8 @@ export default function SettingsForm() {
               variant="bordered"
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl" }}
-              value={config.contact_info?.address || ""}
-              onChange={(e) => setConfig({
-                ...config,
-                contact_info: { ...config.contact_info, address: e.target.value }
-              })}
+              value={getValue("contact_info", "address")}
+              onChange={(e) => updateField("contact_info", "address", e.target.value)}
             />
           </CardBody>
           <CardFooter className="pt-2">
@@ -117,7 +178,7 @@ export default function SettingsForm() {
               color="primary"
               radius="full"
               className="px-8 font-semibold shadow-lg shadow-blue-500/20"
-              onPress={() => handleSave("contact_info", config.contact_info)}
+              onPress={() => handleSave("contact_info", items["contact_info"])}
               isLoading={saving}
             >
               Save Information
@@ -138,11 +199,8 @@ export default function SettingsForm() {
               variant="bordered"
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl h-11" }}
-              value={config.home_hero?.title_h1 || "Trusted by Global Industry Leaders"}
-              onChange={(e) => setConfig({
-                ...config,
-                home_hero: { ...config.home_hero, title_h1: e.target.value }
-              })}
+              value={getValue("home_hero", "title_h1")}
+              onChange={(e) => updateField("home_hero", "title_h1", e.target.value)}
             />
             <Textarea
               label="Sub-heading (H2)"
@@ -150,11 +208,8 @@ export default function SettingsForm() {
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl" }}
               minRows={3}
-              value={config.home_hero?.title_h2 || "High Quality Cleanroom Stainless Steel Furnitures"}
-              onChange={(e) => setConfig({
-                ...config,
-                home_hero: { ...config.home_hero, title_h2: e.target.value }
-              })}
+              value={getValue("home_hero", "title_h2")}
+              onChange={(e) => updateField("home_hero", "title_h2", e.target.value)}
             />
           </CardBody>
           <CardFooter className="pt-2">
@@ -162,7 +217,7 @@ export default function SettingsForm() {
               color="primary"
               radius="full"
               className="px-8 font-semibold shadow-lg shadow-blue-500/20"
-              onPress={() => handleSave("home_hero", config.home_hero)}
+              onPress={() => handleSave("home_hero", items["home_hero"])}
               isLoading={saving}
             >
               Update Hero Content
