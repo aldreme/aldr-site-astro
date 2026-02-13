@@ -21,12 +21,15 @@ type ConfigItem = {
   translations: Record<string, any> | null;
 };
 
+import { useAdminDialog } from "@/store/admin-ui";
+
 export default function SettingsForm() {
   const { t } = useAdminTranslation(); // Added t() initialization
   const [config, setConfig] = useState<Record<string, ConfigItem>>({}); // Renamed items to config, setItems to setConfig
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [selectedLang, setSelectedLang] = useState<string>("en");
+  const admin = useAdminDialog();
 
   useEffect(() => {
     fetchConfig();
@@ -59,8 +62,8 @@ export default function SettingsForm() {
       translations: currentItem.translations
     });
 
-    if (error) alert("Error saving: " + error.message);
-    else alert("Saved!");
+    if (error) await admin.alert("Error saving: " + error.message, { title: t('admin.common.error') });
+    else await admin.alert(t('admin.settings.cards.contact.save_success') || "Settings saved successfully", { title: t('admin.common.success') });
     setSaving(false);
   };
 

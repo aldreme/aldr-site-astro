@@ -350,5 +350,11 @@
     "admin.products.error.update": "Error updating product: ",
     "admin.products.upload_file": "Upload File",
     "admin.products.add_url": "Add URL",
-    "admin.products.prompt.image_url": "Enter image URL or path:"
+    "admin.products.prompt.image_url": "Enter image URL or path:",
+    "admin.common.ok": "OK",
+    "admin.common.confirm": "Confirm",
+    "admin.common.cancel": "Cancel",
+    "admin.common.success": "Success",
+    "admin.common.error": "Error",
+    "admin.settings.cards.contact.save_success": "Settings saved successfully"
 }

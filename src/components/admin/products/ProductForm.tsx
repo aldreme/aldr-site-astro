@@ -13,6 +13,8 @@ import { ArrowLeft, Plus, Save, Trash, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAdminTranslation } from "../AdminI18nProvider";
 
+import { useAdminDialog } from "@/store/admin-ui";
+
 interface ProductFormProps {
   initialData?: any; // Product type
   isNew?: boolean;
@@ -31,6 +33,7 @@ const CATEGORIES = [
 
 export default function ProductForm({ initialData, isNew = false }: ProductFormProps) {
   const { t } = useAdminTranslation();
+  const admin = useAdminDialog();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<any>(initialData || {
     name: "",
@@ -155,7 +158,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       .upload(filePath, file);
 
     if (uploadError) {
-      alert(t("admin.products.error.upload_image") + uploadError.message);
+      await admin.alert(t("admin.products.error.upload_image") + uploadError.message);
     } else {
       // We store the relative path within the 'products' bucket
       // Consistent with other images
@@ -179,7 +182,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       .upload(filePath, file);
 
     if (uploadError) {
-      alert(t("admin.products.error.upload_file") + uploadError.message);
+      await admin.alert(t("admin.products.error.upload_file") + uploadError.message);
     } else {
       addNestedArrayItem("engineering_drawings", type, filePath, () => { });
     }
@@ -203,14 +206,14 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       }
       const { error } = await supabase.from("products").insert(payload);
       if (error) {
-        alert(t("admin.products.error.create") + error.message);
+        await admin.alert(t("admin.products.error.create") + error.message);
         setLoading(false);
         return;
       }
     } else {
       const { error } = await supabase.from("products").update(payload).eq("id", formData.id);
       if (error) {
-        alert(t("admin.products.error.update") + error.message);
+        await admin.alert(t("admin.products.error.update") + error.message);
         setLoading(false);
         return;
       }
@@ -814,8 +817,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   variant="flat"
                   radius="lg"
                   className="font-medium h-10"
-                  onPress={() => {
-                    const url = prompt(t("admin.products.prompt.image_url"));
+                  onPress={async () => {
+                    const url = await admin.prompt(t("admin.products.prompt.image_url"));
                     if (url) handleChange("images", [...(formData.images || []), url]);
                   }}
                 >

@@ -27,10 +27,13 @@ interface Product {
 
 import { useAdminTranslation } from "../AdminI18nProvider";
 
+import { useAdminDialog } from "@/store/admin-ui";
+
 export default function ProductList() {
   const { t } = useAdminTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const admin = useAdminDialog();
 
   useEffect(() => {
     fetchProducts();
@@ -52,11 +55,11 @@ export default function ProductList() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm(t('admin.product_list.delete_confirm'))) return;
+    if (!await admin.confirm({ title: t('admin.product_list.delete_confirm') })) return;
 
     const { error } = await supabase.from("products").delete().eq("id", id);
     if (error) {
-      alert("Error deleting product: " + error.message);
+      await admin.alert("Error deleting product: " + error.message);
     } else {
       fetchProducts();
     }

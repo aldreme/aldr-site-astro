@@ -352,5 +352,11 @@
     "admin.products.error.update": "更新产品错误：",
     "admin.products.upload_file": "上传文件",
     "admin.products.add_url": "添加 URL",
-    "admin.products.prompt.image_url": "输入图片 URL 或路径："
+    "admin.products.prompt.image_url": "输入图片 URL 或路径：",
+    "admin.common.ok": "确定",
+    "admin.common.confirm": "确认",
+    "admin.common.cancel": "取消",
+    "admin.common.success": "成功",
+    "admin.common.error": "错误",
+    "admin.settings.cards.contact.save_success": "设置已成功保存"
 }

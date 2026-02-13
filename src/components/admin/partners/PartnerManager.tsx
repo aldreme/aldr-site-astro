@@ -30,6 +30,8 @@ interface Partner {
 
 import { useAdminTranslation } from "../AdminI18nProvider";
 
+import { useAdminDialog } from "@/store/admin-ui";
+
 export default function PartnerManager() {
   const { t } = useAdminTranslation();
   const [partners, setPartners] = useState<Partner[]>([]);
@@ -38,6 +40,7 @@ export default function PartnerManager() {
   const [editingPartner, setEditingPartner] = useState<Partner | null>(null);
   const [formData, setFormData] = useState<Partial<Partner>>({});
   const [uploading, setUploading] = useState(false);
+  const admin = useAdminDialog();
 
   useEffect(() => {
     fetchPartners();
@@ -58,7 +61,7 @@ export default function PartnerManager() {
       .upload(filePath, file);
 
     if (uploadError) {
-      alert("Error uploading logo: " + uploadError.message);
+      await admin.alert("Error uploading logo: " + uploadError.message);
     } else {
       // We store the relative path within the 'partners' bucket (which is just filename if at root)
       setFormData((prev) => ({ ...prev, logo_url: filePath }));
@@ -87,19 +90,19 @@ export default function PartnerManager() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm(t('admin.partners.delete_confirm'))) return;
+    if (!await admin.confirm({ title: t('admin.partners.delete_confirm') })) return;
     const { error } = await supabase.from("partners").delete().eq("id", id);
-    if (error) alert(error.message);
+    if (error) await admin.alert(error.message);
     else fetchPartners();
   };
 
   const handleSubmit = async (onClose: () => void) => {
     if (editingPartner) {
       const { error } = await supabase.from("partners").update(formData).eq("id", editingPartner.id);
-      if (error) alert(error.message);
+      if (error) await admin.alert(error.message);
     } else {
       const { error } = await supabase.from("partners").insert(formData);
-      if (error) alert(error.message);
+      if (error) await admin.alert(error.message);
     }
     fetchPartners();
     onClose();

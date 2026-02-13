@@ -32,12 +32,15 @@ const STATUS_COLOR_MAP: Record<string, "default" | "primary" | "secondary" | "su
 
 import { useAdminTranslation } from "../AdminI18nProvider";
 
+import { useAdminDialog } from "@/store/admin-ui";
+
 export default function MessageList() {
   const { t } = useAdminTranslation();
   const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedMessage, setSelectedMessage] = useState<any>(null);
+  const admin = useAdminDialog();
 
   useEffect(() => {
     fetchMessages();
@@ -62,7 +65,7 @@ export default function MessageList() {
       .eq("id", id);
 
     if (error) {
-      alert("Error updating status: " + error.message);
+      await admin.alert("Error updating status: " + error.message);
     } else {
       fetchMessages();
     }

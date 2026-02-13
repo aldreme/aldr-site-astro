@@ -140,10 +140,13 @@ function AdminLayoutContent({ children, currentPath: propCurrentPath }: AdminLay
   );
 }
 
+import { AdminDialogContainer } from "@/components/admin/AdminDialogContainer";
+
 export default function AdminLayout(props: AdminLayoutProps) {
   return (
     <AdminI18nProvider>
       <AdminLayoutContent {...props} />
+      <AdminDialogContainer />
     </AdminI18nProvider>
   );
 }
