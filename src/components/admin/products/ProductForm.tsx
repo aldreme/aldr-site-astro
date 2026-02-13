@@ -11,6 +11,7 @@ import {
 } from "@heroui/react";
 import { ArrowLeft, Plus, Save, Trash, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useAdminTranslation } from "../AdminI18nProvider";
 
 interface ProductFormProps {
   initialData?: any; // Product type
@@ -29,6 +30,7 @@ const CATEGORIES = [
 ];
 
 export default function ProductForm({ initialData, isNew = false }: ProductFormProps) {
+  const { t } = useAdminTranslation();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<any>(initialData || {
     name: "",
@@ -153,7 +155,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       .upload(filePath, file);
 
     if (uploadError) {
-      alert("Error uploading image: " + uploadError.message);
+      alert(t("admin.products.error.upload_image") + uploadError.message);
     } else {
       // We store the relative path within the 'products' bucket
       // Consistent with other images
@@ -177,7 +179,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       .upload(filePath, file);
 
     if (uploadError) {
-      alert("Error uploading file: " + uploadError.message);
+      alert(t("admin.products.error.upload_file") + uploadError.message);
     } else {
       addNestedArrayItem("engineering_drawings", type, filePath, () => { });
     }
@@ -201,14 +203,14 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
       }
       const { error } = await supabase.from("products").insert(payload);
       if (error) {
-        alert("Error creating product: " + error.message);
+        alert(t("admin.products.error.create") + error.message);
         setLoading(false);
         return;
       }
     } else {
       const { error } = await supabase.from("products").update(payload).eq("id", formData.id);
       if (error) {
-        alert("Error updating product: " + error.message);
+        alert(t("admin.products.error.update") + error.message);
         setLoading(false);
         return;
       }
@@ -235,9 +237,9 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
           </Button>
           <div className="flex flex-col gap-1">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {isNew ? "Create New Product" : "Edit Product"}
+              {isNew ? t("admin.products.create") : t("admin.products.edit")}
             </h1>
-            <p className="text-sm text-gray-500">{formData.name || "Untitled Product"}</p>
+            <p className="text-sm text-gray-500">{formData.name || t("admin.products.untitled")}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -248,7 +250,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             radius="full"
             className="font-medium"
           >
-            Cancel
+            {t("admin.products.cancel")}
           </Button>
           <Button
             color="primary"
@@ -258,7 +260,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             className="shadow-lg shadow-blue-500/20 px-8 font-semibold"
             startContent={!loading && <Save className="w-4 h-4" />}
           >
-            {isNew ? "Publish Product" : "Save Changes"}
+            {isNew ? t("admin.products.publish") : t("admin.products.save")}
           </Button>
         </div>
       </div>
@@ -267,11 +269,11 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
         <div className="lg:col-span-2 space-y-8">
           {/* General Information */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">General Information</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t("admin.products.general")}</h3>
             <div className="grid gap-6">
               <Input
-                label="Product Name"
-                placeholder="e.g. Cleanroom Stainless Steel Workbench"
+                label={t("admin.products.name")}
+                placeholder={t("admin.products.placeholder.name")}
                 labelPlacement="outside"
                 variant="bordered"
                 classNames={{
@@ -283,22 +285,22 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 required
               />
               <Input
-                label="URL Slug"
-                placeholder="cleanroom-workbench"
+                label={t("admin.products.slug")}
+                placeholder={t("admin.products.placeholder.slug")}
                 labelPlacement="outside"
                 variant="bordered"
                 classNames={{
                   base: "mb-4",
                   inputWrapper: "rounded-2xl h-12"
                 }}
-                description="The unique part of the product URL"
+                description={t("admin.products.slug.desc")}
                 value={formData.slug}
                 onChange={(e) => handleChange("slug", e.target.value)}
                 required
               />
               <Textarea
-                label="Summary"
-                placeholder="Brief overview of the product for list views..."
+                label={t("admin.products.summary")}
+                placeholder={t("admin.products.summary.place")}
                 labelPlacement="outside"
                 variant="bordered"
                 classNames={{
@@ -309,8 +311,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 onChange={(e) => handleChange("description", e.target.value)}
               />
               <Textarea
-                label="Detailed Introduction"
-                placeholder="Describe the product in detail..."
+                label={t("admin.products.intro")}
+                placeholder={t("admin.products.intro.place")}
                 labelPlacement="outside"
                 variant="bordered"
                 classNames={{
@@ -327,10 +329,10 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
           {/* Features */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Features & Highlights</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t("admin.products.features")}</h3>
             </div>
             <Textarea
-              placeholder="Enter each feature on a new line..."
+              placeholder={t("admin.products.features.place")}
               labelPlacement="outside"
               variant="bordered"
               classNames={{ inputWrapper: "rounded-2xl" }}
@@ -342,15 +344,15 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
           {/* Product Specs */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Technical Specifications</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t("admin.products.specs")}</h3>
 
             {/* Weight & Base Specs */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Input
-                  label="Weight (kg)"
+                  label={t("admin.products.weight")}
                   type="number"
-                  placeholder="0"
+                  placeholder={t("admin.products.placeholder.weight")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.specs?.weight?.value || ""}
@@ -358,15 +360,15 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <div className="flex items-center justify-between px-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.weight?.customizable || false} onValueChange={(v) => handleSpecsChange(["weight", "customizable"], v)} />
                 </div>
               </div>
               <div className="space-y-2">
                 <Input
-                  label="Volume (L)"
+                  label={t("admin.products.volume")}
                   type="number"
-                  placeholder="0"
+                  placeholder={t("admin.products.placeholder.volume")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.specs?.volume?.value || ""}
@@ -374,14 +376,14 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <div className="flex items-center justify-between px-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.volume?.customizable || false} onValueChange={(v) => handleSpecsChange(["volume", "customizable"], v)} />
                 </div>
               </div>
               <div className="space-y-2">
                 <Input
-                  label="Material"
-                  placeholder="e.g. 304 Stainless Steel"
+                  label={t("admin.products.material")}
+                  placeholder={t("admin.products.placeholder.material")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.specs?.material?.value || ""}
@@ -389,7 +391,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <div className="flex items-center justify-between px-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.material?.customizable || false} onValueChange={(v) => handleSpecsChange(["material", "customizable"], v)} />
                 </div>
               </div>
@@ -398,71 +400,71 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             {/* Dimensions */}
             <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Dimensions (cm)</h4>
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">{t("admin.products.dims")}</h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.dimension?.customizable || false} onValueChange={(v) => handleSpecsChange(["dimension", "customizable"], v)} />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <Input label="Ext. Width" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "width"], parseFloat(e.target.value))} />
-                <Input label="Ext. Height" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "height"], parseFloat(e.target.value))} />
-                <Input label="Ext. Length" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "length"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.ext_width")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "width"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.ext_height")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "height"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.ext_length")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.external?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "external", "length"], parseFloat(e.target.value))} />
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <Input label="Int. Width" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "width"], parseFloat(e.target.value))} />
-                <Input label="Int. Height" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "height"], parseFloat(e.target.value))} />
-                <Input label="Int. Length" size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "length"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.int_width")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.width || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "width"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.int_height")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.height || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "height"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.dims.int_length")} size="sm" variant="bordered" type="number" value={formData.specs?.dimension?.internal?.length || ""} onChange={(e) => handleSpecsChange(["dimension", "internal", "length"], parseFloat(e.target.value))} />
               </div>
             </div>
 
             {/* Electrical */}
             <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Electrical</h4>
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">{t("admin.products.electrical")}</h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.electrical?.customizable || false} onValueChange={(v) => handleSpecsChange(["electrical", "customizable"], v)} />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <Input label="Voltage (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "min"], parseFloat(e.target.value))} />
-                <Input label="Current (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "min"], parseFloat(e.target.value))} />
-                <Input label="Power (Min)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "min"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.voltage_min")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "min"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.current_min")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "min"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.power_min")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.min || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "min"], parseFloat(e.target.value))} />
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <Input label="Voltage (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "max"], parseFloat(e.target.value))} />
-                <Input label="Current (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "max"], parseFloat(e.target.value))} />
-                <Input label="Power (Max)" size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "max"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.voltage_max")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.voltage?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "voltage", "max"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.current_max")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.current?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "current", "max"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.elec.power_max")} size="sm" variant="bordered" type="number" value={formData.specs?.electrical?.power?.max || ""} onChange={(e) => handleSpecsChange(["electrical", "power", "max"], parseFloat(e.target.value))} />
               </div>
             </div>
 
             {/* Temperature */}
             <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Operating Temperature</h4>
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">{t("admin.products.temp")}</h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.operating_temperature?.customizable || false} onValueChange={(v) => handleSpecsChange(["operating_temperature", "customizable"], v)} />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Input label="Min Temp" size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.min || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "min"], parseFloat(e.target.value))} />
-                <Input label="Max Temp" size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.max || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "max"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.temp.min")} size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.min || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "min"], parseFloat(e.target.value))} />
+                <Input label={t("admin.products.temp.max")} size="sm" variant="bordered" type="number" value={formData.specs?.operating_temperature?.max || ""} onChange={(e) => handleSpecsChange(["operating_temperature", "max"], parseFloat(e.target.value))} />
               </div>
             </div>
 
             {/* Process Technology */}
             <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-zinc-800">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Process Technology</h4>
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white">{t("admin.products.tech")}</h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">Customizable</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.customizable")}</span>
                   <Switch size="sm" isSelected={formData.specs?.process_technology?.customizable || false} onValueChange={(v) => handleSpecsChange(["process_technology", "customizable"], v)} />
                 </div>
               </div>
               <Textarea
-                placeholder="Enter each technology on a new line..."
+                placeholder={t("admin.products.placeholder.tech")}
                 minRows={3}
                 variant="bordered"
                 classNames={{ inputWrapper: "rounded-xl" }}
@@ -476,7 +478,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-8">
             {/* Tags */}
             <div>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Tags</h3>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{t("admin.products.tags")}</h3>
               <div className="flex flex-wrap gap-2 mb-3">
                 {formData.tags?.map((tag: string, i: number) => (
                   <Chip
@@ -491,7 +493,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
               </div>
               <div className="flex gap-2">
                 <Input
-                  placeholder="Add a tag..."
+                  placeholder={t("admin.products.placeholder.tag")}
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={(e) => {
@@ -516,7 +518,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
             {/* Application Scenarios */}
             <div>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Application Scenarios</h3>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{t("admin.products.scenarios")}</h3>
               <div className="flex flex-wrap gap-2 mb-3">
                 {formData.application_scenarios?.map((item: string, i: number) => (
                   <Chip
@@ -531,7 +533,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
               </div>
               <div className="flex gap-2">
                 <Input
-                  placeholder="Add a scenario..."
+                  placeholder={t("admin.products.placeholder.scenario")}
                   value={scenarioInput}
                   onChange={(e) => setScenarioInput(e.target.value)}
                   onKeyDown={(e) => {
@@ -556,11 +558,11 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
             {/* Policies */}
             <div>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-4">Policies</h3>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-4">{t("admin.products.policies")}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
-                  label="Warranty"
-                  placeholder="e.g. 1 Year Warranty"
+                  label={t("admin.products.warranty")}
+                  placeholder={t("admin.products.placeholder.warranty")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.policies?.warranty || ""}
@@ -568,8 +570,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <Input
-                  label="Shipping"
-                  placeholder="e.g. Freight"
+                  label={t("admin.products.shipping")}
+                  placeholder={t("admin.products.placeholder.shipping")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.policies?.shipping || ""}
@@ -577,8 +579,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <Input
-                  label="Return Policy"
-                  placeholder="e.g. 30 Days"
+                  label={t("admin.products.return")}
+                  placeholder={t("admin.products.placeholder.return")}
                   labelPlacement="outside"
                   variant="bordered"
                   value={formData.policies?.return || ""}
@@ -590,11 +592,11 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
             {/* Engineering Drawings */}
             <div>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Engineering Drawings</h3>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{t("admin.products.drawings")}</h3>
 
               {/* Ortho Projections */}
               <div className="mb-4">
-                <label className="text-xs text-gray-500 mb-1.5 block">Ortho Projections (URLs)</label>
+                <label className="text-xs text-gray-500 mb-1.5 block">{t("admin.products.ortho")}</label>
                 <div className="flex flex-col gap-2 mb-2">
                   {formData.engineering_drawings?.ortho_projections?.map((item: string, i: number) => (
                     <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
@@ -607,7 +609,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 </div>
                 <div className="flex gap-2">
                   <Input
-                    placeholder="Add projection URL..."
+                    placeholder={t("admin.products.placeholder.ortho")}
                     value={drawingInput}
                     onChange={(e) => setDrawingInput(e.target.value)}
                     onKeyDown={(e) => {
@@ -633,7 +635,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                     isLoading={uploading}
                     onPress={() => document.getElementById('ortho-upload')?.click()}
                   >
-                    Upload
+                    {t("admin.products.upload")}
                   </Button>
                   <input
                     type="file"
@@ -647,7 +649,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
               {/* Models */}
               <div>
-                <label className="text-xs text-gray-500 mb-1.5 block">3D Models (URLs)</label>
+                <label className="text-xs text-gray-500 mb-1.5 block">{t("admin.products.models")}</label>
                 <div className="flex flex-col gap-2 mb-2">
                   {formData.engineering_drawings?.models?.map((item: string, i: number) => (
                     <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
@@ -660,7 +662,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 </div>
                 <div className="flex gap-2">
                   <Input
-                    placeholder="Add model URL..."
+                    placeholder={t("admin.products.placeholder.model")}
                     value={modelInput}
                     onChange={(e) => setModelInput(e.target.value)}
                     onKeyDown={(e) => {
@@ -686,7 +688,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                     isLoading={uploading}
                     onPress={() => document.getElementById('model-upload')?.click()}
                   >
-                    Upload
+                    {t("admin.products.upload")}
                   </Button>
                   <input
                     type="file"
@@ -707,25 +709,25 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
         <div className="space-y-8">
           {/* Classification */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Classification</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t("admin.products.classification")}</h3>
             <div className="space-y-4">
               <Select
-                label="Category"
+                label={t("admin.products.category")}
                 labelPlacement="outside"
                 variant="bordered"
-                placeholder="Select category"
+                placeholder={t("admin.products.placeholder.category")}
                 classNames={{ trigger: "rounded-2xl h-12" }}
                 selectedKeys={formData.category ? [formData.category] : []}
                 onChange={(e) => handleChange("category", e.target.value)}
               >
                 {CATEGORIES.map(c => (
-                  <SelectItem key={c}>{c}</SelectItem>
+                  <SelectItem key={c}>{t(`admin.categories.${c.toLowerCase().replace(/ /g, '_')}`)}</SelectItem>
                 ))}
               </Select>
 
               <Input
-                label="Base Price"
-                placeholder="0.00"
+                label={t("admin.products.price")}
+                placeholder={t("admin.products.placeholder.price")}
                 type="number"
                 labelPlacement="outside"
                 variant="bordered"
@@ -741,8 +743,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
               <div className="flex items-center justify-between p-5 bg-gray-50 dark:bg-zinc-800/50 rounded-2xl border border-gray-100 dark:border-zinc-800 mt-2">
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">Featured Product</span>
-                  <span className="text-xs text-gray-500">Showcase on homepage</span>
+                  <span className="text-sm font-bold text-gray-900 dark:text-white">{t("admin.products.featured")}</span>
+                  <span className="text-xs text-gray-500">{t("admin.products.featured.desc")}</span>
                 </div>
                 <Switch
                   isSelected={formData.featured}
@@ -755,7 +757,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
 
           {/* Media */}
           <section className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 space-y-6">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Product Images</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t("admin.products.images")}</h3>
 
             <div className="grid gap-3">
               {formData.images && formData.images.map((img: string, i: number) => (
@@ -768,7 +770,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] text-gray-400 truncate uppercase tracking-tighter">Image {i + 1}</p>
+                    <p className="text-[10px] text-gray-400 truncate uppercase tracking-tighter">{t("admin.products.image_counter").replace('{index}', (i + 1).toString())}</p>
                     <p className="text-xs text-gray-600 dark:text-gray-400 truncate">{img}</p>
                   </div>
                   <Button
@@ -798,7 +800,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   className="font-medium h-10"
                   onPress={() => document.getElementById('image-upload')?.click()}
                 >
-                  Upload File
+                  {t("admin.products.upload_file")}
                 </Button>
                 <input
                   type="file"
@@ -813,11 +815,11 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   radius="lg"
                   className="font-medium h-10"
                   onPress={() => {
-                    const url = prompt("Enter image URL or path:");
+                    const url = prompt(t("admin.products.prompt.image_url"));
                     if (url) handleChange("images", [...(formData.images || []), url]);
                   }}
                 >
-                  Add URL
+                  {t("admin.products.add_url")}
                 </Button>
               </div>
             </div>

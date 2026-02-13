@@ -13,6 +13,7 @@ import {
   Textarea
 } from "@heroui/react";
 import { useEffect, useState } from "react";
+import { useAdminTranslation } from "../AdminI18nProvider";
 
 type ConfigItem = {
   key: string;
@@ -21,7 +22,8 @@ type ConfigItem = {
 };
 
 export default function SettingsForm() {
-  const [items, setItems] = useState<Record<string, ConfigItem>>({});
+  const { t } = useAdminTranslation(); // Added t() initialization
+  const [config, setConfig] = useState<Record<string, ConfigItem>>({}); // Renamed items to config, setItems to setConfig
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [selectedLang, setSelectedLang] = useState<string>("en");
@@ -39,7 +41,7 @@ export default function SettingsForm() {
       data?.forEach(item => {
         configMap[item.key] = item;
       });
-      setItems(configMap);
+      setConfig(configMap); // Changed setItems to setConfig
     }
     setLoading(false);
   };
@@ -63,12 +65,12 @@ export default function SettingsForm() {
   };
 
   const updateField = (key: string, field: string, newValue: string) => {
-    const item = items[key] || { key, value: {}, translations: {} };
+    const item = config[key] || { key, value: {}, translations: {} }; // Changed items to config
 
     if (selectedLang === 'en') {
       // Update Default Value
-      setItems({
-        ...items,
+      setConfig({ // Changed setItems to setConfig
+        ...config, // Changed items to config
         [key]: {
           ...item,
           value: { ...item.value, [field]: newValue }
@@ -79,8 +81,8 @@ export default function SettingsForm() {
       const currentTranslations = item.translations || {};
       const langTranslation = currentTranslations[selectedLang] || {};
 
-      setItems({
-        ...items,
+      setConfig({ // Changed setItems to setConfig
+        ...config, // Changed items to config
         [key]: {
           ...item,
           translations: {
@@ -96,7 +98,7 @@ export default function SettingsForm() {
   };
 
   const getValue = (key: string, field: string) => {
-    const item = items[key];
+    const item = config[key]; // Changed items to config
     if (!item) return "";
 
     if (selectedLang === 'en') {
@@ -111,32 +113,41 @@ export default function SettingsForm() {
   return (
     <div className="w-full space-y-8 max-w-3xl mx-auto pb-24">
       <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Site Settings</h1>
-        <p className="text-gray-500 dark:text-gray-400">Manage global website configuration and content</p>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.settings.title')}</h1>
+        <p className="text-gray-500 dark:text-gray-400">{t('admin.settings.subtitle')}</p>
       </div>
 
-      <Tabs
-        aria-label="Language Options"
-        selectedKey={selectedLang}
-        onSelectionChange={(key) => setSelectedLang(key as string)}
-        className="mb-4"
-      >
-        <Tab key="en" title="English (Default)" />
-        <Tab key="zh" title="Chinese (中文)" />
-      </Tabs>
+      <div className="flex items-center gap-4 bg-white dark:bg-zinc-900 p-2 rounded-2xl border border-gray-100 dark:border-zinc-800 w-fit">
+        <span className="text-sm font-medium text-gray-500 dark:text-gray-400 px-3">{t('admin.settings.tabs.label')}</span>
+        <Tabs
+          aria-label="Language Options"
+          selectedKey={selectedLang}
+          onSelectionChange={(key) => setSelectedLang(key as string)}
+          color="primary"
+          radius="full"
+          classNames={{
+            cursor: "w-full",
+            tab: "px-6 h-9",
+            tabContent: "group-data-[selected=true]:text-white"
+          }}
+        >
+          <Tab key="en" title={t('admin.settings.tabs.en')} />
+          <Tab key="zh" title={t('admin.settings.tabs.zh')} />
+        </Tabs>
+      </div>
 
       <div className="grid gap-8">
         {/* Contact Info */}
         <Card className="bg-white dark:bg-zinc-900 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 p-4">
           <CardHeader className="flex flex-col items-start gap-1 pb-4">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Contact Information</h3>
-            <p className="text-sm text-gray-500">Public contact details shown in header and footer</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.settings.cards.contact.title')}</h3>
+            <p className="text-sm text-gray-500">{t('admin.settings.cards.contact.subtitle')}</p>
           </CardHeader>
           <Divider className="opacity-50" />
           <CardBody className="space-y-6 py-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Input
-                label="US Office Phone"
+                label={t('admin.settings.form.us_phone')}
                 placeholder="+1 (xxx) xxx-xxxx"
                 variant="bordered"
                 labelPlacement="outside"
@@ -145,7 +156,7 @@ export default function SettingsForm() {
                 onChange={(e) => updateField("contact_info", "tel_us", e.target.value)}
               />
               <Input
-                label="CN Office Phone"
+                label={t('admin.settings.form.cn_phone')}
                 placeholder="+86 (xxx) xxxx-xxxx"
                 variant="bordered"
                 labelPlacement="outside"
@@ -155,7 +166,7 @@ export default function SettingsForm() {
               />
             </div>
             <Input
-              label="Support Email"
+              label={t('admin.settings.form.email')}
               placeholder="contact@aldr.com"
               variant="bordered"
               labelPlacement="outside"
@@ -164,7 +175,7 @@ export default function SettingsForm() {
               onChange={(e) => updateField("contact_info", "email", e.target.value)}
             />
             <Textarea
-              label="HQ Office Address"
+              label={t('admin.settings.form.address')}
               placeholder="Enter full address..."
               variant="bordered"
               labelPlacement="outside"
@@ -178,10 +189,10 @@ export default function SettingsForm() {
               color="primary"
               radius="full"
               className="px-8 font-semibold shadow-lg shadow-blue-500/20"
-              onPress={() => handleSave("contact_info", items["contact_info"])}
+              onPress={() => handleSave("contact_info", config["contact_info"])} // Changed items to config
               isLoading={saving}
             >
-              Save Information
+              {t('admin.settings.cards.contact.save')}
             </Button>
           </CardFooter>
         </Card>
@@ -189,13 +200,13 @@ export default function SettingsForm() {
         {/* Hero Section */}
         <Card className="bg-white dark:bg-zinc-900 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800 p-4">
           <CardHeader className="flex flex-col items-start gap-1 pb-4">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Home Hero Content</h3>
-            <p className="text-sm text-gray-500">Customize the main hero messaging on the landing page</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.settings.cards.hero.title')}</h3>
+            <p className="text-sm text-gray-500">{t('admin.settings.cards.hero.subtitle')}</p>
           </CardHeader>
           <Divider className="opacity-50" />
           <CardBody className="space-y-6 py-6">
             <Input
-              label="Primary Heading (H1)"
+              label={t('admin.settings.form.h1')}
               variant="bordered"
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl h-11" }}
@@ -203,7 +214,7 @@ export default function SettingsForm() {
               onChange={(e) => updateField("home_hero", "title_h1", e.target.value)}
             />
             <Textarea
-              label="Sub-heading (H2)"
+              label={t('admin.settings.form.h2')}
               variant="bordered"
               labelPlacement="outside"
               classNames={{ inputWrapper: "rounded-2xl" }}
@@ -217,10 +228,10 @@ export default function SettingsForm() {
               color="primary"
               radius="full"
               className="px-8 font-semibold shadow-lg shadow-blue-500/20"
-              onPress={() => handleSave("home_hero", items["home_hero"])}
+              onPress={() => handleSave("home_hero", config["home_hero"])} // Changed items to config
               isLoading={saving}
             >
-              Update Hero Content
+              {t('admin.settings.cards.hero.save')}
             </Button>
           </CardFooter>
         </Card>

@@ -30,7 +30,10 @@ const STATUS_COLOR_MAP: Record<string, "default" | "primary" | "secondary" | "su
   archived: "default",
 };
 
+import { useAdminTranslation } from "../AdminI18nProvider";
+
 export default function RFQList() {
+  const { t } = useAdminTranslation();
   const [rfqs, setRfqs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -75,13 +78,13 @@ export default function RFQList() {
   };
 
   const columns = [
-    { name: "STATUS", uid: "status" },
-    { name: "SUBJECT", uid: "cx_rfq_subject" },
-    { name: "REP NAME", uid: "cx_rep_name" },
-    { name: "COMPANY", uid: "cx_company" },
-    { name: "DELIVERY", uid: "expected_delivery_date" },
-    { name: "DATE", uid: "created_at" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: t('admin.rfqs.columns.status'), uid: "status" },
+    { name: t('admin.rfqs.columns.subject'), uid: "cx_rfq_subject" },
+    { name: t('admin.rfqs.columns.rep_name'), uid: "cx_rep_name" },
+    { name: t('admin.rfqs.columns.company'), uid: "cx_company" },
+    { name: t('admin.rfqs.columns.delivery'), uid: "expected_delivery_date" },
+    { name: t('admin.rfqs.columns.date'), uid: "created_at" },
+    { name: t('admin.product_list.columns.actions'), uid: "actions" },
   ];
 
   const renderCell = (rfq: any, columnKey: React.Key) => {
@@ -91,7 +94,7 @@ export default function RFQList() {
           <Dropdown>
             <DropdownTrigger>
               <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[rfq.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
-                {rfq.status ? rfq.status.toUpperCase() : "NEW"}
+                {rfq.status ? t(`admin.status.${rfq.status}`) : t('admin.status.new')}
               </Chip>
             </DropdownTrigger>
             <DropdownMenu
@@ -103,10 +106,10 @@ export default function RFQList() {
                 title: "font-medium text-xs",
               }}
             >
-              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">New</DropdownItem>
-              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">Read</DropdownItem>
-              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">Responded</DropdownItem>
-              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">Archived</DropdownItem>
+              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
+              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
+              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
+              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         );
@@ -130,8 +133,8 @@ export default function RFQList() {
   return (
     <div className="w-full space-y-8">
       <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Request For Quotes</h1>
-        <p className="text-gray-500 dark:text-gray-400">Incoming product inquiries and RFQs</p>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.rfqs.title')}</h1>
+        <p className="text-gray-500 dark:text-gray-400">{t('admin.rfqs.subtitle')}</p>
       </div>
 
       <div className="bg-white dark:bg-zinc-900 rounded-4xl shadow-sm border border-gray-100 dark:border-zinc-800 overflow-hidden">
@@ -149,7 +152,7 @@ export default function RFQList() {
           <TableHeader columns={columns}>
             {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
           </TableHeader>
-          <TableBody items={rfqs} isLoading={loading} loadingContent={<div>Loading RFQs...</div>} emptyContent={"No RFQs found"}>
+          <TableBody items={rfqs} isLoading={loading} loadingContent={<div>{t('admin.rfqs.loading')}</div>} emptyContent={t('admin.rfqs.empty')}>
             {(item) => (
               <TableRow key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/20 transition-colors">
                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
@@ -174,43 +177,43 @@ export default function RFQList() {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">RFQ Details</h3>
-                <p className="text-sm font-normal text-gray-500">Inquiry ID: #{selectedRfq?.id ? String(selectedRfq.id).substring(0, 8) : "N/A"}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.rfqs.modal.title')}</h3>
+                <p className="text-sm font-normal text-gray-500">{t('admin.rfqs.modal.inquiry_id').replace('#{id}', selectedRfq?.id ? String(selectedRfq.id).substring(0, 8) : "N/A")}</p>
               </ModalHeader>
               <ModalBody className="py-6">
                 {selectedRfq && (
                   <div className="space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Subject</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.subject')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedRfq.cx_rfq_subject}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Date Received</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.date')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{new Date(selectedRfq.created_at).toLocaleString()}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Sender</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.sender')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedRfq.cx_rep_name}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.email')}</p>
                         <p className="font-medium text-blue-600 dark:text-blue-400">{selectedRfq.cx_email_addr}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Company</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.company')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedRfq.cx_company}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Expected Delivery</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.delivery')}</p>
                         <p className="font-medium text-orange-600 dark:text-orange-400">
                           {selectedRfq.expected_delivery_date
                             ? new Date(selectedRfq.expected_delivery_date).toLocaleDateString()
-                            : "As soon as possible"}
+                            : t('admin.rfqs.details.delivery_asap')}
                         </p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Phone</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.rfqs.details.phone')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedRfq.cx_contact_number || "N/A"}</p>
                       </div>
                     </div>
@@ -218,11 +221,11 @@ export default function RFQList() {
                     <div className="p-5 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-900/20 space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
-                          <p className="text-[10px] font-bold text-blue-600/60 dark:text-blue-400/60 uppercase tracking-tight">Primary Product</p>
+                          <p className="text-[10px] font-bold text-blue-600/60 dark:text-blue-400/60 uppercase tracking-tight">{t('admin.rfqs.details.product')}</p>
                           <p className="text-sm font-semibold text-blue-900 dark:text-blue-100">{selectedRfq.cx_rfq_product}</p>
                         </div>
                         <div className="space-y-1">
-                          <p className="text-[10px] font-bold text-blue-600/60 dark:text-blue-400/60 uppercase tracking-tight">Total Quantity</p>
+                          <p className="text-[10px] font-bold text-blue-600/60 dark:text-blue-400/60 uppercase tracking-tight">{t('admin.rfqs.details.quantity')}</p>
                           <p className="text-sm font-semibold text-blue-900 dark:text-blue-100">{selectedRfq.quantity_needed || "N/A"}</p>
                         </div>
                       </div>
@@ -230,14 +233,14 @@ export default function RFQList() {
 
                     {selectedRfq.cx_rfq_items && Array.isArray(selectedRfq.cx_rfq_items) && selectedRfq.cx_rfq_items.length > 0 && (
                       <div className="space-y-3">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">Consolidated Items ({selectedRfq.cx_rfq_items.length})</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">{t('admin.rfqs.details.items').replace('{count}', selectedRfq.cx_rfq_items.length.toString())}</p>
                         <div className="bg-gray-50/50 dark:bg-zinc-800/30 rounded-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden shadow-sm">
                           <table className="w-full text-left text-sm border-collapse">
                             <thead>
                               <tr className="bg-gray-100/50 dark:bg-zinc-800/50 border-b border-gray-100 dark:border-zinc-800">
-                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">Product</th>
-                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider text-center">Qty</th>
-                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider text-right">Target Date</th>
+                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">{t('admin.rfqs.items.product')}</th>
+                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider text-center">{t('admin.rfqs.items.qty')}</th>
+                                <th className="px-4 py-3 font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider text-right">{t('admin.rfqs.items.target')}</th>
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100 dark:divide-zinc-800">
@@ -255,7 +258,7 @@ export default function RFQList() {
                     )}
 
                     <div className="space-y-2">
-                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">Message Content</p>
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">{t('admin.rfqs.details.message')}</p>
                       <div className="bg-gray-50 dark:bg-zinc-800/50 p-6 rounded-2xl text-sm text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-zinc-800 whitespace-pre-wrap leading-relaxed shadow-inner">
                         {selectedRfq.cx_rfq_msg}
                       </div>
@@ -270,7 +273,7 @@ export default function RFQList() {
                   radius="full"
                   className="font-medium"
                 >
-                  Close Inquiry
+                  {t('admin.rfqs.actions.close')}
                 </Button>
                 <Button
                   color="primary"
@@ -278,7 +281,7 @@ export default function RFQList() {
                   radius="full"
                   className="font-bold shadow-lg shadow-blue-500/20"
                 >
-                  Mark as Read
+                  {t('admin.rfqs.actions.mark_read')}
                 </Button>
               </ModalFooter>
             </>

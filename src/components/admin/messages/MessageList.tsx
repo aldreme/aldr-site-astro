@@ -30,7 +30,10 @@ const STATUS_COLOR_MAP: Record<string, "default" | "primary" | "secondary" | "su
   archived: "default",
 };
 
+import { useAdminTranslation } from "../AdminI18nProvider";
+
 export default function MessageList() {
+  const { t } = useAdminTranslation();
   const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -75,12 +78,12 @@ export default function MessageList() {
   };
 
   const columns = [
-    { name: "STATUS", uid: "status" },
-    { name: "NAME", uid: "name" },
-    { name: "EMAIL", uid: "email" },
-    { name: "COMPANY", uid: "company" },
-    { name: "DATE", uid: "created_at" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: t('admin.messages.columns.status'), uid: "status" },
+    { name: t('admin.messages.columns.name'), uid: "name" },
+    { name: t('admin.messages.columns.email'), uid: "email" },
+    { name: t('admin.messages.columns.company'), uid: "company" },
+    { name: t('admin.messages.columns.date'), uid: "created_at" },
+    { name: t('admin.product_list.columns.actions'), uid: "actions" },
   ];
 
   const renderCell = (msg: any, columnKey: React.Key) => {
@@ -90,7 +93,7 @@ export default function MessageList() {
           <Dropdown>
             <DropdownTrigger>
               <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[msg.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
-                {msg.status ? msg.status.toUpperCase() : "NEW"}
+                {msg.status ? t(`admin.status.${msg.status}`) : t('admin.status.new')}
               </Chip>
             </DropdownTrigger>
             <DropdownMenu
@@ -102,10 +105,10 @@ export default function MessageList() {
                 title: "font-medium text-xs",
               }}
             >
-              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">New</DropdownItem>
-              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">Read</DropdownItem>
-              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">Responded</DropdownItem>
-              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">Archived</DropdownItem>
+              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
+              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
+              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
+              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         );
@@ -127,8 +130,8 @@ export default function MessageList() {
   return (
     <div className="w-full space-y-8">
       <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Contact Messages</h1>
-        <p className="text-gray-500 dark:text-gray-400">Manage inquiries from your contact form</p>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.messages.title')}</h1>
+        <p className="text-gray-500 dark:text-gray-400">{t('admin.messages.subtitle')}</p>
       </div>
 
       <div className="bg-white dark:bg-zinc-900 rounded-4xl shadow-sm border border-gray-100 dark:border-zinc-800 overflow-hidden">
@@ -146,7 +149,7 @@ export default function MessageList() {
           <TableHeader columns={columns}>
             {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
           </TableHeader>
-          <TableBody items={messages} isLoading={loading} loadingContent={<div>Loading messages...</div>} emptyContent={"No messages found"}>
+          <TableBody items={messages} isLoading={loading} loadingContent={<div>{t('admin.messages.loading')}</div>} emptyContent={t('admin.messages.empty')}>
             {(item) => (
               <TableRow key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/20 transition-colors">
                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
@@ -171,41 +174,40 @@ export default function MessageList() {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Message Details</h3>
-                <p className="text-sm font-normal text-gray-500">Inquiry ID: #{selectedMessage?.id ? String(selectedMessage.id).substring(0, 8) : "N/A"}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.messages.modal.title')}</h3>
               </ModalHeader>
               <ModalBody className="py-6">
                 {selectedMessage && (
-                  <div className="space-y-8">
+                  <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Sender Name</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.sender')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.first_name} {selectedMessage.last_name}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Date Received</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.date')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{new Date(selectedMessage.created_at).toLocaleString()}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email Address</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.email')}</p>
                         <p className="font-medium text-blue-600 dark:text-blue-400">{selectedMessage.email}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Phone</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.phone')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.phone || "N/A"}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Company</p>
-                        <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.company}</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.company')}</p>
+                        <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.company || "N/A"}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Industry</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t('admin.messages.details.industry')}</p>
                         <p className="font-medium text-gray-900 dark:text-white">{selectedMessage.industry || "N/A"}</p>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">Message Content</p>
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider ml-1">{t('admin.messages.details.message')}</p>
                       <div className="bg-gray-50 dark:bg-zinc-800/50 p-6 rounded-2xl text-sm text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-zinc-800 whitespace-pre-wrap leading-relaxed shadow-inner">
                         {selectedMessage.message}
                       </div>
@@ -215,12 +217,12 @@ export default function MessageList() {
               </ModalBody>
               <ModalFooter>
                 <Button
-                  variant="flat"
+                  variant="light"
                   onPress={onClose}
                   radius="full"
                   className="font-medium"
                 >
-                  Close Message
+                  {t('admin.messages.actions.close')}
                 </Button>
                 <Button
                   color="primary"
@@ -228,7 +230,7 @@ export default function MessageList() {
                   radius="full"
                   className="font-bold shadow-lg shadow-blue-500/20"
                 >
-                  Mark as Read
+                  {t('admin.messages.actions.mark_read')}
                 </Button>
               </ModalFooter>
             </>

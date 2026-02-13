@@ -8,8 +8,10 @@ import {
   Users
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAdminTranslation } from "./AdminI18nProvider";
 
 export default function Dashboard() {
+  const { t } = useAdminTranslation();
   const [stats, setStats] = useState({
     products: 0,
     partners: 0,
@@ -61,13 +63,13 @@ export default function Dashboard() {
       const calculateTrend = (current: number, last: number) => {
         if (last === 0) {
           return {
-            text: current > 0 ? `+${current} new` : "No change",
+            text: current > 0 ? `+${current} ${t('admin.dashboard.trend.new')}` : t('admin.dashboard.trend.no_change'),
             color: (current > 0 ? "green" : "gray") as "green" | "red" | "gray"
           };
         }
         const diff = ((current - last) / last) * 100;
         return {
-          text: `${diff >= 0 ? "+" : ""}${diff.toFixed(1)}% from last month`,
+          text: `${diff >= 0 ? "+" : ""}${diff.toFixed(1)}% ${t('admin.dashboard.trend.from_last_month')}`,
           color: (diff > 0 ? "green" : diff < 0 ? "red" : "gray") as "green" | "red" | "gray"
         };
       };
@@ -89,13 +91,13 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 pb-12">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">System Dashboard</h1>
-        <p className="text-gray-500 dark:text-gray-400">Welcome back. Here's what's happening with your store today.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.dashboard.title')}</h1>
+        <p className="text-gray-500 dark:text-gray-400">{t('admin.dashboard.welcome')}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <DashboardCard
-          title="Total RFQs"
+          title={t('admin.dashboard.total_rfqs')}
           value={stats.rfqs.toLocaleString()}
           icon={FileText}
           trend={stats.rfqTrend.text}
@@ -104,7 +106,7 @@ export default function Dashboard() {
           isAlert={stats.unreadRfqs > 0}
         />
         <DashboardCard
-          title="Total Messages"
+          title={t('admin.dashboard.total_messages')}
           value={stats.messages.toLocaleString()}
           icon={MessageSquare}
           trend={stats.msgTrend.text}
@@ -113,13 +115,13 @@ export default function Dashboard() {
           isAlert={stats.unreadMessages > 0}
         />
         <DashboardCard
-          title="Total Products"
+          title={t('admin.dashboard.total_products')}
           value={stats.products.toLocaleString()}
           icon={Package}
           color="blue"
         />
         <DashboardCard
-          title="Total Partners"
+          title={t('admin.dashboard.total_partners')}
           value={stats.partners.toLocaleString()}
           icon={Users}
           color="indigo"
@@ -130,8 +132,8 @@ export default function Dashboard() {
         <div className="lg:col-span-2 bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Recent Activity</h3>
-              <p className="text-sm text-gray-500 mt-1">Live updates from your store</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.dashboard.recent_activity')}</h3>
+              <p className="text-sm text-gray-500 mt-1">{t('admin.dashboard.live_updates')}</p>
             </div>
             <div className="p-2 bg-gray-50 dark:bg-zinc-800 rounded-xl">
               <Activity className="w-5 h-5 text-gray-400" />
@@ -141,14 +143,14 @@ export default function Dashboard() {
             <div className="w-16 h-16 bg-gray-50 dark:bg-zinc-800 rounded-full flex items-center justify-center mb-4">
               <Activity className="w-8 h-8 text-gray-200 dark:text-zinc-700" />
             </div>
-            <p className="text-gray-900 dark:text-white font-medium">No recent activity</p>
-            <p className="text-sm text-gray-500 mt-1">Activity feed will appear as events occur.</p>
+            <p className="text-gray-900 dark:text-white font-medium">{t('admin.dashboard.no_activity')}</p>
+            <p className="text-sm text-gray-500 mt-1">{t('admin.dashboard.activity_feed_desc')}</p>
           </div>
         </div>
 
         <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Quick Actions</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('admin.dashboard.quick_actions')}</h3>
             <div className="p-2 bg-gray-50 dark:bg-zinc-800 rounded-xl">
               <Box className="w-5 h-5 text-gray-400" />
             </div>
@@ -162,7 +164,7 @@ export default function Dashboard() {
                 <div className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 flex items-center justify-center border border-gray-100 dark:border-zinc-700 group-hover:scale-110 transition-transform">
                   <Package className="w-5 h-5 text-blue-600" />
                 </div>
-                <span className="font-medium text-gray-700 dark:text-gray-300">Add New Product</span>
+                <span className="font-medium text-gray-700 dark:text-gray-300">{t('admin.dashboard.add_product')}</span>
               </div>
               <Activity className="w-4 h-4 text-gray-300 group-hover:text-blue-400 -rotate-90" />
             </a>
@@ -174,7 +176,7 @@ export default function Dashboard() {
                 <div className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 flex items-center justify-center border border-gray-100 dark:border-zinc-700 group-hover:scale-110 transition-transform">
                   <Users className="w-5 h-5 text-indigo-600" />
                 </div>
-                <span className="font-medium text-gray-700 dark:text-gray-300">Manage Partners</span>
+                <span className="font-medium text-gray-700 dark:text-gray-300">{t('admin.dashboard.manage_partners')}</span>
               </div>
               <Activity className="w-4 h-4 text-gray-300 group-hover:text-indigo-400 -rotate-90" />
             </a>

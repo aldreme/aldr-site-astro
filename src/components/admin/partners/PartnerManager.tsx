@@ -28,7 +28,10 @@ interface Partner {
   description: string;
 }
 
+import { useAdminTranslation } from "../AdminI18nProvider";
+
 export default function PartnerManager() {
+  const { t } = useAdminTranslation();
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -84,7 +87,7 @@ export default function PartnerManager() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this partner?")) return;
+    if (!confirm(t('admin.partners.delete_confirm'))) return;
     const { error } = await supabase.from("partners").delete().eq("id", id);
     if (error) alert(error.message);
     else fetchPartners();
@@ -103,9 +106,9 @@ export default function PartnerManager() {
   };
 
   const columns = [
-    { name: "PARTNER", uid: "name" },
-    { name: "WEBSITE", uid: "website" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: t('admin.partners.columns.partner'), uid: "name" },
+    { name: t('admin.partners.columns.website'), uid: "website" },
+    { name: t('admin.product_list.columns.actions'), uid: "actions" },
   ];
 
   const renderCell = (partner: Partner, columnKey: React.Key) => {
@@ -146,8 +149,8 @@ export default function PartnerManager() {
     <div className="w-full space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Partners</h1>
-          <p className="text-gray-500 dark:text-gray-400">Manage your global partner network</p>
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.partners.title')}</h1>
+          <p className="text-gray-500 dark:text-gray-400">{t('admin.partners.subtitle')}</p>
         </div>
         <Button
           color="primary"
@@ -157,7 +160,7 @@ export default function PartnerManager() {
           className="shadow-lg shadow-blue-500/20 font-semibold"
           startContent={<Plus className="w-5 h-5" />}
         >
-          Add New Partner
+          {t('admin.partners.add_new')}
         </Button>
       </div>
 
@@ -176,7 +179,7 @@ export default function PartnerManager() {
           <TableHeader columns={columns}>
             {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
           </TableHeader>
-          <TableBody items={partners} isLoading={loading} loadingContent={<div>Loading partners...</div>} emptyContent={"No partners found"}>
+          <TableBody items={partners} isLoading={loading} loadingContent={<div>{t('admin.partners.loading')}</div>} emptyContent={t('admin.partners.empty')}>
             {(item) => (
               <TableRow key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/20 transition-colors">
                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
@@ -190,12 +193,12 @@ export default function PartnerManager() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">{editingPartner ? "Edit Partner" : "New Partner"}</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{editingPartner ? t('admin.partners.modal.edit_title') : t('admin.partners.modal.new_title')}</ModalHeader>
               <ModalBody>
-                <Input label="Name" value={formData.name || ""} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-                <Input label="Website" value={formData.website || ""} onChange={(e) => setFormData({ ...formData, website: e.target.value })} />
+                <Input label={t('admin.partners.form.name')} value={formData.name || ""} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                <Input label={t('admin.partners.form.website')} value={formData.website || ""} onChange={(e) => setFormData({ ...formData, website: e.target.value })} />
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Logo</label>
+                  <label className="text-sm font-medium">{t('admin.partners.form.logo')}</label>
                   <div className="flex items-center gap-2">
                     {formData.logo_url && (
                       <div className="w-10 h-10 relative shrink-0">
@@ -207,7 +210,7 @@ export default function PartnerManager() {
                       </div>
                     )}
                     <Button size="sm" isLoading={uploading} onPress={() => document.getElementById('logo-upload')?.click()}>
-                      Upload Logo
+                      {t('admin.partners.form.upload_logo')}
                     </Button>
                     <input
                       type="file"
@@ -217,13 +220,13 @@ export default function PartnerManager() {
                       onChange={handleLogoUpload}
                     />
                   </div>
-                  <Input label="Logo URL/Path" value={formData.logo_url || ""} onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })} />
+                  <Input label={t('admin.partners.form.logo_url')} value={formData.logo_url || ""} onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })} />
                 </div>
-                <Input label="Description" value={formData.description || ""} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
+                <Input label={t('admin.partners.form.description')} value={formData.description || ""} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>Close</Button>
-                <Button color="primary" onPress={() => handleSubmit(onClose)}>Save</Button>
+                <Button color="danger" variant="light" onPress={onClose}>{t('admin.partners.close')}</Button>
+                <Button color="primary" onPress={() => handleSubmit(onClose)}>{t('admin.partners.save')}</Button>
               </ModalFooter>
             </>
           )}

@@ -25,7 +25,10 @@ interface Product {
   images: string[];
 }
 
+import { useAdminTranslation } from "../AdminI18nProvider";
+
 export default function ProductList() {
+  const { t } = useAdminTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +52,7 @@ export default function ProductList() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this product?")) return;
+    if (!confirm(t('admin.product_list.delete_confirm'))) return;
 
     const { error } = await supabase.from("products").delete().eq("id", id);
     if (error) {
@@ -60,11 +63,11 @@ export default function ProductList() {
   };
 
   const columns = [
-    { name: "PRODUCT", uid: "name" },
-    { name: "CATEGORY", uid: "category" },
-    { name: "PRICE", uid: "price" },
-    { name: "STATUS", uid: "featured" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: t('admin.product_list.columns.product'), uid: "name" },
+    { name: t('admin.product_list.columns.category'), uid: "category" },
+    { name: t('admin.product_list.columns.price'), uid: "price" },
+    { name: t('admin.product_list.columns.status'), uid: "featured" },
+    { name: t('admin.product_list.columns.actions'), uid: "actions" },
   ];
 
   const renderCell = React.useCallback((product: Product, columnKey: React.Key) => {
@@ -97,26 +100,26 @@ export default function ProductList() {
       case "price":
         return (
           <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{product.price === 0 ? "Contact" : `$${product.price}`}</p>
+            <p className="text-bold text-sm capitalize">{product.price === 0 ? t('admin.product_list.price.contact') : `$${product.price}`}</p>
           </div>
         );
       case "featured":
         return (
           <Chip className="capitalize" color={product.featured ? "success" : "default"} size="sm" variant="flat">
-            {product.featured ? "Featured" : "Standard"}
+            {product.featured ? t('admin.product_list.status.featured') : t('admin.product_list.status.standard')}
           </Chip>
         );
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit product">
+            <Tooltip content={t('admin.product_list.tooltip.edit')}>
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <a href={`/admin/products/${product.id}`}>
                   <Edit className="w-4 h-4" />
                 </a>
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Delete product">
+            <Tooltip color="danger" content={t('admin.product_list.tooltip.delete')}>
               <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(product.id)}>
                 <Trash2 className="w-4 h-4" />
               </span>
@@ -132,8 +135,8 @@ export default function ProductList() {
     <div className="w-full space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Products</h1>
-          <p className="text-gray-500 dark:text-gray-400">Total {products.length} products in catalog</p>
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.product_list.title')}</h1>
+          <p className="text-gray-500 dark:text-gray-400">{t('admin.product_list.subtitle').replace('{count}', products.length.toString())}</p>
         </div>
         <Button
           as="a"
@@ -144,7 +147,7 @@ export default function ProductList() {
           className="shadow-lg shadow-blue-500/20 font-semibold"
           startContent={<Plus className="w-5 h-5" />}
         >
-          Add New Product
+          {t('admin.product_list.add_new')}
         </Button>
       </div>
 
@@ -167,7 +170,7 @@ export default function ProductList() {
               </TableColumn>
             )}
           </TableHeader>
-          <TableBody items={products} isLoading={loading} loadingContent={<div>Loading catalog...</div>} emptyContent={"No products found"}>
+          <TableBody items={products} isLoading={loading} loadingContent={<div>{t('admin.product_list.loading')}</div>} emptyContent={t('admin.product_list.empty')}>
             {(item) => (
               <TableRow key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/20 transition-colors">
                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
