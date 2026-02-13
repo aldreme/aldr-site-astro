@@ -7,7 +7,7 @@ import PageLayout from '@/layouts/page-layout.astro';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 import { useTranslations } from '@/i18n/ui';
-import { getLocalizedRoute } from '@/i18n/utils';
+import { getLocalizedRoute, getSiteConfigTranslation } from '@/i18n/utils';
 import { supabase } from "@/lib/supabase";
 
 export async function getStaticPaths() {
@@ -37,10 +37,11 @@ let contactInfo = {
 };
 
 try {
-  const { data } = await supabase.from('site_config').select('value').eq('key', 'contact_info').single();
+  const { data } = await supabase.from('site_config').select('value, translations').eq('key', 'contact_info').single();
   if (data) {
+    const localizedData = getSiteConfigTranslation(data, currentLang);
     // Merge with default to ensure all keys exist if partial data is returned
-    contactInfo = { ...contactInfo, ...data.value };
+    contactInfo = { ...contactInfo, ...localizedData };
   }
 } catch (e) {
   console.error("Error fetching site config", e);
@@ -89,7 +90,7 @@ const pageSubtitle = t('contact-page-subtitle') || "Get in touch with our engine
               <Phone className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
                 <p class="font-medium text-zinc-900">{t('phone-label') || "Phone"}</p>
-                <p class="text-zinc-600 text-sm">{contactInfo.tel_us} (USA)</p>
+                <p class="text-zinc-600 text-sm">{contactInfo.tel_us} (US)</p>
                 <p class="text-zinc-600 text-sm">{contactInfo.tel_cn} (China)</p>
               </div>
             </div>
