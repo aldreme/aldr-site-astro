@@ -24,9 +24,9 @@ interface AdminLayoutProps {
 const NAV_ITEMS = [
   { name: "admin.dashboard", href: "/admin", icon: LayoutDashboard },
   { name: "admin.products", href: "/admin/products", icon: Package },
-  { name: "admin.partners", href: "/admin/partners", icon: Users },
   { name: "admin.rfqs", href: "/admin/rfqs", icon: FileText },
   { name: "admin.messages", href: "/admin/messages", icon: MessageSquare },
+  { name: "admin.partners", href: "/admin/partners", icon: Users },
   { name: "admin.settings", href: "/admin/settings", icon: Settings },
 ];
 
