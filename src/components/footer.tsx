@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { ui, useTranslations } from '@/i18n/ui'; // Import i18n utils
+import { getLocalizedRoute } from '@/i18n/utils';
 // import STRINGS from '@/assets/i18n/en_us.json'; // Remove direct import
 import logo from '@/assets/images/logo/logo-light.png';
 import policeIcon from '@/assets/images/misc/ccp-police-icon.png';
@@ -101,10 +102,11 @@ export default function Footer({ contactInfo, currentLang = 'en' }: FooterProps)
               {quickLinks.map((link) => (
                 <a
                   key={link.name}
-                  href={link.href}
+                  href={getLocalizedRoute(link.href || '/', currentLang)}
                   className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit"
                 >
-                  {link.name}
+                  {/* @ts-ignore */}
+                  {link.i18nKey ? t(link.i18nKey) : link.name}
                 </a>
               ))}
             </nav>
