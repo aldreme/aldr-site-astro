@@ -20,7 +20,7 @@ import {
   TableRow,
   useDisclosure
 } from "@heroui/react";
-import { ChevronDown, Eye } from "lucide-react";
+import { ChevronDown, Eye, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const STATUS_COLOR_MAP: Record<string, "default" | "primary" | "secondary" | "success" | "warning" | "danger"> = {
@@ -68,6 +68,26 @@ export default function RFQList() {
       await admin.alert("Error updating status: " + error.message);
     } else {
       fetchRfqs();
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    const confirmed = await admin.confirm({
+      title: t('admin.rfqs.delete.title') || "Delete RFQ",
+      description: t('admin.rfqs.delete.description') || "Are you sure you want to delete this RFQ? This action cannot be undone."
+    });
+
+    if (confirmed) {
+      const { error } = await supabase
+        .from("customer_request_for_quotes")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        await admin.alert("Error deleting RFQ: " + error.message);
+      } else {
+        fetchRfqs();
+      }
     }
   };
 
@@ -124,9 +144,14 @@ export default function RFQList() {
         return new Date(rfq.created_at).toLocaleDateString();
       case "actions":
         return (
-          <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(rfq)}>
-            <Eye className="w-4 h-4" />
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(rfq)}>
+              <Eye className="w-4 h-4" />
+            </span>
+            <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(rfq.id)}>
+              <Trash className="w-4 h-4" />
+            </span>
+          </div>
         );
       default:
         return rfq[columnKey as keyof any];

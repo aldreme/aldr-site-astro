@@ -20,7 +20,7 @@ import {
   TableRow,
   useDisclosure
 } from "@heroui/react";
-import { ChevronDown, Eye } from "lucide-react";
+import { ChevronDown, Eye, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const STATUS_COLOR_MAP: Record<string, "default" | "primary" | "secondary" | "success" | "warning" | "danger"> = {
@@ -68,6 +68,26 @@ export default function MessageList() {
       await admin.alert("Error updating status: " + error.message);
     } else {
       fetchMessages();
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    const confirmed = await admin.confirm({
+      title: t('admin.messages.delete.title') || "Delete Message",
+      description: t('admin.messages.delete.description') || "Are you sure you want to delete this message? This action cannot be undone."
+    });
+
+    if (confirmed) {
+      const { error } = await supabase
+        .from("cx_contact_messages")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        await admin.alert("Error deleting message: " + error.message);
+      } else {
+        fetchMessages();
+      }
     }
   };
 
@@ -121,9 +141,14 @@ export default function MessageList() {
         return new Date(msg.created_at).toLocaleDateString();
       case "actions":
         return (
-          <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(msg)}>
-            <Eye className="w-4 h-4" />
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(msg)}>
+              <Eye className="w-4 h-4" />
+            </span>
+            <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(msg.id)}>
+              <Trash className="w-4 h-4" />
+            </span>
+          </div>
         );
       default:
         return msg[columnKey as keyof any];
