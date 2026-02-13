@@ -40,6 +40,7 @@ export default function MessageList() {
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedMessage, setSelectedMessage] = useState<any>(null);
+  const [selectedKeys, setSelectedKeys] = useState<Set<string | number> | "all">(new Set([]));
   const admin = useAdminDialog();
 
   useEffect(() => {
@@ -155,12 +156,97 @@ export default function MessageList() {
     }
   };
 
+  const handleBulkDelete = async () => {
+    const keys = Array.from(selectedKeys === "all" ? messages.map((m) => m.id) : selectedKeys);
+    if (keys.length === 0) return;
+
+    const confirmed = await admin.confirm({
+      title: t('admin.messages.bulk_delete.title') || "Bulk Delete Messages",
+      description: t('admin.messages.bulk_delete.description')?.replace('{count}', keys.length.toString()) || `Are you sure you want to delete ${keys.length} selected messages? This action cannot be undone.`
+    });
+
+    if (confirmed) {
+      const { error } = await supabase
+        .from("cx_contact_messages")
+        .delete()
+        .in("id", keys);
+
+      if (error) {
+        await admin.alert("Error deleting messages: " + error.message);
+      } else {
+        setSelectedKeys(new Set([]));
+        fetchMessages();
+      }
+    }
+  };
+
+  const handleBulkStatusUpdate = async (status: string) => {
+    const keys = Array.from(selectedKeys === "all" ? messages.map((m) => m.id) : selectedKeys);
+    if (keys.length === 0) return;
+
+    const { error } = await supabase
+      .from("cx_contact_messages")
+      .update({ status })
+      .in("id", keys);
+
+    if (error) {
+      await admin.alert("Error updating status: " + error.message);
+    } else {
+      setSelectedKeys(new Set([]));
+      fetchMessages();
+    }
+  };
+
+  const selectedCount = selectedKeys === "all" ? messages.length : selectedKeys.size;
+
   return (
     <div className="w-full space-y-8">
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{t('admin.messages.title')}</h1>
         <p className="text-gray-500 dark:text-gray-400">{t('admin.messages.subtitle')}</p>
       </div>
+
+      {selectedCount > 0 && (
+        <div className="flex items-center justify-between p-4 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-100 dark:border-primary-800 animate-in fade-in slide-in-from-top-2">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
+              {selectedCount} selected
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button
+                  variant="flat"
+                  color="primary"
+                  size="sm"
+                  endContent={<ChevronDown className="w-4 h-4" />}
+                >
+                  Update Status
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Bulk Status Actions"
+                onAction={(key) => handleBulkStatusUpdate(key as string)}
+              >
+                <DropdownItem key="new">{t('admin.status.new')}</DropdownItem>
+                <DropdownItem key="read">{t('admin.status.read')}</DropdownItem>
+                <DropdownItem key="responded">{t('admin.status.responded')}</DropdownItem>
+                <DropdownItem key="archived">{t('admin.status.archived')}</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            <Button
+              color="danger"
+              variant="flat"
+              size="sm"
+              startContent={<Trash className="w-4 h-4" />}
+              onPress={handleBulkDelete}
+            >
+              Delete
+            </Button>
+          </div>
+        </div>
+      )}
 
       <div className="bg-white dark:bg-zinc-900 rounded-4xl shadow-sm border border-gray-100 dark:border-zinc-800 overflow-hidden">
         <Table
@@ -173,6 +259,9 @@ export default function MessageList() {
             td: "py-4 border-b border-gray-50 dark:border-zinc-800/50",
           }}
           removeWrapper
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={(keys) => setSelectedKeys(keys as Set<string | number> | "all")}
         >
           <TableHeader columns={columns}>
             {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
@@ -265,6 +354,6 @@ export default function MessageList() {
           )}
         </ModalContent>
       </Modal>
-    </div>
+    </div >
   );
 }
