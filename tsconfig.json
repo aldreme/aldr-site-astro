@@ -2,16 +2,15 @@
   "extends": "astro/tsconfigs/strict",
   "include": [
     ".astro/types.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.astro",
-    "**/*.mdx",
-    "seed.ts",
-    "seed.config.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro",
+    "src/**/*.mdx"
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "supabase"
   ],
   "compilerOptions": {
     "strictNullChecks": true,

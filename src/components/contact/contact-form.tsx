@@ -36,7 +36,7 @@ export function ContactForm({ lang = 'en' }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('cx_contact_form', {
+      const { error } = await supabase.functions.invoke('cx_contact_form', {
         body: { contact_message: formData }
       });
 

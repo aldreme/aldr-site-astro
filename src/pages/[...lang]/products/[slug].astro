@@ -13,7 +13,7 @@ import { supabase } from "@/lib/supabase";
 
 export async function getStaticPaths() {
   const { data: products } = await supabase.from('products').select('*');
-  const paths = [];
+  const paths: any[] = [];
 
   // Generate paths for both languages
   products?.forEach((product) => {
@@ -41,7 +41,7 @@ const currentLang = lang || 'en';
 const t = useTranslations(currentLang as any);
 
 // Translate product data using our helper
-const rawProductData = Astro.props.productData;
+const { productData: rawProductData } = Astro.props as Props;
 const translatedFields = getProductTranslation(rawProductData, currentLang);
 const productData = { 
   ...rawProductData, 
@@ -50,7 +50,7 @@ const productData = {
 
 
 // Construct remote image URIs
-const productImageUri = productData.images?.map(img => {
+const productImageUri = productData.images?.map((img: string) => {
     if (img.startsWith('http')) return img;
     return `${import.meta.env.PUBLIC_SUPABASE_URL}/storage/v1/object/public/products/${img}`;
 }) || [];
@@ -138,7 +138,7 @@ const productJsonLd = {
             <h3 class="text-xl font-bold text-zinc-900 mb-4">{t('application-scenarios') || "Application Scenarios"}</h3>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
               {
-                productData.application_scenarios.map((scenario) => (
+                productData.application_scenarios.map((scenario: string) => (
                   <li class="flex items-start text-zinc-600 bg-white p-3 rounded-lg border border-zinc-100 shadow-xs">
                     <span class="mr-2 text-blue-600">•</span>
                     {scenario}

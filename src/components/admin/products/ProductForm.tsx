@@ -185,8 +185,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
     e.target.value = ''; // Reset input
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e?.preventDefault) e.preventDefault();
     setLoading(true);
 
     const payload = { ...formData };
@@ -252,7 +252,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
           </Button>
           <Button
             color="primary"
-            onClick={handleSubmit}
+            onPress={() => handleSubmit()}
             isLoading={loading}
             radius="full"
             className="shadow-lg shadow-blue-500/20 px-8 font-semibold"
@@ -507,7 +507,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 <Button
                   isIconOnly
                   size="sm"
-                  onClick={() => addArrayItem("tags", tagInput, setTagInput)}
+                  onPress={() => addArrayItem("tags", tagInput, setTagInput)}
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
@@ -547,7 +547,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 <Button
                   isIconOnly
                   size="sm"
-                  onClick={() => addArrayItem("application_scenarios", scenarioInput, setScenarioInput)}
+                  onPress={() => addArrayItem("application_scenarios", scenarioInput, setScenarioInput)}
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
@@ -599,7 +599,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   {formData.engineering_drawings?.ortho_projections?.map((item: string, i: number) => (
                     <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
                       <span className="text-sm flex-1 truncate">{item}</span>
-                      <Button isIconOnly size="sm" variant="light" onClick={() => removeNestedArrayItem("engineering_drawings", "ortho_projections", i)}>
+                      <Button isIconOnly size="sm" variant="light" onPress={() => removeNestedArrayItem("engineering_drawings", "ortho_projections", i)}>
                         <X className="w-4 h-4" />
                       </Button>
                     </div>
@@ -623,7 +623,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   <Button
                     isIconOnly
                     size="sm"
-                    onClick={() => addNestedArrayItem("engineering_drawings", "ortho_projections", drawingInput, setDrawingInput)}
+                    onPress={() => addNestedArrayItem("engineering_drawings", "ortho_projections", drawingInput, setDrawingInput)}
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
@@ -652,7 +652,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   {formData.engineering_drawings?.models?.map((item: string, i: number) => (
                     <div key={i} className="flex items-center gap-2 bg-gray-50 dark:bg-zinc-800 rounded-lg p-2">
                       <span className="text-sm flex-1 truncate">{item}</span>
-                      <Button isIconOnly size="sm" variant="light" onClick={() => removeNestedArrayItem("engineering_drawings", "models", i)}>
+                      <Button isIconOnly size="sm" variant="light" onPress={() => removeNestedArrayItem("engineering_drawings", "models", i)}>
                         <X className="w-4 h-4" />
                       </Button>
                     </div>
@@ -676,7 +676,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   <Button
                     isIconOnly
                     size="sm"
-                    onClick={() => addNestedArrayItem("engineering_drawings", "models", modelInput, setModelInput)}
+                    onPress={() => addNestedArrayItem("engineering_drawings", "models", modelInput, setModelInput)}
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
@@ -778,7 +778,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                     variant="light"
                     radius="full"
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    onClick={() => {
+                    onPress={() => {
                       const newImages = [...formData.images];
                       newImages.splice(i, 1);
                       handleChange("images", newImages);
