@@ -170,8 +170,6 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
         <NavLinksDesktop currentLang={currentLang} />
         <div className='grow' />
         <div className="flex items-center space-x-4">
-          <NavLinksMobile currentLang={currentLang} currentPath={currentPath} />
-
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="relative text-zinc-100 hover:bg-zinc-800 hover:text-white" onClick={() => isCartOpen.set(true)}>
               <FileText className="h-5 w-5" />
@@ -182,6 +180,8 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
               )}
             </Button>
           </div>
+
+          <NavLinksMobile currentLang={currentLang} currentPath={currentPath} />
 
           <div className="hidden md:flex items-center ml-2">
             <LanguagePicker currentLang={currentLang} currentPath={currentPath} />
