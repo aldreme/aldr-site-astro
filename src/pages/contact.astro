@@ -13,6 +13,26 @@ const breadcrumbData: BreadcrumbData = {
   ]
 }
 
+import { supabase } from "@/lib/supabase";
+
+// Default contact info (fallback)
+let contactInfo = {
+  address: "67 Youming Road, Suzhou, Jiangsu, China, 215222",
+  tel_us: "+1 (617) 356-8065",
+  tel_cn: "+86 18051120028",
+  email: "sales@aldreme.com"
+};
+
+try {
+  const { data } = await supabase.from('site_config').select('value').eq('key', 'contact_info').single();
+  if (data) {
+    // Merge with default to ensure all keys exist if partial data is returned
+    contactInfo = { ...contactInfo, ...data.value };
+  }
+} catch (e) {
+  console.error("Error fetching site config", e);
+}
+
 ---
 
 <PageLayout pageTitle= "Contact Us">
@@ -45,9 +65,7 @@ const breadcrumbData: BreadcrumbData = {
               <div>
                 <p class="font-medium text-zinc-900">Address</p>
                 <p class="text-zinc-600 text-sm leading-relaxed">
-                  67 Youming Road, Wujiang District<br/>
-                  Suzhou, Jiangsu Province<br/>
-                  China, 215200
+                  <span set:html={contactInfo.address} />
                 </p>
               </div>
             </div>
@@ -56,8 +74,8 @@ const breadcrumbData: BreadcrumbData = {
               <Phone className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
                 <p class="font-medium text-zinc-900">Phone</p>
-                <p class="text-zinc-600 text-sm">+1 (617) 356-8065 (USA)</p>
-                <p class="text-zinc-600 text-sm">+86 18051120028 (China)</p>
+                <p class="text-zinc-600 text-sm">{contactInfo.tel_us} (USA)</p>
+                <p class="text-zinc-600 text-sm">{contactInfo.tel_cn} (China)</p>
               </div>
             </div>
 
@@ -65,7 +83,7 @@ const breadcrumbData: BreadcrumbData = {
               <Mail className="w-5 h-5 text-blue-600 mt-1 shrink-0" />
               <div>
                 <p class="font-medium text-zinc-900">Email</p>
-                <p class="text-zinc-600 text-sm">sales@aldreme.com</p>
+                <p class="text-zinc-600 text-sm">{contactInfo.email}</p>
               </div>
             </div>
           </div>
