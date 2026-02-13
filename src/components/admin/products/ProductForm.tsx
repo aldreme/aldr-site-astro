@@ -162,6 +162,29 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
     setUploading(false);
   };
 
+  const handleDrawingUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: 'ortho_projections' | 'models') => {
+    if (!e.target.files || e.target.files.length === 0) return;
+
+    setUploading(true);
+    const file = e.target.files[0];
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const slug = formData.slug || 'uploads';
+    const filePath = `${slug}/drawings/${type}/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('products')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      alert("Error uploading file: " + uploadError.message);
+    } else {
+      addNestedArrayItem("engineering_drawings", type, filePath, () => { });
+    }
+    setUploading(false);
+    e.target.value = ''; // Reset input
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -604,6 +627,21 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
+                  <Button
+                    size="sm"
+                    variant="bordered"
+                    isLoading={uploading}
+                    onPress={() => document.getElementById('ortho-upload')?.click()}
+                  >
+                    Upload
+                  </Button>
+                  <input
+                    type="file"
+                    id="ortho-upload"
+                    className="hidden"
+                    accept=".pdf,image/*"
+                    onChange={(e) => handleDrawingUpload(e, 'ortho_projections')}
+                  />
                 </div>
               </div>
 
@@ -642,6 +680,21 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
+                  <Button
+                    size="sm"
+                    variant="bordered"
+                    isLoading={uploading}
+                    onPress={() => document.getElementById('model-upload')?.click()}
+                  >
+                    Upload
+                  </Button>
+                  <input
+                    type="file"
+                    id="model-upload"
+                    className="hidden"
+                    accept=".glb,.gltf,.obj,.fbx"
+                    onChange={(e) => handleDrawingUpload(e, 'models')}
+                  />
                 </div>
               </div>
             </div>
