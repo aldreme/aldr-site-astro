@@ -1,0 +1,1 @@
+import{A as t,B as a,C as e}from"./gestures.XoK_Gg7H.js";import"./index.CWXBSLiN.js";import"./create-proxy.B-9jOSur.js";import"./utils.hSKcPMvD.js";const i={renderer:e,...a,...t};var s=i;export{s as default};
