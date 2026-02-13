@@ -13,7 +13,7 @@ import { ArrowRight } from 'lucide-react';
 
 import db from '@/assets/data/db.json';
 import { useTranslations } from '@/i18n/ui'; // [NEW] Import translation hook
-import { getLocalizedRoute } from '@/i18n/utils'; // [NEW] Import localization helper
+import { getLocalizedRoute, getProductTranslation } from '@/i18n/utils'; // [NEW] Import localization helper
 import { supabase } from "@/lib/supabase";
 
 // [NEW] Dynamic Routing Logic
@@ -35,7 +35,11 @@ const { data: products } = await supabase
   .eq('featured', true)
   .limit(4);
 
-const featuredProducts = products || db.products.filter(p => (p as any).featured).slice(0, 4);
+const rawFeaturedProducts = products || db.products.filter(p => (p as any).featured).slice(0, 4);
+const featuredProducts = rawFeaturedProducts.map(product => ({
+  ...product,
+  ...getProductTranslation(product, currentLang)
+}));
 
 // Fetch Hero Config
 let heroConfig = {

@@ -43,5 +43,23 @@ export function getProductTranslation(product: any, locale: string) {
     description: translation?.description || product.description,
     introduction: translation?.introduction || product.introduction,
     features: translation?.features || product.features,
+    application_scenarios: translation?.application_scenarios ||
+      product.application_scenarios,
+    policies: {
+      ...product.policies,
+      ...(translation?.policies || {}),
+    },
+    specs: {
+      ...product.specs,
+      ...(translation?.specs || {}),
+      material: {
+        ...product.specs?.material,
+        ...(translation?.specs?.material || {}),
+      },
+      process_technology: {
+        ...product.specs?.process_technology,
+        ...(translation?.specs?.process_technology || {}),
+      },
+    },
   };
 }
