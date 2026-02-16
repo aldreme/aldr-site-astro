@@ -16,7 +16,7 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-import { translationsMap } from "./translations-data";
+const translationsMap: any = {};
 
 async function updateProductTranslations() {
   console.log("Fetching products...");

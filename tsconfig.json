@@ -10,7 +10,8 @@
   "exclude": [
     "dist",
     "node_modules",
-    "supabase"
+    "supabase",
+    "scripts"
   ],
   "compilerOptions": {
     "strictNullChecks": true,
