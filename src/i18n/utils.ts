@@ -39,6 +39,7 @@ export function getProductTranslation(product: any, locale: string) {
   const translation = translations?.[locale];
 
   return {
+    englishName: product.name,
     name: translation?.name || product.name,
     description: translation?.description || product.description,
     introduction: translation?.introduction || product.introduction,

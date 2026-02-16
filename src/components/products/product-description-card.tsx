@@ -9,6 +9,7 @@ import { ProductDescriptionTab } from "./product-description-tab";
 
 interface Props {
   productName: string;
+  productId: string; // English name or stable ID
   image?: string;
   productDescription: string;
   productFeatures: string[];
@@ -19,14 +20,14 @@ interface Props {
 import { ui, useTranslations } from "@/i18n/ui";
 
 export function ProductDescriptionCard(props: Props) {
-  const { productName, image, productDescription, productFeatures, className, lang = 'en' } = props;
+  const { productName, productId, image, productDescription, productFeatures, className, lang = 'en' } = props;
   const t = useTranslations(lang as keyof typeof ui);
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
     addCartItem({
-      id: productName,
-      name: productName,
+      id: productId, // Use stable ID
+      name: productId, // Use English name as base name for easier fallback management
       quantity: quantity,
       image: image
     });

@@ -7,6 +7,7 @@ import { FilePlus } from "lucide-react";
 interface ProductCardActionsProps {
   product: {
     name: string;
+    englishName?: string;
     image?: string;
   };
 }
@@ -16,9 +17,11 @@ export function ProductCardActions({ product }: ProductCardActionsProps) {
     e.preventDefault();
     e.stopPropagation();
 
+    const stableId = product.englishName || product.name;
+
     addCartItem({
-      id: product.name,
-      name: product.name,
+      id: stableId,
+      name: stableId, // Use English name as base
       quantity: 1,
       image: product.image
     });

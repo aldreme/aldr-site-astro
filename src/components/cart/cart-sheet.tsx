@@ -16,13 +16,28 @@ import { useState } from 'react';
 
 import { ui, useTranslations } from '@/i18n/ui';
 
+import { fetchProductTranslations, productTranslations } from '@/store/product-translations';
+import { useEffect } from 'react';
+
 export function CartSheet({ currentLang = 'en' }: { currentLang?: string }) {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
   const $rfqContact = useStore(rfqContactStore);
+  const $translations = useStore(productTranslations);
   const items = Object.values($cartItems) as CartItem[];
 
   const t = useTranslations(currentLang as keyof typeof ui);
+
+  useEffect(() => {
+    // Fetch translations for items in cart that aren't already loaded
+    const missingTranslations = items
+      .filter(item => !$translations[item.id])
+      .map(item => item.id);
+
+    if (missingTranslations.length > 0) {
+      fetchProductTranslations(missingTranslations);
+    }
+  }, [items.length, $translations]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -101,34 +116,38 @@ export function CartSheet({ currentLang = 'en' }: { currentLang?: string }) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item) => (
-                    <div key={item.id} className="flex gap-4 py-2">
-                      {/* Image placeholder or actual image if available */}
-                      <div className="w-16 h-16 bg-zinc-100 rounded-md flex items-center justify-center flex-shrink-0">
-                        {item.image ? (
-                          <img src={item.image} alt={item.name} className="w-full h-full object-contain p-1 mix-blend-multiply" />
-                        ) : (
-                          <div className="w-8 h-8 bg-zinc-200 rounded-full" />
-                        )}
-                      </div>
+                  {items.map((item) => {
+                    const translatedName = $translations[item.id]?.[currentLang]?.name || item.name;
 
-                      <div className="flex-1">
-                        <h4 className="font-medium text-sm text-zinc-900 line-clamp-1">{item.name}</h4>
-                        <div className="flex items-center gap-2 mt-2">
-                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}>
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <span className="text-sm font-mono w-8 text-center">{item.quantity}</span>
-                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-6 w-6 ml-auto text-red-400 hover:text-red-500 hover:bg-red-50" onClick={() => removeCartItem(item.id)}>
-                            <Trash2 className="h-3 w-3" />
-                          </Button>
+                    return (
+                      <div key={item.id} className="flex gap-4 py-2">
+                        {/* Image placeholder or actual image if available */}
+                        <div className="w-16 h-16 bg-zinc-100 rounded-md flex items-center justify-center flex-shrink-0">
+                          {item.image ? (
+                            <img src={item.image} alt={translatedName} className="w-full h-full object-contain p-1 mix-blend-multiply" />
+                          ) : (
+                            <div className="w-8 h-8 bg-zinc-200 rounded-full" />
+                          )}
+                        </div>
+
+                        <div className="flex-1">
+                          <h4 className="font-medium text-sm text-zinc-900 line-clamp-1">{translatedName}</h4>
+                          <div className="flex items-center gap-2 mt-2">
+                            <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}>
+                              <Minus className="h-3 w-3" />
+                            </Button>
+                            <span className="text-sm font-mono w-8 text-center">{item.quantity}</span>
+                            <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>
+                              <Plus className="h-3 w-3" />
+                            </Button>
+                            <Button variant="ghost" size="icon" className="h-6 w-6 ml-auto text-red-400 hover:text-red-500 hover:bg-red-50" onClick={() => removeCartItem(item.id)}>
+                              <Trash2 className="h-3 w-3" />
+                            </Button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
 
                   <Separator className="my-4" />
 
@@ -213,6 +232,6 @@ export function CartSheet({ currentLang = 'en' }: { currentLang?: string }) {
           </>
         )}
       </SheetContent>
-    </Sheet>
+    </Sheet >
   );
 }

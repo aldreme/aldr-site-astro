@@ -169,6 +169,7 @@ const productJsonLd = {
           <div class="sticky top-24">
             <ProductDescriptionCard client:visible
               productName={productData.name}
+              productId={rawProductData.name}
               image={productImageUri[0]}
               productDescription={productData.description}
               productFeatures={productData.features}
