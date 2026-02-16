@@ -1,3 +1,5 @@
+import iso9001 from "@/assets/docs/certifications/iso9001-2015.pdf";
+
 interface RouteData {
   name: string;
   href?: string;
@@ -13,7 +15,7 @@ interface RoutesConfig {
   services: RouteData;
   gallery: RouteData;
   // news: RouteData
-  about: RouteData;
+  company: RouteData;
   contact: RouteData;
 }
 
@@ -59,8 +61,31 @@ export const ROUTES: RoutesConfig = {
       },
     ],
   },
+  company: {
+    name: "Company",
+    i18nKey: "navbar-company",
+    children: [
+      {
+        name: "About",
+        href: "/about",
+        i18nKey: "navbar-aboutus",
+      },
+      {
+        name: "Certifications",
+        i18nKey: "navbar-certifications",
+        children: [
+          {
+            name: "ISO 9001:2015",
+            href: iso9001,
+            i18nKey: "navbar-iso9001",
+            i18nDescriptionKey: "navbar-iso9001-desc",
+            description: "Quality Management System Certification",
+          },
+        ],
+      },
+    ],
+  },
   // news: { name: 'News', href: '/news' },
-  about: { name: "About", href: "/about", i18nKey: "navbar-aboutus" },
   contact: { name: "Contact", href: "/contact", i18nKey: "navbar-contact" },
 };
 

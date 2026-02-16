@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { cartItems, isCartOpen } from "@/store/cart";
 import '@/styles/components/navbar.css';
 import { useStore } from "@nanostores/react";
-import { FileText, Menu as MenuIcon } from "lucide-react";
+import { ChevronRight, FileText, Menu as MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LanguagePicker } from "./language-picker";
 
@@ -25,15 +25,18 @@ function NavbarBrand({ currentLang = 'en' }: { currentLang?: string }) {
   )
 }
 
+
+// ... (keep Imports, verify NO duplicate imports)
+
 function NavLinksDesktop({ currentLang = 'en' }: { currentLang?: string }) {
   const t = useTranslations(currentLang as keyof typeof ui);
 
   return (
-    <div className='hidden md:flex'>
-      <NavigationMenu>
-        <NavigationMenuList>
-          {ROUTES_DATA.map((route, index) => (
-            <NavigationMenuItem key={index}>
+    <div className='hidden md:flex items-center space-x-1'>
+      {ROUTES_DATA.map((route, index) => (
+        <NavigationMenu key={index}>
+          <NavigationMenuList>
+            <NavigationMenuItem>
               {route.children ? (
                 <>
                   <NavigationMenuTrigger className="bg-transparent text-zinc-100 hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:text-white data-active:bg-zinc-800 data-[state=open]:bg-zinc-800">
@@ -41,25 +44,69 @@ function NavLinksDesktop({ currentLang = 'en' }: { currentLang?: string }) {
                     {route.i18nKey ? t(route.i18nKey) : route.name}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ul
+                      className={cn(
+                        "gap-3 p-4",
+                        route.name === "Company"
+                          ? "w-max max-w-75 grid-cols-1"
+                          : "grid w-100 md:w-125 md:grid-cols-2 lg:w-150"
+                      )}
+                    >
                       {route.children.map((child) => (
-                        <li key={child.name}>
-                          <NavigationMenuLink asChild>
-                            <a
-                              href={getLocalizedRoute(child.href || '#', currentLang)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              {/* @ts-ignore */}
-                              <div className="text-sm font-medium leading-none">{child.i18nKey ? t(child.i18nKey) : child.name}</div>
-                              {/* @ts-ignore */}
-                              {(child.description || child.i18nDescriptionKey) && (
-                                <p className="line-clamp-2 text-sm leading-snug text-zinc-400">
-                                  {/* @ts-ignore */}
-                                  {child.i18nDescriptionKey ? t(child.i18nDescriptionKey) : child.description}
-                                </p>
-                              )}
-                            </a>
-                          </NavigationMenuLink>
+                        <li key={child.name} className={child.children ? "col-span-2" : ""}>
+                          {child.children ? (
+                            <div className="group relative">
+                              {/* Parent Item (Certifications) - acts as trigger */}
+                              <div className="flex w-full select-none items-center justify-between rounded-md p-3 text-sm font-medium leading-none no-underline outline-hidden transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer">
+                                {/* @ts-ignore */}
+                                {child.i18nKey ? t(child.i18nKey) : child.name}
+                                <ChevronRight className="ml-auto h-4 w-4" />
+                              </div>
+
+                              {/* Flyout Sub-menu */}
+                              <ul className="invisible opacity-0 absolute left-full top-0 ml-5 w-64 rounded-md border bg-popover text-popover-foreground shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100 z-50 p-1">
+                                {child.children.map((grandChild) => (
+                                  <li key={grandChild.name}>
+                                    <NavigationMenuLink asChild>
+                                      <a
+                                        href={grandChild.href || '#'}
+                                        target={grandChild.href?.endsWith('.pdf') ? '_blank' : undefined}
+                                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                      >
+                                        {/* @ts-ignore */}
+                                        <div className="text-sm font-medium leading-none">{grandChild.i18nKey ? t(grandChild.i18nKey) : grandChild.name}</div>
+                                        {/* @ts-ignore */}
+                                        {/* @ts-ignore */}
+                                        {(grandChild.description || grandChild.i18nDescriptionKey) && (
+                                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground whitespace-normal mt-1">
+                                            {/* @ts-ignore */}
+                                            {grandChild.i18nDescriptionKey ? t(grandChild.i18nDescriptionKey) : grandChild.description}
+                                          </p>
+                                        )}
+                                      </a>
+                                    </NavigationMenuLink>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : (
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={getLocalizedRoute(child.href || '#', currentLang)}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                {/* @ts-ignore */}
+                                <div className="text-sm font-medium leading-none">{child.i18nKey ? t(child.i18nKey) : child.name}</div>
+                                {/* @ts-ignore */}
+                                {(child.description || child.i18nDescriptionKey) && (
+                                  <p className="line-clamp-2 text-sm leading-snug text-zinc-400 whitespace-normal">
+                                    {/* @ts-ignore */}
+                                    {child.i18nDescriptionKey ? t(child.i18nDescriptionKey) : child.description}
+                                  </p>
+                                )}
+                              </a>
+                            </NavigationMenuLink>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -80,9 +127,9 @@ function NavLinksDesktop({ currentLang = 'en' }: { currentLang?: string }) {
                 </NavigationMenuLink>
               )}
             </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
+          </NavigationMenuList>
+        </NavigationMenu>
+      ))}
     </div>
   )
 }
@@ -124,14 +171,32 @@ function NavLinksMobile({ currentLang = 'en', currentPath }: { currentLang?: str
                       <AccordionContent>
                         <div className="flex flex-col space-y-2 pl-4 pt-2">
                           {route.children.map((child) => (
-                            <a
-                              key={child.name}
-                              href={getLocalizedRoute(child.href || '#', currentLang)}
-                              className='block py-2 text-zinc-400 hover:text-white'
-                            >
-                              {/* @ts-ignore */}
-                              {child.i18nKey ? t(child.i18nKey) : child.name}
-                            </a>
+                            child.children ? (
+                              <div key={child.name} className="flex flex-col space-y-2">
+                                {/* @ts-ignore */}
+                                <div className="text-sm font-semibold text-zinc-100 px-2 pt-2">{child.i18nKey ? t(child.i18nKey) : child.name}</div>
+                                {child.children.map((grandChild) => (
+                                  <a
+                                    key={grandChild.name}
+                                    href={grandChild.href || '#'}
+                                    target={grandChild.href?.endsWith('.pdf') ? '_blank' : undefined}
+                                    className='block py-2 pl-4 text-zinc-400 hover:text-white'
+                                  >
+                                    {/* @ts-ignore */}
+                                    {grandChild.i18nKey ? t(grandChild.i18nKey) : grandChild.name}
+                                  </a>
+                                ))}
+                              </div>
+                            ) : (
+                              <a
+                                key={child.name}
+                                href={getLocalizedRoute(child.href || '#', currentLang)}
+                                className='block py-2 text-zinc-400 hover:text-white'
+                              >
+                                {/* @ts-ignore */}
+                                {child.i18nKey ? t(child.i18nKey) : child.name}
+                              </a>
+                            )
                           ))}
                         </div>
                       </AccordionContent>
