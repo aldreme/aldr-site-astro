@@ -1,0 +1,71 @@
+---
+title: "Servicio de Diseño"
+description: "Diseño de mobiliario de sala limpia compatible con GMP adaptado a flujos de trabajo asépticos."
+pubDate: 2026-02-09
+updatedDate: 2026-02-09
+---
+
+import { CtaSection } from '@/components/ui/cta-section';
+import { Box, ClipboardPen, Ruler, ShieldCheck, Sparkles } from 'lucide-react';
+
+<div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
+
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">Ingeniado para el Cumplimiento</h1>
+    <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+      Desde entornos de Grado A hasta ISO 8, diseñamos soluciones sanitarias de acero inoxidable que se integran perfectamente en sus procesos biofarmacéuticos.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <ClipboardPen class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Análisis de Flujo de Trabajo Aséptico</h3>
+      <p class="text-zinc-600">
+        Analizamos sus flujos de personal y materiales (PAL/MAL) para diseñar mobiliario que minimice los riesgos de contaminación cruzada. Nuestras soluciones apoyan los principios de laboratorio lean y están optimizadas para el flujo unidireccional en áreas de procesamiento críticas.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Ruler class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Personalización Lista para GMP</h3>
+      <p class="text-zinc-600">
+        Los tamaños estándar rara vez se ajustan a procesos validados. Diseñamos a medida bancos de vestuario, soportes para gabinetes de bioseguridad y cajas de paso para adaptarse a limitaciones arquitectónicas específicas mientras se mantiene el cumplimiento de ISO 14644.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Box class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Simulación Ergonómica 3D</h3>
+      <p class="text-zinc-600">
+        La seguridad y comodidad del operador son críticas en las salas limpias. Proporcionamos renders 3D detallados para verificar la ergonomía para procedimientos de vestimenta y tareas repetitivas, asegurando el cumplimiento de SOP antes de que comience la fabricación.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Sparkles class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Principios de Diseño Sanitario</h3>
+      <p class="text-zinc-600">
+        Cumpliendo con las pautas ASME BPE, nuestros diseños cuentan con esquinas redondeadas de gran radio, soldadura sin grietas y superficies inclinadas para una limpieza y esterilización efectivas (compatibilidad CIP/SIP), asegurando cero acumulación de carga biológica.
+      </p>
+    </div>
+  </div>
+
+  <CtaSection 
+    client:visible
+    title="Valide el diseño de su instalación"
+    description="Colabore con ingenieros que entienden el rigor de las regulaciones de la FDA y EMA. Aseguramos que la integración de su mobiliario sea conforme, ergonómica y eficiente."
+    buttonText="Inicie Su Diseño"
+    buttonLink="/contact"
+    iconName="ShieldCheck"
+  />
+
+</div>

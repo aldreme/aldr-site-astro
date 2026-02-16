@@ -15,6 +15,7 @@ export interface ProductData {
   customization?: string;
   engineering_drawings: EngineeringDrawings;
   policies: Policies;
+  translations?: Record<string, any>;
 }
 
 export interface ProductSpecs {

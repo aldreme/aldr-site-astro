@@ -26,6 +26,21 @@ export async function getStaticPaths() {
             params: { lang: 'fr', slug: slug },
             props: { post },
         });
+
+    } else if (post.id.startsWith('es/')) {
+        // ID is like 'es/design', we want URL /es/services/design
+        const slug = post.id.replace(/^es\//, '');
+        paths.push({
+            params: { lang: 'es', slug: slug },
+            props: { post },
+        });
+    } else if (post.id.startsWith('ar/')) {
+        // ID is like 'ar/design', we want URL /ar/services/design
+        const slug = post.id.replace(/^ar\//, '');
+        paths.push({
+            params: { lang: 'ar', slug: slug },
+            props: { post },
+        });
     } else {
         // ID is like 'design', we want URL /services/design
          paths.push({

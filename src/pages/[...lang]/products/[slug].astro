@@ -32,6 +32,16 @@ export async function getStaticPaths() {
       params: { lang: 'fr', slug: product.slug },
       props: { productData: product as unknown as ProductData }
     });
+    // Spanish path (lang 'es')
+    paths.push({
+      params: { lang: 'es', slug: product.slug },
+      props: { productData: product as unknown as ProductData }
+    });
+    // Arabic path (lang 'ar')
+    paths.push({
+      params: { lang: 'ar', slug: product.slug },
+      props: { productData: product as unknown as ProductData }
+    });
   });
 
   return paths;

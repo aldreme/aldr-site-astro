@@ -11,7 +11,6 @@ import ProductItemCard from '@/components/products/product-item-card.astro';
 import { Image } from 'astro:assets';
 import { ArrowRight } from 'lucide-react';
 
-import db from '@/assets/data/db.json';
 import { useTranslations } from '@/i18n/ui'; // [NEW] Import translation hook
 import { getLocalizedRoute, getProductTranslation, getSiteConfigTranslation } from '@/i18n/utils'; // [NEW] Import localization helper
 import { supabase } from "@/lib/supabase";
@@ -22,6 +21,8 @@ export async function getStaticPaths() {
     { params: { lang: undefined } }, // English (Root)
     { params: { lang: 'zh' } },      // Chinese
     { params: { lang: 'fr' } },      // French
+    { params: { lang: 'es' } },      // Spanish
+    { params: { lang: 'ar' } },      // Arabic
   ];
 }
 
@@ -36,11 +37,10 @@ const { data: products } = await supabase
   .eq('featured', true)
   .limit(4);
 
-const rawFeaturedProducts = products || db.products.filter(p => (p as any).featured).slice(0, 4);
-const featuredProducts = rawFeaturedProducts.map(product => ({
+const featuredProducts = products?.map(product => ({
   ...product,
   ...getProductTranslation(product, currentLang)
-}));
+})) || [];
 
 // Fetch Hero Config
 let heroConfig = {

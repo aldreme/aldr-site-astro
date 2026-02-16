@@ -40,7 +40,6 @@ reflecting the company's status as a Fortune Global 500 Vendor.
   - **Edge Functions:** for dynamic logic (`cx_rfq`, `location`)
 - **Content:**
   - **Static:** MDX via Astro Content Collections (`src/content/`).
-  - **Legacy Data:** JSON files in `src/assets/data/` (e.g., `db.json`).
   - **Internationalization:** JSON dictionaries in `src/assets/i18n/`.
 
 ## Key Directory Structure
@@ -50,7 +49,7 @@ reflecting the company's status as a Fortune Global 500 Vendor.
 ├── public/                 # Static assets (favicons, robots.txt)
 ├── src/
 │   ├── assets/             #
-│   │   ├── data/           # [LEGACY] JSON data (db.json) - pending migration
+│   │   ├── data/           # mdx files and translated pages etc.
 │   │   ├── i18n/           # Translation files (en_us.json, zh_cn.json)
 │   │   └── images/         # Optimized images
 │   ├── components/
@@ -120,16 +119,3 @@ reflecting the company's status as a Fortune Global 500 Vendor.
 
 - All text visible to users must be tokenized and pulled from `src/assets/i18n`.
 - Do not hardcode strings in components.
-
-## Migration Note: Local Data to Supabase
-
-> [!IMPORTANT]
-> The project currently relies on `src/assets/data/db.json` for product data.
-> This is a temporary state.
->
-> **Future Goal:** Migrate all structure data from `db.json` into Supabase
-> PostgreSQL tables.
->
-> 1. Create matching tables in Supabase (Products, Categories, Specs).
-> 2. Create a migration script to seed Supabase with `db.json` data.
-> 3. Refactor data fetching layers to query Supabase instead of importing JSON.

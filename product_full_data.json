@@ -1,0 +1,549 @@
+[dotenv@17.2.4] injecting env (4) from .env.local -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+[
+  {
+    "name": "Heavy Duty Workbench",
+    "description": "Robust 2-tier stainless steel industrial workbench. Simple, super-heavy-duty construction for handling massive loads in clean zones.",
+    "introduction": "Uncompromising strength for heavy tasks. This Heavy-Duty 2-Tier Workbench eliminates the bells and whistles to focus on pure structural integrity. Built with oversized tubular framing and a thick-gauge top, it is designed to support heavy equipment or large valve assemblies. The lower shelf offers additional reinforced storage space.",
+    "application_scenarios": [
+      "Heavy Device Assembly",
+      "Repair Station",
+      "Valve Maintenance"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 75,
+          "height": 85,
+          "length": 290
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Structural Assembly",
+          "TIG Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Gowning bench",
+    "description": "304 stainless steel gowning bench. Designed for minimal particle retention in critical gowning areas.",
+    "introduction": "Constructed from premium-grade stainless steel, this gowning bench features a sophisticated circular arc design and a reinforced double-layer panel for superior structural integrity. The unit is meticulously fabricated using seamless welding techniques and polished to a high-luster finish, effectively eliminating all hygienic dead zones to ensure full compliance with stringent sterile environment protocols.",
+    "application_scenarios": [
+      "Gowning Rooms",
+      "CNC Change Areas",
+      "Sterile Corridors"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 40,
+          "height": 40,
+          "length": 290
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Seamless Welding"
+        ],
+        "customizable": false
+      }
+    }
+  },
+  {
+    "name": "Nitrogen Cabinet",
+    "description": "A hermetically sealed storage system that replaces internal atmosphere with pressurized nitrogen gas to achieve near-zero humidity (typically <1% to 10% RH) and an inert, non-reactive environment for high-value sensitive components.",
+    "introduction": "In cleanroom operations, moisture and oxygen are \"invisible contaminants.\" A Nitrogen Cabinet solves this by \"purging\"—forcing nitrogen into the cabinet to push out heavier, moisture-laden air through one-way relief valves. Because nitrogen is an inert gas, it creates a stable \"blanket\" around materials, making it the gold standard for long-term storage of semiconductors, optics, and reactive chemicals.",
+    "application_scenarios": [
+      "Wafer & Chip Storage: Preventing the oxidation of silicon wafers, lead frames, and microchips between manufacturing steps.",
+      "MSD Protection: Safely housing Moisture Sensitive Devices (MSDs) to prevent the \"popcorn effect\" (cracking) during later solder reflow processes.",
+      "Optical Preservation: Storing high-precision lenses and laser crystals to prevent surface fogging and \"glass disease\" caused by humidity.",
+      "Biotech Stability: Protecting hygroscopic (moisture-absorbing) powders, DNA samples, and enzymes that degrade in the presence of oxygen.",
+      "Aerospace Electronics: Long-term preservation of critical avionics and sensors that must remain in a \"factory-fresh\" state for years.",
+      "Museum & Archive: Preserving rare artifacts or sensitive film that would otherwise deteriorate through oxidative aging."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel / SD-PVC",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 64,
+          "height": 183,
+          "length": 55
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Brushed Finish",
+          "Laser Cutting",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Wash Rack for Cleaning Machine",
+    "description": "Wash Rack with Integrated Piping and Spray Nozzles Custom-designed wash rack tailored to specific load items.",
+    "introduction": "The entire rack is constructed from 316L stainless steel, featuring a piping system made of 316L sanitary tubing. All piping is welded to sanitary standards, ensuring smooth, consistent internal and external weld seams. The unit utilizes PEEK nozzles and is designed to match the operating water pressure of the washing machine. This rack can be transported into the washer via a transfer trolley, where it connects to the machine's internal piping system to clean loaded parts. It also supports offline cleaning efficacy verification while docked on the transfer trolley. The entire rack features an electropolished surface finish.",
+    "application_scenarios": [
+      "Facility Cleaning",
+      "Spill Response",
+      "Daily Sanitization"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "316L Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 106,
+          "height": 65,
+          "length": 147
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Electropolished"
+        ],
+        "customizable": false
+      }
+    }
+  },
+  {
+    "name": "Mobile Work Platforms",
+    "description": "A versatile, stainless steel mobile station featuring high-grade casters and an easy-to-sanitize surface, used to bring tools, laptops, or processing equipment directly to the point of need in a cleanroom.",
+    "introduction": "In a dynamic cleanroom environment, fixed benchtop space is often limited. The Mobile Work Platform acts as a 'roving' sterile zone. Unlike standard utility carts, these platforms are designed with ergonomics and cleanliness in balance—ensuring that even as they move between different ISO zones, they do not track contaminants or harbor bacteria in their adjustment mechanisms.",
+    "application_scenarios": [
+      "Point-of-Use Assembly: Creating a temporary sterile workspace for the manual assembly of medical devices or electronic sensors.",
+      "Mobile Data Entry: Serving as a laptop or tablet station for technicians recording batch data directly next to production machinery.",
+      "Equipment Calibration: Supporting heavy testing instruments that need to be moved from one fixed station to another.",
+      "Aseptic Transfer: Moving sterile components from a pass-through hatch to a secondary processing area without hand-carrying.",
+      "Microbiological Sampling: Providing a stable, clean surface for environmental monitoring (EM) equipment during air and surface testing.",
+      "Temporary Tool Station: Holding specialized surgical or mechanical tools during long-duration maintenance tasks inside a sterile suite."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 80,
+          "height": 250,
+          "length": 200
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Seamless Welding",
+          "Brushed Finish"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Pass Through Cabinet",
+    "description": "Static pass-through with mechanical interlock. Double-wall stainless steel construction prevents cross-contamination between classified zones.",
+    "introduction": "Control contamination at the source. Our Pass Through Cabinet serves as a barrier between zones of different cleanliness levels. The robust Mechanical Interlock System ensures that one door remains locked while the other is open, preventing direct air exchange. The interior chamber features coved corners (rounded radius) to eliminate particle traps and allow for thorough disinfection.",
+    "application_scenarios": [
+      "Material Transfer",
+      "Sample Pass-through",
+      "Pharmacy Compounding",
+      "Acid, base, or solvent chemical pass through and storage"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 76,
+          "height": 76,
+          "length": 68
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Brushed Finish",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Fridge Trolley",
+    "description": "A high-grade stainless steel transport system designed for moving temperature-sensitive biologicals, chemicals, or samples through cleanroom environments. It combines ISO-rated cleanliness compatibility with integrated cooling or insulated storage to maintain specific thermal conditions.",
+    "introduction": "In sterile environments, the \"last mile\" of transport—moving a product from a long-term medical refrigerator to a processing bench—is a critical vulnerability. A Cleanroom Fridge Trolley bridges this gap. Constructed primarily from 304 or 316L stainless steel, these trolleys are non-shedding, corrosion-resistant, and designed with smooth surfaces to prevent the accumulation of particulates and bacteria.",
+    "application_scenarios": [
+      "Pharmaceuticals: Transporting vaccines, insulin, or active pharmaceutical ingredients (APIs) between clean zones.",
+      "Biotechnology: Moving live cell cultures, enzymes, or tissue samples that require strict 2°C to 8°C environments.",
+      "Medical Research: Transferring blood plasma or sensitive reagents from cold storage to testing stations.",
+      "Semiconductors: Handling specialized chilled chemicals or photoresists that are sensitive to both particles and heat."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 65,
+          "height": 133,
+          "length": 85
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Laser Cutting",
+          "Seamless Welding",
+          "Brushed Finish"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Sink",
+    "description": "A precision-engineered, stainless steel sanitation station featuring a seamless, crevice-free design and hands-free operation to maintain strict hygiene protocols in controlled environments.",
+    "introduction": "The cleanroom sink is the primary defense against cross-contamination at the entry or exit of a sterile zone. Standard sinks have joints and overflows where bacteria can thrive; cleanroom sinks eliminate these risks through monolithic construction. Every curve is radiused (coved) for easy wiping, and the hardware is typically automated to ensure the user never has to touch a handle, preserving hand hygiene.",
+    "application_scenarios": [
+      "Gowning Entry/Exit: Facilitating the mandatory hand-scrubbing protocols before staff enter sterile production areas.",
+      "Laboratory Tool Cleaning: Providing a contamination-free zone for rinsing high-precision glassware or sampling tools.",
+      "Aseptic Processing: Used in pharmaceutical formulation areas for necessary sanitation steps that require ultrapure water (WFI).",
+      "Compounding Pharmacies: Meeting USP <797> standards for hand hygiene prior to sterile drug preparation.",
+      "Biotech Sample Prep: Rinsing non-reactive components used in cell culture or genomic sequencing.",
+      "Medical Device Cleaning: Final-stage rinsing of surgical implants or instruments before they are moved to packaging."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 60,
+          "height": 85,
+          "length": 240
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Brushed Finish",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Wash Rack Lifting Trolley for Cleaning Machines",
+    "description": "Wash Rack Transfer Trolley – Designed for transporting washer racks and conducting offline cleaning efficacy testing.",
+    "introduction": "The equipment is constructed from 316L stainless steel and features 316L sanitary tubing with orbital welds. It is equipped with SKF lifting columns, a fully electropolished surface finish, and is powered by a 24V DC battery.",
+    "application_scenarios": [
+      "Wash Rack Transfer",
+      "Cleaning Efficacy Assessment of Washed Items"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 85,
+          "height": 128,
+          "length": 188
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "TIG Welding",
+          "Seamless Welding",
+          "Electropolishing"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Mixing Tank",
+    "description": "Mixing tank are vessels or totes mounted onto a frame where the single-use biocontainers are installed",
+    "introduction": "Precision mixing for sanitary applications. This Pharmaceutical-Grade Mixer is crafted from 316L stainless steel with a mirror-finish internal surface (Ra < 0.4μm) to prevent residue adherence. The vessel is designed for full Clean-In-Place (CIP) compatibility.",
+    "application_scenarios": [
+      "Media Preparation",
+      "Buffer Formulation",
+      "Chemical Blending"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "volume": {
+        "value": 50,
+        "customizable": true
+      },
+      "material": {
+        "value": "316L Stainless Steel",
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Bead Blasting",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Mobile Storage Bin",
+    "description": "Mobile stainless steel bulk storage bin with hinged lid. Ideal for transporting and storing bulk ingredients or waste in cleanroom areas.",
+    "introduction": "Versatile mobile storage for bulk materials. This Mobile Storage Bin features a heavy-duty stainless steel chassis with a hinged lid, protecting contents from contamination during transport. Its smooth, seamless interior ensures standard-compliant cleaning, while the robust casters allow for easy maneuvering of heavy loads. Perfect for moving raw materials, waste, or laundry through classified zones.",
+    "application_scenarios": [
+      "Cleanroom Material Transport",
+      "Waste Collection",
+      "Liquid Transfer"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 50,
+          "height": 70,
+          "length": 100
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "TIG Welding",
+          "Seamless Welding",
+          "Double-Clad",
+          "Full Polishing Process",
+          "Brushed Finish"
+        ],
+        "customizable": false
+      }
+    }
+  },
+  {
+    "name": "Storage Rack",
+    "description": "A modular, high-stability shelving unit constructed from non-shedding materials, designed for maximum airflow and easy decontamination in sterile or particulate-sensitive zones.",
+    "introduction": "In a cleanroom, \"standard\" shelving is a liability. Particle-shedding paint, hidden rust, and flat surfaces that trap dust can ruin a production batch. Cleanroom Storage Racks solve this by using electropolished stainless steel and often feature wire-mesh or perforated designs. These specialized structures ensure that vertical laminar airflow (the \"clean air shower\" from the ceiling) can pass through the racks rather than being blocked, which prevents \"dead zones\" where contaminants might settle.",
+    "application_scenarios": [
+      "WIP (Work-in-Progress) Staging: Holding semi-finished semiconductor wafers or medical devices between processing stages.",
+      "Sterile Supply Storage: Organizing autoclaved tools and surgical kits in hospital or pharmaceutical prep rooms.",
+      "Cooling/Drying Racks: Allowing freshly cleaned components to air-dry under HEPA-filtered flow.",
+      "Chemical Management: Storing non-reactive canisters and reagents in a visible, organized manner.",
+      "Cleanroom Shoe/Clog Storage: Used in gowning areas to keep specialized footwear off the floor and organized.",
+      "Electronics Housing: Holding circuit board racks or sensitive hardware during testing and assembly."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 60,
+          "height": 180,
+          "length": 200
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Seamless Welding",
+          "Double-Clad",
+          "Brushed Finish"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Multi-Tier Trolley",
+    "description": "A Cleanroom Multi-Tier Trolley is a high-performance transport solution engineered from non-corrosive, non-shedding materials (typically 304 or 316L stainless steel).",
+    "introduction": "A high-grade, mobile storage and transport solution specifically designed for sterile or particulate-controlled environments. Its primary purpose is to move delicate instruments, chemicals, or sterile products through different zones (such as from a gowning room to a Grade A lab) without introducing \"bio-burden\" or metallic dust. Built with a focus on non-shedding materials and easy-to-clean surfaces, these trolleys are essential for optimizing workflow efficiency while adhering to ISO classification standards.",
+    "application_scenarios": [
+      "Pharmaceuticals: Moving vials, syringes, or sterilized glassware.",
+      "Semiconductors: Transporting silicon wafers in FOUPs.",
+      "Hospitals: Moving sterile surgical kits within operating theaters.",
+      "Research Labs: Organizing chemicals and samples across different containment zones."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 50,
+          "height": 120,
+          "length": 80
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Brushed Finish",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Garment Cabinet",
+    "description": "A high-performance storage unit, typically made of stainless steel, designed to store cleanroom apparel in a sterile, organized, and often HEPA-filtered environment to prevent dust and microbial accumulation on garments.",
+    "introduction": "The Garment Cabinet is a staple of the \"gowning room\" or \"ante-room\". Its primary purpose is to act as a buffer between the outside world and the sterile production zone. By providing a dedicated space for hanging or shelving cleanroom attire, these cabinets minimize garment handling and exposure to ambient air, which significantly extends the life and sterility of the clothing.",
+    "application_scenarios": [
+      "Aseptic Staging: Maintaining the sterility of gowns and hoods used in pharmaceutical filling suites.",
+      "Static Prevention: Storing ESD-safe \"bunny suits\" for semiconductor and microelectronics assembly.",
+      "Contamination Control: Protecting low-linting apparel used in aerospace and high-precision optics labs.",
+      "Cross-Zone Buffer: Separating garments used in different bio-safety levels (BSL) to prevent cross-contamination.",
+      "Surgical Integrity: Housing specialized footwear and headgear for ultra-clean hospital operating theaters.",
+      "Visitor Management: Providing a sterile storage point for temporary gowns used by guests or auditors."
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 38,
+          "height": 198,
+          "length": 46
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Brushed Finish",
+          "Seamless Welding",
+          "Laser Cutting"
+        ],
+        "customizable": true
+      }
+    }
+  },
+  {
+    "name": "Cleanroom Computer Workstation",
+    "description": "Flush-mount stainless steel computer enclosure with keyboard tray. Protects IT hardware in wash-down and sterile environments.",
+    "introduction": "Integrate digital workflows without compromising cleanliness. This Flush-Mount PC Enclosure is designed to house standard monitors and keyboards within the cleanroom wall, eliminating horizontal surfaces that collect dust. The sealed unit features a hinged glass door for monitor access and a fold-down or integrated keyboard station, all constructed from corrosion-resistant 304 stainless steel.",
+    "application_scenarios": [
+      "HMI Terminals",
+      "Cleanroom Data Entry",
+      "Digital SOP Stations"
+    ],
+    "policies": {
+      "shipping": "Freight",
+      "warranty": "1 Year Warranty"
+    },
+    "specs": {
+      "material": {
+        "value": "304 Stainless Steel",
+        "customizable": true
+      },
+      "dimension": {
+        "external": {
+          "width": 50,
+          "height": 120,
+          "length": 80
+        },
+        "customizable": true
+      },
+      "process_technology": {
+        "value": [
+          "Precision Laser Cutting",
+          "Brushed Finish",
+          "TIG Welding",
+          "Seamless Welding"
+        ],
+        "customizable": true
+      }
+    }
+  }
+]

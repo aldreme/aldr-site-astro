@@ -4,8 +4,10 @@ import '@/styles/globals.css';
 import { BreadcrumbResponsive, type BreadcrumbData } from '@/components/breadcrumb';
 import PageLayout from '@/layouts/page-layout.astro';
 
-// Import both MDX content files
+// Import all MDX content files
 import { Content as AboutPageContentEn } from '@/assets/data/pages/about.mdx';
+import { Content as AboutPageContentAr } from '@/assets/data/pages/ar/about.mdx';
+import { Content as AboutPageContentEs } from '@/assets/data/pages/es/about.mdx';
 import { Content as AboutPageContentFr } from '@/assets/data/pages/fr/about.mdx';
 import { Content as AboutPageContentZh } from '@/assets/data/pages/zh/about.mdx';
 
@@ -17,6 +19,8 @@ export async function getStaticPaths() {
     { params: { lang: undefined } },
     { params: { lang: 'zh' } },
     { params: { lang: 'fr' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'ar' } },
   ];
 }
 
@@ -59,6 +63,8 @@ const pageSubtitle = t('about-aldr-subtitle') || "Pioneering precision stainless
         { 
           currentLang === 'zh' ? <AboutPageContentZh /> : 
           currentLang === 'fr' ? <AboutPageContentFr /> : 
+          currentLang === 'es' ? <AboutPageContentEs /> : 
+          currentLang === 'ar' ? <AboutPageContentAr /> : 
           <AboutPageContentEn /> 
         }
       </article>

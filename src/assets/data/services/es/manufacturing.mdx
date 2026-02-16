@@ -1,0 +1,81 @@
+---
+title: "Servicio de Manufactura"
+description: "Fabricación de precisión de grado farmacéutico con trazabilidad total de materiales."
+pubDate: 2026-02-09
+updatedDate: 2026-02-09
+---
+
+import { Cog, Factory, ShieldCheck, Truck } from 'lucide-react';
+
+<div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
+
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">Precisión Farmacéutica</h1>
+    <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+      Ejecutando rigurosos estándares de fabricación para equipos de acero inoxidable 304 y 316L utilizados en industrias de ciencias de la vida y semiconductores.
+    </p>
+  </div>
+
+  {/* Stats Section */}
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-y border-zinc-200">
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">2007</span>
+      <span class="text-sm text-zinc-500">Establecido</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">150k+</span>
+      <span class="text-sm text-zinc-500">Unidades Anuales</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">316L</span>
+      <span class="text-sm text-zinc-500">Grado Bio-Farma</span>
+    </div>
+    <div class="text-center">
+      <span class="block text-3xl font-bold text-blue-600">Ra &lt; 0.4</span>
+      <span class="text-sm text-zinc-500">Acabado Superficial (µm)</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Factory class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Producción Limpia Dedicada</h3>
+      <p class="text-zinc-600">
+        Mantenemos áreas de producción segregadas para acero al carbono y acero inoxidable para prevenir la contaminación por hierro. Nuestras operaciones de corte por láser CNC y plegado utilizan gas nitrógeno para asegurar bordes libres de óxido listos para soldadura sanitaria.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Cog class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Maestría Artesanal</h3>
+      <p class="text-zinc-600">
+        Nuestros soldadores certificados se especializan en soldadura TIG para tuberías higiénicas y componentes estructurales. Logramos acabados superficiales de Ra &lt; 0.4µm a través de electropulido y pulido mecánico, cumpliendo con los más altos requisitos de bioprocesamiento.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <ShieldCheck class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Soporte de Validación</h3>
+      <p class="text-zinc-600">
+        Entendemos la carga de la validación (DQ/IQ/OQ). ALDR proporciona paquetes de documentación completos, informes de prueba de materiales (MTRs) y certificados de rugosidad superficial para apoyar sus actividades de calificación.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Truck class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Logística Global</h3>
+      <p class="text-zinc-600">
+        Desde el embalaje seguro para equipos sensibles hasta la gestión de incoterms para envíos internacionales, aseguramos que su infraestructura crítica llegue a su instalación sin daños y lista para la instalación.
+      </p>
+    </div>
+  </div>
+
+</div>
