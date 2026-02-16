@@ -14,11 +14,15 @@ import { format, isValid, parseISO } from 'date-fns';
 import { CalendarIcon, Minus, Plus, Send, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
-export function CartSheet() {
+import { ui, useTranslations } from '@/i18n/ui';
+
+export function CartSheet({ currentLang = 'en' }: { currentLang?: string }) {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
   const $rfqContact = useStore(rfqContactStore);
   const items = Object.values($cartItems) as CartItem[];
+
+  const t = useTranslations(currentLang as keyof typeof ui);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -64,7 +68,7 @@ export function CartSheet() {
       }, 3000);
     } catch (error) {
       console.error('Failed to submit RFQ:', error);
-      alert('There was an error submitting your request. Please try again.');
+      alert(t('cart.error.submit') || 'There was an error submitting your request. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -74,9 +78,9 @@ export function CartSheet() {
     <Sheet open={$isCartOpen} onOpenChange={isCartOpen.set}>
       <SheetContent className="w-full sm:max-w-lg flex flex-col h-full">
         <SheetHeader>
-          <SheetTitle>Request for Quote</SheetTitle>
+          <SheetTitle>{t('cart.title') || "Request for Quote"}</SheetTitle>
           <SheetDescription>
-            Review your selected items and submit a consolidated request.
+            {t('cart.description') || "Review your selected items and submit a consolidated request."}
           </SheetDescription>
         </SheetHeader>
 
@@ -85,15 +89,15 @@ export function CartSheet() {
             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
               <Send className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold text-zinc-900">Request Sent!</h3>
-            <p className="text-zinc-500">We'll get back to you shortly with a formal quote.</p>
+            <h3 className="text-xl font-bold text-zinc-900">{t('cart.success.title') || "Request Sent!"}</h3>
+            <p className="text-zinc-500">{t('cart.success.message') || "We'll get back to you shortly with a formal quote."}</p>
           </div>
         ) : (
           <>
             <ScrollArea className="flex-1 -mx-6 px-6 my-4">
               {items.length === 0 ? (
                 <div className="h-40 flex items-center justify-center text-zinc-400">
-                  Your cart is empty
+                  {t('cart.empty') || "Your cart is empty"}
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -130,7 +134,7 @@ export function CartSheet() {
 
                   <form id="rfq-form" onSubmit={handleSubmit} className="space-y-4 pt-2">
                     <div className="space-y-2 mb-6">
-                      <h3 className="font-semibold text-sm">Expected Delivery</h3>
+                      <h3 className="font-semibold text-sm">{t('cart.expected-delivery') || "Expected Delivery"}</h3>
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
@@ -141,7 +145,7 @@ export function CartSheet() {
                             )}
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
-                            {safeDate ? format(safeDate, "PPP") : <span>Pick a date</span>}
+                            {safeDate ? format(safeDate, "PPP") : <span>{t('cart.pick-date') || "Pick a date"}</span>}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
@@ -158,33 +162,33 @@ export function CartSheet() {
                       </Popover>
                     </div>
 
-                    <h3 className="font-semibold text-sm">Contact Information</h3>
+                    <h3 className="font-semibold text-sm">{t('cart.contact-info') || "Contact Information"}</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <Label htmlFor="name" className="text-xs">Name</Label>
-                        <Input id="name" required placeholder="John Doe"
+                        <Label htmlFor="name" className="text-xs">{t('cart.name') || "Name"}</Label>
+                        <Input id="name" required placeholder={t('cart.placeholder.name') || "John Doe"}
                           value={$rfqContact.name} onChange={e => rfqContactStore.set({ ...$rfqContact, name: e.target.value })}
                         />
                       </div>
                       <div className="space-y-1">
-                        <Label htmlFor="company" className="text-xs">Company</Label>
-                        <Input id="company" placeholder="Acme Pharma"
+                        <Label htmlFor="company" className="text-xs">{t('cart.company') || "Company"}</Label>
+                        <Input id="company" placeholder={t('cart.placeholder.company') || "Acme Pharma"}
                           value={$rfqContact.company} onChange={e => rfqContactStore.set({ ...$rfqContact, company: e.target.value })}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-1">
-                      <Label htmlFor="email" className="text-xs">Work Email</Label>
-                      <Input id="email" type="email" required placeholder="john@company.com"
+                      <Label htmlFor="email" className="text-xs">{t('cart.email') || "Work Email"}</Label>
+                      <Input id="email" type="email" required placeholder={t('cart.placeholder.email') || "john@company.com"}
                         value={$rfqContact.email} onChange={e => rfqContactStore.set({ ...$rfqContact, email: e.target.value })}
                       />
                     </div>
 
 
                     <div className="space-y-1">
-                      <Label htmlFor="notes" className="text-xs">Project Notes (Optional)</Label>
-                      <Input id="notes" placeholder="e.g., Delivery needed by Q3..."
+                      <Label htmlFor="notes" className="text-xs">{t('cart.notes') || "Project Notes (Optional)"}</Label>
+                      <Input id="notes" placeholder={t('cart.placeholder.notes') || "e.g., Delivery needed by Q3..."}
                         value={$rfqContact.notes} onChange={e => rfqContactStore.set({ ...$rfqContact, notes: e.target.value })}
                       />
                     </div>
@@ -197,11 +201,11 @@ export function CartSheet() {
                 {isSubmitting ? (
                   <>
                     <Plus className="mr-2 h-4 w-4 animate-spin rotate-45" />
-                    Sending Request...
+                    {t('cart.sending') || "Sending Request..."}
                   </>
                 ) : (
                   <>
-                    Send Request {items.length > 0 && `(${items.length} Items)`}
+                    {t('cart.send-request') || "Send Request"} {items.length > 0 && `(${items.length} ${t('cart.items') || "Items"})`}
                   </>
                 )}
               </Button>

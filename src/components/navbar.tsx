@@ -269,7 +269,7 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
             <LanguagePicker currentLang={currentLang} currentPath={currentPath} />
           </div>
 
-          <CartSheet />
+          <CartSheet currentLang={currentLang} />
         </div>
       </div>
     </header>
