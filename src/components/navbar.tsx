@@ -12,6 +12,7 @@ import { cartItems, isCartOpen } from "@/store/cart";
 import '@/styles/components/navbar.css';
 import { useStore } from "@nanostores/react";
 import { FileText, Menu as MenuIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { LanguagePicker } from "./language-picker";
 
 function NavbarBrand({ currentLang = 'en' }: { currentLang?: string }) {
@@ -160,11 +161,27 @@ function NavLinksMobile({ currentLang = 'en', currentPath }: { currentLang?: str
 }
 
 export default function Navbar({ currentLang, currentPath }: { currentLang?: string, currentPath?: string }) {
+  const [isScrolled, setIsScrolled] = useState(false);
   const $cartItems = useStore(cartItems);
   const cartCount = Object.values($cartItems).reduce((acc, item) => acc + item.quantity, 0);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className='sticky top-0 z-40 w-full border-b border-zinc-700 bg-zinc-900 md:min-w-400'>
+    <header
+      className={cn(
+        'sticky top-0 z-40 w-full transition-all duration-300 md:min-w-400',
+        isScrolled
+          ? 'bg-zinc-900/70 backdrop-blur-md border-b border-zinc-800/50 shadow-lg'
+          : 'bg-zinc-900 border-b border-zinc-700'
+      )}
+    >
       <div className='container mx-auto flex h-16 items-center px-4'>
         <NavbarBrand currentLang={currentLang} />
         <NavLinksDesktop currentLang={currentLang} />

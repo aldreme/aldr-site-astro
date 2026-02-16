@@ -54,7 +54,7 @@ export function AdminDialogContainer() {
       hideCloseButton
     >
       <ModalContent>
-        {(onClose) => (
+        {(_onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
               {dialog.title}
