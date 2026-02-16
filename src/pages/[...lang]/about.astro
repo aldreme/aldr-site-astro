@@ -6,6 +6,7 @@ import PageLayout from '@/layouts/page-layout.astro';
 
 // Import both MDX content files
 import { Content as AboutPageContentEn } from '@/assets/data/pages/about.mdx';
+import { Content as AboutPageContentFr } from '@/assets/data/pages/fr/about.mdx';
 import { Content as AboutPageContentZh } from '@/assets/data/pages/zh/about.mdx';
 
 import { useTranslations } from '@/i18n/ui';
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
   return [
     { params: { lang: undefined } },
     { params: { lang: 'zh' } },
+    { params: { lang: 'fr' } },
   ];
 }
 
@@ -54,7 +56,11 @@ const pageSubtitle = t('about-aldr-subtitle') || "Pioneering precision stainless
     <div class="container mx-auto px-4 py-12">
       <article class="prose prose-zinc prose-lg max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-zinc-200">
         {/* Conditional rendering of MDX content */}
-        { currentLang === 'en' ? <AboutPageContentEn /> : <AboutPageContentZh /> }
+        { 
+          currentLang === 'zh' ? <AboutPageContentZh /> : 
+          currentLang === 'fr' ? <AboutPageContentFr /> : 
+          <AboutPageContentEn /> 
+        }
       </article>
     </div>
   </div>

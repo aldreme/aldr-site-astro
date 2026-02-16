@@ -118,16 +118,16 @@ export default function Footer({ contactInfo, currentLang = 'en' }: FooterProps)
               {t('footer-services')}
             </h3>
             <nav className="flex flex-col gap-3">
-              <a href={currentLang === 'zh' ? "/zh/services/oem" : "/services/oem"} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+              <a href={getLocalizedRoute("/services/oem", currentLang)} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
                 {t('footer-service-oem') || "OEM Service"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/services/odm" : "/services/odm"} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+              <a href={getLocalizedRoute("/services/odm", currentLang)} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
                 {t('footer-service-odm') || "ODM Service"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/services/design" : "/services/design"} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+              <a href={getLocalizedRoute("/services/design", currentLang)} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
                 {t('footer-service-design') || "Design"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/services/manufacturing" : "/services/manufacturing"} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
+              <a href={getLocalizedRoute("/services/manufacturing", currentLang)} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 w-fit">
                 {t('footer-service-manufacturing') || "Manufacturing"}
               </a>
             </nav>
@@ -140,16 +140,16 @@ export default function Footer({ contactInfo, currentLang = 'en' }: FooterProps)
             </h3>
             <div className="flex flex-col gap-3 text-sm text-zinc-400">
               {/* Hardcoded key categories for reliability and SEO structure */}
-              <a href={currentLang === 'zh' ? "/zh/products?category=Cleanroom%20Furniture" : "/products?category=Cleanroom%20Furniture"} className="hover:text-white transition-colors duration-200">
+              <a href={getLocalizedRoute("/products?category=Cleanroom%20Furniture", currentLang)} className="hover:text-white transition-colors duration-200">
                 {t('cat-cleanroom-furniture') || "Cleanroom Furniture"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/products?category=Transport" : "/products?category=Transport"} className="hover:text-white transition-colors duration-200">
+              <a href={getLocalizedRoute("/products?category=Transport", currentLang)} className="hover:text-white transition-colors duration-200">
                 {t('cat-transport') || "Transport Solutions"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/products?category=Storage" : "/products?category=Storage"} className="hover:text-white transition-colors duration-200">
+              <a href={getLocalizedRoute("/products?category=Storage", currentLang)} className="hover:text-white transition-colors duration-200">
                 {t('cat-storage') || "Storage Systems"}
               </a>
-              <a href={currentLang === 'zh' ? "/zh/products?category=Process%20Equipment" : "/products?category=Process%20Equipment"} className="hover:text-white transition-colors duration-200">
+              <a href={getLocalizedRoute("/products?category=Process%20Equipment", currentLang)} className="hover:text-white transition-colors duration-200">
                 {t('cat-process-equipment') || "Process Equipment"}
               </a>
             </div>

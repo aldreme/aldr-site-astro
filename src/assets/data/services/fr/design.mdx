@@ -1,0 +1,71 @@
+---
+title: "Service de Conception"
+description: "Conception de mobilier de salle blanche conforme aux BPF adaptée aux flux de travail aseptiques."
+pubDate: 2026-02-09
+updatedDate: 2026-02-09
+---
+
+import { CtaSection } from '@/components/ui/cta-section';
+import { Box, ClipboardPen, Ruler, ShieldCheck, Sparkles } from 'lucide-react';
+
+<div class="max-w-4xl mx-auto space-y-12 text-zinc-800">
+
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">Ingénierie pour la Conformité</h1>
+    <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+      Des environnements de Classe A aux environnements ISO 8, nous concevons des solutions sanitaires en acier inoxydable qui s'intègrent parfaitement dans vos processus biopharmaceutiques.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <ClipboardPen class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Analyse du Flux de Travail Aseptique</h3>
+      <p class="text-zinc-600">
+        Nous analysons vos flux de personnel et de matériel (PAL/MAL) pour concevoir des meubles qui minimisent les risques de contamination croisée. Nos solutions soutiennent les principes de laboratoire lean et sont optimisées pour un flux unidirectionnel dans les zones de traitement critiques.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Ruler class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Personnalisation Prête pour les BPF</h3>
+      <p class="text-zinc-600">
+        Les tailles standard conviennent rarement aux processus validés. Nous concevons sur mesure des bancs d'habillage, des supports d'enceinte de biosécurité et des passe-plats pour s'adapter aux contraintes architecturales spécifiques tout en maintenant la conformité ISO 14644.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Box class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Simulation Ergonomique 3D</h3>
+      <p class="text-zinc-600">
+        La sécurité et le confort de l'opérateur sont essentiels dans les salles blanches. Nous fournissons des rendus 3D détaillés pour vérifier l'ergonomie des procédures d'habillage et des tâches répétitives, assurant la conformité aux SOP avant le début de la fabrication.
+      </p>
+    </div>
+
+    <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+        <Sparkles class="w-6 h-6" />
+      </div>
+      <h3 class="text-xl font-bold text-zinc-900 mb-2">Principes de Conception Sanitaire</h3>
+      <p class="text-zinc-600">
+        Respectant les directives ASME BPE, nos conceptions comportent des coins arrondis à grand rayon, des soudures sans crevasses et des surfaces inclinées pour un nettoyage et une stérilisation efficaces (compatibilité CIP/SIP), assurant une accumulation nulle de charge biologique.
+      </p>
+    </div>
+  </div>
+
+  <CtaSection 
+    client:visible
+    title="Validez la conception de votre installation"
+    description="Collaborez avec des ingénieurs qui comprennent la rigueur des réglementations FDA et EMA. Nous veillons à ce que l'intégration de votre mobilier soit conforme, ergonomique et efficace."
+    buttonText="Commencez Votre Conception"
+    buttonLink="/fr/contact"
+    iconName="ShieldCheck"
+  />
+
+</div>

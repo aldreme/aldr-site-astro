@@ -558,7 +558,7 @@
         "fridge_cart-02.jpg"
       ],
       "description": "A high-grade stainless steel transport system designed for moving temperature-sensitive biologicals, chemicals, or samples through cleanroom environments. It combines ISO-rated cleanliness compatibility with integrated cooling or insulated storage to maintain specific thermal conditions.",
-      "introduction": "In sterile environments, the \"last mile\" of transport—moving a product from a long-term medical refrigerator to a processing bench—is a critical vulnerability. A Cleanroom Fridge Trolley bridges this gap. Constructed primarily from 304 or 316L stainless steel, these trolleys are non-shedding, corrosion-resistant, and designed with smooth surfaces to prevent the accumulation of particulates and bacteria.",
+      "introduction": "In sterile environments, the \"last mile\" of transport\u2014moving a product from a long-term medical refrigerator to a processing bench\u2014is a critical vulnerability. A Cleanroom Fridge Trolley bridges this gap. Constructed primarily from 304 or 316L stainless steel, these trolleys are non-shedding, corrosion-resistant, and designed with smooth surfaces to prevent the accumulation of particulates and bacteria.",
       "features": [
         "Sterile Construction: Fully welded stainless steel frames with a brushed or electropolished finish to withstand aggressive VHP (Vaporized Hydrogen Peroxide) or alcohol-based cleaning agents.",
         "Advanced Mobility: Equipped with non-marking, ESD-safe (Electrostatic Dissipative) wheels to prevent static build-up and ensure floor integrity.",
@@ -590,7 +590,7 @@
       },
       "application_scenarios": [
         "Pharmaceuticals: Transporting vaccines, insulin, or active pharmaceutical ingredients (APIs) between clean zones.",
-        "Biotechnology: Moving live cell cultures, enzymes, or tissue samples that require strict 2°C to 8°C environments.",
+        "Biotechnology: Moving live cell cultures, enzymes, or tissue samples that require strict 2\u00b0C to 8\u00b0C environments.",
         "Medical Research: Transferring blood plasma or sensitive reagents from cold storage to testing stations.",
         "Semiconductors: Handling specialized chilled chemicals or photoresists that are sensitive to both particles and heat."
       ],
@@ -679,7 +679,7 @@
         "nitrogen_cabinet-02.jpg"
       ],
       "description": "A hermetically sealed storage system that replaces internal atmosphere with pressurized nitrogen gas to achieve near-zero humidity (typically <1% to 10% RH) and an inert, non-reactive environment for high-value sensitive components.",
-      "introduction": "In cleanroom operations, moisture and oxygen are \"invisible contaminants.\" A Nitrogen Cabinet solves this by \"purging\"—forcing nitrogen into the cabinet to push out heavier, moisture-laden air through one-way relief valves. Because nitrogen is an inert gas, it creates a stable \"blanket\" around materials, making it the gold standard for long-term storage of semiconductors, optics, and reactive chemicals.",
+      "introduction": "In cleanroom operations, moisture and oxygen are \"invisible contaminants.\" A Nitrogen Cabinet solves this by \"purging\"\u2014forcing nitrogen into the cabinet to push out heavier, moisture-laden air through one-way relief valves. Because nitrogen is an inert gas, it creates a stable \"blanket\" around materials, making it the gold standard for long-term storage of semiconductors, optics, and reactive chemicals.",
       "features": [
         "Automatic Purge Control: Uses RH (Relative Humidity) sensors to trigger N2 flow only when humidity rises (e.g., after a door opens), significantly reducing gas consumption.",
         "Airtight Construction: Built from 304/316L Stainless Steel or Static-Dissipative PVC with reinforced door frames and non-outgassing gaskets.",
@@ -747,7 +747,7 @@
         "Seamless Construction: Made from 304 or 316L Stainless Steel with fully welded, radiused corners to eliminate cracks where biofilms can grow.",
         "Hands-Free Operation: Equipped with infrared sensors, knee-operated panels, or foot pedals to prevent re-contaminating hands after washing.",
         "Hygienic Drainage: Features a specialized \"rear-set\" or \"conical\" drain to prevent standing water and minimize splashing.",
-        "No Overflow Hole: Unlike domestic sinks, cleanroom models omit the overflow hole—a notorious breeding ground for bacteria and mold.",
+        "No Overflow Hole: Unlike domestic sinks, cleanroom models omit the overflow hole\u2014a notorious breeding ground for bacteria and mold.",
         "Integrated Backsplash: Deep-drawn, high-back designs to protect the surrounding cleanroom walls from moisture and spray.",
         "Piping system made of 316L sanitary tubing"
       ],
@@ -866,12 +866,12 @@
         "work_platform-02.jpg"
       ],
       "description": "A versatile, stainless steel mobile station featuring high-grade casters and an easy-to-sanitize surface, used to bring tools, laptops, or processing equipment directly to the point of need in a cleanroom.",
-      "introduction": "In a dynamic cleanroom environment, fixed benchtop space is often limited. The Mobile Work Platform acts as a 'roving' sterile zone. Unlike standard utility carts, these platforms are designed with ergonomics and cleanliness in balance—ensuring that even as they move between different ISO zones, they do not track contaminants or harbor bacteria in their adjustment mechanisms.",
+      "introduction": "In a dynamic cleanroom environment, fixed benchtop space is often limited. The Mobile Work Platform acts as a 'roving' sterile zone. Unlike standard utility carts, these platforms are designed with ergonomics and cleanliness in balance\u2014ensuring that even as they move between different ISO zones, they do not track contaminants or harbor bacteria in their adjustment mechanisms.",
       "features": [
         "Mobile & Maneuverable: Equipped with high-grade, non-marking casters (often with locking mechanisms) that allow the platform to be moved silently and precisely to any location within the facility.",
         "Adjustable Height: Features a robust mechanical or pneumatic lift system, allowing operators to set the perfect ergonomic height for standing or seated work without compromising stability.",
         "Easy-to-Clean Surfaces: Constructed from electropolished 304 or 316L stainless steel with minimal seams, crevices, or holes to prevent the accumulation of dust or microbial growth.",
-        "Load Capacity: Engineered to support significant weight—typically ranging from 100kg to 250kg—making them suitable for heavy equipment, bulk materials, or multiple workstations.",
+        "Load Capacity: Engineered to support significant weight\u2014typically ranging from 100kg to 250kg\u2014making them suitable for heavy equipment, bulk materials, or multiple workstations.",
         "ESD Safe Options: Available with conductive casters and grounding straps to safely dissipate static electricity, protecting sensitive electronic components.",
         "Access & Safety: Includes integrated handrails or guardrails to ensure personnel safety while working at height, compliant with cleanroom safety standards."
       ],

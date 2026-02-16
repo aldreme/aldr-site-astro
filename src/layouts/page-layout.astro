@@ -7,9 +7,9 @@ import Navbar from '@/components/navbar';
 import SeoHead from '@/components/seo/SeoHead.astro';
 import { supabase } from "@/lib/supabase";
 
-const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd, seoKeywords } = Astro.props;
+const { pageTitle, seoDescription, seoImage, seoType, seoJsonLd, seoKeywords, lang } = Astro.props;
 
-const currentLocale = Astro.currentLocale || "en";
+const currentLocale = lang || Astro.currentLocale || "en";
 const { pathname } = Astro.url;
 
 import { getSiteConfigTranslation } from "@/i18n/utils";

@@ -1,7 +1,7 @@
 ---
 import GalleryMasonry from '@/components/gallery/GalleryMasonry';
-import PageLayout from '@/layouts/page-layout.astro';
 import { useTranslations } from '@/i18n/ui';
+import PageLayout from '@/layouts/page-layout.astro';
 
 // Fetch images from Supabase storage
 import { supabase } from '@/lib/supabase';
@@ -10,6 +10,7 @@ export async function getStaticPaths() {
   return [
     { params: { lang: undefined } },
     { params: { lang: 'zh' } },
+    { params: { lang: 'fr' } },
   ];
 }
 

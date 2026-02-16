@@ -19,6 +19,13 @@ export async function getStaticPaths() {
             params: { lang: 'zh', slug: slug },
             props: { post },
         });
+    } else if (post.id.startsWith('fr/')) {
+        // ID is like 'fr/design', we want URL /fr/services/design
+        const slug = post.id.replace(/^fr\//, '');
+        paths.push({
+            params: { lang: 'fr', slug: slug },
+            props: { post },
+        });
     } else {
         // ID is like 'design', we want URL /services/design
          paths.push({

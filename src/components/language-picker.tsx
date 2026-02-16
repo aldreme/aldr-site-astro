@@ -16,14 +16,19 @@ interface LanguagePickerProps {
 export function LanguagePicker({ currentLang = defaultLang, currentPath = '/' }: LanguagePickerProps) {
   // Simple logic to get clean path without locale prefix
   const getCleanPath = (path: string) => {
-    // If path starts with /zh/, remove it
-    if (path.startsWith('/zh/') || path === '/zh') {
-      return path.replace(/^\/zh/, '') || '/';
-    }
-    return path;
+    // Check if path starts with any language prefix (e.g., /zh, /fr)
+    const langPrefixPattern = new RegExp(`^/(${Object.keys(languages).join('|')})(/|$)`);
+    return path.replace(langPrefixPattern, '/') || '/';
   };
 
   const cleanPath = getCleanPath(currentPath);
+
+  // Helper to construct new path
+  const getLangPath = (lang: string) => {
+    if (lang === defaultLang) return cleanPath;
+    const prefix = `/${lang}`;
+    return `${prefix}${cleanPath === '/' ? '' : cleanPath}`;
+  };
 
   return (
     <DropdownMenu>
@@ -37,12 +42,13 @@ export function LanguagePicker({ currentLang = defaultLang, currentPath = '/' }:
         {Object.entries(languages).map(([lang, label]) => (
           <DropdownMenuItem key={lang} className="hover:bg-zinc-800 focus:bg-zinc-800 cursor-pointer">
             <a
-              href={lang === defaultLang ? cleanPath : `/zh${cleanPath === '/' ? '' : cleanPath}`}
+              href={getLangPath(lang)}
               className={`w-full ${currentLang === lang ? 'font-bold text-white' : 'text-zinc-400'}`}
             >
               {label}
             </a>
           </DropdownMenuItem>
+
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
