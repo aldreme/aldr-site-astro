@@ -118,7 +118,7 @@ function NavLinksDesktop({ currentLang = 'en' }: { currentLang?: string }) {
                     href={getLocalizedRoute(route.href || '#', currentLang)}
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      "bg-transparent text-zinc-100 hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:text-white data-[active]:bg-zinc-800"
+                      "bg-transparent text-zinc-100 hover:bg-zinc-800 hover:text-white focus:bg-zinc-800 focus:text-white data-active:bg-zinc-800"
                     )}
                   >
                     {/* @ts-ignore */}
@@ -256,7 +256,7 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
             <Button variant="ghost" size="icon" className="relative text-zinc-100 hover:bg-zinc-800 hover:text-white" onClick={() => isCartOpen.set(true)}>
               <FileText className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] h-[18px] flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-4.5 h-4.5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}

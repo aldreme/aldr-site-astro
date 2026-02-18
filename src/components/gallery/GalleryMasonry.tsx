@@ -47,7 +47,7 @@ export default function GalleryMasonry({ images }: GalleryMasonryProps) {
             className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900"
             onClick={() => handleImageClick(image)}
           >
-            <div className={cn("relative", !imageLoaded[image.src] && "min-h-[200px]")}>
+            <div className={cn("relative", !imageLoaded[image.src] && "min-h-50")}>
               {!imageLoaded[image.src] && (
                 <Skeleton className="absolute inset-0 w-full h-full z-10" />
               )}
