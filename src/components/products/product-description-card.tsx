@@ -45,7 +45,7 @@ export function ProductDescriptionCard(props: Props) {
         </span>
       </div>
 
-      <ProductDescriptionTab className='w-full mb-8' productDescription={productDescription} productFeatures={productFeatures} />
+      <ProductDescriptionTab className='w-full mb-8' productDescription={productDescription} productFeatures={productFeatures} lang={lang} />
 
       <div className='bg-zinc-50 rounded-lg p-6 border border-zinc-100'>
         <h3 className="text-sm font-semibold text-zinc-900 uppercase tracking-wide mb-4">

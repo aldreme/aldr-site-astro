@@ -386,5 +386,7 @@
     "cart.send-request": "发送请求",
     "cart.sending": "正在发送...",
     "cart.items": "件商品",
-    "cart.error.submit": "提交请求时出错。请重试。"
+    "cart.error.submit": "提交请求时出错。请重试。",
+    "product.tabs.description": "产品描述",
+    "product.tabs.features": "产品特性"
 }

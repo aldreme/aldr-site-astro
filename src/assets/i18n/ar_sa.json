@@ -160,5 +160,7 @@
   "cart.send-request": "إرسال الطلب",
   "cart.sending": "جاري إرسال الطلب...",
   "cart.items": "عناصر",
-  "cart.error.submit": "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى."
+  "cart.error.submit": "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.",
+  "product.tabs.description": "المواصفات",
+  "product.tabs.features": "الميزات"
 }

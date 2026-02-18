@@ -160,5 +160,7 @@
   "cart.send-request": "Enviar Solicitud",
   "cart.sending": "Enviando Solicitud...",
   "cart.items": "Artículos",
-  "cart.error.submit": "Hubo un error al enviar su solicitud. Por favor intente de nuevo."
+  "cart.error.submit": "Hubo un error al enviar su solicitud. Por favor intente de nuevo.",
+  "product.tabs.description": "Descripción",
+  "product.tabs.features": "Características"
 }

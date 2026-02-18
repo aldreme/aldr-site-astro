@@ -384,5 +384,7 @@
     "cart.send-request": "Send Request",
     "cart.sending": "Sending Request...",
     "cart.items": "Items",
-    "cart.error.submit": "There was an error submitting your request. Please try again."
+    "cart.error.submit": "There was an error submitting your request. Please try again.",
+    "product.tabs.description": "Description",
+    "product.tabs.features": "Features"
 }
