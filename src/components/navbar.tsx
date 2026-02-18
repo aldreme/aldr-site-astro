@@ -226,11 +226,13 @@ function NavLinksMobile({ currentLang = 'en', currentPath }: { currentLang?: str
 }
 
 export default function Navbar({ currentLang, currentPath }: { currentLang?: string, currentPath?: string }) {
+  const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const $cartItems = useStore(cartItems);
   const cartCount = Object.values($cartItems).reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -255,7 +257,7 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="relative text-zinc-100 hover:bg-zinc-800 hover:text-white" onClick={() => isCartOpen.set(true)}>
               <FileText className="h-5 w-5" />
-              {cartCount > 0 && (
+              {isMounted && cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-4.5 h-4.5 flex items-center justify-center">
                   {cartCount}
                 </span>
