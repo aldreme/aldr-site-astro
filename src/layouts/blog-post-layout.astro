@@ -1,0 +1,75 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+import { Image } from "astro:assets";
+import PageLayout from "./page-layout.astro";
+
+const { frontmatter } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<PageLayout pageTitle={frontmatter.title} lang={lang} seoDescription={frontmatter.description}>
+  <article class="bg-white min-h-screen">
+    {/* Header Section */}
+    <div class="bg-zinc-50 border-b border-zinc-200">
+      <div class="container mx-auto px-4 py-16 sm:py-24 max-w-4xl text-center">
+        <div class="flex items-center justify-center gap-2 text-sm text-zinc-500 mb-6">
+            {frontmatter.pubDate && (
+                <time datetime={frontmatter.pubDate.toISOString()}>
+                {frontmatter.pubDate.toLocaleDateString(lang, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}
+                </time>
+            )}
+            {frontmatter.author && (
+                <>
+                <span>•</span>
+                <span>{frontmatter.author}</span>
+                </>
+            )}
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-900 mb-6">
+          {frontmatter.title}
+        </h1>
+
+        {frontmatter.description && (
+          <p class="text-xl text-zinc-600 leading-relaxed">
+            {frontmatter.description}
+          </p>
+        )}
+      </div>
+    </div>
+
+    {/* Content Section */}
+    <div class="container mx-auto px-4 py-16 max-w-3xl">
+        {frontmatter.coverImage && (
+            <div class="mb-12 rounded-xl overflow-hidden shadow-lg">
+                <Image 
+                    src={frontmatter.coverImage.url} 
+                    alt={frontmatter.coverImage.alt}
+                    class="w-full h-auto object-cover"
+                />
+            </div>
+        )}
+
+        <div class="prose prose-zinc prose-lg mx-auto">
+            <slot />
+        </div>
+        
+        {/* Tags */}
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div class="mt-16 pt-8 border-t border-zinc-100">
+                <div class="flex flex-wrap gap-2">
+                    {frontmatter.tags.map((tag: string) => (
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-zinc-100 text-zinc-700">
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        )}
+    </div>
+  </article>
+</PageLayout>

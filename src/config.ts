@@ -14,7 +14,8 @@ interface RoutesConfig {
   products: RouteData;
   services: RouteData;
   gallery: RouteData;
-  // news: RouteData
+  // news: RouteData;
+  blog: RouteData;
   company: RouteData;
   contact: RouteData;
 }
@@ -22,7 +23,7 @@ interface RoutesConfig {
 export const ROUTES: RoutesConfig = {
   home: { name: "Home", href: "/", i18nKey: "navbar-home" },
   products: { name: "Products", href: "/products", i18nKey: "navbar-products" },
-  gallery: { name: "Gallery", href: "/gallery", i18nKey: "Products Gallery" },
+  gallery: { name: "Gallery", href: "/gallery", i18nKey: "navbar-gallery" },
   services: {
     name: "Services",
     i18nKey: "footer-services",
@@ -85,7 +86,8 @@ export const ROUTES: RoutesConfig = {
       },
     ],
   },
-  // news: { name: 'News', href: '/news' },
+  // news: { name: "News", href: "/news", i18nKey: "nav-news" },
+  blog: { name: "Blog", href: "/blog", i18nKey: "nav-blog" },
   contact: { name: "Contact", href: "/contact", i18nKey: "navbar-contact" },
 };
 

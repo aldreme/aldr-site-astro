@@ -1,0 +1,86 @@
+---
+import { useTranslations } from '@/i18n/ui';
+import PageLayout from '@/layouts/page-layout.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'zh' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = lang || 'en';
+const t = useTranslations(currentLang as any);
+
+const allPosts = await getCollection('blogs');
+const posts = allPosts
+    .filter(post => post.id.startsWith(currentLang + '/'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const pageTitle = (t as any)('blog-page-title') || "Industry Insights & News";
+const seoDescription = (t as any)('blog-page-desc') || "Expert analysis, product updates, and industry trends in pharma-grade cleanroom environments.";
+
+---
+
+<PageLayout pageTitle={pageTitle} lang={currentLang} seoDescription={seoDescription}>
+  <div class="bg-zinc-50 min-h-screen">
+    {/* Hero */}
+    <div class="bg-zinc-900 py-24 sm:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            {/* Abstract background pattern could go here */}
+        </div>
+        <div class="relative container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-6">
+                {pageTitle}
+            </h1>
+            <p class="text-lg text-zinc-300 max-w-2xl mx-auto">
+                {seoDescription}
+            </p>
+        </div>
+    </div>
+
+    {/* Blog List */}
+    <div class="container mx-auto px-4 py-16 sm:py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map(post => (
+                <a href={`/${currentLang}/blog/${post.id.split('/').slice(1).join('/')}`} class="group flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-zinc-100">
+                    {post.data.coverImage && (
+                        <div class="aspect-video w-full overflow-hidden bg-zinc-100">
+                            <Image 
+                                src={post.data.coverImage.url} 
+                                alt={post.data.coverImage.alt}
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                        </div>
+                    )}
+                    <div class="flex-1 p-6 flex flex-col">
+                        <div class="flex items-center gap-x-4 text-xs text-zinc-500 mb-4">
+                            <time datetime={post.data.pubDate.toISOString()}>
+                                {post.data.pubDate.toLocaleDateString(currentLang, { year: 'numeric', month: 'short', day: 'numeric' })}
+                            </time>
+                            {post.data.tags && post.data.tags[0] && (
+                                <span class="relative z-10 rounded-full bg-zinc-50 px-3 py-1.5 font-medium text-zinc-600 hover:bg-zinc-100">
+                                    {post.data.tags[0]}
+                                </span>
+                            )}
+                        </div>
+                        <h3 class="mt-3 text-lg font-semibold leading-6 text-zinc-900 group-hover:text-amber-600 transition-colors">
+                            {post.data.title}
+                        </h3>
+                        <p class="mt-5 line-clamp-3 text-sm leading-6 text-zinc-600 flex-1">
+                            {post.data.description}
+                        </p>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+  </div>
+</PageLayout>

@@ -29,4 +29,21 @@ const services = defineCollection({
   }),
 });
 
-export const collections = { news, services };
+const blogs = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/assets/data/blogs" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      author: z.string(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      coverImage: z.object({
+        url: image(),
+        alt: z.string(),
+      }).optional(),
+      tags: z.array(z.string()).optional(),
+    }),
+});
+
+export const collections = { news, services, blogs };
