@@ -1,4 +1,5 @@
 
+import { SUPPORTED_LANGUAGES } from "@/i18n/ui";
 import { supabase } from "@/lib/supabase";
 import {
   Button,
@@ -7,6 +8,8 @@ import {
   Select,
   SelectItem,
   Switch,
+  Tab,
+  Tabs,
   Textarea
 } from "@heroui/react";
 import { ArrowLeft, Plus, Save, Trash, X } from "lucide-react";
@@ -63,7 +66,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
         application_scenarios: initialData.application_scenarios || [],
         specs: initialData.specs || {},
         engineering_drawings: initialData.engineering_drawings || { ortho_projections: [], models: [] },
-        policies: initialData.policies || { warranty: "", return: "", shipping: "" }
+        policies: initialData.policies || { warranty: "", return: "", shipping: "" },
+        translations: initialData.translations || {}
       }));
     }
   }, [initialData]);
@@ -74,15 +78,98 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
   const [drawingInput, setDrawingInput] = useState("");
   const [modelInput, setModelInput] = useState("");
 
-  const handleChange = (name: string, value: any) => {
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
+  const [selectedLang, setSelectedLang] = useState<string>("en");
+
+  const getTranslatableValue = (path: string | string[]) => {
+    const keys = Array.isArray(path) ? path : [path];
+
+    const getNested = (obj: any, ks: string[]) => {
+      let current = obj;
+      for (const k of ks) {
+        if (current === undefined || current === null) return undefined;
+        current = current[k];
+      }
+      return current;
+    };
+
+    if (selectedLang === "en") {
+      const val = getNested(formData, keys);
+      return val === undefined ? "" : val;
+    }
+
+    const translatedObj = formData.translations?.[selectedLang];
+    const translatedValue = translatedObj ? getNested(translatedObj, keys) : undefined;
+
+    if (translatedValue === undefined) {
+      const baseValue = getNested(formData, keys);
+      if (Array.isArray(baseValue)) return baseValue;
+    }
+
+    if (typeof translatedValue === 'object' && translatedValue !== null && !Array.isArray(translatedValue) && Object.keys(translatedValue).length === 0) return "";
+
+    return translatedValue === undefined ? "" : translatedValue;
   };
 
-  const handleNestedChange = (parent: string, key: string, value: any) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      [parent]: { ...prev[parent], [key]: value }
-    }));
+  const updateTranslatableField = (path: string | string[], value: any) => {
+    const keys = Array.isArray(path) ? path : [path];
+
+    if (selectedLang === "en") {
+      setFormData((prev: any) => {
+        const newData = { ...prev };
+        let current = newData;
+        for (let i = 0; i < keys.length - 1; i++) {
+          if (!current[keys[i]]) current[keys[i]] = {};
+          current[keys[i]] = { ...current[keys[i]] };
+          current = current[keys[i]];
+        }
+        current[keys[keys.length - 1]] = value;
+        return newData;
+      });
+    } else {
+      setFormData((prev: any) => {
+        const langTrans = (prev.translations || {})[selectedLang] || {};
+        const newLangTrans = JSON.parse(JSON.stringify(langTrans));
+
+        let current = newLangTrans;
+        for (let i = 0; i < keys.length - 1; i++) {
+          if (!current[keys[i]]) current[keys[i]] = {};
+          current = current[keys[i]];
+        }
+        current[keys[keys.length - 1]] = value;
+
+        return {
+          ...prev,
+          translations: {
+            ...(prev.translations || {}),
+            [selectedLang]: newLangTrans
+          }
+        };
+      });
+    }
+  };
+
+  const getTranslatableFeatures = () => {
+    const list = getTranslatableValue("features");
+    return Array.isArray(list) ? list.join("\n") : list;
+  };
+
+  const addTranslatableArrayItem = (path: string | string[], value: string, setter: (val: string) => void) => {
+    if (!value.trim()) return;
+    const currentList = getTranslatableValue(path);
+    const arr = Array.isArray(currentList) ? currentList : [];
+    updateTranslatableField(path, [...arr, value.trim()]);
+    setter("");
+  };
+
+  const removeTranslatableArrayItem = (path: string | string[], index: number) => {
+    const currentList = getTranslatableValue(path);
+    const arr = Array.isArray(currentList) ? [...currentList] : [];
+    arr.splice(index, 1);
+    updateTranslatableField(path, arr);
+  };
+
+  const handleChange = (name: string, value: any) => {
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
   };
 
   const handleSpecsChange = (path: string[], value: any) => {
@@ -101,25 +188,13 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
   const handleFeaturesChange = (value: string) => {
     // Simple line-separated for now
     const features = value.split("\n");
-    setFormData((prev: any) => ({ ...prev, features }));
+    if (selectedLang === "en") {
+      setFormData((prev: any) => ({ ...prev, features }));
+    } else {
+      updateTranslatableField("features", features);
+    }
   };
 
-  const addArrayItem = (field: string, value: string, setter: (val: string) => void) => {
-    if (!value.trim()) return;
-    setFormData((prev: any) => ({
-      ...prev,
-      [field]: [...(prev[field] || []), value.trim()]
-    }));
-    setter("");
-  };
-
-  const removeArrayItem = (field: string, index: number) => {
-    setFormData((prev: any) => {
-      const newArray = [...(prev[field] || [])];
-      newArray.splice(index, 1);
-      return { ...prev, [field]: newArray };
-    });
-  };
 
   const addNestedArrayItem = (parent: string, field: string, value: string, setter: (val: string) => void) => {
     if (!value.trim()) return;
@@ -268,6 +343,25 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
         </div>
       </div>
 
+      <div className="flex items-center gap-4 bg-white dark:bg-zinc-900 p-2 rounded-2xl border border-gray-100 dark:border-zinc-800 w-fit">
+        <Tabs
+          aria-label="Language Options"
+          selectedKey={selectedLang}
+          onSelectionChange={(key) => setSelectedLang(key as string)}
+          color="primary"
+          radius="full"
+          classNames={{
+            cursor: "w-full",
+            tab: "px-6 h-9",
+            tabContent: "group-data-[selected=true]:text-white"
+          }}
+        >
+          {SUPPORTED_LANGUAGES.map(lang => (
+            <Tab key={lang.key} title={lang.label} />
+          ))}
+        </Tabs>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {/* General Information */}
@@ -283,8 +377,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   base: "mb-2",
                   inputWrapper: "rounded-2xl h-12"
                 }}
-                value={formData.name}
-                onChange={(e) => handleChange("name", e.target.value)}
+                value={getTranslatableValue("name")}
+                onChange={(e) => updateTranslatableField("name", e.target.value)}
                 required
               />
               <Input
@@ -310,8 +404,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   base: "mb-2",
                   inputWrapper: "rounded-2xl"
                 }}
-                value={formData.description}
-                onChange={(e) => handleChange("description", e.target.value)}
+                value={getTranslatableValue("description")}
+                onChange={(e) => updateTranslatableField("description", e.target.value)}
               />
               <Textarea
                 label={t("admin.products.intro")}
@@ -323,8 +417,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   inputWrapper: "rounded-2xl"
                 }}
                 minRows={8}
-                value={formData.introduction}
-                onChange={(e) => handleChange("introduction", e.target.value)}
+                value={getTranslatableValue("introduction")}
+                onChange={(e) => updateTranslatableField("introduction", e.target.value)}
               />
             </div>
           </section>
@@ -340,7 +434,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
               variant="bordered"
               classNames={{ inputWrapper: "rounded-2xl" }}
               minRows={6}
-              value={Array.isArray(formData.features) ? formData.features.join("\n") : formData.features || ""}
+              value={getTranslatableFeatures()}
               onChange={(e) => handleFeaturesChange(e.target.value)}
             />
           </section>
@@ -389,8 +483,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   placeholder={t("admin.products.placeholder.material")}
                   labelPlacement="outside"
                   variant="bordered"
-                  value={formData.specs?.material?.value || ""}
-                  onChange={(e) => handleSpecsChange(["material", "value"], e.target.value)}
+                  value={getTranslatableValue(["specs", "material", "value"])}
+                  onChange={(e) => updateTranslatableField(["specs", "material", "value"], e.target.value)}
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <div className="flex items-center justify-between px-2">
@@ -471,8 +565,11 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 minRows={3}
                 variant="bordered"
                 classNames={{ inputWrapper: "rounded-xl" }}
-                value={Array.isArray(formData.specs?.process_technology?.value) ? formData.specs?.process_technology?.value.join("\n") : ""}
-                onChange={(e) => handleSpecsChange(["process_technology", "value"], e.target.value.split("\n"))}
+                value={(() => {
+                  const val = getTranslatableValue(["specs", "process_technology", "value"]);
+                  return Array.isArray(val) ? val.join("\n") : "";
+                })()}
+                onChange={(e) => updateTranslatableField(["specs", "process_technology", "value"], e.target.value.split("\n"))}
               />
             </div>
           </section>
@@ -483,16 +580,20 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             <div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{t("admin.products.tags")}</h3>
               <div className="flex flex-wrap gap-2 mb-3">
-                {formData.tags?.map((tag: string, i: number) => (
-                  <Chip
-                    key={i}
-                    onClose={() => removeArrayItem("tags", i)}
-                    variant="flat"
-                    color="secondary"
-                  >
-                    {tag}
-                  </Chip>
-                ))}
+                {(() => {
+                  const val = getTranslatableValue("tags");
+                  const arr = Array.isArray(val) ? val : [];
+                  return arr.map((tag: string, i: number) => (
+                    <Chip
+                      key={i}
+                      onClose={() => removeTranslatableArrayItem("tags", i)}
+                      variant="flat"
+                      color="secondary"
+                    >
+                      {tag}
+                    </Chip>
+                  ));
+                })()}
               </div>
               <div className="flex gap-2">
                 <Input
@@ -502,7 +603,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
-                      addArrayItem("tags", tagInput, setTagInput);
+                      addTranslatableArrayItem("tags", tagInput, setTagInput);
                     }
                   }}
                   variant="bordered"
@@ -512,7 +613,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 <Button
                   isIconOnly
                   size="sm"
-                  onPress={() => addArrayItem("tags", tagInput, setTagInput)}
+                  onPress={() => addTranslatableArrayItem("tags", tagInput, setTagInput)}
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
@@ -523,16 +624,20 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
             <div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{t("admin.products.scenarios")}</h3>
               <div className="flex flex-wrap gap-2 mb-3">
-                {formData.application_scenarios?.map((item: string, i: number) => (
-                  <Chip
-                    key={i}
-                    onClose={() => removeArrayItem("application_scenarios", i)}
-                    variant="flat"
-                    color="primary"
-                  >
-                    {item}
-                  </Chip>
-                ))}
+                {(() => {
+                  const val = getTranslatableValue("application_scenarios");
+                  const arr = Array.isArray(val) ? val : [];
+                  return arr.map((item: string, i: number) => (
+                    <Chip
+                      key={i}
+                      onClose={() => removeTranslatableArrayItem("application_scenarios", i)}
+                      variant="flat"
+                      color="primary"
+                    >
+                      {item}
+                    </Chip>
+                  ));
+                })()}
               </div>
               <div className="flex gap-2">
                 <Input
@@ -542,7 +647,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
-                      addArrayItem("application_scenarios", scenarioInput, setScenarioInput);
+                      addTranslatableArrayItem("application_scenarios", scenarioInput, setScenarioInput);
                     }
                   }}
                   variant="bordered"
@@ -552,7 +657,7 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                 <Button
                   isIconOnly
                   size="sm"
-                  onPress={() => addArrayItem("application_scenarios", scenarioInput, setScenarioInput)}
+                  onPress={() => addTranslatableArrayItem("application_scenarios", scenarioInput, setScenarioInput)}
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
@@ -568,8 +673,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   placeholder={t("admin.products.placeholder.warranty")}
                   labelPlacement="outside"
                   variant="bordered"
-                  value={formData.policies?.warranty || ""}
-                  onChange={(e) => handleNestedChange("policies", "warranty", e.target.value)}
+                  value={getTranslatableValue(["policies", "warranty"])}
+                  onChange={(e) => updateTranslatableField(["policies", "warranty"], e.target.value)}
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <Input
@@ -577,8 +682,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   placeholder={t("admin.products.placeholder.shipping")}
                   labelPlacement="outside"
                   variant="bordered"
-                  value={formData.policies?.shipping || ""}
-                  onChange={(e) => handleNestedChange("policies", "shipping", e.target.value)}
+                  value={getTranslatableValue(["policies", "shipping"])}
+                  onChange={(e) => updateTranslatableField(["policies", "shipping"], e.target.value)}
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
                 <Input
@@ -586,8 +691,8 @@ export default function ProductForm({ initialData, isNew = false }: ProductFormP
                   placeholder={t("admin.products.placeholder.return")}
                   labelPlacement="outside"
                   variant="bordered"
-                  value={formData.policies?.return || ""}
-                  onChange={(e) => handleNestedChange("policies", "return", e.target.value)}
+                  value={getTranslatableValue(["policies", "return"])}
+                  onChange={(e) => updateTranslatableField(["policies", "return"], e.target.value)}
                   classNames={{ inputWrapper: "rounded-xl" }}
                 />
               </div>

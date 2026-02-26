@@ -1,4 +1,5 @@
 
+import { SUPPORTED_LANGUAGES } from "@/i18n/ui";
 import { supabase } from "@/lib/supabase";
 import {
   Button,
@@ -134,8 +135,9 @@ export default function SettingsForm() {
             tabContent: "group-data-[selected=true]:text-white"
           }}
         >
-          <Tab key="en" title={t('admin.settings.tabs.en')} />
-          <Tab key="zh" title={t('admin.settings.tabs.zh')} />
+          {SUPPORTED_LANGUAGES.map(lang => (
+            <Tab key={lang.key} title={lang.label} />
+          ))}
         </Tabs>
       </div>
 

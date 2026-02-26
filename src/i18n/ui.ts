@@ -12,6 +12,11 @@ export const languages = {
   ar: "العربية",
 };
 
+export const SUPPORTED_LANGUAGES = Object.entries(languages).map(([key, label]) => ({
+  key,
+  label
+}));
+
 export const defaultLang = "en";
 
 export const ui = {
