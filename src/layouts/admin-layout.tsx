@@ -34,6 +34,7 @@ function AdminLayoutContent({ children, currentPath: propCurrentPath }: AdminLay
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [currentPath, setCurrentPath] = useState(propCurrentPath || (typeof window !== 'undefined' ? window.location.pathname : ''));
   const { t } = useAdminTranslation();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
   useEffect(() => {
     if (!propCurrentPath) {
@@ -48,6 +49,8 @@ function AdminLayoutContent({ children, currentPath: propCurrentPath }: AdminLay
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
         window.location.href = "/admin/login";
+      } else {
+        setUserEmail(session.user.email ?? null);
       }
     };
     checkSession();
@@ -107,6 +110,14 @@ function AdminLayoutContent({ children, currentPath: propCurrentPath }: AdminLay
             })}
           </nav>
           <div className="absolute bottom-0 w-full p-4 border-t border-gray-100 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+            {userEmail && (
+              <div className="mb-4 px-4 py-3 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800/50 shadow-sm text-left">
+                <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-0.5">{t('admin.welcome_user')}</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate" title={userEmail}>
+                  {userEmail}
+                </p>
+              </div>
+            )}
             <div className="flex items-center justify-between gap-2 mb-2">
               <AdminLanguagePicker />
             </div>

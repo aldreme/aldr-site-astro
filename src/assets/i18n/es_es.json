@@ -162,5 +162,6 @@
   "cart.items": "Artículos",
   "cart.error.submit": "Hubo un error al enviar su solicitud. Por favor intente de nuevo.",
   "product.tabs.description": "Descripción",
-  "product.tabs.features": "Características"
+  "product.tabs.features": "Características",
+  "admin.welcome_user": "Conectado como"
 }

@@ -386,5 +386,6 @@
     "cart.items": "Items",
     "cart.error.submit": "There was an error submitting your request. Please try again.",
     "product.tabs.description": "Description",
-    "product.tabs.features": "Features"
+    "product.tabs.features": "Features",
+    "admin.welcome_user": "Logged in as"
 }

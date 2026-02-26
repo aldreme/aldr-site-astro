@@ -162,5 +162,6 @@
   "cart.items": "عناصر",
   "cart.error.submit": "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.",
   "product.tabs.description": "المواصفات",
-  "product.tabs.features": "الميزات"
+  "product.tabs.features": "الميزات",
+  "admin.welcome_user": "تم تسجيل الدخول كـ"
 }

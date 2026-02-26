@@ -386,5 +386,6 @@
   "cart.items": "Articles",
   "cart.error.submit": "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer.",
   "product.tabs.description": "Description",
-  "product.tabs.features": "Caractéristiques"
+  "product.tabs.features": "Caractéristiques",
+  "admin.welcome_user": "Connecté en tant que"
 }
