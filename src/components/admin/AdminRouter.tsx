@@ -8,6 +8,7 @@ import ProductForm from "./products/ProductForm";
 import ProductList from "./products/ProductList";
 import RFQList from "./rfqs/RFQList";
 import SettingsForm from "./settings/SettingsForm";
+import ShortUrlManager from "./short-urls/ShortUrlManager";
 
 export default function AdminRouter() {
   const [path, setPath] = useState(window.location.pathname);
@@ -64,6 +65,10 @@ export default function AdminRouter() {
 
   if (cleanPath === "/admin/settings") {
     return <SettingsForm />;
+  }
+
+  if (cleanPath === "/admin/short-urls") {
+    return <ShortUrlManager />;
   }
 
   return <div>404 - Page Not Found</div>;

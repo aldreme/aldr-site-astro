@@ -28,7 +28,7 @@ port = 54322
 shadow_port = 54320
 # The database major version to use. This has to be the same as your remote database's. Run `SHOW
 # server_version;` on the remote database to check.
-major_version = 15
+major_version = 17
 
 [db.pooler]
 enabled = false
@@ -270,7 +270,8 @@ verify_jwt = false
 verify_jwt = false
 
 [analytics]
-enabled = true
+# Disable analytics as the container cannot be started in dev mode.
+enabled = false
 port = 54327
 # Configure one of the supported backends: `postgres`, `bigquery`.
 backend = "postgres"
@@ -298,3 +299,6 @@ entrypoint = "./functions/trigger_github_cicd_workflow/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/trigger-github-cicdworkflow/*.html" ]
+
+[functions.url_shortener]
+verify_jwt = false

@@ -163,5 +163,22 @@
   "cart.error.submit": "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.",
   "product.tabs.description": "المواصفات",
   "product.tabs.features": "الميزات",
-  "admin.welcome_user": "تم تسجيل الدخول كـ"
+  "admin.welcome_user": "تم تسجيل الدخول كـ",
+  "admin.short_urls": "Short URLs",
+  "admin.short_urls.title": "URL Shortener",
+  "admin.short_urls.subtitle": "Create and manage shortened links.",
+  "admin.short_urls.new": "New Short URL",
+  "admin.short_urls.empty": "No short URLs found.",
+  "admin.short_urls.create": "Create Short URL",
+  "admin.short_urls.edit": "Edit Short URL",
+  "admin.short_urls.columns.slug": "Slug",
+  "admin.short_urls.columns.target": "Target URL",
+  "admin.short_urls.columns.expired_at": "Expires At",
+  "admin.short_urls.form.target_url": "Target URL",
+  "admin.short_urls.form.slug": "Custom Slug (Optional)",
+  "admin.short_urls.form.expired_at": "Expiration Date (Optional)",
+  "admin.common.save": "يحفظ",
+  "admin.common.actions": "سلوك",
+  "admin.common.loading": "جارٍ التحميل...",
+  "admin.common.confirm_delete": "هل أنت متأكد أنك تريد حذف هذا العنصر بعينه؟"
 }

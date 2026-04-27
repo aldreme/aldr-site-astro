@@ -12,7 +12,8 @@ import {
   MessageSquare,
   Package,
   Settings,
-  Users
+  Users,
+  Link
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -27,6 +28,7 @@ const NAV_ITEMS = [
   { name: "admin.rfqs", href: "/admin/rfqs", icon: FileText },
   { name: "admin.messages", href: "/admin/messages", icon: MessageSquare },
   { name: "admin.partners", href: "/admin/partners", icon: Users },
+  { name: "admin.short_urls", href: "/admin/short-urls", icon: Link },
   { name: "admin.settings", href: "/admin/settings", icon: Settings },
 ];
 

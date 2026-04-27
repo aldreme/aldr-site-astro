@@ -2,7 +2,31 @@
 import '@/styles/globals.css';
 
 import PageLayout from '../layouts/page-layout.astro';
+
+const supabaseBaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const functionUrl = supabaseBaseUrl.includes('.supabase.co')
+  ? supabaseBaseUrl.replace('.supabase.co', '.supabase.co/functions/v1/url_shortener')
+  : `${supabaseBaseUrl}/functions/v1/url_shortener`;
 ---
+<script define:vars={{ functionUrl }}>
+  const path = window.location.pathname;
+  if (path.startsWith('/s/')) {
+    console.info(`[Aldreme Router] Intercepted fallback pattern for short URL: ${path}`);
+    
+    // Hide the 404 interface to prevent visual flashing during the redirect
+    document.documentElement.style.display = 'none';
+
+    const slug = path.split('/s/')[1];
+    if (slug) {
+      console.info(`[Aldreme Router] Slug '${slug}' identified. Redirecting to validation gateway...`);
+      // Use replace() so the 404 doesn't get trapped in the browser's back-button history
+      window.location.replace(`${functionUrl}?slug=${slug}`);
+    } else {
+      console.warn(`[Aldreme Router] Short URL pattern detected but no slug found. Displaying 404.`);
+      document.documentElement.style.display = 'block';
+    }
+  }
+</script>
 <PageLayout>
   <main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
     <div class="text-center">

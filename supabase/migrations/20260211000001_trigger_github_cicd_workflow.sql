@@ -1,4 +1,5 @@
 -- Create triggers for 'products' table
+drop trigger if exists on_products_change on public.products;
 create trigger on_products_change
 after insert or update or delete on public.products
 for each row
@@ -11,6 +12,7 @@ execute function "supabase_functions"."http_request"(
 );
 
 -- Create triggers for 'partners' table
+drop trigger if exists on_partners_change on public.partners;
 create trigger on_partners_change
 after insert or update or delete on public.partners
 for each row

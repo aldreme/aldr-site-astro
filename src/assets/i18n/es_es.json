@@ -163,5 +163,22 @@
   "cart.error.submit": "Hubo un error al enviar su solicitud. Por favor intente de nuevo.",
   "product.tabs.description": "Descripción",
   "product.tabs.features": "Características",
-  "admin.welcome_user": "Conectado como"
+  "admin.welcome_user": "Conectado como",
+  "admin.short_urls": "URLs cortas",
+  "admin.short_urls.title": "Acortador de URL",
+  "admin.short_urls.subtitle": "Cree y administre enlaces acortados.",
+  "admin.short_urls.new": "Nueva URL corta",
+  "admin.short_urls.empty": "No se encontraron URLs cortas.",
+  "admin.short_urls.create": "Crear URL corta",
+  "admin.short_urls.edit": "Editar URL corta",
+  "admin.short_urls.columns.slug": "Slug",
+  "admin.short_urls.columns.target": "URL de destino",
+  "admin.short_urls.columns.expired_at": "Expira en",
+  "admin.short_urls.form.target_url": "URL de destino",
+  "admin.short_urls.form.slug": "Slug personalizado (Opcional)",
+  "admin.short_urls.form.expired_at": "Fecha de caducidad (Opcional)",
+  "admin.common.save": "Guardar",
+  "admin.common.actions": "Comportamiento",
+  "admin.common.loading": "Cargando...",
+  "admin.common.confirm_delete": "¿Está seguro de que desea eliminar este elemento en particular?"
 }
