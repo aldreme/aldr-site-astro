@@ -27,3 +27,6 @@ build.log*
 # dot env files
 .env.local
 .env.development.local
+
+# agent skills from github
+.agents/skills/supabase*

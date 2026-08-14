@@ -51,5 +51,6 @@
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }
