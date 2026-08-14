@@ -243,7 +243,7 @@ export default function Navbar({ currentLang, currentPath }: { currentLang?: str
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full transition-all duration-300 md:min-w-400',
+        'sticky top-0 z-40 w-full transition-all duration-300',
         isScrolled
           ? 'bg-zinc-900/70 backdrop-blur-md border-b border-zinc-800/50 shadow-lg'
           : 'bg-zinc-900 border-b border-zinc-700'
