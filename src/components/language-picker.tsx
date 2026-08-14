@@ -31,7 +31,7 @@ export function LanguagePicker({ currentLang = defaultLang, currentPath = '/' }:
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="text-zinc-100 hover:bg-zinc-800 hover:text-white">
           <Globe className="h-5 w-5" />
