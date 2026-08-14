@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "gen:crm-schema": "tsx scripts/generate-crm-schema.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
