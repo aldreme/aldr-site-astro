@@ -1,7 +1,7 @@
 ---
 import AdminApp from "@/components/admin/AdminApp";
 import { supabase } from "@/lib/supabase";
-import AdminLayout from "@/layouts/admin-layout.astro";
+import AdminRootLayout from "@/layouts/admin-root-layout.astro";
 
 export async function getStaticPaths() {
   const paths = [
@@ -28,6 +28,6 @@ export async function getStaticPaths() {
 
 ---
 
-<AdminLayout title="ALDR Admin Console">
+<AdminRootLayout title="ALDR Admin Console">
     <AdminApp client:only="react" />
-</AdminLayout>
+</AdminRootLayout>
