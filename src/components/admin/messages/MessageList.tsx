@@ -18,6 +18,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
+  Tooltip,
   useDisclosure
 } from "@heroui/react";
 import { ChevronDown, Eye, Trash } from "lucide-react";
@@ -60,6 +61,12 @@ export default function MessageList() {
   };
 
   const handleUpdateStatus = async (id: number, status: string) => {
+    // Optimistic update to avoid full table loading flicker
+    setMessages((prev) => prev.map((m) => (m.id === id ? { ...m, status } : m)));
+    if (selectedMessage && selectedMessage.id === id) {
+      setSelectedMessage((prev: any) => (prev ? { ...prev, status } : null));
+    }
+
     const { error } = await supabase
       .from("cx_contact_messages")
       .update({ status })
@@ -67,7 +74,6 @@ export default function MessageList() {
 
     if (error) {
       await admin.alert("Error updating status: " + error.message);
-    } else {
       fetchMessages();
     }
   };
@@ -94,7 +100,7 @@ export default function MessageList() {
 
   const handleView = (msg: any) => {
     setSelectedMessage(msg);
-    // Mark as read if new?
+    // Mark as read if new
     if (msg.status === 'new') {
       handleUpdateStatus(msg.id, 'read');
     }
@@ -114,27 +120,29 @@ export default function MessageList() {
     switch (columnKey) {
       case "status":
         return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[msg.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
-                {msg.status ? t(`admin.status.${msg.status}`) : t('admin.status.new')}
-              </Chip>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Status Actions"
-              onAction={(key) => handleUpdateStatus(msg.id, key as string)}
-              className="p-1"
-              itemClasses={{
-                base: "rounded-xl transition-all duration-200",
-                title: "font-medium text-xs",
-              }}
-            >
-              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
-              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
-              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
-              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <div onClick={(e) => e.stopPropagation()}>
+            <Dropdown>
+              <DropdownTrigger>
+                <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[msg.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
+                  {msg.status ? t(`admin.status.${msg.status}`) : t('admin.status.new')}
+                </Chip>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Status Actions"
+                onAction={(key) => handleUpdateStatus(msg.id, key as string)}
+                className="p-1"
+                itemClasses={{
+                  base: "rounded-xl transition-all duration-200",
+                  title: "font-medium text-xs",
+                }}
+              >
+                <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
+                <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
+                <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
+                <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         );
       case "name":
         return `${msg.first_name} ${msg.last_name}`;
@@ -142,13 +150,32 @@ export default function MessageList() {
         return new Date(msg.created_at).toLocaleDateString();
       case "actions":
         return (
-          <div className="flex items-center gap-2">
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(msg)}>
-              <Eye className="w-4 h-4" />
-            </span>
-            <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(msg.id)}>
-              <Trash className="w-4 h-4" />
-            </span>
+          <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+            <Tooltip content={t('admin.messages.actions.view') || "View message"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                className="text-default-400 hover:text-default-600 active:scale-95"
+                onPress={() => handleView(msg)}
+                aria-label="View message"
+              >
+                <Eye className="w-4 h-4" />
+              </Button>
+            </Tooltip>
+            <Tooltip color="danger" content={t('admin.messages.actions.delete') || "Delete message"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                color="danger"
+                className="text-danger hover:bg-danger-50 dark:hover:bg-danger-900/20 active:scale-95"
+                onPress={() => handleDelete(msg.id)}
+                aria-label="Delete message"
+              >
+                <Trash className="w-4 h-4" />
+              </Button>
+            </Tooltip>
           </div>
         );
       default:
@@ -210,7 +237,7 @@ export default function MessageList() {
         <div className="flex items-center justify-between p-4 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-100 dark:border-primary-800 animate-in fade-in slide-in-from-top-2">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
-              {selectedCount} selected
+              {t('admin.common.selected')?.replace('{count}', selectedCount.toString()) || `${selectedCount} selected`}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -222,11 +249,11 @@ export default function MessageList() {
                   size="sm"
                   endContent={<ChevronDown className="w-4 h-4" />}
                 >
-                  Update Status
+                  {t('admin.common.update_status') || "Update Status"}
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
-                aria-label="Bulk Status Actions"
+                aria-label={t('admin.common.bulk_status_actions') || "Bulk Status Actions"}
                 onAction={(key) => handleBulkStatusUpdate(key as string)}
               >
                 <DropdownItem key="new">{t('admin.status.new')}</DropdownItem>
@@ -242,7 +269,7 @@ export default function MessageList() {
               startContent={<Trash className="w-4 h-4" />}
               onPress={handleBulkDelete}
             >
-              Delete
+              {t('admin.common.delete') || "Delete"}
             </Button>
           </div>
         </div>
@@ -343,7 +370,12 @@ export default function MessageList() {
                 </Button>
                 <Button
                   color="primary"
-                  onPress={onClose}
+                  onPress={async () => {
+                    if (selectedMessage && selectedMessage.status !== 'read') {
+                      await handleUpdateStatus(selectedMessage.id, 'read');
+                    }
+                    onClose();
+                  }}
                   radius="full"
                   className="font-bold shadow-lg shadow-blue-500/20"
                 >

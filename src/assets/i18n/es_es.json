@@ -178,7 +178,11 @@
   "admin.short_urls.form.slug": "Slug personalizado (Opcional)",
   "admin.short_urls.form.expired_at": "Fecha de caducidad (Opcional)",
   "admin.common.save": "Guardar",
-  "admin.common.actions": "Comportamiento",
+  "admin.common.actions": "Acciones",
   "admin.common.loading": "Cargando...",
-  "admin.common.confirm_delete": "¿Está seguro de que desea eliminar este elemento en particular?"
+  "admin.common.confirm_delete": "¿Está seguro de que desea eliminar este elemento en particular?",
+  "admin.common.selected": "{count} seleccionado(s)",
+  "admin.common.update_status": "Actualizar estado",
+  "admin.common.delete": "Eliminar",
+  "admin.common.bulk_status_actions": "Acciones de estado masivas"
 }

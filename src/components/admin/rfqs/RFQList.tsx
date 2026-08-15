@@ -18,6 +18,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
+  Tooltip,
   useDisclosure
 } from "@heroui/react";
 import { ChevronDown, Eye, Trash } from "lucide-react";
@@ -60,6 +61,12 @@ export default function RFQList() {
   };
 
   const handleUpdateStatus = async (id: number, status: string) => {
+    // Optimistic update to avoid full table loading flicker
+    setRfqs((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
+    if (selectedRfq && selectedRfq.id === id) {
+      setSelectedRfq((prev: any) => (prev ? { ...prev, status } : null));
+    }
+
     const { error } = await supabase
       .from("customer_request_for_quotes")
       .update({ status })
@@ -67,7 +74,6 @@ export default function RFQList() {
 
     if (error) {
       await admin.alert("Error updating status: " + error.message);
-    } else {
       fetchRfqs();
     }
   };
@@ -94,7 +100,7 @@ export default function RFQList() {
 
   const handleView = (rfq: any) => {
     setSelectedRfq(rfq);
-    // Mark as read if new?
+    // Mark as read if new
     if (rfq.status === 'new') {
       handleUpdateStatus(rfq.id, 'read');
     }
@@ -115,27 +121,29 @@ export default function RFQList() {
     switch (columnKey) {
       case "status":
         return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[rfq.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
-                {rfq.status ? t(`admin.status.${rfq.status}`) : t('admin.status.new')}
-              </Chip>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Status Actions"
-              onAction={(key) => handleUpdateStatus(rfq.id, key as string)}
-              className="p-1"
-              itemClasses={{
-                base: "rounded-xl transition-all duration-200",
-                title: "font-medium text-xs",
-              }}
-            >
-              <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
-              <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
-              <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
-              <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <div onClick={(e) => e.stopPropagation()}>
+            <Dropdown>
+              <DropdownTrigger>
+                <Chip className="cursor-pointer" color={STATUS_COLOR_MAP[rfq.status] || "default"} size="sm" variant="flat" endContent={<ChevronDown className="w-3 h-3" />}>
+                  {rfq.status ? t(`admin.status.${rfq.status}`) : t('admin.status.new')}
+                </Chip>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Status Actions"
+                onAction={(key) => handleUpdateStatus(rfq.id, key as string)}
+                className="p-1"
+                itemClasses={{
+                  base: "rounded-xl transition-all duration-200",
+                  title: "font-medium text-xs",
+                }}
+              >
+                <DropdownItem key="new" className="text-blue-600 dark:text-blue-400">{t('admin.status.new')}</DropdownItem>
+                <DropdownItem key="read" className="text-zinc-600 dark:text-zinc-400">{t('admin.status.read')}</DropdownItem>
+                <DropdownItem key="responded" className="text-green-600 dark:text-green-400">{t('admin.status.responded')}</DropdownItem>
+                <DropdownItem key="archived" className="text-red-600 dark:text-red-400">{t('admin.status.archived')}</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         );
       case "expected_delivery_date":
         return rfq.expected_delivery_date
@@ -145,13 +153,32 @@ export default function RFQList() {
         return new Date(rfq.created_at).toLocaleDateString();
       case "actions":
         return (
-          <div className="flex items-center gap-2">
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleView(rfq)}>
-              <Eye className="w-4 h-4" />
-            </span>
-            <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(rfq.id)}>
-              <Trash className="w-4 h-4" />
-            </span>
+          <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+            <Tooltip content={t('admin.rfqs.actions.view') || "View inquiry"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                className="text-default-400 hover:text-default-600 active:scale-95"
+                onPress={() => handleView(rfq)}
+                aria-label="View inquiry"
+              >
+                <Eye className="w-4 h-4" />
+              </Button>
+            </Tooltip>
+            <Tooltip color="danger" content={t('admin.rfqs.actions.delete') || "Delete inquiry"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                color="danger"
+                className="text-danger hover:bg-danger-50 dark:hover:bg-danger-900/20 active:scale-95"
+                onPress={() => handleDelete(rfq.id)}
+                aria-label="Delete inquiry"
+              >
+                <Trash className="w-4 h-4" />
+              </Button>
+            </Tooltip>
           </div>
         );
       default:
@@ -213,7 +240,7 @@ export default function RFQList() {
         <div className="flex items-center justify-between p-4 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-100 dark:border-primary-800 animate-in fade-in slide-in-from-top-2">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
-              {selectedCount} selected
+              {t('admin.common.selected')?.replace('{count}', selectedCount.toString()) || `${selectedCount} selected`}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -225,11 +252,11 @@ export default function RFQList() {
                   size="sm"
                   endContent={<ChevronDown className="w-4 h-4" />}
                 >
-                  Update Status
+                  {t('admin.common.update_status') || "Update Status"}
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
-                aria-label="Bulk Status Actions"
+                aria-label={t('admin.common.bulk_status_actions') || "Bulk Status Actions"}
                 onAction={(key) => handleBulkStatusUpdate(key as string)}
               >
                 <DropdownItem key="new">{t('admin.status.new')}</DropdownItem>
@@ -245,7 +272,7 @@ export default function RFQList() {
               startContent={<Trash className="w-4 h-4" />}
               onPress={handleBulkDelete}
             >
-              Delete
+              {t('admin.common.delete') || "Delete"}
             </Button>
           </div>
         </div>

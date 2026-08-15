@@ -178,7 +178,11 @@
   "admin.short_urls.form.slug": "Custom Slug (Optional)",
   "admin.short_urls.form.expired_at": "Expiration Date (Optional)",
   "admin.common.save": "يحفظ",
-  "admin.common.actions": "سلوك",
+  "admin.common.actions": "إجراءات",
   "admin.common.loading": "جارٍ التحميل...",
-  "admin.common.confirm_delete": "هل أنت متأكد أنك تريد حذف هذا العنصر بعينه؟"
+  "admin.common.confirm_delete": "هل أنت متأكد أنك تريد حذف هذا العنصر بعينه؟",
+  "admin.common.selected": "تم تحديد {count}",
+  "admin.common.update_status": "تحديث الحالة",
+  "admin.common.delete": "حذف",
+  "admin.common.bulk_status_actions": "إجراءات الحالة المجمعة"
 }

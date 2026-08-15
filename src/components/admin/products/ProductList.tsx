@@ -114,18 +114,32 @@ export default function ProductList() {
         );
       case "actions":
         return (
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
             <Tooltip content={t('admin.product_list.tooltip.edit')}>
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <a href={`/admin/products/${product.id}`}>
-                  <Edit className="w-4 h-4" />
-                </a>
-              </span>
+              <Button
+                as="a"
+                href={`/admin/products/${product.id}`}
+                isIconOnly
+                size="sm"
+                variant="light"
+                className="text-default-400 hover:text-default-600 active:scale-95"
+                aria-label="Edit product"
+              >
+                <Edit className="w-4 h-4" />
+              </Button>
             </Tooltip>
             <Tooltip color="danger" content={t('admin.product_list.tooltip.delete')}>
-              <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(product.id)}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                color="danger"
+                className="text-danger hover:bg-danger-50 dark:hover:bg-danger-900/20 active:scale-95"
+                onPress={() => handleDelete(product.id)}
+                aria-label="Delete product"
+              >
                 <Trash2 className="w-4 h-4" />
-              </span>
+              </Button>
             </Tooltip>
           </div>
         );

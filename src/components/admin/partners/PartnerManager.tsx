@@ -14,6 +14,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
+  Tooltip,
   useDisclosure,
   User
 } from "@heroui/react";
@@ -134,13 +135,32 @@ export default function PartnerManager() {
         );
       case "actions":
         return (
-          <div className="relative flex items-center gap-2">
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => handleEdit(partner)}>
-              <Edit className="w-4 h-4" />
-            </span>
-            <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={() => handleDelete(partner.id)}>
-              <Trash2 className="w-4 h-4" />
-            </span>
+          <div className="relative flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+            <Tooltip content={t('admin.partners.actions.edit') || "Edit Partner"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                className="text-default-400 hover:text-default-600 active:scale-95"
+                onPress={() => handleEdit(partner)}
+                aria-label="Edit partner"
+              >
+                <Edit className="w-4 h-4" />
+              </Button>
+            </Tooltip>
+            <Tooltip color="danger" content={t('admin.partners.actions.delete') || "Delete Partner"}>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="light"
+                color="danger"
+                className="text-danger hover:bg-danger-50 dark:hover:bg-danger-900/20 active:scale-95"
+                onPress={() => handleDelete(partner.id)}
+                aria-label="Delete partner"
+              >
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </Tooltip>
           </div>
         );
       default:
