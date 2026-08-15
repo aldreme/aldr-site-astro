@@ -173,7 +173,6 @@ export default function ProductList() {
           aria-label="Products management table"
           classNames={{
             base: "p-4",
-            table: "min-h-[400px]",
             thead: "[&>tr]:first:rounded-xl",
             th: "bg-gray-50/50 dark:bg-zinc-800/50 text-gray-500 dark:text-gray-400 font-semibold uppercase text-[10px] tracking-wider py-4",
             td: "py-4 border-b border-gray-50 dark:border-zinc-800/50",
