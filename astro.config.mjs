@@ -40,17 +40,5 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    // Local dev only: serve the CRM edge function same-origin so the browser's
-    // credentialed requests aren't blocked by the local Supabase gateway's
-    // `Access-Control-Allow-Origin: *` (a local-only quirk). Production calls
-    // the function cross-origin directly, so this has no effect there.
-    server: {
-      proxy: {
-        '/functions/v1/crm': {
-          target: 'http://localhost:54321',
-          changeOrigin: true,
-        },
-      },
-    },
   },
 });

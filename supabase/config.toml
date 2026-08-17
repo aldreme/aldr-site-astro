@@ -302,7 +302,3 @@ entrypoint = "./functions/trigger_github_cicd_workflow/index.ts"
 
 [functions.url_shortener]
 verify_jwt = false
-
-[functions.crm]
-verify_jwt = false
-import_map = "./functions/crm/deno.json"
