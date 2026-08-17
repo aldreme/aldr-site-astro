@@ -302,3 +302,7 @@ entrypoint = "./functions/trigger_github_cicd_workflow/index.ts"
 
 [functions.url_shortener]
 verify_jwt = false
+
+[functions.tvc-time-log]
+verify_jwt = false
+
